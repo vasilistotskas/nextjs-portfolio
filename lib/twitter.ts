@@ -46,6 +46,9 @@ export const getTweets = async (ids) => {
   };
 
   return (
+    if (!tweets.data) {
+        return [];
+    }
     tweets.data.reduce((allTweets, tweet) => {
       const tweetWithAuthor = {
         ...tweet,
