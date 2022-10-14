@@ -3,7 +3,6 @@ import BlogLayout from 'layouts/blog';
 import Tweet from 'components/Tweet';
 import components from 'components/MDXComponents';
 import { postQuery, postSlugsQuery } from 'lib/queries';
-import { getTweets } from 'lib/twitter';
 import { sanityClient, getClient } from 'lib/sanity-server';
 import { mdxToHtml } from 'lib/mdx';
 import { Post } from 'lib/types';
@@ -47,7 +46,7 @@ export async function getStaticProps({ params, preview = false }) {
   }
 
   const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
-  const tweets = await getTweets(tweetIDs);
+  const tweets = await [];
 
   return {
     props: {

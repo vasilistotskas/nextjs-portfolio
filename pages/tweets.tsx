@@ -1,6 +1,5 @@
 import Container from 'components/Container';
 import Tweet from 'components/Tweet';
-import { getTweets } from 'lib/twitter';
 
 export default function Tweets({ tweets }) {
   return (
