@@ -7,8 +7,8 @@ import MetricCard from 'components/metrics/Card'
 export default function UnsplashCard() {
     const { data } = useSWR<Unsplash>('/api/unsplash', fetcher)
 
-    const downloads = new Number(data?.downloads)
-    const views = new Number(data?.views)
+    const downloads = Number(data?.downloads)
+    const views = Number(data?.views)
     const link = 'https://unsplash.com/@vasilistotskas'
 
     return (

@@ -9,6 +9,10 @@ export default async function handler(req: NextRequest) {
     const response = await getTopTracks()
     const { items } = await response.json()
 
+    if (!items) {
+        return new Response('No tracks found', { status: 404 })
+    }
+
     const tracks = items.slice(0, 10).map((track) => ({
         artist: track.artists.map((_artist) => _artist.name).join(', '),
         songUrl: track.external_urls.spotify,

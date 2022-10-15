@@ -13,6 +13,10 @@ export default async function handler(req: NextRequest) {
     const user = await userResponse.json()
     const repositories = await userReposResponse.json()
 
+    if (!Array.isArray(repositories)) {
+        return new Response('Not found', { status: 404 })
+    }
+
     const mine = repositories.filter((repo) => !repo.fork)
     const stars = mine.reduce((accumulator, repository) => {
         return accumulator + repository['stargazers_count']

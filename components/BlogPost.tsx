@@ -27,7 +27,7 @@ export default function BlogPost({
                         <p className="w-32 mb-4 text-left text-gray-500 md:text-right md:mb-0">
                             {`${
                                 views
-                                    ? new Number(views).toLocaleString()
+                                    ? Number(views).toLocaleString()
                                     : '–––'
                             } views`}
                         </p>
