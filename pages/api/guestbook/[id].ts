@@ -17,8 +17,6 @@ export default async function handler(
         }
     })
 
-    console.log('entry.id', entry.id)
-
     if (req.method === 'GET') {
         return res.json({
             id: entry.id.toString(),
