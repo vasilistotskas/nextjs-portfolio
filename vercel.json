@@ -55,24 +55,8 @@
             "destination": "https://vercel.com/support/articles/how-do-i-workaround-vercel-s-4-kb-environment-variables-limit"
         },
         {
-            "source": "/30",
-            "destination": "https://calendly.com/lee-vercel/30min"
-        },
-        {
-            "source": "/15",
-            "destination": "https://calendly.com/lee-vercel/15min"
-        },
-        {
-            "source": "/youtube",
-            "destination": "https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ"
-        },
-        {
             "source": "/live",
             "destination": "https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ/live"
-        },
-        {
-            "source": "/newsletter/(.*)",
-            "destination": "/newsletter"
         },
         {
             "source": "/blog/monorepo-lerna-yarn-workspaces",
