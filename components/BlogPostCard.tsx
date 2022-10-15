@@ -46,7 +46,7 @@ export default function BlogPostCard({ title, slug, gradient }) {
                             />
                         </svg>
                         <span className="ml-2 align-baseline capsize">
-                            {views ? new Number(views).toLocaleString() : '–––'}
+                            {views ? Number(views).toLocaleString() : '–––'}
                         </span>
                     </div>
                 </div>
