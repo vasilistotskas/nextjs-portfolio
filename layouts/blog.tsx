@@ -3,7 +3,6 @@ import { parseISO, format } from 'date-fns'
 import { PropsWithChildren, Suspense } from 'react'
 
 import Container from 'components/Container'
-import Subscribe from 'components/Subscribe'
 import ViewCounter from 'components/ViewCounter'
 import { Post } from 'lib/types'
 import { urlForImage } from 'lib/sanity'
@@ -48,9 +47,6 @@ export default function BlogLayout({
                 <Suspense fallback={null}>
                     <div className="w-full mt-4 prose dark:prose-dark max-w-none">
                         {children}
-                    </div>
-                    <div className="mt-8">
-                        <Subscribe />
                     </div>
                     <div className="text-sm text-gray-700 dark:text-gray-300">
                         <a
