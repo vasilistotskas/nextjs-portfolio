@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+    req: NextApiRequest,
+    res: NextApiResponse
 ) {
-  res.clearPreviewData();
-  res.writeHead(307, { Location: '/' });
-  res.end();
+    res.clearPreviewData()
+    res.writeHead(307, { Location: '/' })
+    res.end()
 }
