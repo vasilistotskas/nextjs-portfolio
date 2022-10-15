@@ -43,7 +43,7 @@ export default function Footer() {
                     <ExternalLink href="https://github.com/vasilistotskas">
                         GitHub
                     </ExternalLink>
-                    <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
+                    <ExternalLink href="https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ">
                         YouTube
                     </ExternalLink>
                 </div>

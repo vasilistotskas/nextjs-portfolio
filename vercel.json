@@ -64,11 +64,11 @@
         },
         {
             "source": "/youtube",
-            "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw"
+            "destination": "https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ"
         },
         {
             "source": "/live",
-            "destination": "https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw/live"
+            "destination": "https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ/live"
         },
         {
             "source": "/newsletter/(.*)",

@@ -46,12 +46,12 @@ export default function About() {
                         developers build a faster web and leads the Next.js
                         community. He leads the community for the React
                         framework Next.js and is an open-source contributor. An
-                        educator, writer, and speaker, Lee has created courses
+                        educator, writer, and speaker, Vasilis has created courses
                         on React, Next.js, and web development.
                     </p>
                     <h3>Long, 1st Person</h3>
                     <p>
-                        Hey, I'm Lee. I'm the VP of Developer Experience at{' '}
+                        Hey, I'm Vasilis. I'm the VP of Developer Experience at{' '}
                         <a href="https://vercel.com/">Vercel</a>, where my team
                         helps developers build a faster web. I'm a Next.js
                         contributor and help lead our open-source communities.
@@ -67,7 +67,7 @@ export default function About() {
                     </p>
                     <h3>Short, 1st Person</h3>
                     <p>
-                        Hey, I'm Lee. I'm the VP of Developer Experience at{' '}
+                        Hey, I'm Vasilis. I'm the VP of Developer Experience at{' '}
                         <a href="https://vercel.com/">Vercel</a>, where my team
                         helps developers build a faster web.
                     </p>
