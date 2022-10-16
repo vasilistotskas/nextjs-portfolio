@@ -13,30 +13,34 @@ export default function About() {
                     About Me
                 </h1>
                 <div className="mb-8 prose dark:prose-dark leading-6">
-                    <h2>Links</h2>
+                    <h2>🔗 Links</h2>
                     <ul>
-                        <li>
-                            Twitter:{' '}
-                            <a href="https://twitter.com/vasilistotskas">@vasilistotskas</a>
-                        </li>
-                        <li>
-                            GitHub:{' '}
-                            <a href="https://github.com/vasilistotskas">@vasilistotskas</a>
-                        </li>
-                        <li>
+                        <li className="flex items-center gap-2">
+                            <img src="https://img.icons8.com/doodle/30/000000/domain.png" alt={'vassilistotskas.com'}/>
                             Website:{' '}
                             <Link href="https://vasilistotskas.com">
-                                <a>https://vasilistotskas.com</a>
+                                <a className="m-0">https://vasilistotskas.com</a>
                             </Link>
                         </li>
-                        <li>
+                        <li className="flex items-center gap-2">
+                            <img src="https://img.icons8.com/color/30/000000/twitter--v1.png" alt={'Twitter'}/>
+                            Twitter:{' '}
+                            <a className="m-0" href="https://twitter.com/vasilistotskas">@vasilistotskas</a>
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt={'GitHub'}/>
+                            GitHub:{' '}
+                            <a className="m-0" href="https://github.com/vasilistotskas">@vasilistotskas</a>
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <img src="https://img.icons8.com/color/30/000000/linkedin-circled--v1.png" alt={'LinkedIn'}/>
                             LinkedIn:{' '}
-                            <a href="https://www.linkedin.com/in/vasilis-totskas-148a571a0/">
+                            <a className="m-0" href="https://www.linkedin.com/in/vasilis-totskas-148a571a0/">
                                 https://www.linkedin.com/in/vasilis-totskas-148a571a0/
                             </a>
                         </li>
                     </ul>
-                    <h2>Bio</h2>
+                    <h2>ℹ Bio</h2>
                     <h3>Job Title</h3>
                     <p>Vasilis Totskas, Fullstack Developer at Advisable</p>
                     <h3>Long, 1st Person</h3>
@@ -47,9 +51,9 @@ export default function About() {
                         i remember my self spending a lot of time in front of my pc and i was always curious about how it works and how to use it to build my own applications or websites.
                         3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker.
                     </p>
-                    <h3>Education</h3>
+                    <h3>🏫 Education</h3>
                     <p>
-                        Vasilis Totskas graduated from University Of Western Macedonia
+                        Graduated from University Of Western Macedonia
                         in Computer Engineering.
                     </p>
                     <h2>Headshots</h2>

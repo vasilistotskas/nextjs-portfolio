@@ -12,6 +12,7 @@ export default function GitHubCard() {
 
     return (
         <MetricCard
+            image={'https://img.icons8.com/material-outlined/24/000000/github.png'}
             header="GitHub Stars"
             link={link}
             metric={stars}

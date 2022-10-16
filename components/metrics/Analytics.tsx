@@ -12,6 +12,7 @@ export default function AnalyticsCard() {
 
     return (
         <MetricCard
+            image={'https://img.icons8.com/nolan/24/google-analytics-logo.png'}
             header="All-Time Views"
             link={link}
             metric={pageViews}

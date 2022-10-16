@@ -14,12 +14,14 @@ export default function UnsplashCard() {
     return (
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
             <MetricCard
+                image={'https://img.icons8.com/material-two-tone/24/000000/unsplash--v2.png'}
                 header="Unsplash Downloads"
                 link={link}
                 metric={downloads}
                 isCurrency={false}
             />
             <MetricCard
+                image={'https://img.icons8.com/material-two-tone/24/000000/unsplash--v2.png'}
                 header="Unsplash Views"
                 link={link}
                 metric={views}

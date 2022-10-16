@@ -34,7 +34,8 @@ export default function Dashboard() {
                     <Analytics />
                     <GitHub />
                 </div>
-                <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
+                <h2 className="flex items-center gap-2 font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
+                    <img src="https://img.icons8.com/plasticine/60/000000/spotify--v1.png" alt={'Spotify'}/>
                     Top Tracks
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
