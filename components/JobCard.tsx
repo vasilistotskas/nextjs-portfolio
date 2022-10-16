@@ -15,7 +15,7 @@ export default function JobCard({ period, title, index }) {
                         </h4>
                     </div>
                     <div className="flex items-center mt-2 sm:mt-0 w-full sm:w-auto justify-between">
-                        <p className="text-gray-500 dark:text-gray-400 text-left sm:text-right w-32 md:mb-0 mr-2 ml-10 sm:ml-0">
+                        <p className="text-gray-500 dark:text-gray-400 text-xs text-left sm:text-right w-32 md:mb-0 mr-2 ml-10 sm:ml-0">
                             {period}
                         </p>
                     </div>
