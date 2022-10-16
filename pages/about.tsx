@@ -27,24 +27,24 @@ export default function About() {
                             </Link>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/42/000000/twitter-circled.png" alt={ 'Twitter' }/>
+                            <img src="https://img.icons8.com/clouds/40/000000/twitter-circled.png" alt={ 'Twitter' }/>
                             Twitter:{' '}
                             <a className="m-0" href="https://twitter.com/vasilistotskas">@vasilistotskas</a>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/42/000000/github.png" alt={ 'Github' }/>
+                            <img src="https://img.icons8.com/clouds/40/000000/github.png" alt={ 'Github' }/>
                             GitHub:{' '}
                             <a className="m-0" href="https://github.com/vasilistotskas">@vasilistotskas</a>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/42/000000/linkedin.png" alt={' LinkedIn '}/>
+                            <img src="https://img.icons8.com/clouds/40/000000/linkedin.png" alt={' LinkedIn '}/>
                             LinkedIn:{' '}
                             <a className="m-0" href="https://www.linkedin.com/in/vasilis-totskas-148a571a0/">
                                 @vasilistotskas
                             </a>
                         </li>
                     </ul>
-                    <h2 className='flex items-center gap-2 mb-2'>
+                    <h2 className='flex items-center gap-2 mb-8'>
                         <img src="https://img.icons8.com/clouds/50/000000/resume.png" alt={ 'Bio' }/>
                         <span>Bio</span>
                     </h2>
@@ -58,7 +58,7 @@ export default function About() {
                         i remember my self spending a lot of time in front of my pc and i was always curious about how it works and how to use it to build my own applications or websites.
                         3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker.
                     </p>
-                    <h3 className='flex items-center gap-2 mb-2'>
+                    <h3 className='flex items-center gap-2 mb-8'>
                         <img src="https://img.icons8.com/clouds/50/000000/school.png" alt={ 'Education' }/>
                         <span>Education</span>
                     </h3>

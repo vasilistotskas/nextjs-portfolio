@@ -90,7 +90,7 @@ export default function ContactForm() {
                         </div>
                         <div className='p-2 w-full pt-4 border-t border-gray-200 text-center'>
                             <a className='text-sky-600 dark:text-sky-600'>vassilistotskas@msn.com</a>
-                            <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                            <p className='text-gray-800 dark:text-gray-100 mb-4'>
                                 Athens, Greece
                             </p>
                             <span className='inline-flex gap-2'>
