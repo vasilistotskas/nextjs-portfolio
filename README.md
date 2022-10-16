@@ -23,7 +23,6 @@ I've recorded two live streams walking through this repository and answering que
 -   `layouts/*` - The different page layouts each MDX category (blog, snippets) uses.
 -   `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
 -   `pages/api/*` - [API Routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://vasilistotskas.com/dashboard) subscription, guestbook, and post views.
--   `pages/blog/*` - Static pre-rendered blog pages using MDX.
 -   `pages/dashboard` - [Personal dashboard](https://vasilistotskas.com/dashboard) tracking metrics.
 -   `pages/sitemap.xml.tsx` - Automatically generated sitemap.
 -   `pages/feed.xml.tsx` - Automatically generated RSS feed.
