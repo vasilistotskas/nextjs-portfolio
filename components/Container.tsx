@@ -7,6 +7,7 @@ import cn from 'classnames'
 
 import Footer from 'components/Footer'
 import MobileMenu from 'components/MobileMenu'
+import ContactForm from 'components/ContactForm'
 
 function NavItem({ href, text }) {
     const router = useRouter()
@@ -126,11 +127,13 @@ export default function Container(props) {
                     </button>
                 </nav>
             </div>
+
             <main
                 id="skip"
                 className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
             >
                 {children}
+                <ContactForm></ContactForm>
                 <Footer />
             </main>
         </div>
