@@ -11,15 +11,6 @@ export type Post = {
     readingTime: string
 }
 
-export type Snippet = {
-    _id: string
-    slug: string
-    content: MDXRemoteSerializeResult
-    title: string
-    description: string
-    logo: string
-}
-
 export enum Form {
     Initial,
     Loading,

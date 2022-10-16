@@ -1,22 +1,10 @@
 import RSS from 'rss'
-import { sanityClient } from 'lib/sanity-server'
-import { indexQuery } from 'lib/queries'
 
 export async function getServerSideProps({ res }) {
     const feed = new RSS({
         title: 'Vasilis Totskas',
-        site_url: 'https://vasilistotskas.io',
-        feed_url: 'https://vasilistotskas.io/feed.xml'
-    })
-
-    const allPosts = await sanityClient.fetch(indexQuery)
-    allPosts.map((post) => {
-        feed.item({
-            title: post.title,
-            url: `https://vasilistotskas.io/blog/${post.slug}`,
-            date: post.date,
-            description: post.excerpt
-        })
+        site_url: 'https://vasilistotskas.com',
+        feed_url: 'https://vasilistotskas.com/feed.xml'
     })
 
     res.setHeader('Content-Type', 'text/xml')

@@ -1,13 +1,10 @@
-import { sanityClient } from 'lib/sanity-server'
-import { postSlugsQuery } from 'lib/queries'
-
 const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${slugs
             .map((slug) => {
                 return `
                 <url>
-                    <loc>${`https://vasilistotskas.io/${slug}`}</loc>
+                    <loc>${`https://vasilistotskas.com/${slug}`}</loc>
                 </url>
             `
             })
@@ -15,10 +12,8 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     </urlset>
 `
 export async function getServerSideProps({ res }) {
-    const allPosts = await sanityClient.fetch(postSlugsQuery)
     const allPages = [
-        ...allPosts.map((slug) => `blog/${slug}`),
-        ...['', 'about', 'blog', 'dashboard', 'guestbook', 'uses']
+        ...['', 'about', 'dashboard', 'guestbook', 'uses']
     ]
 
     res.setHeader('Content-Type', 'text/xml')

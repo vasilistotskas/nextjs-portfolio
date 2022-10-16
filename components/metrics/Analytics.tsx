@@ -8,7 +8,7 @@ export default function AnalyticsCard() {
     const { data } = useSWR<Views>('/api/views', fetcher)
 
     const pageViews = Number(data?.total)
-    const link = 'https://vasilistotskas.io'
+    const link = 'https://vasilistotskas.com'
 
     return (
         <MetricCard

@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://vasilistotskas.io/sitemap.xml
+Sitemap: https://vasilistotskas.com/sitemap.xml

@@ -40,7 +40,7 @@ export default function Container(props) {
     const meta = {
         title: 'Vasilis Totskas – Developer, writer, creator.',
         description: `Front-end developer, JavaScript enthusiast, and course creator.`,
-        image: 'https://vasilistotskas.io/static/images/vasilis-banner.jpg',
+        image: 'https://vasilistotskas.com/static/images/vasilis-banner.jpg',
         type: 'website',
         ...customMeta
     }
@@ -53,11 +53,11 @@ export default function Container(props) {
                 <meta content={meta.description} name="description" />
                 <meta
                     property="og:url"
-                    content={`https://vasilistotskas.io${router.asPath}`}
+                    content={`https://vasilistotskas.com${router.asPath}`}
                 />
                 <link
                     rel="canonical"
-                    href={`https://vasilistotskas.io${router.asPath}`}
+                    href={`https://vasilistotskas.com${router.asPath}`}
                 />
                 <meta property="og:type" content={meta.type} />
                 <meta property="og:site_name" content="Vasilis Totskas" />
@@ -86,8 +86,6 @@ export default function Container(props) {
                         <NavItem href="/" text="Home" />
                         <NavItem href="/guestbook" text="Guestbook" />
                         <NavItem href="/dashboard" text="Dashboard" />
-                        <NavItem href="/blog" text="Blog" />
-                        <NavItem href="/snippets" text="Snippets" />
                     </div>
                     <button
                         aria-label="Toggle Dark Mode"
