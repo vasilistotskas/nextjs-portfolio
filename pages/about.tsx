@@ -38,43 +38,19 @@ export default function About() {
                     </ul>
                     <h2>Bio</h2>
                     <h3>Job Title</h3>
-                    <p>Vasilis Totskas, VP of Developer Experience at Vercel</p>
-                    <h3>Long, 3rd Person</h3>
-                    <p>
-                        Vasilis Totskas is the VP of Developer Experience at{' '}
-                        <a href="http://vercel.com/">Vercel</a>, where he helps
-                        developers build a faster web and leads the Next.js
-                        community. He leads the community for the React
-                        framework Next.js and is an open-source contributor. An
-                        educator, writer, and speaker, Vasilis has created courses
-                        on React, Next.js, and web development.
-                    </p>
+                    <p>Vasilis Totskas, Fullstack Developer at Advisable</p>
                     <h3>Long, 1st Person</h3>
                     <p>
-                        Hey, I'm Vasilis. I'm the VP of Developer Experience at{' '}
-                        <a href="https://vercel.com/">Vercel</a>, where my team
-                        helps developers build a faster web. I'm a Next.js
-                        contributor and help lead our open-source communities.
-                        I'm passionate about frontend development and have
-                        created courses on React, Next.js, and web development.
-                        I'm an advisor and investor in early stage startups.
-                    </p>
-                    <h3>Short, 3rd Person</h3>
-                    <p>
-                        Vasilis Totskas is the VP of Developer Experience at{' '}
-                        <a href="http://vercel.com/">Vercel</a>, where he helps
-                        developers build a faster web.
-                    </p>
-                    <h3>Short, 1st Person</h3>
-                    <p>
-                        Hey, I'm Vasilis. I'm the VP of Developer Experience at{' '}
-                        <a href="https://vercel.com/">Vercel</a>, where my team
-                        helps developers build a faster web.
+                        Hey, I'm Vasilis. I'm the Fullstack Developer at{' '}
+                        <a href="https://www.advisable.gr/">Advisable</a>, where my team
+                        helps developers build a faster web. Computer and technology was always a big part of my life ,
+                        i remember my self spending a lot of time in front of my pc and i was always curious about how it works and how to use it to build my own applications or websites.
+                        3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker.
                     </p>
                     <h3>Education</h3>
                     <p>
-                        Vasilis Totskas graduated from Iowa State University
-                        with a B.S. in Computer Engineering.
+                        Vasilis Totskas graduated from University Of Western Macedonia
+                        in Computer Engineering.
                     </p>
                     <h2>Headshots</h2>
                     <div className="flex space-x-8">
@@ -93,7 +69,7 @@ export default function About() {
                                 width={400}
                                 quality={100}
                                 src={avatarBW}
-                                className="rounded-md"
+                                className="rounded-md filter grayscale"
                             />
                         </a>
                     </div>

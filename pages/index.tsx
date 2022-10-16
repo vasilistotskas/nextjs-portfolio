@@ -16,13 +16,14 @@ export default function Home() {
                                 Vasilis Totskas
                             </h1>
                             <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-                                VP of Developer Experience at{' '}
-                                <span className="font-semibold">Vercel</span>
+                                Fullstack Developer at{' '}
+                                <span className="font-semibold">Advisable</span>
                             </h2>
                             <p className="text-gray-600 dark:text-gray-400 mb-16">
-                                Helping developers build a faster web. Teaching
-                                about web development, serverless, and React /
-                                Next.js.
+                                10+ years experience designing and developing web software for companies and individuals alike.
+                                Excellent programming skills with vast knowledge in computer languages.
+                                Proficient in project management, creating user interfaces, writing and testing
+                                codes, and implementing features.
                             </p>
                         </div>
                         <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
