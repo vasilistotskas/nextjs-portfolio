@@ -19,20 +19,23 @@ export default function Home() {
                                 Fullstack Developer at{' '}
                                 <span className="font-semibold">Advisable</span>
                             </h2>
-                            <p className="text-gray-600 dark:text-gray-400 mb-1">
-                                💪🏻 3+ years experience designing and developing web software for companies and individuals alike.
+                            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
+                                <img src="https://img.icons8.com/clouds/46/000000/module.png" alt={ 'Experience' }/>
+                                <span>3+ years experience designing and developing web software for companies and individuals alike.</span>
                             </p>
-                            <p className="text-gray-600 dark:text-gray-400 mb-1">
-                                💻 Excellent programming skills with vast knowledge in computer languages.
+                            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
+                                <img src="https://img.icons8.com/clouds/46/000000/console.png" alt={ 'Programming Skills' }/>
+                                <span>Excellent programming skills with vast knowledge in computer languages.</span>
                             </p>
-                            <p className="text-gray-600 dark:text-gray-400 mb-1">
-                                ✅ Proficient in project management, creating user interfaces, writing and testing
-                                codes, and implementing features.
+                            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
+                                <img src="https://img.icons8.com/clouds/46/000000/test-passed.png" alt={ 'Project Management, Testing' }/>
+                                <span>Proficient in project management, creating user interfaces, writing and testing
+                                codes, and implementing features.</span>
                             </p>
                         </div>
                         <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
                             <Image
-                                alt="Vasilis Totskas"
+                                alt={ "Vasilis Totskas" }
                                 height={176}
                                 width={176}
                                 src="/avatar.jpg"

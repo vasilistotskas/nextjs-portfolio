@@ -14,14 +14,14 @@ export default function YouTubeCard() {
     return (
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
             <MetricCard
-                image={'https://img.icons8.com/color/24/000000/youtube-play.png'}
+                image={'https://img.icons8.com/clouds/56/000000/youtube-play.png'}
                 header="YouTube Subscribers"
                 link={link}
                 metric={subscriberCount}
                 isCurrency={false}
             />
             <MetricCard
-                image={'https://img.icons8.com/color/24/000000/youtube-play.png'}
+                image={'https://img.icons8.com/clouds/56/000000/youtube-play.png'}
                 header="YouTube Views"
                 link={link}
                 metric={viewCount}
