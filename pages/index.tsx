@@ -19,10 +19,14 @@ export default function Home() {
                                 Fullstack Developer at{' '}
                                 <span className="font-semibold">Advisable</span>
                             </h2>
-                            <p className="text-gray-600 dark:text-gray-400 mb-16">
-                                10+ years experience designing and developing web software for companies and individuals alike.
-                                Excellent programming skills with vast knowledge in computer languages.
-                                Proficient in project management, creating user interfaces, writing and testing
+                            <p className="text-gray-600 dark:text-gray-400 mb-1">
+                                💪🏻 3+ years experience designing and developing web software for companies and individuals alike.
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-400 mb-1">
+                                💻 Excellent programming skills with vast knowledge in computer languages.
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-400 mb-1">
+                                ✅ Proficient in project management, creating user interfaces, writing and testing
                                 codes, and implementing features.
                             </p>
                         </div>
