@@ -28,7 +28,7 @@ export default function ContactForm() {
             <div className='flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-blue-50 dark:bg-blue-opaque'>
                 <div className='flex flex-col text-center w-full mb-2'>
                     <h1 className='flex items-center justify-center gap-2 font-bold text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white'>
-                        <img src="https://img.icons8.com/doodle/48/000000/newsletter.png"/>
+                        <img src="https://img.icons8.com/doodle/48/000000/newsletter.png" alt={'Contact Me'}/>
                         Contact Me
                     </h1>
                 </div>
@@ -82,6 +82,8 @@ export default function ContactForm() {
                         <div className='p-2 w-full sm:w-8/12 grid items-center justify-center'>
                             <button
                                 className='grid items-center justify-center my-2 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28'
+                                aria-label="Contact Me"
+                                type="button"
                                 role='submit'
                             >
                                 {isSubmitting ? 'Submitting' : 'Submit'}
@@ -89,7 +91,12 @@ export default function ContactForm() {
                             {successMessage && <p>{successMessage}</p>}
                         </div>
                         <div className='p-2 w-full sm:w-8/12 pt-4 border-t border-gray-200 text-center'>
-                            <a className='text-sky-600 dark:text-sky-600'>vassilistotskas@msn.com</a>
+                            <a
+                                className='text-sky-600 dark:text-sky-200'
+                                href="mailto:vassilistotskas@msn.com"
+                            >
+                                vassilistotskas@msn.com
+                            </a>
                             <p className='text-gray-800 dark:text-gray-100 mb-4'>
                                 Athens, Greece
                             </p>

@@ -1,7 +1,5 @@
 import { Suspense } from 'react'
 import Image from 'next/future/image'
-import Link from 'next/link'
-
 import Container from '../components/Container'
 import JobCard from '../components/JobCard'
 
