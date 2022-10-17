@@ -91,7 +91,6 @@ export default function ContactForm() {
                                 className='grid items-center justify-center my-2 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28'
                                 aria-label="Contact Me"
                                 type="button"
-                                role='submit'
                             >
                                 {isSubmitting ? 'Submitting' : 'Submit'}
                             </button>
