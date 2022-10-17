@@ -34,7 +34,7 @@ export default function ContactForm() {
                 </div>
                 <div className='grid'>
                     <div className='flex items-center content-center justify-center flex-wrap -m-2'>
-                        <div className='p-2 w-1/3'>
+                        <div className='p-2 w-full sm:w-1/3'>
                             <div className='relative'>
                                 <label htmlFor='name' className='text-lg font-medium w-full text-gray-800 dark:text-gray-100'>
                                     Name
@@ -47,7 +47,7 @@ export default function ContactForm() {
                                     className='w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' />
                             </div>
                         </div>
-                        <div className='p-2 w-1/3'>
+                        <div className='p-2 w-full sm:w-1/3'>
                             <div className='relative'>
                                 <label
                                     htmlFor='email'
@@ -63,7 +63,7 @@ export default function ContactForm() {
                                     className='w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' />
                             </div>
                         </div>
-                        <div className='p-2 w-8/12'>
+                        <div className='p-2 w-full sm:w-8/12'>
                             <div className='relative'>
                                 <label
                                     htmlFor='message'
@@ -79,7 +79,7 @@ export default function ContactForm() {
                                 ></textarea>
                             </div>
                         </div>
-                        <div className='p-2 w-8/12 grid items-center justify-center'>
+                        <div className='p-2 w-full sm:w-8/12 grid items-center justify-center'>
                             <button
                                 className='grid items-center justify-center my-2 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28'
                                 role='submit'
@@ -88,7 +88,7 @@ export default function ContactForm() {
                             </button>
                             {successMessage && <p>{successMessage}</p>}
                         </div>
-                        <div className='p-2 w-8/12 pt-4 border-t border-gray-200 text-center'>
+                        <div className='p-2 w-full sm:w-8/12 pt-4 border-t border-gray-200 text-center'>
                             <a className='text-sky-600 dark:text-sky-600'>vassilistotskas@msn.com</a>
                             <p className='text-gray-800 dark:text-gray-100 mb-4'>
                                 Athens, Greece
