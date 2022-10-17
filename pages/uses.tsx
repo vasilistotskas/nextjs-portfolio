@@ -25,7 +25,7 @@ export default function Uses() {
                     priority
                 />
                 <div className="prose dark:prose-dark w-full">
-                    <h3 id="computer-office">Computer / Office</h3>
+                    <h2 id="computer-office">Computer / Office</h2>
                     <ul>
                         <li>Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz   2.81 GHz</li>
                         <li>32.0 GB 3200Hz</li>
@@ -37,12 +37,12 @@ export default function Uses() {
                         <li>Genius SW-G2.1</li>
                         <li>Autonomous ErgoChair</li>
                     </ul>
-                    <h3 id="coding">Coding</h3>
+                    <h2 id="coding">Coding</h2>
                     <ul>
                         <li>Editor: JetBrains WebStorm for JavaScript</li>
                         <li>Terminal: Command bash / Git bash / PowerShell</li>
                     </ul>
-                    <h3 id="software">Software</h3>
+                    <h2 id="software">Software</h2>
                     <ul>
                         <li>JetBrains Studio</li>
                         <li>SourceTree</li>
