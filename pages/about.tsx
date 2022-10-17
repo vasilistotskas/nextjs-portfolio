@@ -15,29 +15,59 @@ export default function About() {
                 </h1>
                 <div className="mb-8 prose dark:prose-dark leading-6">
                     <h2 className='flex items-center gap-2 mb-2'>
-                        <img src="https://img.icons8.com/clouds/50/000000/external-link.png" alt={ 'Bio' }/>
+                        <Image
+                            alt={`Bio`}
+                            src={'https://img.icons8.com/clouds/50/000000/external-link.png'}
+                            width={50}
+                            height={50}
+                            priority
+                        />
                         <span>Links</span>
                     </h2>
                     <ul>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/40/000000/domain.png" alt={'vassilistotskas.com'}/>
+                            <Image
+                                alt={`vassilistotskas.com`}
+                                src={'https://img.icons8.com/clouds/40/000000/domain.png'}
+                                width={40}
+                                height={40}
+                                priority
+                            />
                             Website:{' '}
                             <Link href="https://vasilistotskas.com">
                                 <a className="m-0">@vasilistotskas</a>
                             </Link>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/40/000000/twitter-circled.png" alt={ 'Twitter' }/>
+                            <Image
+                                alt={`Twitter`}
+                                src={'https://img.icons8.com/clouds/40/000000/twitter-circled.png'}
+                                width={40}
+                                height={40}
+                                priority
+                            />
                             Twitter:{' '}
                             <a className="m-0" href="https://twitter.com/vasilistotskas">@vasilistotskas</a>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/40/000000/github.png" alt={ 'Github' }/>
+                            <Image
+                                alt={`Github`}
+                                src={'https://img.icons8.com/clouds/40/000000/github.png'}
+                                width={40}
+                                height={40}
+                                priority
+                            />
                             GitHub:{' '}
                             <a className="m-0" href="https://github.com/vasilistotskas">@vasilistotskas</a>
                         </li>
                         <li className="flex items-center gap-2">
-                            <img src="https://img.icons8.com/clouds/40/000000/linkedin.png" alt={' LinkedIn '}/>
+                            <Image
+                                alt={`LinkedIn`}
+                                src={'https://img.icons8.com/clouds/40/000000/linkedin.png'}
+                                width={40}
+                                height={40}
+                                priority
+                            />
                             LinkedIn:{' '}
                             <a className="m-0" href="https://www.linkedin.com/in/vasilis-totskas-148a571a0/">
                                 @vasilistotskas
@@ -45,7 +75,13 @@ export default function About() {
                         </li>
                     </ul>
                     <h2 className='flex items-center gap-2 mb-8'>
-                        <img src="https://img.icons8.com/clouds/50/000000/resume.png" alt={ 'Bio' }/>
+                        <Image
+                            alt={`Bio`}
+                            src={'https://img.icons8.com/clouds/50/000000/resume.png'}
+                            width={50}
+                            height={50}
+                            priority
+                        />
                         <span>Bio</span>
                     </h2>
                     <h3>Job Title</h3>
@@ -59,7 +95,13 @@ export default function About() {
                         3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker.
                     </p>
                     <h3 className='flex items-center gap-2 mb-8'>
-                        <img src="https://img.icons8.com/clouds/50/000000/school.png" alt={ 'Education' }/>
+                        <Image
+                            alt={`Education`}
+                            src={'https://img.icons8.com/clouds/50/000000/school.png'}
+                            width={50}
+                            height={50}
+                            priority
+                        />
                         <span>Education</span>
                     </h3>
                     <p>

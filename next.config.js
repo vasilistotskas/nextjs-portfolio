@@ -6,7 +6,8 @@ module.exports = {
     images: {
         domains: [
             'i.scdn.co', // Spotify Album Art
-            'pbs.twimg.com' // Twitter Profile Picture
+            'pbs.twimg.com', // Twitter Profile Picture
+            'img.icons8.com' // Twitter Profile Picture
         ]
     },
     experimental: {

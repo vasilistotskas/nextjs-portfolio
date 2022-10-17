@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import Image from 'next/future/image'
 
 export default function ContactForm() {
     const {
@@ -28,7 +29,13 @@ export default function ContactForm() {
             <div className='flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-blue-50 dark:bg-blue-opaque'>
                 <div className='flex flex-col text-center w-full mb-2'>
                     <h1 className='flex items-center justify-center gap-2 font-bold text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white'>
-                        <img src="https://img.icons8.com/doodle/48/000000/newsletter.png" alt={'Contact Me'}/>
+                        <Image
+                            alt={`Contact Me`}
+                            src={`https://img.icons8.com/doodle/48/000000/newsletter.png`}
+                            width={48}
+                            height={48}
+                            priority
+                        />
                         Contact Me
                     </h1>
                 </div>
@@ -102,16 +109,40 @@ export default function ContactForm() {
                             </p>
                             <span className='inline-flex gap-2'>
                                 <a href={'https://www.facebook.com/vasilistotskas/'}>
-                                    <img src="https://img.icons8.com/clouds/42/000000/facebook-new.png" alt={ 'Facebook' }/>
+                                    <Image
+                                        alt={`Facebook`}
+                                        src={`https://img.icons8.com/clouds/42/000000/facebook-new.png`}
+                                        width={42}
+                                        height={42}
+                                        priority
+                                    />
                                 </a>
                                 <a href={'https://www.instagram.com/vasilistotskas/'}>
-                                    <img src="https://img.icons8.com/clouds/42/000000/instagram-new--v1.png" alt={ 'Instagram' }/>
+                                    <Image
+                                        alt={`Instagram`}
+                                        src={`https://img.icons8.com/clouds/42/000000/instagram-new--v1.png`}
+                                        width={42}
+                                        height={42}
+                                        priority
+                                    />
                                 </a >
                                 <a href={'https://twitter.com/vasilistotskas/'}>
-                                    <img src="https://img.icons8.com/clouds/42/000000/twitter-circled.png" alt={ 'Twitter' }/>
+                                    <Image
+                                        alt={`Twitter`}
+                                        src={`https://img.icons8.com/clouds/42/000000/twitter-circled.png`}
+                                        width={42}
+                                        height={42}
+                                        priority
+                                    />
                                 </a>
                                 <a href={'https://github.com/vasilistotskas/'}>
-                                    <img src="https://img.icons8.com/clouds/42/000000/github.png" alt={ 'Github' }/>
+                                    <Image
+                                        alt={`Github`}
+                                        src={`https://img.icons8.com/clouds/42/000000/github.png`}
+                                        width={42}
+                                        height={42}
+                                        priority
+                                    />
                                 </a>
                             </span>
                         </div>

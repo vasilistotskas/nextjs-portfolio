@@ -4,6 +4,7 @@ import { animate } from 'motion'
 
 import fetcher from 'lib/fetcher'
 import { NowPlayingSong } from 'lib/types'
+import Image from 'next/future/image'
 
 function AnimatedBars() {
     useEffect(() => {
@@ -80,7 +81,13 @@ export default function NowPlaying() {
     return (
         <>
             <div className='flex items-center gap-2 mb-2'>
-                <img src="https://img.icons8.com/clouds/60/000000/spotify.png" alt='Facebook'/>
+                <Image
+                    alt={`Spotify`}
+                    src={`https://img.icons8.com/plasticine/60/000000/spotify--v1.png`}
+                    width={60}
+                    height={60}
+                    priority
+                />
                 <span className='text-lg font-bold w-full text-gray-800 dark:text-gray-100'>Listening to Spotify</span>
             </div>
             <div className='flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full'>

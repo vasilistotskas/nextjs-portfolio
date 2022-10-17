@@ -3,6 +3,7 @@ import GitHub from 'components/metrics/Github'
 import Unsplash from 'components/metrics/Unsplash'
 import YouTube from 'components/metrics/Youtube'
 import TopTracks from 'components/TopTracks'
+import Image from 'next/future/image'
 
 export default function Dashboard() {
     return (
@@ -31,7 +32,13 @@ export default function Dashboard() {
                     <GitHub />
                 </div>
                 <h2 className="flex items-center gap-2 font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
-                    <img src="https://img.icons8.com/plasticine/60/000000/spotify--v1.png" alt={'Spotify'}/>
+                    <Image
+                        alt={`Spotify`}
+                        src={`https://img.icons8.com/plasticine/60/000000/spotify--v1.png`}
+                        width={60}
+                        height={60}
+                        priority
+                    />
                     Top Tracks
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">

@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 import Image from 'next/future/image'
 import Container from '../components/Container'
 import JobCard from '../components/JobCard'
@@ -18,15 +18,33 @@ export default function Home() {
                                 <span className="font-semibold">Advisable</span>
                             </h2>
                             <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
-                                <img src="https://img.icons8.com/clouds/46/000000/module.png" alt={ 'Experience' }/>
+                                <Image
+                                    alt={`Experience`}
+                                    src={`https://img.icons8.com/clouds/46/000000/module.png`}
+                                    width={92 / 2}
+                                    height={92 / 2}
+                                    priority
+                                />
                                 <span>3+ years experience designing and developing web software for companies and individuals alike.</span>
                             </p>
                             <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
-                                <img src="https://img.icons8.com/clouds/46/000000/console.png" alt={ 'Programming Skills' }/>
+                                <Image
+                                    alt={`Programming Skills`}
+                                    src={`https://img.icons8.com/clouds/46/000000/console.png`}
+                                    width={92 / 2}
+                                    height={92 / 2}
+                                    priority
+                                />
                                 <span>Excellent programming skills with vast knowledge in computer languages.</span>
                             </p>
                             <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
-                                <img src="https://img.icons8.com/clouds/46/000000/test-passed.png" alt={ 'Project Management, Testing' }/>
+                                <Image
+                                    alt={`Project Management, Testing`}
+                                    src={'https://img.icons8.com/clouds/46/000000/test-passed.png'}
+                                    width={46}
+                                    height={46}
+                                    priority
+                                />
                                 <span>Proficient in project management, creating user interfaces, writing and testing
                                 codes, and implementing features.</span>
                             </p>
