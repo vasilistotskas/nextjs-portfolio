@@ -13,11 +13,13 @@ export default async function handler(
         version: 'v3'
     })
 
+    // @ts-ignore
     const response = await youtube.channels.list({
         id: 'UCO3k4jsz6awlr6TpQHncVYQ',
-        part: 'statistics'
+        part: ['statistics']
     })
 
+    // @ts-ignore
     const channel = response.data.items[0]
     const { subscriberCount, viewCount } = channel.statistics
 
