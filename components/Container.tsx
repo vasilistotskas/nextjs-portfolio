@@ -70,6 +70,8 @@ export default function Container(props) {
                 <meta name="twitter:title" content={meta.title} />
                 <meta name="twitter:description" content={meta.description} />
                 <meta name="twitter:image" content={meta.image} />
+
+                <meta name="google-site-verification" content="scsCZtHoRwHWuMFA9Tp1Fu78qmJIOKRNDLYyRTlK5vw" />
                 {meta.date && (
                     <meta
                         property="article:published_time"
