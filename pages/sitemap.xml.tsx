@@ -1,34 +1,29 @@
 const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${slugs
-            .map((slug) => {
-                return `
+			.map((slug) => {
+				return `
                 <url>
                     <loc>${`https://vasilistotskas.com/${slug}`}</loc>
                 </url>
             `
-            })
-            .join('')}
+			})
+			.join('')}
     </urlset>
 `
 export async function getServerSideProps({ res }) {
-    const allPages = [
-        ...['', 'about', 'dashboard', 'guestbook', 'uses']
-    ]
+	const allPages = [...['', 'about', 'dashboard', 'guestbook', 'uses']]
 
-    res.setHeader('Content-Type', 'text/xml')
-    res.setHeader(
-        'Cache-Control',
-        'public, s-maxage=1200, stale-while-revalidate=600'
-    )
-    res.write(createSitemap(allPages))
-    res.end()
+	res.setHeader('Content-Type', 'text/xml')
+	res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600')
+	res.write(createSitemap(allPages))
+	res.end()
 
-    return {
-        props: {}
-    }
+	return {
+		props: {}
+	}
 }
 
 export default function Sitemap() {
-    return null
+	return null
 }

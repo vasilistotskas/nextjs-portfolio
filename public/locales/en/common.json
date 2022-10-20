@@ -1,0 +1,27 @@
+{
+	"links": "Links",
+	"website": "Website",
+	"myName": "Vasilis Totskas",
+	"myUserName": "vasilistotskas",
+	"myWorkCompany": "Advisable",
+	"login": "Login",
+	"twitter": "Twitter",
+	"github": "Github",
+	"linkedin": "Linkedin",
+	"youtube": "Youtube",
+	"instagram": "Instagram",
+	"facebook": "Facebook",
+	"spotify": {
+		"title": "Spotify",
+		"listening": "Listening to",
+		"notPlaying": "Not playing"
+	},
+	"pages": {
+		"home": "Home",
+		"about": "About",
+		"dashboard": "Dashboard",
+		"guestbook": "Guestbook",
+		"uses": "Uses",
+		"404": "404"
+	}
+}

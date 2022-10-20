@@ -5,28 +5,28 @@ import { Unsplash } from 'lib/types'
 import MetricCard from 'components/metrics/Card'
 
 export default function UnsplashCard() {
-    const { data } = useSWR<Unsplash>('/api/unsplash', fetcher)
+	const { data } = useSWR<Unsplash>('/api/unsplash', fetcher)
 
-    const downloads = Number(data?.downloads)
-    const views = Number(data?.views)
-    const link = 'https://unsplash.com/@vasilistotskas'
+	const downloads = Number(data?.downloads)
+	const views = Number(data?.views)
+	const link = 'https://unsplash.com/@vasilistotskas'
 
-    return (
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-            <MetricCard
-                image={'https://img.icons8.com/clouds/56/000000/stack-of-photos.png'}
-                header="Unsplash Downloads"
-                link={link}
-                metric={downloads}
-                isCurrency={false}
-            />
-            <MetricCard
-                image={'https://img.icons8.com/clouds/56/000000/stack-of-photos.png'}
-                header="Unsplash Views"
-                link={link}
-                metric={views}
-                isCurrency={false}
-            />
-        </div>
-    )
+	return (
+		<div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+			<MetricCard
+				image={'https://img.icons8.com/clouds/56/000000/stack-of-photos.png'}
+				header="Unsplash Downloads"
+				link={link}
+				metric={downloads}
+				isCurrency={false}
+			/>
+			<MetricCard
+				image={'https://img.icons8.com/clouds/56/000000/stack-of-photos.png'}
+				header="Unsplash Views"
+				link={link}
+				metric={views}
+				isCurrency={false}
+			/>
+		</div>
+	)
 }
