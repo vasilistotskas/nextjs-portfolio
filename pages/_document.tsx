@@ -1,5 +1,5 @@
-import Script from 'next/script'
 import { Html, Head, Main, NextScript } from 'next/document'
+import { GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
 
 export default function Document() {
 	return (
@@ -51,21 +51,20 @@ export default function Document() {
 					content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 					name="robots"
 				/>
-				<Script
-					src="https://www.googletagmanager.com/gtag/js?id=G-QYH22QTF1C"
-					strategy="afterInteractive"
-				/>
-				<Script id="google-analytics" strategy="afterInteractive">
-					{`
-                      window.dataLayer = window.dataLayer || [];
-                      function gtag(){window.dataLayer.push(arguments);}
-                      gtag('js', new Date());
-            
-                      gtag('config', 'G-QYH22QTF1C');
-                    `}
-				</Script>
 			</Head>
 			<body className="bg-white dark:bg-black text-white dark:text-black">
+				<noscript>
+					<iframe
+						src={`https://www.googletagmanager.com/ns.html?id=${GOOGLE_TAG_MANAGER_ID}`}
+						height="0"
+						width="0"
+						title="googleTagManagerNoScript"
+						style={{
+							display: 'none',
+							visibility: 'hidden'
+						}}
+					/>
+				</noscript>
 				<Main />
 				<NextScript />
 			</body>
