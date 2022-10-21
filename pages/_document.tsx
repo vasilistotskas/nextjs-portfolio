@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { Html, Head, Main, NextScript } from 'next/document'
 import { GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
 
@@ -5,6 +6,10 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
+				<Script
+					src="https://www.googleoptimize.com/optimize.js?id=OPT-MGQ3QRP"
+					strategy="afterInteractive"
+				/>
 				<link
 					rel="preload"
 					href="/fonts/ibm-plex-sans-var.woff2"
