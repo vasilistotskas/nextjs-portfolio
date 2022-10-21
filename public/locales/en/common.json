@@ -23,5 +23,6 @@
 		"guestbook": "Guestbook",
 		"uses": "Uses",
 		"404": "404"
-	}
+	},
+	"delete": "Delete"
 }

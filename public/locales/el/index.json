@@ -1,14 +1,14 @@
 {
-	"subtitle": "Fullstack Developer at",
+	"subtitle": "Fullstack Developer στην",
 	"description": "3+ χρόνια εμπειρία στο σχεδιασμό και την ανάπτυξη λογισμικού web για εταιρείες και ιδιώτες",
 	"programming": {
-		"experience": "Excellent programming skills with vast knowledge in computer languages."
+		"experience": "Άριστες δεξιότητες προγραμματισμού με τεράστιες γνώσεις σε γλώσσες υπολογιστών."
 	},
 	"projectManagement": {
-		"experience": "Proficient in project management, creating user interfaces, writing and testing codes, and implementing features."
+		"experience": "Ικανότητα στη διαχείριση έργων, τη δημιουργία διεπαφών χρήστη, τη σύνταξη και τη δοκιμή κωδικών και την υλοποίηση λειτουργιών."
 	},
 	"work": {
-		"title": "Work Experience",
-		"experience": "My work experience includes working with a variety of technologies and frameworks, such as Django, Codeigniter, Vue, Nuxt, React, Next.js, Node.js, PostgreSQL, MySql, Docker and more."
+		"title": "Προϋπηρεσία",
+		"experience": "Η εργασιακή μου εμπειρία περιλαμβάνει εργασία με ποικίλες τεχνολογίες και πλαίσια, όπως Django, Codeigniter, Vue, Nuxt, React, Next.js, Node.js, PostgreSQL, MySql, Docker και άλλα."
 	}
 }

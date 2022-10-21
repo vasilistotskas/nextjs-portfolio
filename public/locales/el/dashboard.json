@@ -1,12 +1,12 @@
 {
 	"container": {
-		"title": "Dashboard – Vasilis Totskas",
-		"description": "My personal dashboard, built with Next.js API routes deployed as serverless functions."
+		"title": "Πίνακας ελέγχου – Βασίλης Τότσκας",
+		"description": "Ο προσωπικός μου πίνακας ελέγχου, κατασκευασμένος με διαδρομές API Next.js που αναπτύσσονται ως λειτουργίες χωρίς διακομιστή."
 	},
-	"title": "Dashboard",
-	"description": "This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like Unsplash, YouTube, GitHub, and more. Want to build your own? Check out my&nbsp;",
+	"title": "Πίνακας ελέγχου",
+	"description": "Αυτός είναι ο προσωπικός μου πίνακας εργαλείων, κατασκευασμένος με διαδρομές API Next.js που αναπτύσσονται ως λειτουργίες χωρίς διακομιστή. Χρησιμοποιώ αυτόν τον πίνακα ελέγχου για να παρακολουθώ διάφορες μετρήσεις σε πλατφόρμες όπως το Unsplash, το YouTube, το GitHub και άλλες.",
 	"tracks": {
-		"top": "Top Tracks",
-		"description": "Curious what I'm currently jamming to? Here's my top tracks on Spotify updated daily."
+		"top": "Κορυφαία κομμάτια",
+		"description": "Εδώ είναι τα κορυφαία κομμάτια μου στο Spotify που ενημερώνονται καθημερινά."
 	}
 }

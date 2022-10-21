@@ -11,6 +11,7 @@ import LoadingSpinner from 'components/LoadingSpinner'
 import { useTranslation } from 'next-i18next'
 
 function GuestbookEntry({ entry, user }) {
+	const { t } = useTranslation(['common'])
 	const { mutate } = useSWRConfig()
 	const deleteEntry = async (e) => {
 		e.preventDefault()
@@ -40,7 +41,7 @@ function GuestbookEntry({ entry, user }) {
 							className="text-sm text-red-600 dark:text-red-400"
 							onClick={deleteEntry}
 						>
-							Delete
+							{t('delete', { ns: 'common' })}
 						</button>
 					</>
 				)}

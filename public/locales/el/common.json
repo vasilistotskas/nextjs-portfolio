@@ -17,11 +17,12 @@
 		"notPlaying": "Not playing"
 	},
 	"pages": {
-		"home": "Home",
-		"about": "About",
-		"dashboard": "Dashboard",
-		"guestbook": "Guestbook",
-		"uses": "Uses",
+		"home": "Αρχική σελίδα",
+		"about": "Σχετικά με εμένα",
+		"dashboard": "Πίνακας ελέγχου",
+		"guestbook": "Βιβλίο επισκεπτών",
+		"uses": "Χρήσεις",
 		"404": "404"
-	}
+	},
+	"delete": "Διαγραφή"
 }

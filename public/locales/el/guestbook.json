@@ -1,13 +1,13 @@
 {
 	"container": {
-		"title": "Guestbook – Vasilis Totskas",
-		"description": "Sign my digital guestbook and share some wisdom."
+		"title": "Βιβλίο επισκεπτών – Βασίλης Τότσκας",
+		"description": "Υπογράψτε το ψηφιακό μου βιβλίο επισκεπτών και μοιραστείτε τις σκέψεις σας για τον ιστότοπο μου."
 	},
-	"title": "Guestbook",
-	"description": "Leave a comment below. It could be anything – appreciation, information, wisdom, or even humor. Surprise me!",
-	"enterAMessage": "Please enter a message.",
-	"thanksForSigning": "Hooray! Thanks for signing my Guestbook.",
-	"sign": "Sign the Guestbook",
-	"shareMessage": "Share a message for a future visitor of my site.",
-	"info": "Your information is only used to display your name and reply by email."
+	"title": "Βιβλίο επισκεπτών",
+	"description": "Αφήστε ένα σχόλιο παρακάτω. Θα μπορούσε να είναι οτιδήποτε – εκτίμηση, πληροφορίες, σχόλια, ερωτήσεις, αναφορές σφαλμάτων, κλπ.",
+	"enterAMessage": "Παρακαλώ εισάγετε ένα μήνυμα.",
+	"thanksForSigning": "Ζήτω! Ευχαριστώ που υπογράψατε το Βιβλίο επισκεπτών μου.",
+	"sign": "Υπογράψτε το Βιβλίο επισκεπτών",
+	"shareMessage": "Μοιραστείτε ένα μήνυμα για έναν μελλοντικό επισκέπτη του ιστότοπού μου.",
+	"info": "Τα στοιχεία σας χρησιμοποιούνται μόνο για την εμφάνιση του ονόματός σας και την απάντηση μέσω email."
 }
