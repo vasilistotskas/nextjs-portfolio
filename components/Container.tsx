@@ -75,7 +75,7 @@ export default function Container(props) {
 			</Head>
 			<div className="grid grid-cols-1 md:grid-cols-auto-1fr items-center justify-center px-8 pt-8 pb-8 sm:pb-16">
 				<a
-					className="hidden md:grid"
+					className="hidden md:grid hover:transform hover:scale-110 transition-all"
 					href={'https://github.com/vasilistotskas/'}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -108,7 +108,7 @@ export default function Container(props) {
 							onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
 						>
 							{mounted && (
-								<div>
+								<div className="transform hover:scale-105 transition-all">
 									{resolvedTheme === 'dark' ? (
 										<Image
 											alt={`Toggle Theme Mode`}
