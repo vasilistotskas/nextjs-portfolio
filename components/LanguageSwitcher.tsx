@@ -38,8 +38,7 @@ const LanguageSwitcher: React.FC<{
 	)
 	const languageChanged = useCallback(
 		async (event: SyntheticEvent) => {
-			const value: SetStateAction<{ value: string; label: string }> =
-				cloneDeep(event)
+			const value: SetStateAction<{ value: string; label: string }> = cloneDeep(event)
 			setValue(value)
 			const locale = (event.target as HTMLInputElement).value
 
@@ -53,7 +52,7 @@ const LanguageSwitcher: React.FC<{
 	)
 	return (
 		<select
-			className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-8/12 md:w-5/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+			className="w-8/12 md:w-8/12 bg-gray-50 dark:bg-gray-700 border border-gray-300 text-gray-900 text-sm rounded-lg hover:cursor-pointer focus:ring-blue-500 focus:border-blue-500 block pl-3 pr-3 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 			value={value.value}
 			onChange={languageChanged}
 			onSelect={languageChanged}
@@ -64,7 +63,12 @@ const LanguageSwitcher: React.FC<{
 					value: locale,
 					label
 				}
-				return <option key={locale} value={option.value} label={option.label} />
+				return (
+					<option key={locale} value={option.value} label={option.label}>
+						{' '}
+						{option.label}
+					</option>
+				)
 			})}
 		</select>
 	)

@@ -7,29 +7,37 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
 })
 
-module.exports = withBundleAnalyzer({
-	i18n,
-	reactStrictMode: true,
-	images: {
-		domains: [
-			'i.scdn.co', // Spotify Album Art
-			'pbs.twimg.com', // Twitter Profile Picture
-			'img.icons8.com' // Twitter Profile Picture
-		]
-	},
-	experimental: {
-		legacyBrowsers: false,
-		browsersListForSwc: true
-	},
-	async headers() {
-		return [
-			{
-				source: '/(.*)',
-				headers: securityHeaders
-			}
-		]
-	}
+const withPWA = require('next-pwa')({
+	dest: 'public',
+	register: true,
+	skipWaiting: true
 })
+
+module.exports = withBundleAnalyzer(
+	withPWA({
+		i18n,
+		reactStrictMode: true,
+		images: {
+			domains: [
+				'i.scdn.co', // Spotify Album Art
+				'pbs.twimg.com', // Twitter Profile Picture
+				'img.icons8.com' // Twitter Profile Picture
+			]
+		},
+		experimental: {
+			legacyBrowsers: false,
+			browsersListForSwc: true
+		},
+		async headers() {
+			return [
+				{
+					source: '/(.*)',
+					headers: securityHeaders
+				}
+			]
+		}
+	})
+)
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `

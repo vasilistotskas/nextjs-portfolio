@@ -13,9 +13,7 @@ export default function NotFound() {
 				<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
 					{t('title')}
 				</h1>
-				<p className="text-gray-600 dark:text-gray-400 mb-8">
-					{t('description')}
-				</p>
+				<p className="text-gray-600 dark:text-gray-400 mb-8">{t('description')}</p>
 				<Link href="/">
 					<a className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
 						{t('returnHome')}

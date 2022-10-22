@@ -2,8 +2,6 @@ import Link from 'next/link'
 import Image from 'next/future/image'
 
 import Container from 'components/Container'
-import avatar from 'public/avatar.jpg'
-import avatarBW from 'public/avatar-bw.jpg'
 import React from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
@@ -22,9 +20,7 @@ export default function About() {
 						<h2 className="flex items-center gap-2 mb-2">
 							<Image
 								alt={`Bio`}
-								src={
-									'https://img.icons8.com/clouds/50/000000/external-link.png'
-								}
+								src={'https://img.icons8.com/clouds/50/000000/external-link.png'}
 								width={50}
 								height={50}
 								priority
@@ -35,62 +31,46 @@ export default function About() {
 							<li className="flex items-center gap-2">
 								<Image
 									alt={`vassilistotskas.com`}
-									src={
-										'https://img.icons8.com/clouds/40/000000/domain.png'
-									}
+									src={'https://img.icons8.com/clouds/40/000000/domain.png'}
 									width={40}
 									height={40}
 									priority
 								/>
 								{t('website', { ns: 'common' })}:{' '}
 								<Link href="https://vasilistotskas.com">
-									<a className="m-0">
-										@{t('myUserName', { ns: 'common' })}
-									</a>
+									<a className="m-0">@{t('myUserName', { ns: 'common' })}</a>
 								</Link>
 							</li>
 							<li className="flex items-center gap-2">
 								<Image
 									alt={`Twitter`}
-									src={
-										'https://img.icons8.com/clouds/40/000000/twitter-circled.png'
-									}
+									src={'https://img.icons8.com/clouds/40/000000/twitter-circled.png'}
 									width={40}
 									height={40}
 									priority
 								/>
 								{t('twitter', { ns: 'common' })}:{' '}
-								<a
-									className="m-0"
-									href="https://twitter.com/vasilistotskas"
-								>
+								<a className="m-0" href="https://twitter.com/vasilistotskas">
 									@{t('myUserName', { ns: 'common' })}
 								</a>
 							</li>
 							<li className="flex items-center gap-2">
 								<Image
 									alt={`Github`}
-									src={
-										'https://img.icons8.com/clouds/40/000000/github.png'
-									}
+									src={'https://img.icons8.com/clouds/40/000000/github.png'}
 									width={40}
 									height={40}
 									priority
 								/>
 								{t('github', { ns: 'common' })}:{' '}
-								<a
-									className="m-0"
-									href="https://github.com/vasilistotskas"
-								>
+								<a className="m-0" href="https://github.com/vasilistotskas">
 									@{t('myUserName', { ns: 'common' })}
 								</a>
 							</li>
 							<li className="flex items-center gap-2">
 								<Image
 									alt={`LinkedIn`}
-									src={
-										'https://img.icons8.com/clouds/40/000000/linkedin.png'
-									}
+									src={'https://img.icons8.com/clouds/40/000000/linkedin.png'}
 									width={40}
 									height={40}
 									priority
@@ -129,27 +109,6 @@ export default function About() {
 							<span>{t('education.title', { ns: 'about' })}</span>
 						</h3>
 						<p>{t('education.subtitle', { ns: 'about' })}</p>
-						<h2>{t('headshots.title', { ns: 'about' })}</h2>
-						<div className="flex space-x-8">
-							<a href="/avatar.jpg">
-								<Image
-									alt="Vasilis Totskas headshot"
-									width={400}
-									quality={100}
-									src={avatar}
-									className="rounded-md"
-								/>
-							</a>
-							<a href="/avatar-bw.jpg">
-								<Image
-									alt="Vasilis Totskas headshot"
-									width={400}
-									quality={100}
-									src={avatarBW}
-									className="rounded-md filter grayscale"
-								/>
-							</a>
-						</div>
 					</div>
 				</div>
 			</Container>

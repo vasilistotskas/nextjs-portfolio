@@ -88,7 +88,12 @@ module.exports = {
 						}
 					}
 				}
-			})
+			}),
+			gridTemplateColumns: {
+				'auto-1fr': 'auto 1fr',
+				'1fr-auto': '1fr auto',
+				'auto-auto': 'auto auto'
+			}
 		}
 	},
 	variants: {

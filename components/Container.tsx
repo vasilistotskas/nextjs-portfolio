@@ -54,14 +54,8 @@ export default function Container(props) {
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
-				<meta
-					property="og:url"
-					content={`https://vasilistotskas.com${router.asPath}`}
-				/>
-				<link
-					rel="canonical"
-					href={`https://vasilistotskas.com${router.asPath}`}
-				/>
+				<meta property="og:url" content={`https://vasilistotskas.com${router.asPath}`} />
+				<link rel="canonical" href={`https://vasilistotskas.com${router.asPath}`} />
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
 				<meta property="og:description" content={meta.description} />
@@ -77,13 +71,25 @@ export default function Container(props) {
 					name="google-site-verification"
 					content="scsCZtHoRwHWuMFA9Tp1Fu78qmJIOKRNDLYyRTlK5vw"
 				/>
-				{meta.date && (
-					<meta property="article:published_time" content={meta.date} />
-				)}
+				{meta.date && <meta property="article:published_time" content={meta.date} />}
 			</Head>
-			<div className="flex flex-col justify-center px-8">
-				<nav className="grid grid-cols-2 items-center w-full relative max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
-					<a href="#skip" className="skip-nav">
+			<div className="grid grid-cols-1 md:grid-cols-auto-1fr items-center justify-center px-8 pt-8 pb-8 sm:pb-16">
+				<a
+					className="hidden md:grid"
+					href={'https://github.com/vasilistotskas/'}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<Image
+						alt={`Github`}
+						src={`/static/images/github.png`}
+						width={42}
+						height={35}
+						priority
+					/>
+				</a>
+				<nav className="grid grid-cols-2 items-center w-full relative max-w-2xl border-gray-200 dark:border-gray-700 mx-auto text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+					<a href="#skip" className="skip-nav" target="_blank" rel="noopener noreferrer">
 						Skip to content
 					</a>
 					<div className="ml-[-0.60rem]">
@@ -93,15 +99,13 @@ export default function Container(props) {
 						<NavItem href="/dashboard" text="Dashboard" />
 						<NavItem href="/about" text="About" />
 					</div>
-					<div className="justify-items-end flex justify-end gap-4 mr-[-0.60rem]">
+					<div className="grid grid-cols-auto-auto">
 						<LanguageSwitcher></LanguageSwitcher>
 						<button
 							aria-label="Toggle Dark Mode"
 							type="button"
-							className="w-12 h-12 border border-gray-300 text-gray-900 rounded-full flex items-center justify-center focus:ring-blue-500 focus:border-blue-500 hover:ring-2 ring-gray-300 transition-all dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-							onClick={() =>
-								setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-							}
+							className="w-12 h-12 flex items-center justify-center bg-transparent"
+							onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
 						>
 							{mounted && (
 								<div>

@@ -10,6 +10,7 @@ export default function Document() {
 					src="https://www.googleoptimize.com/optimize.js?id=OPT-MGQ3QRP"
 					strategy="afterInteractive"
 				/>
+				<link rel="manifest" href="/manifest.json" />
 				<link
 					rel="preload"
 					href="/fonts/ibm-plex-sans-var.woff2"
@@ -43,10 +44,7 @@ export default function Document() {
 				/>
 				<meta content="#ffffff" name="theme-color" />
 				<meta content="#ffffff" name="msapplication-TileColor" />
-				<meta
-					content="/static/favicons/browserconfig.xml"
-					name="msapplication-config"
-				/>
+				<meta content="/static/favicons/browserconfig.xml" name="msapplication-config" />
 				<meta content="14d2e73487fa6c71" name="yandex-verification" />
 				<meta
 					content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"

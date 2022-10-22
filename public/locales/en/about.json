@@ -7,7 +7,7 @@
 	"job": {
 		"title": "Job Title",
 		"subtitle": "Vasilis Totskas, Fullstack Developer at Advisable",
-		"description": "Hey, I'm Vasilis. I'm the Fullstack Developer at <a href=\"https://www.advisable.gr/\">Advisable</a>, where my team helps developers build a faster web. Computer and technology was always a big part of my life , i remember my self spending a lot of time in front of my pc and i was always curious about how it works and how to use it to build my own applications and websites. 3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker."
+		"description": "Hey, I'm Vasilis. I'm the Fullstack Developer at Advisable, where my team helps developers build a faster web. Computer and technology was always a big part of my life , i remember my self spending a lot of time in front of my pc and i was always curious about how it works and how to use it to build my own applications and websites. 3 years now i am into web development using technologies as Django(Python), Codeigniter(PHP), Vue2-3 (TypeScript, JavaScript), NestJs, SASS(css), MariaDB and Postgres . I have also some experience at DevOps using tools like Docker."
 	},
 	"education": {
 		"title": "Education",

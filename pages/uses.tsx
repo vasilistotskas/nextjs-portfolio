@@ -1,5 +1,4 @@
 import Container from 'components/Container'
-import Image from 'next/future/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 
@@ -19,18 +18,8 @@ export default function Uses() {
 					<p className="text-gray-700 dark:text-gray-300 mt-2 mb-8">
 						{t('myGear.description', { ns: 'uses' })}
 					</p>
-					<Image
-						className="rounded-lg"
-						alt={`My computer desk`}
-						src={`/static/images/setup.png`}
-						width={2164 / 2}
-						height={1546 / 2}
-						priority
-					/>
 					<div className="prose dark:prose-dark w-full">
-						<h2 id="computer-office">
-							{t('myGear.computerOffice', { ns: 'uses' })}
-						</h2>
+						<h2 id="computer-office">{t('myGear.computerOffice', { ns: 'uses' })}</h2>
 						<ul>
 							<li>{t('myGear.processor', { ns: 'uses' })}</li>
 							<li>{t('myGear.ram', { ns: 'uses' })}</li>

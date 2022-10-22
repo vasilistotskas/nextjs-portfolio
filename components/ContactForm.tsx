@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import Image from 'next/future/image'
+import { useTranslation } from 'next-i18next'
 
 export default function ContactForm() {
+	const { t } = useTranslation('404')
+
 	const {
 		register,
 		handleSubmit,
@@ -13,14 +16,9 @@ export default function ContactForm() {
 
 	function onSubmit(data) {
 		axios
-			.post(
-				'https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982',
-				data
-			)
+			.post('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', data)
 			.then(() => {
-				setSuccessMessage(
-					`Thanks for reaching me out! Check your inbox for updates 😊`
-				)
+				setSuccessMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
 			})
 			.catch((e) => console.error(e))
 	}
@@ -30,7 +28,7 @@ export default function ContactForm() {
 			className="prose dark:prose-dark body-font relative flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8"
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-blue-50 dark:bg-blue-opaque">
+			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
 				<div className="flex flex-col text-center w-full mb-2">
 					<h1 className="flex items-center justify-center gap-2 font-bold text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white">
 						<Image
@@ -40,7 +38,7 @@ export default function ContactForm() {
 							height={48}
 							priority
 						/>
-						Contact Me
+						{t('contact.subtitle', { ns: 'common' })}
 					</h1>
 				</div>
 				<div className="grid">
@@ -51,7 +49,7 @@ export default function ContactForm() {
 									htmlFor="name"
 									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
 								>
-									Name
+									{t('contact.form.name', { ns: 'common' })}
 								</label>
 								<input
 									{...register('name')}
@@ -68,7 +66,7 @@ export default function ContactForm() {
 									htmlFor="email"
 									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
 								>
-									Email
+									{t('contact.form.email', { ns: 'common' })}
 								</label>
 								<input
 									{...register('email')}
@@ -85,7 +83,7 @@ export default function ContactForm() {
 									htmlFor="message"
 									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
 								>
-									Message
+									{t('contact.form.message', { ns: 'common' })}
 								</label>
 								<textarea
 									{...register('message', {
@@ -113,13 +111,17 @@ export default function ContactForm() {
 								className="text-sky-600 dark:text-sky-200"
 								href="mailto:vassilistotskas@msn.com"
 							>
-								vassilistotskas@msn.com
+								{t('myEmail', { ns: 'common' })}
 							</a>
 							<p className="text-gray-800 dark:text-gray-100 mb-4">
-								Athens, Greece
+								{t('athensGreece', { ns: 'common' })}
 							</p>
 							<span className="inline-flex gap-2">
-								<a href={'https://www.facebook.com/vasilistotskas/'}>
+								<a
+									href={'https://www.facebook.com/vasilistotskas/'}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									<Image
 										alt={`Facebook`}
 										src={`https://img.icons8.com/clouds/42/000000/facebook-new.png`}
@@ -128,7 +130,11 @@ export default function ContactForm() {
 										priority
 									/>
 								</a>
-								<a href={'https://www.instagram.com/vasilistotskas/'}>
+								<a
+									href={'https://www.instagram.com/vasilistotskas/'}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									<Image
 										alt={`Instagram`}
 										src={`https://img.icons8.com/clouds/42/000000/instagram-new--v1.png`}
@@ -137,7 +143,11 @@ export default function ContactForm() {
 										priority
 									/>
 								</a>
-								<a href={'https://twitter.com/vasilistotskas/'}>
+								<a
+									href={'https://twitter.com/vasilistotskas/'}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									<Image
 										alt={`Twitter`}
 										src={`https://img.icons8.com/clouds/42/000000/twitter-circled.png`}
@@ -146,7 +156,11 @@ export default function ContactForm() {
 										priority
 									/>
 								</a>
-								<a href={'https://github.com/vasilistotskas/'}>
+								<a
+									href={'https://github.com/vasilistotskas/'}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									<Image
 										alt={`Github`}
 										src={`https://img.icons8.com/clouds/42/000000/github.png`}

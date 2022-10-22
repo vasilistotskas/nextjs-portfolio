@@ -4,6 +4,8 @@
 	"myName": "Vasilis Totskas",
 	"myUserName": "vasilistotskas",
 	"myWorkCompany": "Advisable",
+	"myEmail": "vassilistotskas@msn.com",
+	"athensGreece": "Athens, Greece",
 	"login": "Login",
 	"twitter": "Twitter",
 	"github": "Github",
@@ -24,5 +26,17 @@
 		"uses": "Uses",
 		"404": "404"
 	},
-	"delete": "Delete"
+	"delete": "Delete",
+	"contact": {
+		"title": "Contact",
+		"subtitle": "Get in touch with me",
+		"form": {
+			"name": "Name",
+			"email": "Email",
+			"message": "Message",
+			"submit": "Submit",
+			"success": "Thanks for reaching me out! Check your inbox for updates.",
+			"error": "Something went wrong. Please try again."
+		}
+	}
 }

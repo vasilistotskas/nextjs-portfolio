@@ -13,8 +13,8 @@ const Home = () => {
 			<Suspense fallback={null}>
 				<Container>
 					<div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-10">
-						<div className="flex flex-col-reverse sm:flex-row items-start">
-							<div className="flex flex-col pr-8">
+						<div className="grid gap-1 grid-cols-1 md:grid-cols-1fr-auto items-start">
+							<div className="flex flex-col">
 								<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
 									{t('myName', { ns: 'common' })}
 								</h1>
@@ -42,16 +42,12 @@ const Home = () => {
 										height={92 / 2}
 										priority
 									/>
-									<span>
-										{t('programming.experience', { ns: 'index' })}
-									</span>
+									<span>{t('programming.experience', { ns: 'index' })}</span>
 								</p>
 								<p className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-1">
 									<Image
 										alt={`Project Management, Testing`}
-										src={
-											'https://img.icons8.com/clouds/46/000000/test-passed.png'
-										}
+										src={'https://img.icons8.com/clouds/46/000000/test-passed.png'}
 										width={46}
 										height={46}
 										priority
@@ -63,11 +59,11 @@ const Home = () => {
 									</span>
 								</p>
 							</div>
-							<div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+							<div className="relative mb-8 sm:mb-0 mr-auto">
 								<Image
 									alt={'Vasilis Totskas'}
-									height={176}
-									width={176}
+									height={100}
+									width={150}
 									src="/avatar.jpg"
 									sizes="30vw"
 									priority

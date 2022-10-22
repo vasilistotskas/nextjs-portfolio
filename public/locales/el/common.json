@@ -4,6 +4,8 @@
 	"myName": "Βασίλης Τότσκας",
 	"myUserName": "vasilistotskas",
 	"myWorkCompany": "Advisable",
+	"myEmail": "vassilistotskas@msn.com",
+	"athensGreece": "Αθήνα, Ελλάδα",
 	"login": "Login",
 	"twitter": "Twitter",
 	"github": "Github",
@@ -24,5 +26,17 @@
 		"uses": "Χρήσεις",
 		"404": "404"
 	},
-	"delete": "Διαγραφή"
+	"delete": "Διαγραφή",
+	"contact": {
+		"title": "Επικοινωνία",
+		"subtitle": "Επικοινωνήστε μαζί μου",
+		"form": {
+			"name": "Όνομα",
+			"email": "Email",
+			"message": "Μήνυμα",
+			"submit": "Αποστολή",
+			"success": "Thanks for reaching me out! Check your inbox for updates.",
+			"error": "Υπήρξε κάποιο πρόβλημα κατά την αποστολή του μηνύματός σας. Παρακαλώ δοκιμάστε ξανά."
+		}
+	}
 }

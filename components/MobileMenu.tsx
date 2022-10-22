@@ -56,9 +56,7 @@ export default function MobileMenu() {
 						style={{ transitionDelay: '150ms' }}
 					>
 						<Link href="/">
-							<a className="flex w-auto pb-4">
-								{t('pages.home', { ns: 'common' })}
-							</a>
+							<a className="flex w-auto pb-4">{t('pages.home', { ns: 'common' })}</a>
 						</Link>
 					</li>
 					<li
@@ -66,9 +64,7 @@ export default function MobileMenu() {
 						style={{ transitionDelay: '175ms' }}
 					>
 						<Link href="/guestbook">
-							<a className="flex w-auto pb-4">
-								{t('pages.guestbook', { ns: 'common' })}
-							</a>
+							<a className="flex w-auto pb-4">{t('pages.guestbook', { ns: 'common' })}</a>
 						</Link>
 					</li>
 					<li
@@ -76,9 +72,7 @@ export default function MobileMenu() {
 						style={{ transitionDelay: '200ms' }}
 					>
 						<Link href="/dashboard">
-							<a className="flex w-auto pb-4">
-								{t('pages.dashboard', { ns: 'common' })}
-							</a>
+							<a className="flex w-auto pb-4">{t('pages.dashboard', { ns: 'common' })}</a>
 						</Link>
 					</li>
 					<li
@@ -86,9 +80,7 @@ export default function MobileMenu() {
 						style={{ transitionDelay: '350ms' }}
 					>
 						<Link href="/about">
-							<a className="flex w-auto pb-4">
-								{t('pages.about', { ns: 'common' })}
-							</a>
+							<a className="flex w-auto pb-4">{t('pages.about', { ns: 'common' })}</a>
 						</Link>
 					</li>
 				</ul>
