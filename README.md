@@ -8,6 +8,8 @@
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **I18n**: [NextI18n](https://github.com/i18next/next-i18next)
+- **PWA**: [NextPWA](https://www.npmjs.com/package/next-pwa)
 
 ## Overview
 
