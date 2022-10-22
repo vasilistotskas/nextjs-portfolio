@@ -29,12 +29,10 @@
 This application requires Node.js v16.13+.
 
 ```bash
-git clone https://github.com/vasilistotskas/vasilistotskas.com.git
-cd vasilistotskas.com
+git clone https://github.com/vasilistotskas/nextjs-portfolio
+cd nextjs-portfolio
 ```
-
-Create a `.env` file similar to [`.env.example`](https://github.com/vasilistotskas/vasilistotskas.com/blob/main/.env.example).
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/vasilistotskas/vasilistotskas.com/blob/main/LICENSE.txt) and remove all of my personal information (resume, blog posts, images, etc.).
+Please review the [license](https://github.com/vasilistotskas/nextjs-portfolio/blob/main/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
