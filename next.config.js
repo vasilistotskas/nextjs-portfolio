@@ -49,6 +49,7 @@ const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.googleoptimize.com *.g.doubleclick.net *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.youtube.com *.twitter.com data:;
     child-src *.youtube.com *.google.com *.twitter.com;
+    worker-src blob:;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;
     media-src 'none';
