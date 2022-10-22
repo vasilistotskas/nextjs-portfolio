@@ -7,15 +7,15 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
 })
 
-const runtimeCaching = require("next-pwa/cache")
+const runtimeCaching = require('next-pwa/cache')
 
 const withPWA = require('next-pwa')({
-  dest: "public",
-  register: true,
-  disable: process.env.NODE_ENV === 'development',
-  skipWaiting: true,
-  runtimeCaching,
-  buildExcludes: [/middleware-manifest.json$/]
+	dest: 'public',
+	register: true,
+	disable: process.env.NODE_ENV === 'development',
+	skipWaiting: true,
+	runtimeCaching,
+	buildExcludes: [/middleware-manifest.json$/]
 })
 
 module.exports = withBundleAnalyzer(
@@ -47,7 +47,7 @@ module.exports = withBundleAnalyzer(
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.googleoptimize.com *.g.doubleclick.net *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.youtube.com *.twitter.com data:;
     child-src *.youtube.com *.google.com *.twitter.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;

@@ -7,9 +7,15 @@ export default function Document() {
 		<Html lang="en">
 			<Head>
 				<Script
+					id="googleOptimize"
 					src="https://www.googleoptimize.com/optimize.js?id=OPT-MGQ3QRP"
 					strategy="afterInteractive"
 				/>
+				<Script
+					id="googleTagManager"
+					src="https://www.googletagmanager.com/gtag/js?id=G-QYH22QTF1C"
+					strategy="afterInteractive"
+				></Script>
 				<link rel="manifest" href="/manifest.json" />
 				<link
 					rel="preload"
