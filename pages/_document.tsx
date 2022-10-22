@@ -25,7 +25,6 @@ export default function Document() {
 					crossOrigin="anonymous"
 				/>
 				<link href="/static/favicons/favicon.ico" rel="shortcut icon" />
-				<link href="/static/favicons/site.webmanifest" rel="manifest" />
 				<link
 					href="/static/favicons/apple-touch-icon.png"
 					rel="apple-touch-icon"
