@@ -1,6 +1,6 @@
 {
-	"name": "Vasilis Totskas Portfolio",
-	"short_name": "Vasilis Totskas Portfolio",
+	"name": "VT Portfolio",
+	"short_name": "VT Portfolio",
 	"icons": [
 		{
 			"src": "/static/favicons/android-chrome-192x192.png",
@@ -17,7 +17,9 @@
 	],
 	"theme_color": "#FFFFFF",
 	"background_color": "#FFFFFF",
-	"start_url": "/",
 	"display": "standalone",
-	"orientation": "portrait"
+	"orientation": "portrait",
+	"prefer_related_applications": true,
+	"start_url": "/",
+	"scope": "/"
 }
