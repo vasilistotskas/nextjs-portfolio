@@ -13,7 +13,7 @@ const Home = () => {
 			<Suspense fallback={null}>
 				<Container>
 					<div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-10">
-						<div className="grid gap-1 grid-cols-1 md:grid-cols-1fr-auto items-start">
+						<div className="grid gap-4 md:gap-1 grid-cols-1 md:grid-cols-1fr-auto items-start">
 							<div className="flex flex-col">
 								<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
 									{t('myName', { ns: 'common' })}
@@ -59,7 +59,7 @@ const Home = () => {
 									</span>
 								</p>
 							</div>
-							<div className="relative mb-8 sm:mb-0 mr-auto">
+							<div className="w-full grid justify-items-center items-center relative mr-auto">
 								<Image
 									alt={'Vasilis Totskas'}
 									height={100}
