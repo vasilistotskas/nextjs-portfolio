@@ -15,9 +15,9 @@ export default function NotFound() {
 				</h1>
 				<p className="text-gray-600 dark:text-gray-400 mb-8">{t('description')}</p>
 				<Link href="/">
-					<a className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
+					<p className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
 						{t('returnHome')}
-					</a>
+					</p>
 				</Link>
 			</div>
 		</Container>

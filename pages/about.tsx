@@ -38,7 +38,7 @@ export default function About() {
 								/>
 								{t('website', { ns: 'common' })}:{' '}
 								<Link href="https://vasilistotskas.com">
-									<a className="m-0">@{t('myUserName', { ns: 'common' })}</a>
+									<p className="m-0">@{t('myUserName', { ns: 'common' })}</p>
 								</Link>
 							</li>
 							<li className="flex items-center gap-2">

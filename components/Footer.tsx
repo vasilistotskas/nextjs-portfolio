@@ -24,14 +24,14 @@ export default function Footer() {
 			<div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
 				<div className="flex flex-col space-y-4">
 					<Link href="/">
-						<a className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
 							{t('pages.home', { ns: 'common' })}
-						</a>
+						</p>
 					</Link>
 					<Link href="/about">
-						<a className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
 							{t('pages.about', { ns: 'common' })}
-						</a>
+						</p>
 					</Link>
 				</div>
 				<div className="flex flex-col space-y-4">
@@ -47,14 +47,14 @@ export default function Footer() {
 				</div>
 				<div className="flex flex-col space-y-4">
 					<Link href="/uses">
-						<a className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
 							{t('pages.uses', { ns: 'common' })}
-						</a>
+						</p>
 					</Link>
 					<Link href="/guestbook">
-						<a className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
 							{t('pages.guestbook', { ns: 'common' })}
-						</a>
+						</p>
 					</Link>
 				</div>
 			</div>
