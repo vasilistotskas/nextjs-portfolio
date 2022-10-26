@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import Container from '../components/Container'
 import JobCard from '../components/JobCard'
 import { useTranslation } from 'next-i18next'

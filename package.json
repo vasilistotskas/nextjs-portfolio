@@ -10,7 +10,7 @@
 		"format:fix": "prettier --write --ignore-path .gitignore ."
 	},
 	"dependencies": {
-		"@next/bundle-analyzer": "^12.3.1",
+		"@next/bundle-analyzer": "^13.0.0",
 		"@prisma/client": "^4.5.0",
 		"@tailwindcss/typography": "0.5.7",
 		"axios": "^1.1.3",
@@ -19,7 +19,7 @@
 		"googleapis": "108.0.1",
 		"lodash": "^4.17.21",
 		"motion": "^10.14.2",
-		"next": "12.3.1",
+		"next": "13.0.0",
 		"next-auth": "4.15.0",
 		"next-i18next": "^12.1.0",
 		"next-mdx-remote": "^4.1.0",

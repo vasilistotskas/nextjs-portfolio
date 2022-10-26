@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
 export default function ContactForm() {

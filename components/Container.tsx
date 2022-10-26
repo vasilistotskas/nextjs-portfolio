@@ -9,7 +9,7 @@ import Footer from 'components/Footer'
 import MobileMenu from 'components/MobileMenu'
 import ContactForm from 'components/ContactForm'
 import LanguageSwitcher from './LanguageSwitcher'
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 function NavItem({ href, text }) {
 	const router = useRouter()

@@ -1,7 +1,7 @@
 import Container from 'components/Container'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import React from 'react'
 
 export default function Offline() {
