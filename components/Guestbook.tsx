@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from 'react'
+import React, { useState, useRef, Suspense } from 'react'
 import { format } from 'date-fns'
 import { signIn, useSession } from 'next-auth/react'
 import useSWR, { useSWRConfig } from 'swr'
@@ -148,7 +148,13 @@ export default function Guestbook({ fallbackData }) {
 				)}
 			</div>
 			<div className="mt-4 space-y-8">
-				<Suspense fallback={null}>
+				<Suspense
+					fallback={
+						<div className="grid justify-center items-center text-gray-400 font-bold text-2xl min-h-screen">
+							Loading..
+						</div>
+					}
+				>
 					{entries?.map((entry) => (
 						<GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
 					))}
