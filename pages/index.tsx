@@ -10,9 +10,13 @@ const Home = () => {
 
 	if (ready)
 		return (
-			<Suspense fallback={
-				<div className="grid justify-center items-center text-gray-400 font-bold text-2xl min-h-screen">Loading..</div>
-			}>
+			<Suspense
+				fallback={
+					<div className="grid justify-center items-center text-gray-400 font-bold text-2xl min-h-screen">
+						Loading..
+					</div>
+				}
+			>
 				<Container>
 					<div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-10">
 						<div className="grid gap-4 md:gap-1 grid-cols-1 md:grid-cols-1fr-auto items-start">

@@ -92,7 +92,7 @@ export default function Guestbook({ fallbackData }) {
 		}
 
 		inputEl.current.value = ''
-		mutate('/api/guestbook')
+		await mutate('/api/guestbook')
 		setForm({
 			state: Form.Success,
 			message: `${t('thanksForSigning', { ns: 'guestbook' })}`

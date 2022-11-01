@@ -4,6 +4,7 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
+		"dev:turbo": "next dev --turbo",
 		"start": "next start",
 		"lint": "next lint",
 		"format": "prettier --check --ignore-path .gitignore .",
