@@ -1,4 +1,5 @@
 import React, { useState, useRef, Suspense } from 'react'
+import { format } from 'date-fns'
 import { signIn, useSession } from 'next-auth/react'
 import useSWR, { useSWRConfig } from 'swr'
 
@@ -22,6 +23,10 @@ function GuestbookEntry({ entry, user }) {
 		await mutate('/api/guestbook')
 	}
 
+	const getDate = (date) => {
+		return format(new Date(date), 'dd.MM.yyyy HH:mm')
+	}
+
 	return (
 		<div className="flex flex-col space-y-2">
 			<div className="prose dark:prose-dark w-full break-words">{entry.body}</div>
@@ -31,7 +36,7 @@ function GuestbookEntry({ entry, user }) {
 				</p>
 				<span className=" text-gray-200 dark:text-gray-800">/</span>
 				<p className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-600">
-					{new Date(entry.updated_at).toString()}
+					{getDate(entry.updated_at)}
 				</p>
 				{user && entry.created_by === user.name && (
 					<>
