@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import useDelayedRender from 'use-delayed-render'
 import { useState, useEffect } from 'react'
 import styles from 'styles/mobile-menu.module.css'
 import { useTranslation } from 'next-i18next'
@@ -8,13 +7,6 @@ import { useTranslation } from 'next-i18next'
 export default function MobileMenu() {
 	const { t } = useTranslation(['common'])
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
-	const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-		isMenuOpen,
-		{
-			enterDelay: 20,
-			exitDelay: 300
-		}
-	)
 
 	function toggleMenu() {
 		if (isMenuOpen) {
@@ -43,12 +35,12 @@ export default function MobileMenu() {
 				<MenuIcon data-hide={isMenuOpen} />
 				<CrossIcon data-hide={!isMenuOpen} />
 			</button>
-			{isMenuMounted && (
+			{
 				<ul
 					className={cn(
 						styles.menu,
 						'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
-						isMenuRendered && styles.menuRendered
+						styles.menuRendered
 					)}
 				>
 					<li
@@ -84,7 +76,7 @@ export default function MobileMenu() {
 						</Link>
 					</li>
 				</ul>
-			)}
+			}
 		</>
 	)
 }
