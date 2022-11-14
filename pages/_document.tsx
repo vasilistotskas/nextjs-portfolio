@@ -18,9 +18,7 @@ export default function Document() {
 				></Script>
 				<link rel="manifest" href="/manifest.json" />
 				<link
-					rel="preload"
 					href="/fonts/ibm-plex-sans-var.woff2"
-					as="font"
 					type="font/woff2"
 					crossOrigin="anonymous"
 				/>

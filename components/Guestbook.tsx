@@ -29,27 +29,33 @@ function GuestbookEntry({ entry, user }) {
 
 	return (
 		<div className="flex flex-col space-y-2">
-			<div className="prose dark:prose-dark w-full break-words">{entry.body}</div>
-			<div className="flex items-center space-x-3">
-				<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600">
-					{entry.created_by}
-				</p>
-				<span className=" text-gray-200 dark:text-gray-800">/</span>
-				<p className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-600">
-					{getDate(entry.updated_at)}
-				</p>
-				{user && entry.created_by === user.name && (
-					<>
-						<span className="text-gray-200 dark:text-gray-800">/</span>
-						<button
-							className="text-sm text-red-600 dark:text-red-400"
-							onClick={deleteEntry}
-						>
-							{t('delete', { ns: 'common' })}
-						</button>
-					</>
-				)}
-			</div>
+			{entry && (
+				<>
+					<div className="prose dark:prose-dark w-full break-words">
+						<p>{entry.body}</p>
+					</div>
+					<div className="flex items-center space-x-3">
+						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600">
+							{entry.created_by}
+						</p>
+						<span className=" text-gray-200 dark:text-gray-800">/</span>
+						<p className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-600">
+							{getDate(entry.updated_at)}
+						</p>
+						{user && entry.created_by === user.name && (
+							<>
+								<span className="text-gray-200 dark:text-gray-800">/</span>
+								<button
+									className="text-sm text-red-600 dark:text-red-400"
+									onClick={deleteEntry}
+								>
+									{t('delete', { ns: 'common' })}
+								</button>
+							</>
+						)}
+					</div>
+				</>
+			)}
 		</div>
 	)
 }
