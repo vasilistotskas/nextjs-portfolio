@@ -11,12 +11,12 @@ import ContactForm from 'components/ContactForm'
 import LanguageSwitcher from './LanguageSwitcher'
 import Image from 'next/image'
 
-function NavItem({ href, text }) {
+function NavItem({ href, text, ariaLabel }) {
 	const router = useRouter()
 	const isActive = router.asPath === href
 
 	return (
-		<NextLink href={href}>
+		<NextLink href={href} aria-label={ariaLabel}>
 			<p
 				className={cn(
 					isActive
@@ -94,10 +94,10 @@ export default function Container(props) {
 					</a>
 					<div className="ml-[-0.60rem]">
 						<MobileMenu />
-						<NavItem href="/" text="Home" />
-						<NavItem href="/guestbook" text="Guestbook" />
-						<NavItem href="/dashboard" text="Dashboard" />
-						<NavItem href="/about" text="About" />
+						<NavItem href="/" text="Home" ariaLabel='Home' />
+						<NavItem href="/guestbook" text="Guestbook" ariaLabel='Guestbook' />
+						<NavItem href="/dashboard" text="Dashboard" ariaLabel='Dashboard' />
+						<NavItem href="/about" text="About" ariaLabel='About' />
 					</div>
 					<div className="grid grid-cols-auto-auto">
 						<LanguageSwitcher></LanguageSwitcher>
