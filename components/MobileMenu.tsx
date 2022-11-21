@@ -1,9 +1,9 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import useDelayedRender from 'use-delayed-render'
 import { useState, useEffect } from 'react'
 import styles from 'styles/mobile-menu.module.css'
 import { useTranslation } from 'next-i18next'
+import useDelayedRender from 'helpers/useDelayedRender'
 
 export default function MobileMenu() {
 	const { t } = useTranslation(['common'])
