@@ -94,10 +94,10 @@ export default function Container(props) {
 					</a>
 					<div className="ml-[-0.60rem]">
 						<MobileMenu />
-						<NavItem href="/" text="Home" ariaLabel='Home' />
-						<NavItem href="/guestbook" text="Guestbook" ariaLabel='Guestbook' />
-						<NavItem href="/dashboard" text="Dashboard" ariaLabel='Dashboard' />
-						<NavItem href="/about" text="About" ariaLabel='About' />
+						<NavItem href="/" text="Home" ariaLabel="Home" />
+						<NavItem href="/guestbook" text="Guestbook" ariaLabel="Guestbook" />
+						<NavItem href="/dashboard" text="Dashboard" ariaLabel="Dashboard" />
+						<NavItem href="/about" text="About" ariaLabel="About" />
 					</div>
 					<div className="grid grid-cols-auto-auto">
 						<LanguageSwitcher></LanguageSwitcher>

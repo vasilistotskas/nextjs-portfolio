@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
@@ -15,8 +14,10 @@ export default function ContactForm() {
 	const [successMessage, setSuccessMessage] = useState('')
 
 	function onSubmit(data) {
-		axios
-			.post('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', data)
+		fetch('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', {
+			method: 'POST',
+			body: JSON.stringify(data)
+		})
 			.then(() => {
 				setSuccessMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
 			})
