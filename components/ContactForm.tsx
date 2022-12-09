@@ -1,33 +1,41 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import Image from 'next/image'
+import React, { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 export default function ContactForm() {
 	const { t } = useTranslation('404')
 
-	const {
-		register,
-		handleSubmit,
-		formState: { isSubmitting }
-	} = useForm()
-	const [successMessage, setSuccessMessage] = useState('')
+	const handleSubmit = async (event) => {
+		event.preventDefault()
 
-	function onSubmit(data) {
-		fetch('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', {
+		const data = {
+			name: event.target.name.value,
+			email: event.target.email.value,
+			message: event.target.message.value
+		}
+
+		const JSONData = JSON.stringify(data)
+
+		await fetch('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', {
 			method: 'POST',
-			body: JSON.stringify(data)
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSONData
 		})
 			.then(() => {
+				event.target.reset()
 				setSuccessMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
 			})
 			.catch((e) => console.error(e))
 	}
 
+	const [successMessage, setSuccessMessage] = useState('')
+
 	return (
 		<form
 			className="prose dark:prose-dark body-font relative flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8"
-			onSubmit={handleSubmit(onSubmit)}
+			onSubmit={handleSubmit}
 		>
 			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
 				<div className="flex flex-col text-center w-full mb-2">
@@ -53,7 +61,7 @@ export default function ContactForm() {
 									{t('contact.form.name', { ns: 'common' })}
 								</label>
 								<input
-									{...register('name')}
+									required={true}
 									type="text"
 									id="name"
 									name="name"
@@ -70,7 +78,7 @@ export default function ContactForm() {
 									{t('contact.form.email', { ns: 'common' })}
 								</label>
 								<input
-									{...register('email')}
+									required={true}
 									type="email"
 									id="email"
 									name="email"
@@ -87,10 +95,7 @@ export default function ContactForm() {
 									{t('contact.form.message', { ns: 'common' })}
 								</label>
 								<textarea
-									{...register('message', {
-										required: 'This is required.',
-										maxLength: 20
-									})}
+									required={true}
 									id="message"
 									name="message"
 									className="w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 h-32 text-base outline-none py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
@@ -101,9 +106,9 @@ export default function ContactForm() {
 							<button
 								className="grid items-center justify-center my-2 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
 								aria-label="Contact Me"
-								type="button"
+								type="submit"
 							>
-								{isSubmitting ? 'Submitting' : 'Submit'}
+								Submit
 							</button>
 							{successMessage && <p>{successMessage}</p>}
 						</div>
