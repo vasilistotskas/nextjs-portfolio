@@ -18,13 +18,16 @@ export default function ContactForm() {
 
 		await fetch('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', {
 			method: 'POST',
-			mode: 'no-cors',
 			headers: {
 				'Content-Type': 'application/json',
+				'Origin': 'https://public.herotofu.com',
 			},
 			body: JSONData
 		})
-			.then(() => {
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Network response was not ok')
+				}
 				event.target.reset()
 				setSuccessMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
 			})
