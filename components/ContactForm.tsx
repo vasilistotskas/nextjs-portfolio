@@ -52,7 +52,7 @@ export default function ContactForm() {
 							height={48}
 							priority
 						/>
-						{t('contact.subtitle', { ns: 'common' })}
+						{t('contact.title', { ns: 'common' })}
 					</h1>
 				</div>
 				<div className="grid">
