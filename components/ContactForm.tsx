@@ -20,8 +20,9 @@ export default function ContactForm() {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Origin: 'https://public.herotofu.com'
+				Accept: 'application/json'
 			},
+			mode: 'cors',
 			body: JSONData
 		})
 			.then((response) => {

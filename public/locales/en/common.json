@@ -29,7 +29,7 @@
 	"delete": "Delete",
 	"contact": {
 		"title": "Contact",
-		"subtitle": "Get in touch with me",
+		"subtitle": "Thanks for reaching out, I'll get back to you as soon as possible!",
 		"form": {
 			"name": "Name",
 			"email": "Email",
