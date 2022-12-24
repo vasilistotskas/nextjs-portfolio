@@ -78,7 +78,7 @@ export default function About() {
 								{t('linkedin', { ns: 'common' })}:{' '}
 								<a
 									className="m-0"
-									href="https://www.linkedin.com/in/vasilis-totskas-148a571a0/"
+									href="https://www.linkedin.com/in/vasilistotskas/"
 								>
 									@{t('myUserName', { ns: 'common' })}
 								</a>
