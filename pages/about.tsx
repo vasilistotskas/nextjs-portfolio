@@ -76,10 +76,7 @@ export default function About() {
 									priority
 								/>
 								{t('linkedin', { ns: 'common' })}:{' '}
-								<a
-									className="m-0"
-									href="https://www.linkedin.com/in/vasilistotskas/"
-								>
+								<a className="m-0" href="https://www.linkedin.com/in/vasilistotskas/">
 									@{t('myUserName', { ns: 'common' })}
 								</a>
 							</li>

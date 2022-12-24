@@ -17,11 +17,6 @@ export default function Document() {
 					strategy="afterInteractive"
 				></Script>
 				<link rel="manifest" href="/manifest.json" />
-				<link
-					href="/fonts/ibm-plex-sans-var.woff2"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
 				<link href="/static/favicons/favicon.ico" rel="shortcut icon" />
 				<link
 					href="/static/favicons/apple-touch-icon.png"
