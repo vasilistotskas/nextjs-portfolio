@@ -37,7 +37,7 @@ export default function About() {
 									priority
 								/>
 								{t('website', { ns: 'common' })}:{' '}
-								<Link href="https://vasilistotskas.com">
+								<Link className="m-0" href="https://vasilistotskas.com">
 									<p className="m-0">@{t('myUserName', { ns: 'common' })}</p>
 								</Link>
 							</li>
@@ -50,9 +50,9 @@ export default function About() {
 									priority
 								/>
 								{t('twitter', { ns: 'common' })}:{' '}
-								<a className="m-0" href="https://twitter.com/vasilistotskas">
+								<Link className="m-0" href="https://twitter.com/vasilistotskas">
 									@{t('myUserName', { ns: 'common' })}
-								</a>
+								</Link>
 							</li>
 							<li className="flex items-center gap-2">
 								<Image
@@ -63,9 +63,9 @@ export default function About() {
 									priority
 								/>
 								{t('github', { ns: 'common' })}:{' '}
-								<a className="m-0" href="https://github.com/vasilistotskas">
+								<Link className="m-0" href="https://github.com/vasilistotskas">
 									@{t('myUserName', { ns: 'common' })}
-								</a>
+								</Link>
 							</li>
 							<li className="flex items-center gap-2">
 								<Image
@@ -76,9 +76,9 @@ export default function About() {
 									priority
 								/>
 								{t('linkedin', { ns: 'common' })}:{' '}
-								<a className="m-0" href="https://www.linkedin.com/in/vasilistotskas/">
+								<Link className="m-0" href="https://www.linkedin.com/in/vasilistotskas/">
 									@{t('myUserName', { ns: 'common' })}
-								</a>
+								</Link>
 							</li>
 						</ul>
 						<h2 className="flex items-center gap-2 mb-8">
