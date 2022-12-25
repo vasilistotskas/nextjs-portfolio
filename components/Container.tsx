@@ -88,7 +88,7 @@ export default function Container(props) {
 						priority
 					/>
 				</a>
-				<nav className="grid grid-cols-2 items-center w-full relative max-w-2xl border-gray-200 dark:border-gray-700 mx-auto text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+				<nav className="grid grid-cols-2 items-center w-full relative max-w-3xl border-gray-200 dark:border-gray-700 mx-auto text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
 					<a href="#skip" className="skip-nav" target="_blank" rel="noopener noreferrer">
 						Skip to content
 					</a>
