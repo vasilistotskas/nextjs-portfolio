@@ -17,6 +17,14 @@ const LanguageSwitcher: React.FC<{
 	const router = useRouter()
 	const locales = router.locales ?? [currentLanguage]
 
+	const sortedLocales = useMemo(() => {
+		const localesCopy = cloneDeep(locales)
+		const selectedLocaleIndex = localesCopy.indexOf(currentLanguage)
+		localesCopy.splice(selectedLocaleIndex, 1)
+		localesCopy.unshift(currentLanguage)
+		return localesCopy
+	}, [locales, currentLanguage])
+
 	const languageNames = useMemo(() => {
 		return new Intl.DisplayNames([currentLanguage], {
 			type: 'language'
@@ -37,10 +45,8 @@ const LanguageSwitcher: React.FC<{
 		[router]
 	)
 	const languageChanged = useCallback(
-		async (event: SyntheticEvent) => {
-			const value: SetStateAction<{ value: string; label: string }> = cloneDeep(event)
-			setValue(value)
-			const locale = (event.target as HTMLInputElement).value
+		async (event) => {
+			const locale = event.currentTarget.value
 
 			if (onChange) {
 				onChange(locale)
@@ -50,27 +56,67 @@ const LanguageSwitcher: React.FC<{
 		},
 		[switchToLocale, onChange]
 	)
+
+	const [isOpen, setIsOpen] = useState(false)
+	const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
+
 	return (
-		<select
-			className="w-10/12 md:w-8/12 bg-gray-50 dark:bg-gray-700 border border-gray-300 text-gray-900 text-sm rounded-lg hover:cursor-pointer focus:ring-blue-500 focus:border-blue-500 block pl-3 pr-3 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-			value={value.value}
-			onChange={languageChanged}
-			onSelect={languageChanged}
-		>
-			{locales.map((locale) => {
-				const label = capitalize(languageNames.of(locale) ?? locale)
-				const option = {
-					value: locale,
-					label
-				}
-				return (
-					<option key={locale} value={option.value} label={option.label}>
-						{' '}
-						{option.label}
-					</option>
-				)
-			})}
-		</select>
+		<div className="relative">
+			<button
+				className="relative flex cursor-pointer items-center justify-center rounded-lg border hover:bg-gray-200 dark:hover:bg-gray-800 p-2 text-left focus:outline-none font-normal text-gray-700 dark:text-gray-200 sm:text-sm"
+				id="headlessui-listbox-button-:R6:"
+				type="button"
+				aria-haspopup="true"
+				aria-expanded="true"
+				data-headlessui-state="open"
+				aria-controls="headlessui-listbox-options-:rg:"
+				onClick={toggleOpen}
+			>
+				<svg
+					viewBox="0 0 88.6 77.3"
+					className="h-6 w-6 text-gray-700 dark:text-gray-200"
+					role="img"
+				>
+					<path
+						fill="currentColor"
+						d="M61 24.6h7.9l18.7 51.6h-7.7l-5.4-15.5H54.3l-5.6 15.5h-7.2L61 24.6zM72.6 55l-8-22.8L56.3 55h16.3z"
+					></path>
+					<path
+						fill="currentColor"
+						d="M53.6 60.6c-10-4-16-9-22-14 0 0 1.3 1.3 0 0-6 5-20 13-20 13l-4-6c8-5 10-6 19-13-2.1-1.9-12-13-13-19h8c4 9 10 14 10 14 10-8 10-19 10-19h8s-1 13-12 24c5 5 10 9 19 13l-3 7zm-52-44h56v-8h-23v-7h-9v7h-24v8z"
+					></path>
+				</svg>
+			</button>
+			{isOpen && (
+				<ul
+					className="w-full focus-none shadow-l absolute left-0 mt-1 max-h-60 overflow-auto rounded-lg border bg-white text-base focus:outline-none focus-visible:outline-none sm:text-sm transform opacity-100 -translate-y-0"
+					role="listbox"
+					aria-orientation="vertical"
+				>
+					{sortedLocales.map((locale) => {
+						const label = capitalize(languageNames.of(locale) ?? locale)
+						const option = {
+							value: locale,
+							label
+						}
+						return (
+							<li
+								className={`${
+									i18n.language === option.value ? 'bg-green-200' : ''
+								} focus-none relative cursor-pointer bg-white text-gray-800 py-2 px-4 outline-none false`}
+								key={locale}
+								value={option.value}
+								role="option"
+								aria-selected="false"
+								onClick={() => languageChanged({ currentTarget: { value: locale } })}
+							>
+								<span> {option.label}</span>
+							</li>
+						)
+					})}
+				</ul>
+			)}
+		</div>
 	)
 }
 
