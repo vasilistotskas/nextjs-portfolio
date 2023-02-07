@@ -9,7 +9,11 @@ const LanguageSwitcher: React.FC<{
 	const { i18n } = useTranslation()
 	const { language: currentLanguage } = i18n
 	const router = useRouter()
-	const locales = router.locales ?? [currentLanguage]
+
+	const locales = useMemo(
+		() => router.locales ?? [currentLanguage],
+		[router.locales, currentLanguage]
+	)
 
 	const sortedLocales = useMemo(() => {
 		const localesCopy = cloneDeep(locales)

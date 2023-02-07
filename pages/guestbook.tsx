@@ -42,9 +42,8 @@ export async function getStaticProps({ locale }) {
 
 	return {
 		props: {
-			...(await serverSideTranslations(locale, ['common', 'guestbook'])),
-			fallbackData
-		},
-		revalidate: 60
+			fallbackData,
+			...(await serverSideTranslations(locale, ['common', 'guestbook']))
+		}
 	}
 }

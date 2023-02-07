@@ -1,6 +1,10 @@
 {
 	"private": true,
 	"license": "MIT",
+	"engines": {
+		"node": ">=18.12.1",
+		"npm": ">=8.19.2"
+	},
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
