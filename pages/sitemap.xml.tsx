@@ -4,7 +4,7 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
 					.map((slug) => {
 						return `
                 <url>
-                    <loc>${`https://vasilistotskas.com/${slug}`}</loc>
+                    <loc>${process.env.NEXT_PUBLIC_DOMAIN_NAME}/${slug}</loc>
                 </url>
             `
 					})
@@ -12,7 +12,9 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     </urlset>
 `
 export async function getServerSideProps({ res }) {
-	const allPages = [...['', 'about', 'dashboard', 'guestbook', 'uses', '404', 'offline']]
+	const allPages = [
+		...['', 'about', 'dashboard', 'guestbook', 'uses', 'blog', 'posts', '404', 'offline']
+	]
 
 	res.setHeader('Content-Type', 'text/xml')
 	res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600')
