@@ -1,16 +1,23 @@
-import React, { useState, useRef, Suspense } from 'react'
+import React, { useState, useRef } from 'react'
 import { format } from 'date-fns'
 import { signIn, useSession } from 'next-auth/react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import fetcher from 'lib/fetcher'
-import { Form, FormState } from 'lib/types'
+import { Form, FormState, GuestbookEntry } from 'lib/types'
 import SuccessMessage from 'components/SuccessMessage'
 import ErrorMessage from 'components/ErrorMessage'
 import LoadingSpinner from 'components/LoadingSpinner'
 import { useTranslation } from 'next-i18next'
+import { Session } from 'next-auth'
 
-function GuestbookEntry({ entry, user }) {
+function GuestbookEntry({
+	entry,
+	user
+}: {
+	entry: GuestbookEntry
+	user: Session['user']
+}) {
 	const { t } = useTranslation(['common'])
 	const { mutate } = useSWRConfig()
 	const deleteEntry = async (e) => {
@@ -68,7 +75,7 @@ export default function Guestbook({ fallbackData }) {
 	const inputEl = useRef<HTMLInputElement>(null)
 	const { data: entries } = useSWR('/api/guestbook', fetcher, {
 		fallbackData
-	})
+	}) as { data: GuestbookEntry[] }
 
 	const leaveEntry = async (e) => {
 		e.preventDefault()
@@ -158,17 +165,9 @@ export default function Guestbook({ fallbackData }) {
 				)}
 			</div>
 			<div className="mt-4 space-y-8">
-				<Suspense
-					fallback={
-						<div className="grid justify-center items-center text-gray-400 font-bold text-2xl min-h-screen">
-							Loading..
-						</div>
-					}
-				>
-					{entries?.map((entry) => (
-						<GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
-					))}
-				</Suspense>
+				{entries?.map((entry) => (
+					<GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
+				))}
 			</div>
 		</>
 	)

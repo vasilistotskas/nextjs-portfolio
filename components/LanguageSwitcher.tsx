@@ -1,10 +1,4 @@
-import React, {
-	SetStateAction,
-	SyntheticEvent,
-	useCallback,
-	useMemo,
-	useState
-} from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { cloneDeep } from 'lodash'
@@ -31,7 +25,7 @@ const LanguageSwitcher: React.FC<{
 		})
 	}, [currentLanguage])
 
-	const [value, setValue] = useState({
+	const [] = useState({
 		value: i18n.language,
 		label: capitalize(languageNames.of(currentLanguage) ?? currentLanguage)
 	})

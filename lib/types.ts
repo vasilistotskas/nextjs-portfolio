@@ -1,14 +1,10 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-
-export type Post = {
-	_id: string
-	slug: string
-	content: MDXRemoteSerializeResult
-	title: string
-	date: string
-	excerpt: string
-	coverImage: string
-	readingTime: string
+export type GuestbookEntry = {
+	id: string
+	email: string
+	body: string
+	created_by: string
+	created_at: string
+	updated_at: string
 }
 
 export enum Form {
@@ -21,10 +17,6 @@ export enum Form {
 export type FormState = {
 	state: Form
 	message?: string
-}
-
-export type Subscribers = {
-	count: number
 }
 
 export type Views = {
