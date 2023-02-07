@@ -5,10 +5,10 @@ import { useTheme } from 'next-themes'
 import NextLink from 'next/link'
 import cn from 'classnames'
 
-import Footer from 'components/Footer'
-import MobileMenu from 'components/MobileMenu'
-import ContactForm from 'components/ContactForm'
-import LanguageSwitcher from './LanguageSwitcher'
+import Footer from '@components/Footer'
+import MobileMenu from '@components/MobileMenu'
+import ContactForm from '@components/ContactForm'
+import LanguageSwitcher from '@components/LanguageSwitcher'
 import Image from 'next/image'
 
 function NavItem({ href, text, ariaLabel }) {
@@ -22,7 +22,7 @@ function NavItem({ href, text, ariaLabel }) {
 					isActive
 						? 'font-semibold text-gray-800 dark:text-gray-200'
 						: 'font-normal text-gray-600 dark:text-gray-400',
-					'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+					'hidden rounded-lg p-1 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:px-3 sm:py-2 md:inline-block'
 				)}
 			>
 				<span className="capsize">{text}</span>
@@ -41,15 +41,15 @@ export default function Container(props) {
 	const { children, ...customMeta } = props
 	const router = useRouter()
 	const meta = {
-		title: 'Vasilis Totskas – Developer, writer, creator.',
-		description: `Front-end developer, JavaScript enthusiast, and course creator.`,
-		image: 'https://vasilistotskas.com/static/images/vasilis-banner.jpg',
+		title: process.env.NEXT_SETTINGS_TITLE,
+		description: process.env.NEXT_SETTINGS_DESCRIPTION,
+		image: process.env.NEXT_SETTINGS_IMG_URL,
 		type: 'website',
 		...customMeta
 	}
 
 	return (
-		<div className="bg-gray-50 dark:bg-gray-900 relative">
+		<div className="relative bg-gray-50 dark:bg-gray-900">
 			<Head>
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
@@ -73,9 +73,9 @@ export default function Container(props) {
 				/>
 				{meta.date && <meta property="article:published_time" content={meta.date} />}
 			</Head>
-			<div className="grid grid-cols-1 md:grid-cols-auto-1fr items-center justify-center px-8 pt-8 pb-8 sm:pb-16">
+			<div className="grid grid-cols-1 items-center justify-center px-8 pt-8 pb-8 sm:pb-16 md:grid-cols-auto-1fr">
 				<a
-					className="hidden md:grid hover:transform hover:scale-110 transition-all"
+					className="hidden transition-all hover:scale-110 hover:transform md:grid"
 					href={'https://github.com/vasilistotskas/'}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -88,27 +88,28 @@ export default function Container(props) {
 						priority
 					/>
 				</a>
-				<nav className="grid grid-cols-2 items-center w-full relative max-w-3xl border-gray-200 dark:border-gray-700 mx-auto text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+				<nav className="relative mx-auto grid w-full max-w-3xl grid-cols-2fr-1fr items-center border-gray-200 bg-gray-50 bg-opacity-60 text-center text-gray-900  dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100">
 					<a href="#skip" className="skip-nav" target="_blank" rel="noopener noreferrer">
 						Skip to content
 					</a>
-					<div className="ml-[-0.60rem]">
+					<div className="ml-[-0.60rem] md:grid md:grid-cols-repeat-auto-fill-mimax-80-auto">
 						<MobileMenu />
 						<NavItem href="/" text="Home" ariaLabel="Home" />
 						<NavItem href="/guestbook" text="Guestbook" ariaLabel="Guestbook" />
 						<NavItem href="/dashboard" text="Dashboard" ariaLabel="Dashboard" />
 						<NavItem href="/about" text="About" ariaLabel="About" />
+						<NavItem href="/blog" text="Blog" ariaLabel="Blog" />
 					</div>
 					<div className="grid grid-cols-auto-auto">
 						<LanguageSwitcher></LanguageSwitcher>
 						<button
 							aria-label="Toggle Dark Mode"
 							type="button"
-							className="w-12 h-12 flex items-center justify-center bg-transparent"
+							className="flex h-12 w-12 items-center justify-center bg-transparent"
 							onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
 						>
 							{mounted && (
-								<div className="transform hover:scale-105 transition-all">
+								<div className="transform transition-all hover:scale-105">
 									{resolvedTheme === 'dark' ? (
 										<Image
 											alt={`Toggle Theme Mode`}
@@ -135,7 +136,7 @@ export default function Container(props) {
 
 			<main
 				id="skip"
-				className="flex flex-col justify-center px-8 bg-gray-50 dark:bg-gray-900"
+				className="flex flex-col justify-center bg-gray-50 px-8 dark:bg-gray-900"
 			>
 				{children}
 				<ContactForm></ContactForm>

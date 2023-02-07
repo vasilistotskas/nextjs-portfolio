@@ -27,7 +27,16 @@ module.exports = withBundleAnalyzer(
 				'i.scdn.co', // Spotify Album Art
 				'pbs.twimg.com', // Twitter Profile Picture
 				'img.icons8.com' // Twitter Profile Picture
-			]
+			],
+			remotePatterns: [{ hostname: 'cdn.sanity.io' }, { hostname: 'source.unsplash.com' }]
+		},
+		typescript: {
+			// Set this to false if you want production builds to abort if there's type errors
+			ignoreBuildErrors: process.env.VERCEL_ENV === 'production'
+		},
+		eslint: {
+			/// Set this to false if you want production builds to abort if there's lint errors
+			ignoreDuringBuilds: process.env.VERCEL_ENV === 'production'
 		},
 		experimental: {
 			fontLoaders: [{ loader: '@next/font/google', options: { subsets: ['latin'] } }]

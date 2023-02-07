@@ -39,12 +39,12 @@ export default function ContactForm() {
 
 	return (
 		<form
-			className="prose dark:prose-dark body-font relative flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8"
+			className="body-font prose relative mx-auto mb-8 flex w-full max-w-2xl flex-col items-start justify-center dark:prose-dark"
 			onSubmit={handleSubmit}
 		>
-			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
-				<div className="flex flex-col text-center w-full mb-2">
-					<h1 className="flex items-center justify-center gap-2 font-bold text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white">
+			<div className="mx-auto my-4 mb-16 flex w-full max-w-2xl flex-col items-start justify-center rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
+				<div className="mb-2 flex w-full flex-col text-center">
+					<h1 className="mb-2 flex items-center justify-center gap-2 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 						<Image
 							alt={`Contact Me`}
 							src={`https://img.icons8.com/doodle/48/000000/newsletter.png`}
@@ -56,12 +56,12 @@ export default function ContactForm() {
 					</h1>
 				</div>
 				<div className="grid">
-					<div className="flex items-center content-center justify-center flex-wrap -m-2">
-						<div className="p-2 w-full sm:w-1/3">
+					<div className="-m-2 flex flex-wrap content-center items-center justify-center">
+						<div className="w-full p-2 sm:w-1/3">
 							<div className="relative">
 								<label
 									htmlFor="name"
-									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
+									className="w-full text-lg font-medium text-gray-800 dark:text-gray-100"
 								>
 									{t('contact.form.name', { ns: 'common' })}
 								</label>
@@ -70,15 +70,15 @@ export default function ContactForm() {
 									type="text"
 									id="name"
 									name="name"
-									className="w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 								/>
 							</div>
 						</div>
-						<div className="p-2 w-full sm:w-1/3">
+						<div className="w-full p-2 sm:w-1/3">
 							<div className="relative">
 								<label
 									htmlFor="email"
-									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
+									className="w-full text-lg font-medium text-gray-800 dark:text-gray-100"
 								>
 									{t('contact.form.email', { ns: 'common' })}
 								</label>
@@ -87,15 +87,15 @@ export default function ContactForm() {
 									type="email"
 									id="email"
 									name="email"
-									className="w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+									className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 								/>
 							</div>
 						</div>
-						<div className="p-2 w-full sm:w-8/12">
+						<div className="w-full p-2 sm:w-8/12">
 							<div className="relative">
 								<label
 									htmlFor="message"
-									className="text-lg font-medium w-full text-gray-800 dark:text-gray-100"
+									className="w-full text-lg font-medium text-gray-800 dark:text-gray-100"
 								>
 									{t('contact.form.message', { ns: 'common' })}
 								</label>
@@ -103,13 +103,13 @@ export default function ContactForm() {
 									required={true}
 									id="message"
 									name="message"
-									className="w-full text-black bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 h-32 text-base outline-none py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+									className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-6 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 								></textarea>
 							</div>
 						</div>
-						<div className="p-2 w-full sm:w-8/12 grid items-center justify-center">
+						<div className="grid w-full items-center justify-center p-2 sm:w-8/12">
 							<button
-								className="grid items-center justify-center my-2 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
+								className="my-2 grid h-8 w-28 items-center justify-center rounded bg-gray-200 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100"
 								aria-label="Contact Me"
 								type="submit"
 							>
@@ -117,14 +117,14 @@ export default function ContactForm() {
 							</button>
 							{successMessage && <p>{successMessage}</p>}
 						</div>
-						<div className="p-2 w-full sm:w-8/12 pt-4 border-t border-gray-200 text-center">
+						<div className="w-full border-t border-gray-200 p-2 pt-4 text-center sm:w-8/12">
 							<a
 								className="text-gray-800 dark:text-gray-100"
 								href="mailto:vassilistotskas@msn.com"
 							>
 								{t('myEmail', { ns: 'common' })}
 							</a>
-							<p className="text-gray-800 dark:text-gray-100 mb-4">
+							<p className="mb-4 text-gray-800 dark:text-gray-100">
 								{t('athensGreece', { ns: 'common' })}
 							</p>
 							<span className="inline-flex gap-2">

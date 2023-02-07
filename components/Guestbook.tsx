@@ -3,11 +3,11 @@ import { format } from 'date-fns'
 import { signIn, useSession } from 'next-auth/react'
 import useSWR, { useSWRConfig } from 'swr'
 
-import fetcher from 'lib/fetcher'
-import { Form, FormState, GuestbookEntry } from 'lib/types'
-import SuccessMessage from 'components/SuccessMessage'
-import ErrorMessage from 'components/ErrorMessage'
-import LoadingSpinner from 'components/LoadingSpinner'
+import fetcher from '@lib/fetcher'
+import { Form, FormState, GuestbookEntry } from '@lib/types'
+import SuccessMessage from '@components/utils/SuccessMessage'
+import ErrorMessage from '@components/utils/ErrorMessage'
+import LoadingSpinner from '@components/utils/LoadingSpinner'
 import { useTranslation } from 'next-i18next'
 import { Session } from 'next-auth'
 
@@ -38,15 +38,15 @@ function GuestbookEntry({
 		<div className="flex flex-col space-y-2">
 			{entry && (
 				<>
-					<div className="prose dark:prose-dark w-full break-words">
+					<div className="prose w-full break-words dark:prose-dark">
 						<p>{entry.body}</p>
 					</div>
 					<div className="flex items-center space-x-3">
-						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600">
+						<p className="text-gray-500 hover:text-gray-600 dark:text-gray-400">
 							{entry.created_by}
 						</p>
 						<span className=" text-gray-200 dark:text-gray-800">/</span>
-						<p className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-600">
+						<p className="text-sm text-gray-500 hover:text-gray-600 dark:text-gray-400">
 							{getDate(entry.updated_at)}
 						</p>
 						{user && entry.created_by === user.name && (
@@ -125,8 +125,8 @@ export default function Guestbook({ fallbackData }) {
 
 	return (
 		<>
-			<div className="border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-gray-100 dark:bg-gray-900">
-				<h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
+			<div className="my-4 w-full rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
+				<h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 md:text-xl">
 					{t('sign', { ns: 'guestbook' })}
 				</h2>
 				<p className="my-1 text-gray-800 dark:text-gray-200">
@@ -135,7 +135,7 @@ export default function Guestbook({ fallbackData }) {
 				{!session && ( // eslint-disable-next-line @next/next/no-html-link-for-pages
 					<a
 						href="/api/auth/signin/github"
-						className="flex items-center justify-center my-4 font-bold h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
+						className="my-4 flex h-8 w-28 items-center justify-center rounded bg-gray-200 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100"
 						onClick={(e) => {
 							e.preventDefault()
 							signIn('github')
@@ -151,10 +151,10 @@ export default function Guestbook({ fallbackData }) {
 							aria-label="Your message"
 							placeholder="Your message..."
 							required
-							className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+							className="mt-1 block w-full rounded-md border-gray-300 bg-white py-2 pl-4 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100"
 						/>
 						<button
-							className="flex items-center justify-center absolute right-1 top-1 px-4 pt-1 font-medium h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
+							className="absolute right-1 top-1 flex h-8 w-28 items-center justify-center rounded bg-gray-100 px-4 pt-1 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
 							type="submit"
 						>
 							{form.state === Form.Loading ? <LoadingSpinner /> : 'Sign'}
@@ -174,7 +174,7 @@ export default function Guestbook({ fallbackData }) {
 			<div className="mt-4 space-y-8">
 				<Suspense
 					fallback={
-						<div className="grid justify-center items-center text-gray-400 font-bold text-2xl min-h-screen">
+						<div className="grid min-h-screen items-center justify-center text-2xl font-bold text-gray-400">
 							Loading..
 						</div>
 					}

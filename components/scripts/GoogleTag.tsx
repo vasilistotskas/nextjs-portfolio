@@ -1,5 +1,6 @@
 import Script from 'next/script'
 import { FC } from 'react'
+import { GOOGLE_TAG_ID } from '@lib/googleTagManager'
 
 const GoogleTag: FC = () => (
 	<Script
@@ -11,7 +12,7 @@ const GoogleTag: FC = () => (
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
             
-              gtag('config', 'G-QYH22QTF1C');
+              gtag('config', '${GOOGLE_TAG_ID}');
       			`
 		}}
 	/>

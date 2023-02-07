@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
-import NowPlaying from 'components/NowPlaying'
+import NowPlaying from '@components/utils/NowPlaying'
 import { useTranslation } from 'next-i18next'
+import SectionSeparator from '@components/utils/SectionSeparator'
 
 const ExternalLink = ({ href, children }) => (
 	<a
-		className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition"
+		className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400"
 		target="_blank"
 		rel="noopener noreferrer"
 		href={href}
@@ -18,18 +19,18 @@ export default function Footer() {
 	const { t } = useTranslation(['common'])
 
 	return (
-		<footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
-			<hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+		<footer className="mx-auto mb-8 flex w-full max-w-2xl flex-col items-start justify-center">
+			<SectionSeparator />
 			<NowPlaying />
-			<div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
+			<div className="grid w-full max-w-2xl grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
 				<div className="flex flex-col space-y-4">
 					<Link href="/">
-						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.home', { ns: 'common' })}
 						</p>
 					</Link>
 					<Link href="/about">
-						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.about', { ns: 'common' })}
 						</p>
 					</Link>
@@ -47,12 +48,12 @@ export default function Footer() {
 				</div>
 				<div className="flex flex-col space-y-4">
 					<Link href="/uses">
-						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.uses', { ns: 'common' })}
 						</p>
 					</Link>
 					<Link href="/guestbook">
-						<p className="text-gray-500 dark:text-gray-400 hover:text-gray-600 transition">
+						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.guestbook', { ns: 'common' })}
 						</p>
 					</Link>

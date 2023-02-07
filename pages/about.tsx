@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import Container from 'components/Container'
+import Container from '@components/Container'
 import React from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
@@ -12,12 +12,12 @@ export default function About() {
 	if (ready)
 		return (
 			<Container title={t('container.title', { ns: 'about' })}>
-				<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
-					<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+				<div className="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center">
+					<h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 						{t('title', { ns: 'about' })}
 					</h1>
-					<div className="mb-8 prose dark:prose-dark leading-6">
-						<h2 className="flex items-center gap-2 mb-2">
+					<div className="prose mb-8 leading-6 dark:prose-dark">
+						<h2 className="mb-2 flex items-center gap-2">
 							<Image
 								alt={`Bio`}
 								src={'https://img.icons8.com/clouds/50/000000/external-link.png'}
@@ -81,7 +81,7 @@ export default function About() {
 								</Link>
 							</li>
 						</ul>
-						<h2 className="flex items-center gap-2 mb-8">
+						<h2 className="mb-8 flex items-center gap-2">
 							<Image
 								alt={`Bio`}
 								src={'https://img.icons8.com/clouds/50/000000/resume.png'}
@@ -94,8 +94,10 @@ export default function About() {
 						<h3>{t('job.title', { ns: 'about' })}</h3>
 						<p>{t('job.subtitle', { ns: 'about' })}</p>
 
-						<p>{t('job.description', { ns: 'about' })}</p>
-						<h3 className="flex items-center gap-2 mb-8">
+						<p className="mb-4 text-gray-600 dark:text-gray-400">
+							{t('job.description', { ns: 'about' })}
+						</p>
+						<h3 className="mb-8 flex items-center gap-2">
 							<Image
 								alt={`Education`}
 								src={'https://img.icons8.com/clouds/50/000000/school.png'}

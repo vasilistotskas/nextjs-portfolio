@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import ProsCard from 'components/ProsCard'
-import ConsCard from 'components/ConsCard'
-import Unsplash from 'components/metrics/Unsplash'
-import Analytics from 'components/metrics/Analytics'
-import YouTube from 'components/metrics/Youtube'
-import Step from 'components/Step'
-import ImageWithTheme from 'components/ImageWithTheme'
+import ProsCard from '@components/utils/ProsCard'
+import ConsCard from '@components/utils/ConsCard'
+import Unsplash from '@components/metrics/Unsplash'
+import Analytics from '@components/metrics/Analytics'
+import YouTube from '@components/metrics/Youtube'
+import Step from '@components/utils/Step'
+import ImageWithTheme from '@components/utils/ImageWithTheme'
 
 const CustomLink = (props) => {
 	const href = props.href
@@ -30,9 +30,9 @@ function RoundedImage(props) {
 
 function Callout(props) {
 	return (
-		<div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-4 my-8">
-			<div className="flex items-center w-4 mr-4">{props.emoji}</div>
-			<div className="w-full callout">{props.children}</div>
+		<div className="my-8 flex rounded-lg bg-gray-200 p-4 dark:bg-gray-800">
+			<div className="mr-4 flex w-4 items-center">{props.emoji}</div>
+			<div className="callout w-full">{props.children}</div>
 		</div>
 	)
 }

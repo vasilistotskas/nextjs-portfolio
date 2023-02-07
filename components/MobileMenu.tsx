@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import styles from 'styles/mobile-menu.module.css'
 import { useTranslation } from 'next-i18next'
-import useDelayedRender from 'helpers/useDelayedRender'
+import useDelayedRender from '@helpers/useDelayedRender'
 
 export default function MobileMenu() {
 	const { t } = useTranslation(['common'])
@@ -47,12 +47,12 @@ export default function MobileMenu() {
 				<ul
 					className={cn(
 						styles.menu,
-						'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
+						'absolute flex flex-col bg-gray-100 dark:bg-gray-900',
 						isMenuRendered && styles.menuRendered
 					)}
 				>
 					<li
-						className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '150ms' }}
 					>
 						<Link href="/">
@@ -60,7 +60,7 @@ export default function MobileMenu() {
 						</Link>
 					</li>
 					<li
-						className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '175ms' }}
 					>
 						<Link href="/guestbook">
@@ -68,7 +68,7 @@ export default function MobileMenu() {
 						</Link>
 					</li>
 					<li
-						className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '200ms' }}
 					>
 						<Link href="/dashboard">
@@ -76,7 +76,7 @@ export default function MobileMenu() {
 						</Link>
 					</li>
 					<li
-						className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '350ms' }}
 					>
 						<Link href="/about">
@@ -92,7 +92,7 @@ export default function MobileMenu() {
 function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
-			className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+			className="absolute h-5 w-5 text-gray-900 dark:text-gray-100"
 			width="20"
 			height="20"
 			viewBox="0 0 20 20"
@@ -120,7 +120,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
 function CrossIcon(props: JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
-			className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+			className="absolute h-5 w-5 text-gray-900 dark:text-gray-100"
 			viewBox="0 0 24 24"
 			width="24"
 			height="24"

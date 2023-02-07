@@ -1,5 +1,5 @@
-import prisma from 'lib/prisma'
-import Container from 'components/Container'
+import prisma from '@lib/prisma'
+import Container from '@components/Container'
 import Guestbook from 'components/Guestbook'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
@@ -13,11 +13,11 @@ export default function GuestbookPage({ fallbackData }) {
 				title={t('container.title', { ns: 'guestbook' })}
 				description={t('container.description', { ns: 'guestbook' })}
 			>
-				<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-					<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+				<div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
+					<h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 						{t('title', { ns: 'guestbook' })}
 					</h1>
-					<p className="text-gray-600 dark:text-gray-400 mb-4">
+					<p className="mb-4 text-gray-600 dark:text-gray-400">
 						{t('description', { ns: 'guestbook' })}
 					</p>
 					<Guestbook fallbackData={fallbackData} />

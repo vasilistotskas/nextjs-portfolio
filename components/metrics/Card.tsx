@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function MetricCard({ header, link, metric, isCurrency, image }) {
 	return (
-		<div className="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full">
+		<div className="metric-card max-w-72 w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
 			<a
 				className="flex items-center gap-2"
 				aria-label={header}
@@ -14,7 +14,7 @@ export default function MetricCard({ header, link, metric, isCurrency, image }) 
 				<div className="flex items-center text-gray-900 dark:text-gray-100">
 					{header}
 					<svg
-						className="h-4 w-4 ml-1"
+						className="ml-1 h-4 w-4"
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -29,7 +29,7 @@ export default function MetricCard({ header, link, metric, isCurrency, image }) 
 					</svg>
 				</div>
 			</a>
-			<p className="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white">
+			<p className="spacing-sm mt-2 text-3xl font-bold text-black dark:text-white">
 				{metric > 0 && isCurrency && '$'}
 				{metric > 0 ? metric.toLocaleString() : '-'}
 			</p>

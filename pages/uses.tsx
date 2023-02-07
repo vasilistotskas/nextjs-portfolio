@@ -1,4 +1,4 @@
-import Container from 'components/Container'
+import Container from '@components/Container'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 
@@ -11,14 +11,14 @@ export default function Uses() {
 				title={t('container.title', { ns: 'uses' })}
 				description={t('container.description', { ns: 'uses' })}
 			>
-				<article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
-					<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+				<article className="mx-auto mb-16 flex w-full max-w-2xl flex-col items-start justify-center">
+					<h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 						{t('myGear.title', { ns: 'uses' })}
 					</h1>
-					<p className="text-gray-700 dark:text-gray-300 mt-2 mb-8">
+					<p className="mt-2 mb-8 text-gray-700 dark:text-gray-300">
 						{t('myGear.description', { ns: 'uses' })}
 					</p>
-					<div className="prose dark:prose-dark w-full">
+					<div className="prose w-full dark:prose-dark">
 						<h2 id="computer-office">{t('myGear.computerOffice', { ns: 'uses' })}</h2>
 						<ul>
 							<li>{t('myGear.processor', { ns: 'uses' })}</li>

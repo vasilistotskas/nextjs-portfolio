@@ -61,7 +61,7 @@ const LanguageSwitcher: React.FC<{
 	return (
 		<div className="relative">
 			<button
-				className="relative flex cursor-pointer items-center justify-center rounded-lg border hover:bg-gray-200 dark:hover:bg-gray-800 p-2 text-left focus:outline-none font-normal text-gray-700 dark:text-gray-200 sm:text-sm"
+				className="relative flex cursor-pointer items-center justify-center rounded-lg border p-2 text-left font-normal text-gray-700 hover:bg-gray-200 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-800 sm:text-sm"
 				id="language-switcher"
 				type="button"
 				aria-label={currentLanguage}
@@ -86,7 +86,7 @@ const LanguageSwitcher: React.FC<{
 			</button>
 			{isOpen && (
 				<ul
-					className="w-full focus-none shadow-l absolute left-0 mt-1 max-h-60 overflow-auto rounded-lg border bg-white text-base focus:outline-none focus-visible:outline-none sm:text-sm transform opacity-100 -translate-y-0"
+					className="focus-none shadow-l absolute left-0 mt-1 max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm"
 					role="listbox"
 					aria-orientation="vertical"
 				>
@@ -100,7 +100,7 @@ const LanguageSwitcher: React.FC<{
 							<li
 								className={`${
 									i18n.language === option.value ? 'bg-green-200' : ''
-								} focus-none relative cursor-pointer bg-white text-gray-800 py-2 px-4 outline-none false`}
+								} focus-none false relative cursor-pointer bg-white py-2 px-4 text-gray-800 outline-none`}
 								key={locale}
 								value={option.value}
 								role="option"

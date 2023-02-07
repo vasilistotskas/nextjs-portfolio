@@ -1,6 +1,6 @@
 import Script from 'next/script'
 import { Html, Head, Main, NextScript } from 'next/document'
-import { GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
+import { GOOGLE_TAG_ID, GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
 
 export default function Document() {
 	return (
@@ -13,7 +13,7 @@ export default function Document() {
 				/>
 				<Script
 					id="googleTagManager"
-					src="https://www.googletagmanager.com/gtag/js?id=G-QYH22QTF1C"
+					src={`https://www.googletagmanager.com/gtag/js?id='${GOOGLE_TAG_ID}'`}
 					strategy="afterInteractive"
 				></Script>
 				<link rel="manifest" href="/manifest.json" />
@@ -53,7 +53,7 @@ export default function Document() {
 					name="robots"
 				/>
 			</Head>
-			<body className="bg-white dark:bg-black text-white dark:text-black">
+			<body className="bg-white text-white dark:bg-black dark:text-black">
 				<noscript>
 					<iframe
 						src={`https://www.googletagmanager.com/ns.html?id=${GOOGLE_TAG_MANAGER_ID}`}

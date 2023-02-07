@@ -38,5 +38,6 @@
 			"success": "Thanks for reaching me out! Check your inbox for updates.",
 			"error": "Something went wrong. Please try again."
 		}
-	}
+	},
+	"loading": "Loading..."
 }

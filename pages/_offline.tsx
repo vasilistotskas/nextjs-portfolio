@@ -1,4 +1,4 @@
-import Container from 'components/Container'
+import Container from '@components/Container'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
@@ -11,7 +11,7 @@ export default function Offline() {
 		<Container title={t('container.title', { ns: 'offline' })}>
 			<div>
 				<Image
-					className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-2"
+					className="mx-auto mb-2 flex max-w-2xl flex-col items-start justify-center"
 					alt={`Offline`}
 					src={`/static/images/offline.png`}
 					width={256}
@@ -19,11 +19,11 @@ export default function Offline() {
 					priority
 				/>
 			</div>
-			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-				<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+			<div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
+				<h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 					{t('title')}
 				</h1>
-				<p className="text-gray-600 dark:text-gray-400 mb-8">{t('description')}</p>
+				<p className="mb-8 text-gray-600 dark:text-gray-400">{t('description')}</p>
 			</div>
 		</Container>
 	)
