@@ -62,12 +62,11 @@ const LanguageSwitcher: React.FC<{
 		<div className="relative">
 			<button
 				className="relative flex cursor-pointer items-center justify-center rounded-lg border hover:bg-gray-200 dark:hover:bg-gray-800 p-2 text-left focus:outline-none font-normal text-gray-700 dark:text-gray-200 sm:text-sm"
-				id="headlessui-listbox-button-:R6:"
+				id="language-switcher"
 				type="button"
+				aria-label={currentLanguage}
 				aria-haspopup="true"
 				aria-expanded="true"
-				data-headlessui-state="open"
-				aria-controls="headlessui-listbox-options-:rg:"
 				onClick={toggleOpen}
 			>
 				<svg

@@ -119,7 +119,7 @@ export default function ContactForm() {
 						</div>
 						<div className="p-2 w-full sm:w-8/12 pt-4 border-t border-gray-200 text-center">
 							<a
-								className="text-sky-600 dark:text-sky-200"
+								className="text-gray-800 dark:text-gray-100"
 								href="mailto:vassilistotskas@msn.com"
 							>
 								{t('myEmail', { ns: 'common' })}
