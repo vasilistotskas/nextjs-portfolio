@@ -19,5 +19,5 @@ export default function PreviewIndexPage({ token }: { token: null | string }) {
 		settings.description = [process.env.NEXT_SETTINGS_DESCRIPTION]
 	}
 
-	return <BlogPage preview posts={posts} settings={settings} />
+	return <BlogPage preview posts={posts} settings={settings} blogMetaImage={''} />
 }

@@ -10,12 +10,14 @@ export default function HeroPost(
 ) {
 	const { title, coverImage, date, excerpt, author, slug } = props
 	const { t } = useTranslation(['common'])
+	const excerptTrimmed = excerpt?.substring(0, 200 - 3) + '...'
+
 	return (
-		<section>
-			<div className="mb-8 md:mb-16">
+		<section className="my-4 w-full rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
+			<div className="mb-4 md:mb-8">
 				<CoverImage slug={slug} title={title ?? ''} image={coverImage} priority />
 			</div>
-			<div className="mb-20 md:mb-28 md:grid md:gap-x-16 lg:gap-x-8">
+			<div className="gap-6 md:grid md:gap-x-16 lg:gap-x-8">
 				<div className="grid">
 					<h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
 						<Link
@@ -25,12 +27,12 @@ export default function HeroPost(
 							{title || t('untitled', { ns: 'common' })}
 						</Link>
 					</h3>
-					<div className="mb-6 text-lg text-gray-900 hover:text-gray-600 dark:text-gray-100">
+					<div className="text-sm text-gray-900 hover:text-gray-600 dark:text-gray-100">
 						<Date dateString={date ?? ''} />
 					</div>
 				</div>
-				<div className="mx-auto grid max-w-2xl gap-4 text-gray-600 dark:text-gray-400">
-					{excerpt && <p>{excerpt}</p>}
+				<div className="post_body mx-auto grid max-w-2xl gap-4 text-gray-600 dark:text-gray-400 md:gap-8">
+					{excerptTrimmed && <p>{excerptTrimmed}</p>}
 					{author && <AuthorAvatar name={author.name} picture={author.picture} />}
 				</div>
 			</div>

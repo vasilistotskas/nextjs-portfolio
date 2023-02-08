@@ -101,10 +101,10 @@ export default function Container(props) {
 					<div className="ml-[-0.60rem] md:grid md:grid-cols-repeat-auto-fill-mimax-80-auto">
 						<MobileMenu />
 						<NavItem href="/" text="Home" ariaLabel="Home" />
+						<NavItem href="/blog" text="Blog" ariaLabel="Blog" />
 						<NavItem href="/guestbook" text="Guestbook" ariaLabel="Guestbook" />
 						<NavItem href="/dashboard" text="Dashboard" ariaLabel="Dashboard" />
 						<NavItem href="/about" text="About" ariaLabel="About" />
-						<NavItem href="/blog" text="Blog" ariaLabel="Blog" />
 					</div>
 					<div className="grid grid-cols-auto-auto">
 						<LanguageSwitcher></LanguageSwitcher>

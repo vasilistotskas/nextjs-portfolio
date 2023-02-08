@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function AuthorAvatar(props: Author) {
 	const { name, picture } = props
 	return (
-		<div className="flex items-center">
+		<div className="flex items-center justify-end">
 			<div className="relative mr-4 h-12 w-12">
 				<Image
 					src={
@@ -20,7 +20,7 @@ export default function AuthorAvatar(props: Author) {
 					alt=""
 				/>
 			</div>
-			<div className="mb-4 text-sm font-bold text-gray-900 hover:text-gray-600 dark:text-gray-100">
+			<div className="text-sm font-bold text-gray-900 hover:text-gray-600 dark:text-gray-100">
 				{name}
 			</div>
 		</div>

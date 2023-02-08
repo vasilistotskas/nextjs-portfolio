@@ -13,10 +13,11 @@ interface PageProps {
 	settings?: Settings
 	preview: boolean
 	token: string | null
+	locale: string
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-	const { settings, post, morePosts, preview, token } = props
+	const { settings, post, morePosts, preview, token, locale } = props
 
 	if (preview) {
 		return (
@@ -69,6 +70,7 @@ export const getServerSideProps = async (ctx) => {
 			settings,
 			preview,
 			token: previewData.token ?? null,
+			locale,
 			...locales
 		}
 	}

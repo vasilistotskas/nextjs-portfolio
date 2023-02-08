@@ -13,23 +13,32 @@ interface PageProps {
 	settings: Settings
 	preview: boolean
 	token: string | null
+	blogMetaImage: string
 }
 
 export default function Page(props: PageProps) {
-	const { posts, settings, preview, token } = props
+	const { posts, settings, preview, token, blogMetaImage } = props
 	const { ready } = useTranslation(['common', 'blog'])
 
 	if (preview && ready) {
 		return (
 			<PreviewSuspense
-				fallback={<BlogPage loading preview posts={posts} settings={settings} />}
+				fallback={
+					<BlogPage
+						loading
+						preview
+						posts={posts}
+						settings={settings}
+						blogMetaImage={blogMetaImage}
+					/>
+				}
 			>
 				<PreviewBlogPage token={token} />
 			</PreviewSuspense>
 		)
 	}
 
-	return <BlogPage posts={posts} settings={settings} />
+	return <BlogPage posts={posts} settings={settings} blogMetaImage={blogMetaImage} />
 }
 
 export const getStaticProps = async (ctx) => {
@@ -41,8 +50,11 @@ export const getStaticProps = async (ctx) => {
 		serverSideTranslations(locale, ['common', 'blog'])
 	])
 
+	const blogMetaImage = process.env.NEXT_SETTINGS_IMG_URL
+
 	return {
 		props: {
+			blogMetaImage,
 			posts,
 			settings,
 			preview,

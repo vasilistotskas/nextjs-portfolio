@@ -5,7 +5,7 @@ import JobCard from '@components/utils/JobCard'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-const Home = () => {
+const Home = ({ title, description, image }) => {
 	const { t, ready } = useTranslation(['common', 'index'])
 
 	if (ready)
@@ -17,7 +17,7 @@ const Home = () => {
 					</div>
 				}
 			>
-				<Container>
+				<Container title={title} description={description} image={image}>
 					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 pb-10 dark:border-gray-700">
 						<div className="grid grid-cols-1 items-start gap-4 md:grid-cols-1fr-auto md:gap-1">
 							<div className="flex flex-col">
@@ -103,6 +103,9 @@ const Home = () => {
 
 export const getStaticProps = async ({ locale }) => ({
 	props: {
+		title: process.env.NEXT_SETTINGS_TITLE,
+		description: process.env.NEXT_SETTINGS_DESCRIPTION,
+		image: process.env.NEXT_SETTINGS_IMG_URL,
 		...(await serverSideTranslations(locale, ['common', 'index']))
 	}
 })
