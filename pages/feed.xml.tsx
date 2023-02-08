@@ -4,7 +4,7 @@ export async function getServerSideProps({ res }) {
 	const feed = new RSS({
 		title: 'Vasilis Totskas',
 		site_url: process.env.NEXT_PUBLIC_DOMAIN_NAME,
-		feed_url: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/feed.xml`,
+		feed_url: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/feed.xml`
 	})
 
 	res.setHeader('Content-Type', 'text/xml')

@@ -214,3 +214,29 @@ table {
 .prose .callout > p {
 	margin: 0 !important;
 }
+
+.post_body {
+	h2 {
+		@apply text-black dark:text-white;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 1.5rem 0 0.5rem;
+	}
+	p {
+		@apply text-black dark:text-white;
+		margin: 0.5rem 0;
+	}
+	ol {
+		margin: 0.5rem 0;
+		padding-left: 1.5rem;
+		list-style: decimal;
+	}
+	li {
+		@apply text-gray-900 dark:text-gray-100;
+		margin: 0.5rem 0;
+	}
+	strong {
+		@apply text-gray-900 dark:text-gray-100;
+		font-weight: 600;
+	}
+}

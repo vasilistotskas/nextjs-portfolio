@@ -12,7 +12,9 @@ export default function Alert({
 	const { t } = useTranslation(['common'])
 
 	if (!preview) return null
-	const loadingText = loading ? t('loading', { ns: 'common' }) : 'This page is a preview. '
+	const loadingText = loading
+		? t('loading', { ns: 'common' })
+		: 'This page is a preview. '
 
 	return (
 		<div className="border-accent-7 bg-accent-7 border-b text-white">

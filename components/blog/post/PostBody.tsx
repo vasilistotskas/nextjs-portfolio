@@ -11,7 +11,7 @@ import { PortableText } from '@portabletext/react'
 
 export default function PostBody({ content }) {
 	return (
-		<div className={`mx-auto max-w-2xl text-gray-600 dark:text-gray-400`}>
+		<div className={'post_body mx-auto max-w-2xl text-gray-600 dark:text-gray-400'}>
 			<PortableText value={content} />
 		</div>
 	)

@@ -32,7 +32,7 @@ export default function BlogPage(props: BlogPageProps) {
 				<Container title={title} description={description}>
 					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
 						<BlogHeader title={title ?? ''} description={description} level={1} />
-						{(postsEmpty && heroPostEmpty) && (
+						{postsEmpty && heroPostEmpty && (
 							<NoResults text={t('posts.notFound', { ns: 'blog' })}></NoResults>
 						)}
 						{heroPost && (

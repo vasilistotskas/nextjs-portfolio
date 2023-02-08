@@ -1,4 +1,4 @@
-import 'styles/global.css'
+import '@styles/global.scss'
 import { ThemeProvider } from 'next-themes'
 import { SessionProvider } from 'next-auth/react'
 import { appWithTranslation } from 'next-i18next'

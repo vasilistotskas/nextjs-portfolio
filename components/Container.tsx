@@ -54,8 +54,14 @@ export default function Container(props) {
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
-				<meta property="og:url" content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`} />
-				<link rel="canonical" href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`} />
+				<meta
+					property="og:url"
+					content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
+				/>
+				<link
+					rel="canonical"
+					href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
+				/>
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
 				<meta property="og:description" content={meta.description} />

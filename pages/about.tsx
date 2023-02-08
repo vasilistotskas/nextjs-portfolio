@@ -37,7 +37,7 @@ export default function About() {
 									priority
 								/>
 								{t('website', { ns: 'common' })}:{' '}
-								<Link className="m-0" href={ process.env.NEXT_PUBLIC_DOMAIN_NAME ?? '' }>
+								<Link className="m-0" href={process.env.NEXT_PUBLIC_DOMAIN_NAME ?? ''}>
 									<p className="m-0">@{t('myUserName', { ns: 'common' })}</p>
 								</Link>
 							</li>

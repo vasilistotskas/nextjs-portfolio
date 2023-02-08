@@ -30,7 +30,8 @@
 			"@schemas/*": ["schemas/*"],
 			"@plugins/*": ["plugins/*"],
 			"@styles/*": ["styles/*"],
-			"@helpers/*": ["helpers/*"]
+			"@helpers/*": ["helpers/*"],
+			"@utils/*": ["utils/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

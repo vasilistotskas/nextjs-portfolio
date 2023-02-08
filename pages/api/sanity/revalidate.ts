@@ -6,7 +6,7 @@
  *
  * 1. Go to the API section of your Sanity project on sanity.io/manage or run `npx sanity hook create`
  * 2. Click "Create webhook"
- * 3. Set the URL to https://YOUR_NEXTJS_SITE_URL/api/revalidate
+ * 3. Set the URL to https://YOUR_NEXTJS_SITE_URL/api/sanity/revalidate
  * 4. Trigger on: "Create", "Update", and "Delete"
  * 5. Filter: _type == "post" || _type == "author" || _type == "settings"
  * 6. Projection: Leave empty
