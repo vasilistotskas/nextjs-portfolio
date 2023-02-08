@@ -23,6 +23,8 @@ export default function BlogPage(props: BlogPageProps) {
 		description = settings.description ?? demoDescription
 	} = settings || {}
 	const { t } = useTranslation(['blog'])
+	const postsEmpty = posts.length <= 0
+	const heroPostEmpty = heroPost === undefined
 
 	return (
 		<>
@@ -30,7 +32,7 @@ export default function BlogPage(props: BlogPageProps) {
 				<Container title={title} description={description}>
 					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
 						<BlogHeader title={title ?? ''} description={description} level={1} />
-						{!posts.length && (
+						{(postsEmpty && heroPostEmpty) && (
 							<NoResults text={t('posts.notFound', { ns: 'blog' })}></NoResults>
 						)}
 						{heroPost && (
