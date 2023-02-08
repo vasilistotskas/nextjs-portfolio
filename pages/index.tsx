@@ -13,7 +13,7 @@ const Home = () => {
 			<Suspense
 				fallback={
 					<div className="grid min-h-screen items-center justify-center text-2xl font-bold text-gray-400">
-						Loading..
+						{t('loading', { ns: 'common' })}
 					</div>
 				}
 			>

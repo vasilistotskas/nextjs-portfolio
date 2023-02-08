@@ -39,5 +39,10 @@
 			"error": "Something went wrong. Please try again."
 		}
 	},
-	"loading": "Loading..."
+	"loading": "Loading...",
+	"click": {
+		"here": "Click here",
+		"to_exit_preview": "to exit preview mode."
+	},
+	"untitled": "Untitled"
 }

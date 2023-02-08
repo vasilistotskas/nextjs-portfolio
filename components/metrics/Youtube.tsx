@@ -9,7 +9,7 @@ export default function YouTubeCard() {
 
 	const subscriberCount = Number(data?.subscriberCount)
 	const viewCount = Number(data?.viewCount)
-	const link = 'https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ'
+	const link = process.env.NEXT_PUBLIC_YOUTUBE_URL
 
 	return (
 		<div className="my-2 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">

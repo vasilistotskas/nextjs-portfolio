@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Container from '@components/Container'
+import { useTranslation } from 'next-i18next'
 
 export default function Alert({
 	preview,
@@ -8,20 +9,23 @@ export default function Alert({
 	preview?: boolean
 	loading?: boolean
 }) {
+	const { t } = useTranslation(['common'])
+
 	if (!preview) return null
+	const loadingText = loading ? t('loading', { ns: 'common' }) : 'This page is a preview. '
 
 	return (
 		<div className="border-accent-7 bg-accent-7 border-b text-white">
 			<Container>
 				<div className="py-2 text-center text-sm">
-					{loading ? 'Loading... ' : 'This page is a preview. '}
+					{loadingText}
 					<Link
 						href="/api/exit-preview"
 						className="hover:text-cyan underline transition-colors duration-200"
 					>
-						Click here
+						{t('click.here', { ns: 'common' })}
 					</Link>{' '}
-					to exit preview mode.
+					{t('click.to_exit_preview', { ns: 'common' })}
 				</div>
 			</Container>
 		</div>

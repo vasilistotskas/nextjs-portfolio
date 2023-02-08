@@ -3,11 +3,13 @@ import CoverImage from '@components/blog/post/CoverImage'
 import Date from '@components/blog/post/PostDate'
 import type { Post } from '@lib/sanity/sanity.queries'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 export default function HeroPost(
 	props: Pick<Post, 'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug'>
 ) {
 	const { title, coverImage, date, excerpt, author, slug } = props
+	const { t } = useTranslation(['common'])
 	return (
 		<section>
 			<div className="mb-8 md:mb-16">
@@ -20,7 +22,7 @@ export default function HeroPost(
 							href={`/blog/posts/${slug}`}
 							className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl"
 						>
-							{title || 'Untitled'}
+							{title || t('untitled', { ns: 'common' }) }
 						</Link>
 					</h3>
 					<div className="mb-6 text-lg text-gray-900 hover:text-gray-600 dark:text-gray-100">

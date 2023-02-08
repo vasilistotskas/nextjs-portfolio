@@ -37,7 +37,7 @@ export default function About() {
 									priority
 								/>
 								{t('website', { ns: 'common' })}:{' '}
-								<Link className="m-0" href="https://vasilistotskas.com">
+								<Link className="m-0" href={ process.env.NEXT_PUBLIC_DOMAIN_NAME ?? '' }>
 									<p className="m-0">@{t('myUserName', { ns: 'common' })}</p>
 								</Link>
 							</li>
@@ -50,7 +50,7 @@ export default function About() {
 									priority
 								/>
 								{t('twitter', { ns: 'common' })}:{' '}
-								<Link className="m-0" href="https://twitter.com/vasilistotskas">
+								<Link className="m-0" href={process.env.NEXT_PUBLIC_TWITTER_URL ?? ''}>
 									@{t('myUserName', { ns: 'common' })}
 								</Link>
 							</li>
@@ -63,7 +63,7 @@ export default function About() {
 									priority
 								/>
 								{t('github', { ns: 'common' })}:{' '}
-								<Link className="m-0" href="https://github.com/vasilistotskas">
+								<Link className="m-0" href={process.env.NEXT_PUBLIC_GITHUB_URL ?? ''}>
 									@{t('myUserName', { ns: 'common' })}
 								</Link>
 							</li>
@@ -76,7 +76,7 @@ export default function About() {
 									priority
 								/>
 								{t('linkedin', { ns: 'common' })}:{' '}
-								<Link className="m-0" href="https://www.linkedin.com/in/vasilistotskas/">
+								<Link className="m-0" href={process.env.NEXT_PUBLIC_LINKEDIN_URL ?? ''}>
 									@{t('myUserName', { ns: 'common' })}
 								</Link>
 							</li>

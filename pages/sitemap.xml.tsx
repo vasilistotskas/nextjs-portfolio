@@ -13,7 +13,7 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
 `
 export async function getServerSideProps({ res }) {
 	const allPages = [
-		...['', 'about', 'dashboard', 'guestbook', 'uses', 'blog', 'posts', '404', 'offline']
+		...['', 'about', 'dashboard', 'guestbook', 'uses', 'blog', '404', 'offline']
 	]
 
 	res.setHeader('Content-Type', 'text/xml')

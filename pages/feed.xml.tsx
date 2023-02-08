@@ -3,8 +3,8 @@ import RSS from 'rss'
 export async function getServerSideProps({ res }) {
 	const feed = new RSS({
 		title: 'Vasilis Totskas',
-		site_url: 'https://vasilistotskas.com',
-		feed_url: 'https://vasilistotskas.com/feed.xml'
+		site_url: process.env.NEXT_PUBLIC_DOMAIN_NAME,
+		feed_url: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/feed.xml`,
 	})
 
 	res.setHeader('Content-Type', 'text/xml')

@@ -36,13 +36,13 @@ export default function Footer() {
 					</Link>
 				</div>
 				<div className="flex flex-col space-y-4">
-					<ExternalLink href="https://twitter.com/vasilistotskas">
+					<ExternalLink href={process.env.NEXT_PUBLIC_TWITTER_URL}>
 						{t('twitter', { ns: 'common' })}
 					</ExternalLink>
-					<ExternalLink href="https://github.com/vasilistotskas">
+					<ExternalLink href={process.env.NEXT_PUBLIC_GITHUB_URL}>
 						{t('github', { ns: 'common' })}
 					</ExternalLink>
-					<ExternalLink href="https://www.youtube.com/channel/UCO3k4jsz6awlr6TpQHncVYQ">
+					<ExternalLink href={process.env.NEXT_PUBLIC_YOUTUBE_URL}>
 						{t('youtube', { ns: 'common' })}
 					</ExternalLink>
 				</div>

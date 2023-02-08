@@ -8,7 +8,7 @@ export default function GitHubCard() {
 	const { data } = useSWR<GitHub>('/api/github', fetcher)
 
 	const stars = Number(data?.stars)
-	const link = 'https://github.com/vasilistotskas'
+	const link = process.env.NEXT_PUBLIC_GITHUB_URL
 
 	return (
 		<MetricCard

@@ -129,7 +129,7 @@ export default function ContactForm() {
 							</p>
 							<span className="inline-flex gap-2">
 								<a
-									href={'https://www.facebook.com/vasilistotskas/'}
+									href={process.env.NEXT_PUBLIC_FACEBOOK_URL}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -142,7 +142,7 @@ export default function ContactForm() {
 									/>
 								</a>
 								<a
-									href={'https://www.instagram.com/vasilistotskas/'}
+									href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -155,7 +155,7 @@ export default function ContactForm() {
 									/>
 								</a>
 								<a
-									href={'https://twitter.com/vasilistotskas/'}
+									href={process.env.NEXT_PUBLIC_TWITTER_URL}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -168,7 +168,7 @@ export default function ContactForm() {
 									/>
 								</a>
 								<a
-									href={'https://github.com/vasilistotskas/'}
+									href={process.env.NEXT_PUBLIC_GITHUB_URL}
 									target="_blank"
 									rel="noopener noreferrer"
 								>

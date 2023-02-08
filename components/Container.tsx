@@ -54,8 +54,8 @@ export default function Container(props) {
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
-				<meta property="og:url" content={`https://vasilistotskas.com${router.asPath}`} />
-				<link rel="canonical" href={`https://vasilistotskas.com${router.asPath}`} />
+				<meta property="og:url" content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`} />
+				<link rel="canonical" href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`} />
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
 				<meta property="og:description" content={meta.description} />
@@ -76,7 +76,7 @@ export default function Container(props) {
 			<div className="grid grid-cols-1 items-center justify-center px-8 pt-8 pb-8 sm:pb-16 md:grid-cols-auto-1fr">
 				<a
 					className="hidden transition-all hover:scale-110 hover:transform md:grid"
-					href={'https://github.com/vasilistotskas/'}
+					href={process.env.NEXT_PUBLIC_GITHUB_URL}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
