@@ -5,8 +5,8 @@
 // https://www.sanity.io/docs/structure-builder-reference
 
 import { DefaultDocumentNodeResolver } from 'sanity/desk'
-import authorType from 'schemas/author'
-import postType from 'schemas/post'
+import authorType from '@schemas/author'
+import postType from '@schemas/post'
 
 import AuthorAvatarPreviewPane from '@plugins/previewPane/AuthorAvatarPreviewPane'
 import PostPreviewPane from '@plugins/previewPane/PostPreviewPane'

@@ -24,6 +24,7 @@
 		"sourceMap": true,
 		"paths": {
 			"@components/*": ["components/*"],
+			"@app/*": ["app/*"],
 			"@lib/*": ["lib/*"],
 			"@pages/*": ["pages/*"],
 			"@public/*": ["public/*"],

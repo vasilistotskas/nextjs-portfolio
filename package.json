@@ -38,6 +38,8 @@
 		"date-fns": "2.29.3",
 		"eventsource-parser": "^0.1.0",
 		"googleapis": "110.0.0",
+		"i18next-browser-languagedetector": "^7.0.1",
+		"i18next-resources-to-backend": "^1.1.1",
 		"intl-segmenter-polyfill": "^0.4.4",
 		"lodash": "^4.17.21",
 		"motion": "^10.15.5",
@@ -59,7 +61,8 @@
 		"styled-components": "^5.3.6",
 		"suspend-react": "^0.0.9",
 		"swr": "2.0.3",
-		"tailwindcss": "3.2.6"
+		"tailwindcss": "3.2.6",
+		"accept-language": "3.0.18"
 	},
 	"devDependencies": {
 		"@types/node": "18.13.0",

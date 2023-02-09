@@ -1,5 +1,5 @@
 import { Card } from '@sanity/ui'
-import { height, OpenGraphImage, width } from '@components/utils/OpenGraphImage'
+import { height, OpenGraphImage, width } from '@app/[lng]/components/utils/OpenGraphImage'
 import { createIntlSegmenterPolyfill } from 'intl-segmenter-polyfill'
 import type { Settings } from '@lib/sanity/sanity.queries'
 import satori, { type SatoriOptions } from 'satori'

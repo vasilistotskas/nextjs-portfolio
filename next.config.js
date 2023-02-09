@@ -3,7 +3,6 @@
 /**
  * @type {import('next').NextConfig}
  */
-const { i18n } = require('./next-i18next.config')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true'
@@ -22,7 +21,6 @@ const withPWA = require('next-pwa')({
 
 module.exports = withBundleAnalyzer(
 	withPWA({
-		i18n,
 		reactStrictMode: true,
 		images: {
 			domains: [
