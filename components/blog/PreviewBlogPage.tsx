@@ -7,7 +7,13 @@ import {
 	settingsQuery
 } from '@lib/sanity/sanity.queries'
 
-export default function PreviewIndexPage({ token }: { token: null | string }) {
+export default function PreviewIndexPage({
+	token,
+	blogMetaImage
+}: {
+	token: null | string
+	blogMetaImage: string
+}) {
 	const posts: Post[] = usePreview(token, indexQuery) || []
 
 	const settings: Settings = usePreview(token, settingsQuery) || {}
@@ -19,5 +25,7 @@ export default function PreviewIndexPage({ token }: { token: null | string }) {
 		settings.description = [process.env.NEXT_SETTINGS_DESCRIPTION]
 	}
 
-	return <BlogPage preview posts={posts} settings={settings} blogMetaImage={''} />
+	return (
+		<BlogPage preview posts={posts} settings={settings} blogMetaImage={blogMetaImage} />
+	)
 }

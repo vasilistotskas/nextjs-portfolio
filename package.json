@@ -12,6 +12,9 @@
 		"start": "next start",
 		"type-check": "tsc --noEmit"
 	},
+	"lint-staged": {
+		"*": "prettier --write --ignore-unknown"
+	},
 	"prettier": {
 		"arrowParens": "always",
 		"printWidth": 90,
@@ -89,5 +92,8 @@
 	"engines": {
 		"node": ">=18.12.1",
 		"npm": ">=8.19.2"
+	},
+	"git": {
+		"pre-commit": "lint-staged"
 	}
 }

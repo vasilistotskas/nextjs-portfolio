@@ -1,7 +1,15 @@
 const { spacing, fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
-	content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx'],
+	content: [
+		'./pages/**/*.{js,ts,jsx,tsx}',
+		'./components/**/*.{js,ts,jsx,tsx}',
+		'./app/**/*.{js,ts,jsx,tsx}',
+		'./ui/**/*.{js,ts,jsx,tsx}'
+	],
+	future: {
+		hoverOnlyWhenSupported: true
+	},
 	darkMode: 'class',
 	theme: {
 		extend: {

@@ -33,7 +33,7 @@ export default function Page(props: PageProps) {
 					/>
 				}
 			>
-				<PreviewBlogPage token={token} />
+				<PreviewBlogPage token={token} blogMetaImage={blogMetaImage} />
 			</PreviewSuspense>
 		)
 	}
