@@ -61,6 +61,14 @@ export default function MobileMenu() {
 					</li>
 					<li
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+						style={{ transitionDelay: '150ms' }}
+					>
+						<Link href="/blog">
+							<p className="flex w-auto pb-4">{t('pages.blog', { ns: 'common' })}</p>
+						</Link>
+					</li>
+					<li
+						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '175ms' }}
 					>
 						<Link href="/guestbook">

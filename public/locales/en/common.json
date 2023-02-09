@@ -20,6 +20,7 @@
 	},
 	"pages": {
 		"home": "Home",
+		"blog": "Blog",
 		"about": "About",
 		"dashboard": "Dashboard",
 		"guestbook": "Guestbook",
