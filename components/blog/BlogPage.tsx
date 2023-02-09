@@ -18,7 +18,7 @@ export interface BlogPageProps {
 }
 
 export default function BlogPage(props: BlogPageProps) {
-	const { preview, loading, posts, settings } = props
+	const { preview, loading, posts, settings, blogMetaImage } = props
 	const [heroPost, ...morePosts] = posts || []
 
 	const title = settings.title ?? 'Blog'
@@ -32,7 +32,11 @@ export default function BlogPage(props: BlogPageProps) {
 	return (
 		<>
 			<Layout preview={preview ?? false} loading={loading}>
-				<Container title={title} description={descriptionPortableTextToPlain}>
+				<Container
+					title={title}
+					description={descriptionPortableTextToPlain}
+					image={blogMetaImage}
+				>
 					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
 						<BlogHeader title={title ?? ''} description={description} level={1} />
 						{postsEmpty && heroPostEmpty && (
