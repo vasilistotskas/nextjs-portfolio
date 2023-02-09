@@ -102,7 +102,7 @@ module.exports = {
 				'2fr-1fr': '2fr 1fr',
 				'1fr-auto': '1fr auto',
 				'auto-auto': 'auto auto',
-				'repeat-auto-fill-mimax-80-auto': 'repeat(auto-fill, minmax(80px, auto));'
+				'repeat-auto-fill-mimax-80-auto': 'repeat(auto-fill, minmax(87px, auto));'
 			}
 		}
 	},

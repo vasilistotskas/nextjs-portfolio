@@ -37,7 +37,7 @@ export default function BlogPage(props: BlogPageProps) {
 					description={descriptionPortableTextToPlain}
 					image={blogMetaImage}
 				>
-					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
+					<div className="mx-auto contents max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700 md:flex">
 						<BlogHeader title={title ?? ''} description={description} level={1} />
 						{postsEmpty && heroPostEmpty && (
 							<NoResults text={t('posts.notFound', { ns: 'blog' })}></NoResults>

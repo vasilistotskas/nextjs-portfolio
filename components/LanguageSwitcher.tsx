@@ -86,7 +86,7 @@ const LanguageSwitcher: React.FC<{
 			</button>
 			{isOpen && (
 				<ul
-					className="focus-none shadow-l absolute left-0 mt-1 max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm"
+					className="focus-none shadow-l absolute left-0 z-40 mt-1 max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm"
 					role="listbox"
 					aria-orientation="vertical"
 				>
@@ -99,8 +99,8 @@ const LanguageSwitcher: React.FC<{
 						return (
 							<li
 								className={`${
-									i18n.language === option.value ? 'bg-green-200' : ''
-								} focus-none false relative cursor-pointer bg-white py-2 px-4 text-gray-800 outline-none`}
+									i18n.language === option.value ? 'bg-green-200' : 'bg-white'
+								} focus-none false relative cursor-pointer py-2 px-4 text-gray-800 outline-none`}
 								key={locale}
 								value={option.value}
 								role="option"
