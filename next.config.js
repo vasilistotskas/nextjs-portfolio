@@ -42,7 +42,7 @@ module.exports = withBundleAnalyzer(
 		},
 		experimental: {
 			fontLoaders: [{ loader: '@next/font/google', options: { subsets: ['latin'] } }],
-			appDir: true
+			// appDir: true
 		},
 		async headers() {
 			return [
