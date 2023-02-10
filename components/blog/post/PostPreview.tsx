@@ -29,7 +29,7 @@ export default function PostPreview({
 						href={`/blog/posts/${slug}`}
 						className="mb-4 text-lg font-bold tracking-tight text-black hover:underline dark:text-white md:text-xl"
 					>
-						{title}
+						{title?.substring(0, 40 - 3) + '...'}
 					</Link>
 				</h3>
 				<div className="gap-6 md:grid md:gap-x-16 lg:gap-x-8">
