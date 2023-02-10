@@ -23,7 +23,6 @@ const NO_POSTS: Post[] = []
 export default function PostPage(props: PostPageProps) {
 	const { t } = useTranslation(['common', 'blog_post'])
 	const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-	const { title = post.title } = settings || {}
 	const ogImage = urlForImage(post.coverImage).width(1200).height(627).fit('crop').url()
 
 	const slug = post?.slug
@@ -36,7 +35,7 @@ export default function PostPage(props: PostPageProps) {
 		<>
 			<Layout preview={preview ?? false} loading={loading}>
 				<Container
-					title={title ?? settings.title}
+					title={post.title ?? settings.title}
 					description={post.excerpt?.replace(/\s+/g, ' ').substring(0, 200 - 3) + '...'}
 					image={ogImage}
 				>

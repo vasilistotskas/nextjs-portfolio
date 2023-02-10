@@ -59,7 +59,7 @@ const LanguageSwitcher: React.FC<{
 	const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
 	return (
-		<div className="relative">
+		<div className="relative grid items-center justify-center">
 			<button
 				className="relative flex cursor-pointer items-center justify-center rounded-lg border p-2 text-left font-normal text-gray-700 hover:bg-gray-200 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-800 sm:text-sm"
 				id="language-switcher"
@@ -86,7 +86,7 @@ const LanguageSwitcher: React.FC<{
 			</button>
 			{isOpen && (
 				<ul
-					className="focus-none shadow-l absolute left-0 z-40 mt-1 max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm"
+					className="focus-none shadow-l absolute top-11 left-0 z-40 mt-1 table max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm md:grid"
 					role="listbox"
 					aria-orientation="vertical"
 				>
@@ -100,7 +100,7 @@ const LanguageSwitcher: React.FC<{
 							<li
 								className={`${
 									i18n.language === option.value ? 'bg-green-200' : 'bg-white'
-								} focus-none false relative cursor-pointer py-2 px-4 text-gray-800 outline-none`}
+								} focus-none false relative cursor-pointer rounded-lg py-2 px-4 text-gray-800 outline-none`}
 								key={locale}
 								value={option.value}
 								role="option"

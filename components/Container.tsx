@@ -86,7 +86,7 @@ export default function Container(props) {
 						<NavItem href="/dashboard" text="Dashboard" ariaLabel="Dashboard" />
 						<NavItem href="/about" text="About" ariaLabel="About" />
 					</div>
-					<div className="grid grid-cols-auto-auto">
+					<div className="grid grid-cols-auto-auto items-center">
 						<LanguageSwitcher></LanguageSwitcher>
 						<button
 							aria-label="Toggle Dark Mode"
