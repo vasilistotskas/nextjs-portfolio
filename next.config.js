@@ -57,7 +57,7 @@ module.exports = withBundleAnalyzer(
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
-    child-src *.youtube.com *.google.com *.twitter.com;
+    child-src frame-src *.youtube.com *.google.com *.twitter.com;
     worker-src 'self' blob:;
     default-src 'self' 'unsafe-inline' blob:;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.googleoptimize.com *.g.doubleclick.net *.googletagmanager.com *.google-analytics.com *.analytics.google.com *.youtube.com *.twitter.com data: https://cdn.vercel-insights.com;

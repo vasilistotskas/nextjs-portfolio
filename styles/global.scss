@@ -231,6 +231,11 @@ table {
 		padding-left: 1.5rem;
 		list-style: decimal;
 	}
+	ul {
+		margin: 0.5rem 0;
+		padding-left: 1.5rem;
+		list-style: disc;
+	}
 	li {
 		@apply text-gray-900 dark:text-gray-100;
 		margin: 0.5rem 0;
