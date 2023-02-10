@@ -9,7 +9,6 @@ import type { Post, Settings } from '@lib/sanity/sanity.queries'
 import { notFound } from 'next/navigation'
 import { urlForImage } from '@lib/sanity/sanity.image'
 import { useTranslation } from 'next-i18next'
-import portableTextToPlain from '@helpers/portableTextToPlain'
 
 export interface PostPageProps {
 	preview?: boolean
@@ -46,7 +45,7 @@ export default function PostPage(props: PostPageProps) {
 					) : (
 						<>
 							<article className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
-								<div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
+								<div className="mx-auto mb-4 flex max-w-2xl flex-col items-start justify-center">
 									<PostHeader
 										title={post.title}
 										coverImage={post.coverImage}
@@ -57,7 +56,11 @@ export default function PostPage(props: PostPageProps) {
 								</div>
 								<SectionSeparator />
 							</article>
-							{morePosts?.length > 0 && <MoreStories posts={morePosts} />}
+							{morePosts?.length > 0 &&
+								<div className="mx-auto contents max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700 md:flex">
+									<MoreStories posts={morePosts} />
+								</div>
+							}
 						</>
 					)}
 				</Container>
