@@ -56,11 +56,11 @@ export default function PostPage(props: PostPageProps) {
 								</div>
 								<SectionSeparator />
 							</article>
-							{morePosts?.length > 0 &&
+							{morePosts?.length > 0 && (
 								<div className="mx-auto contents max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700 md:flex">
 									<MoreStories posts={morePosts} />
 								</div>
-							}
+							)}
 						</>
 					)}
 				</Container>
