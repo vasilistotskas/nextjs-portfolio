@@ -36,6 +36,7 @@ export default function BlogPage(props: BlogPageProps) {
 					title={title}
 					description={descriptionPortableTextToPlain}
 					image={blogMetaImage}
+					keywords="Blog, Post, Article, Web Development, Programming, Technology"
 				>
 					<div className="mx-auto contents max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700 md:flex">
 						<BlogHeader title={title ?? ''} description={description} level={1} />
