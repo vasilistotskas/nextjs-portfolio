@@ -34,8 +34,8 @@ export default function Container(props) {
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
-				{ meta.keywords && <meta content={meta.keywords} name="keywords" /> }
-				{ meta.author && <meta content={meta.author} name="author" /> }
+				{meta.keywords && <meta content={meta.keywords} name="keywords" />}
+				{meta.author && <meta content={meta.author} name="author" />}
 				<meta
 					property="og:url"
 					content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
