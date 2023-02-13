@@ -67,6 +67,26 @@ export const getServerSideProps = async (ctx: serverSideProps) => {
 		serverSideTranslations(locale, ['common', 'blog_post'])
 	])
 
+	const postTitle = post?.title
+	const targetLanguage = locale
+	const apiKey = process.env.DEEPL_API_KEY
+	const response = await fetch('https://api-free.deepl.com/v2/translate', {
+		method: 'POST',
+		headers: {
+			Authorization: `DeepL-Auth-Key ${apiKey}`,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			text: [postTitle],
+			target_lang: targetLanguage
+		})
+	})
+
+	const data = await response.json()
+	// const translatedText = data.translations[0].text;
+	console.log('data', data)
+	// console.log('translatedText', translatedText)
+
 	if (!post) {
 		return {
 			notFound: true
