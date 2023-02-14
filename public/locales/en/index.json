@@ -9,6 +9,6 @@
 	},
 	"work": {
 		"title": "Work Experience",
-		"experience": "My work experience includes working with a variety of technologies and frameworks, such as Django, Codeigniter, Vue, Nuxt, React, Next.js, Node.js, PostgreSQL, MySql, Docker and more."
+		"experience": "Throughout my career, I have gained a diverse range of experience working with a variety of cutting-edge technologies and frameworks. In the realm of web development, I am proficient in both front-end and back-end technologies, including popular JavaScript frameworks like <0>React</0>, <1>Vue</1>, and <2>Next.js</2>, as well as server-side technologies like <3>Django</3> and <4>Codeigniter</4>.<br /><br />My experience extends to working with databases as well. I am comfortable working with relational databases such as <5>PostgreSQL</5> and <6>MySql</6>, as well as non-relational databases like <7>MongoDB</7>. I have also gained experience working with containerization technologies such as <8>Docker</8>, which allows for efficient deployment and scaling of applications.<br /><br />Overall, my experience has given me a strong understanding of the latest web technologies and trends, and I am always eager to learn and adapt to new technologies and frameworks as they emerge."
 	}
 }
