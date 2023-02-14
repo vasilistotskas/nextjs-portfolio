@@ -134,6 +134,7 @@ export default function Guestbook({ fallbackData }) {
 				</p>
 				{!session && ( // eslint-disable-next-line @next/next/no-html-link-for-pages
 					<a
+						title="Sign in with GitHub"
 						href="/api/auth/signin/github"
 						className="my-4 flex h-8 w-28 items-center justify-center rounded bg-gray-200 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100"
 						onClick={(e) => {

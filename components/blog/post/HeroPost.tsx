@@ -15,7 +15,7 @@ export default function HeroPost(
 	return (
 		<section className="w-full rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
 			<div className="mb-3 md:mb-6">
-				<CoverImage slug={slug} title={title ?? ''} image={coverImage} priority />
+				<CoverImage slug={slug} title={title || ''} image={coverImage} priority />
 			</div>
 			<div className="gap-4 md:grid md:gap-x-12 lg:gap-x-6">
 				<div className="grid">
@@ -28,7 +28,7 @@ export default function HeroPost(
 						</Link>
 					</h3>
 					<div className="text-sm text-gray-900 hover:text-gray-600 dark:text-gray-100">
-						<Date dateString={date ?? ''} />
+						<Date dateString={date || ''} />
 					</div>
 				</div>
 				<div className="post_body mx-auto grid max-w-2xl gap-2 text-gray-600 dark:text-gray-400 md:gap-4">

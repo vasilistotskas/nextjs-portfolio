@@ -11,7 +11,7 @@ const LanguageSwitcher: React.FC<{
 	const router = useRouter()
 
 	const locales = useMemo(
-		() => router.locales ?? [currentLanguage],
+		() => router.locales || [currentLanguage],
 		[router.locales, currentLanguage]
 	)
 
@@ -31,7 +31,7 @@ const LanguageSwitcher: React.FC<{
 
 	const [] = useState({
 		value: i18n.language,
-		label: capitalize(languageNames.of(currentLanguage) ?? currentLanguage)
+		label: capitalize(languageNames.of(currentLanguage) || currentLanguage)
 	})
 
 	const switchToLocale = useCallback(
@@ -91,7 +91,7 @@ const LanguageSwitcher: React.FC<{
 					aria-orientation="vertical"
 				>
 					{sortedLocales.map((locale) => {
-						const label = capitalize(languageNames.of(locale) ?? locale)
+						const label = capitalize(languageNames.of(locale) || locale)
 						const option = {
 							value: locale,
 							label

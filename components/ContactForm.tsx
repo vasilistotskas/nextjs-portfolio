@@ -95,7 +95,7 @@ export default function ContactUs() {
 			>
 				<div className="mx-auto my-4 mb-16 flex w-full max-w-2xl flex-col items-start justify-center rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
 					<div className="mb-2 flex w-full flex-col text-center">
-						<h1 className="mb-2 flex items-center justify-center gap-2 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
+						<h2 className="mb-2 flex items-center justify-center gap-2 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 							<Image
 								alt={`Contact Me`}
 								src={`https://img.icons8.com/doodle/48/000000/newsletter.png`}
@@ -104,7 +104,7 @@ export default function ContactUs() {
 								priority
 							/>
 							{t('contact.title', { ns: 'common' })}
-						</h1>
+						</h2>
 					</div>
 					<div className="grid">
 						<div className="-m-2 flex flex-wrap content-center items-center justify-center">
@@ -204,6 +204,7 @@ export default function ContactUs() {
 							</div>
 							<div className="w-full border-t border-gray-200 p-2 pt-4 text-center sm:w-8/12">
 								<a
+									title="Email"
 									className="text-gray-800 dark:text-gray-100"
 									href="mailto:vassilistotskas@msn.com"
 								>
@@ -214,6 +215,7 @@ export default function ContactUs() {
 								</p>
 								<span className="inline-flex gap-2">
 									<a
+										title="Facebook"
 										href={process.env.NEXT_PUBLIC_FACEBOOK_URL}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -227,6 +229,7 @@ export default function ContactUs() {
 										/>
 									</a>
 									<a
+										title="Instagram"
 										href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -240,6 +243,7 @@ export default function ContactUs() {
 										/>
 									</a>
 									<a
+										title="Twitter"
 										href={process.env.NEXT_PUBLIC_TWITTER_URL}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -253,6 +257,7 @@ export default function ContactUs() {
 										/>
 									</a>
 									<a
+										title="Github"
 										href={process.env.NEXT_PUBLIC_GITHUB_URL}
 										target="_blank"
 										rel="noopener noreferrer"

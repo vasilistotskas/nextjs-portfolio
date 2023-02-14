@@ -19,7 +19,7 @@ export default function PostPreview({
 				<div className="mb-5">
 					<CoverImage
 						slug={slug}
-						title={title ?? ''}
+						title={title || ''}
 						image={coverImage}
 						priority={false}
 					/>
@@ -34,7 +34,7 @@ export default function PostPreview({
 				</h3>
 				<div className="gap-6 md:grid md:gap-x-16 lg:gap-x-8">
 					<div className="text-sm text-gray-900 hover:text-gray-600 dark:text-gray-100">
-						<Date dateString={date ?? ''} />
+						<Date dateString={date || ''} />
 					</div>
 					{excerpt && (
 						<p className="post_body mx-auto grid max-w-2xl gap-2 leading-relaxed text-gray-600 dark:text-gray-400 md:gap-4">

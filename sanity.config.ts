@@ -18,8 +18,8 @@ const title =
 	process.env.NEXT_SETTINGS_TITLE || 'Vasilis Totskas – Developer, writer, creator.'
 
 const sanityConfig = {
-	projectId: projectId ?? '',
-	dataset: dataset ?? '',
+	projectId: projectId || '',
+	dataset: dataset || '',
 	title,
 	schema: {
 		// If you want more content types, you can add them to this array

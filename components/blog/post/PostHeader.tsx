@@ -15,14 +15,14 @@ export default function PostHeader(
 				{author && <Avatar name={author.name} picture={author.picture} />}
 			</div>
 			<div className="mb-4 w-full sm:mx-0 md:mb-8">
-				<CoverImage title={title ?? ''} image={coverImage} priority slug={slug} />
+				<CoverImage title={title || ''} image={coverImage} priority slug={slug} />
 			</div>
 			<div className="mx-auto max-w-2xl">
 				<div className="mb-6 block md:hidden">
 					{author && <Avatar name={author.name} picture={author.picture} />}
 				</div>
 				<div className="text-sm text-gray-900 hover:text-gray-600 dark:text-gray-100">
-					<Date dateString={date ?? ''} />
+					<Date dateString={date || ''} />
 				</div>
 			</div>
 		</>

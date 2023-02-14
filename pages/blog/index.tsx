@@ -58,7 +58,7 @@ export const getStaticProps = async (ctx) => {
 			posts,
 			settings,
 			preview,
-			token: previewData.token ?? null,
+			token: previewData.token || null,
 			...locales
 		}
 	}

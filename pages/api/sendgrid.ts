@@ -43,12 +43,12 @@ async function sendEmail(req, res) {
 						<img src="${myWebSite}/static/favicons/mstile-150x150.png" class="logo-image" style="height: 50px;width: 50px;border-radius: 5px;overflow: hidden;">
 						<p class="footer" style="font-size: 16px;padding-bottom: 20px;border-bottom: 1px solid #D1D5DB;">Regards<br>${myName}<br>${myRole}<br>${myMobile}</p>
 						<div class="footer-links" style="display: flex;justify-content: center;align-items: center;">
-							<a href="${myWebSite}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Website</a>
-							<a href="${myWebSite}/blog/" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Blog</a>
-							<a href="${myGithubUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">GitHub</a>
-							<a href="${myInstagramUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Instagram</a>
-							<a href="${myLinkedInUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">LinkedIn</a>
-							<a href="${myTwitterUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Twitter</a>
+							<a title="Website" href="${myWebSite}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Website</a>
+							<a title="Blog" href="${myWebSite}/blog/" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Blog</a>
+							<a title="GitHub" href="${myGithubUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">GitHub</a>
+							<a title="Instagram" href="${myInstagramUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Instagram</a>
+							<a title="LinkedIn" href="${myLinkedInUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">LinkedIn</a>
+							<a title="Twitter" href="${myTwitterUrl}" style="text-decoration: none;margin: 8px;color: #9CA3AF;">Twitter</a>
 						</div>
 					</div>
 				</body>

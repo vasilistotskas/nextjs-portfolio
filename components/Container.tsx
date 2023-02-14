@@ -25,6 +25,8 @@ export default function Container(props) {
 		description: process.env.NEXT_SETTINGS_DESCRIPTION,
 		image: process.env.NEXT_SETTINGS_IMG_URL,
 		type: 'website',
+		keywords:
+			'Vasilis, Totskas, developer, vasilistotskas, experience, web, programming, technology, coding, technologies, frameworks',
 		...customMeta
 	}
 
@@ -66,6 +68,7 @@ export default function Container(props) {
 					className="hidden transition-all hover:scale-110 hover:transform md:grid"
 					href={process.env.NEXT_PUBLIC_GITHUB_URL}
 					target="_blank"
+					title="Github"
 					rel="noopener noreferrer"
 				>
 					<Image
@@ -77,7 +80,13 @@ export default function Container(props) {
 					/>
 				</a>
 				<nav className="relative mx-auto grid w-full max-w-3xl grid-cols-2fr-1fr items-center border-gray-200 bg-gray-50 bg-opacity-60 text-center text-gray-900  dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100">
-					<a href="#skip" className="skip-nav" target="_blank" rel="noopener noreferrer">
+					<a
+						href="#skip"
+						className="skip-nav"
+						target="_blank"
+						title="Skip"
+						rel="noopener noreferrer"
+					>
 						Skip to content
 					</a>
 					<div className="ml-[-0.60rem] md:grid md:grid-cols-repeat-auto-fill-mimax-80-auto">

@@ -39,7 +39,7 @@ export default function ProjectSlugRoute(props: PageProps) {
 						preview
 						post={post}
 						morePosts={morePosts}
-						settings={settings ?? {}}
+						settings={settings || {}}
 					/>
 				}
 			>
@@ -47,19 +47,19 @@ export default function ProjectSlugRoute(props: PageProps) {
 					token={token}
 					post={post}
 					morePosts={morePosts}
-					settings={settings ?? {}}
+					settings={settings || {}}
 				/>
 			</PreviewSuspense>
 		)
 	}
 
-	return <PostPage post={post} morePosts={morePosts} settings={settings ?? {}} />
+	return <PostPage post={post} morePosts={morePosts} settings={settings || {}} />
 }
 
 export const getServerSideProps = async (ctx: serverSideProps) => {
-	const token = ctx.previewData?.token ?? null
+	const token = ctx.previewData?.token || null
 	const locale = ctx.locale
-	const preview = ctx.preview ?? false
+	const preview = ctx.preview || false
 
 	const [settings, { post, morePosts }, locales] = await Promise.all([
 		getSettings(),

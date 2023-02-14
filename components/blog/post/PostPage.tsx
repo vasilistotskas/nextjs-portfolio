@@ -33,9 +33,9 @@ export default function PostPage(props: PostPageProps) {
 
 	return (
 		<>
-			<Layout preview={preview ?? false} loading={loading}>
+			<Layout preview={preview || false} loading={loading}>
 				<Container
-					title={post.title ?? settings.title}
+					title={post.title || settings.title}
 					description={post.excerpt?.replace(/\s+/g, ' ').substring(0, 200 - 3) + '...'}
 					image={ogImage}
 					keywords="Blog, Post, Article, Web Development, Programming, Technology"
