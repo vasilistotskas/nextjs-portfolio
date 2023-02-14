@@ -1,42 +1,92 @@
-import Image from 'next/image'
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
-export default function ContactForm() {
-	const { t } = useTranslation('404')
+export default function ContactUs() {
+	// States for contact form fields
+	const { t } = useTranslation('common')
+	const [fullName, setFullName] = useState('')
+	const [email, setEmail] = useState('')
+	const [subject, setSubject] = useState('')
+	const [message, setMessage] = useState('')
 
-	const handleSubmit = async (event) => {
-		event.preventDefault()
+	//   Form validation state
+	const [errors, setErrors] = useState({})
 
-		const data = {
-			name: event.target.name.value,
-			email: event.target.email.value,
-			message: event.target.message.value
+	//   Setting button text on form submission
+	const [buttonText, setButtonText] = useState(t('contact.form.submit', { ns: 'common' }))
+
+	// Setting success or failure messages states
+	const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+	const [showFailureMessage, setShowFailureMessage] = useState(false)
+
+	// Set Response message
+	const [responseMessage, setResponseMessage] = useState('')
+
+	// Validation check method
+	const handleValidation = () => {
+		const tempErrors = {}
+		let isValid = true
+
+		if (fullName.length <= 0) {
+			tempErrors['fullName'] = true
+			isValid = false
+		}
+		if (email.length <= 0) {
+			tempErrors['email'] = true
+			isValid = false
+		}
+		if (subject.length <= 0) {
+			tempErrors['subject'] = true
+			isValid = false
+		}
+		if (message.length <= 0) {
+			tempErrors['message'] = true
+			isValid = false
 		}
 
-		const JSONData = JSON.stringify(data)
-
-		await fetch('https://public.herotofu.com/v1/07713c70-4d99-11ed-8970-6943e4ac8982', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			mode: 'cors',
-			body: JSONData
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Network response was not ok')
-				}
-				event.target.reset()
-				setSuccessMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
-			})
-			.catch((e) => console.error(e))
+		setErrors({ ...tempErrors })
+		console.log('errors', errors)
+		return isValid
 	}
 
-	const [successMessage, setSuccessMessage] = useState('')
+	//   Handling form submit
+	const handleSubmit = async (e) => {
+		e.preventDefault()
 
+		const isValidForm = handleValidation()
+
+		if (isValidForm) {
+			setButtonText(t('contact.form.sending', { ns: 'common' }))
+			const res = await fetch('/api/sendgrid', {
+				body: JSON.stringify({
+					email: email,
+					fullName: fullName,
+					subject: subject,
+					message: message
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'POST'
+			})
+
+			const { error } = await res.json()
+			if (error) {
+				console.log(error)
+				setShowSuccessMessage(false)
+				setShowFailureMessage(true)
+				setResponseMessage(`${t('contact.form.error', { ns: 'common' })} 😔`)
+				setButtonText('Send')
+				return
+			}
+			setShowSuccessMessage(true)
+			setShowFailureMessage(false)
+			setResponseMessage(`${t('contact.subtitle', { ns: 'common' })} 😊`)
+			setButtonText('Send')
+		}
+		console.log(fullName, email, subject, message)
+	}
 	return (
 		<section>
 			<form
@@ -67,10 +117,13 @@ export default function ContactForm() {
 										{t('contact.form.name', { ns: 'common' })}
 									</label>
 									<input
-										required={true}
 										type="text"
-										id="name"
-										name="name"
+										name="fullName"
+										value={fullName}
+										onChange={(e) => {
+											setFullName(e.target.value)
+										}}
+										required={true}
 										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									/>
 								</div>
@@ -84,12 +137,34 @@ export default function ContactForm() {
 										{t('contact.form.email', { ns: 'common' })}
 									</label>
 									<input
-										required={true}
 										type="email"
-										id="email"
 										name="email"
+										value={email}
+										onChange={(e) => {
+											setEmail(e.target.value)
+										}}
+										required={true}
 										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									/>
+								</div>
+							</div>
+							<div className="w-full p-2 sm:w-8/12">
+								<div className="relative">
+									<label
+										htmlFor="subject"
+										className="w-full text-lg font-medium text-gray-800 dark:text-gray-100"
+									>
+										{t('contact.form.subject', { ns: 'common' })}
+									</label>
+									<input
+										name="subject"
+										value={subject}
+										onChange={(e) => {
+											setSubject(e.target.value)
+										}}
+										required={true}
+										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
+									></input>
 								</div>
 							</div>
 							<div className="w-full p-2 sm:w-8/12">
@@ -101,9 +176,12 @@ export default function ContactForm() {
 										{t('contact.form.message', { ns: 'common' })}
 									</label>
 									<textarea
-										required={true}
-										id="message"
 										name="message"
+										value={message}
+										onChange={(e) => {
+											setMessage(e.target.value)
+										}}
+										required={true}
 										className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-6 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									></textarea>
 								</div>
@@ -114,9 +192,10 @@ export default function ContactForm() {
 									aria-label="Contact Me"
 									type="submit"
 								>
-									Submit
+									{buttonText}
 								</button>
-								{successMessage && <p>{successMessage}</p>}
+								{showSuccessMessage && <p>{responseMessage}</p>}
+								{showFailureMessage && <p>{responseMessage}</p>}
 							</div>
 							<div className="w-full border-t border-gray-200 p-2 pt-4 text-center sm:w-8/12">
 								<a

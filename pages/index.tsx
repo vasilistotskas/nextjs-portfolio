@@ -85,17 +85,17 @@ const Home = ({ title, description, image }) => {
 							<p className="mb-4 text-gray-600 dark:text-gray-400">
 								<Trans
 									i18nKey="index:work.experience"
-									components={[
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />,
-										<strong />
-									]}
+									components={{
+										0: <strong />,
+										1: <strong />,
+										2: <strong />,
+										3: <strong />,
+										4: <strong />,
+										5: <strong />,
+										6: <strong />,
+										7: <strong />,
+										8: <strong />
+									}}
 								/>
 							</p>
 							<JobCard
