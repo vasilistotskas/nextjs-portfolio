@@ -1,15 +1,16 @@
-import sendgrid from '@sendgrid/mail'
+import sendgrid, { ResponseError } from '@sendgrid/mail'
 
 const apiKey = process.env.SENDGRID_API_KEY || ''
 const myEmail = process.env.MY_EMAIL || ''
+const myWebSiteEmail = process.env.MY_WEBSITE_EMAIL || ''
 sendgrid.setApiKey(apiKey)
 
 async function sendEmail(req, res) {
 	try {
 		await sendgrid.send({
 			to: myEmail, // Your email where you'll receive emails
-			from: req.body.email, // your website email address here
-			subject: `[Lead from website] : ${req.body.subject}`,
+			from: myWebSiteEmail, // your website email address here
+			subject: `[Lead from website] : ${req.body.subject} - ${req.body.email}`,
 			html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
       <head>
@@ -50,13 +51,10 @@ async function sendEmail(req, res) {
       </html>`
 		})
 	} catch (error) {
-		if (error instanceof TypeError) {
-			console.error(error.message)
-			return res.status(400).send(error.message)
-		}
-		if (error instanceof Error) {
-			console.error(error.message)
-			return res.status(500).send(error.message)
+		const sendGridError = error as ResponseError
+		if (sendGridError.response) {
+			console.error(sendGridError.response.body)
+			return res.status(500).send(sendGridError.response.body)
 		}
 	}
 
