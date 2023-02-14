@@ -44,7 +44,7 @@ export default function Container(props) {
 				/>
 				<link
 					rel="canonical"
-					href={`www.${process.env.NEXT_PUBLIC_CANONICAL_URL}${router.asPath}`}
+					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}${router.asPath}`}
 				/>
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
