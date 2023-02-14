@@ -111,12 +111,13 @@ export default function ContactUs() {
 							<div className="w-full p-2 sm:w-1/3">
 								<div className="relative">
 									<label
-										htmlFor="name"
+										htmlFor="fullName"
 										className="w-full text-lg font-medium text-gray-800 dark:text-gray-100"
 									>
 										{t('contact.form.name', { ns: 'common' })}
 									</label>
 									<input
+										id="fullName"
 										type="text"
 										name="fullName"
 										value={fullName}
@@ -137,6 +138,7 @@ export default function ContactUs() {
 										{t('contact.form.email', { ns: 'common' })}
 									</label>
 									<input
+										id="email"
 										type="email"
 										name="email"
 										value={email}
@@ -157,6 +159,8 @@ export default function ContactUs() {
 										{t('contact.form.subject', { ns: 'common' })}
 									</label>
 									<input
+										id="subject"
+										type="text"
 										name="subject"
 										value={subject}
 										onChange={(e) => {
@@ -176,6 +180,7 @@ export default function ContactUs() {
 										{t('contact.form.message', { ns: 'common' })}
 									</label>
 									<textarea
+										id="message"
 										name="message"
 										value={message}
 										onChange={(e) => {
