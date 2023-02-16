@@ -19,9 +19,9 @@ const Home = ({ title, description, image }) => {
 			>
 				<Container title={title} description={description} image={image}>
 					<section>
-						<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 pb-10 dark:border-gray-700">
+						<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
 							<div className="grid grid-cols-1 items-start gap-4 md:grid-cols-1fr-auto md:gap-1">
-								<div className="flex flex-col">
+								<div className="flex flex-col gap-2">
 									<h1 className="mb-1 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 										{t('myName', { ns: 'common' })}
 									</h1>
@@ -31,7 +31,7 @@ const Home = ({ title, description, image }) => {
 											{t('myWorkCompany', { ns: 'common' })}
 										</span>
 									</h2>
-									<p className="mb-1 flex items-center gap-2 text-gray-600 dark:text-gray-400">
+									<div className="mb-1 grid grid-cols-auto-1fr items-center gap-2 text-gray-600 dark:text-gray-400">
 										<Image
 											alt={`Experience`}
 											src={`https://img.icons8.com/clouds/46/000000/module.png`}
@@ -39,9 +39,12 @@ const Home = ({ title, description, image }) => {
 											height={92 / 2}
 											priority
 										/>
-										<span>{t('description', { ns: 'index' })}</span>
-									</p>
-									<p className="mb-1 flex items-center gap-2 text-gray-600 dark:text-gray-400">
+										<p className="font-bold">{t('experience.text', { ns: 'index' })}</p>
+										<p className="col-full-column row-second-row text-sm">
+											{t('experience.description', { ns: 'index' })}
+										</p>
+									</div>
+									<div className="mb-1 grid grid-cols-auto-1fr items-center gap-2 text-gray-600 dark:text-gray-400">
 										<Image
 											alt={`Programming Skills`}
 											src={`https://img.icons8.com/clouds/46/000000/console.png`}
@@ -49,9 +52,12 @@ const Home = ({ title, description, image }) => {
 											height={92 / 2}
 											priority
 										/>
-										<span>{t('programming.experience', { ns: 'index' })}</span>
-									</p>
-									<p className="mb-1 flex items-center gap-2 text-gray-600 dark:text-gray-400">
+										<p className="font-bold">{t('programming.text', { ns: 'index' })}</p>
+										<p className="col-full-column row-second-row text-sm">
+											{t('programming.description', { ns: 'index' })}
+										</p>
+									</div>
+									<div className="mb-1 grid grid-cols-auto-1fr items-center gap-2 text-gray-600 dark:text-gray-400">
 										<Image
 											alt={`Project Management, Testing`}
 											src={'https://img.icons8.com/clouds/46/000000/test-passed.png'}
@@ -59,14 +65,15 @@ const Home = ({ title, description, image }) => {
 											height={46}
 											priority
 										/>
-										<span>
-											{t('projectManagement.experience', {
-												ns: 'index'
-											})}
-										</span>
-									</p>
+										<p className="font-bold">
+											{t('projectManagement.text', { ns: 'index' })}
+										</p>
+										<p className="col-full-column row-second-row text-sm">
+											{t('projectManagement.description', { ns: 'index' })}
+										</p>
+									</div>
 								</div>
-								<div className="relative mr-auto grid w-full items-center justify-items-center">
+								<div className="relative row-start-1 mr-auto grid w-full items-center justify-items-center md:row-auto">
 									<Image
 										alt={'Vasilis Totskas'}
 										height={100}
@@ -82,7 +89,7 @@ const Home = ({ title, description, image }) => {
 							<h3 className="mb-4 mt-16 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 								{t('work.title', { ns: 'index' })}
 							</h3>
-							<p className="mb-4 text-gray-600 dark:text-gray-400">
+							<div className="mb-4 text-gray-600 dark:text-gray-400">
 								<Trans
 									i18nKey="index:work.experience"
 									components={{
@@ -97,7 +104,7 @@ const Home = ({ title, description, image }) => {
 										8: <strong />
 									}}
 								/>
-							</p>
+							</div>
 							<JobCard
 								index="Present"
 								period="Jan 2022"

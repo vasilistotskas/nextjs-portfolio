@@ -103,6 +103,12 @@ module.exports = {
 				'1fr-auto': '1fr auto',
 				'auto-auto': 'auto auto',
 				'repeat-auto-fill-mimax-80-auto': 'repeat(auto-fill, minmax(87px, auto));'
+			},
+			gridRow: {
+				'second-row': '2'
+			},
+			gridColumn: {
+				'full-column': '1 / span 2'
 			}
 		}
 	},

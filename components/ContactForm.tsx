@@ -95,7 +95,7 @@ export default function ContactUs() {
 			>
 				<div className="mx-auto my-4 mb-16 flex w-full max-w-2xl flex-col items-start justify-center rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
 					<div className="mb-2 flex w-full flex-col text-center">
-						<h2 className="mb-2 flex items-center justify-center gap-2 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
+						<h2 className="mb-2 mt-2 flex items-center justify-center gap-2 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
 							<Image
 								alt={`Contact Me`}
 								src={`https://img.icons8.com/doodle/48/000000/newsletter.png`}
