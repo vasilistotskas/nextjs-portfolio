@@ -1,9 +1,10 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
 import PostPage from '@components/blog/post/PostPage'
-import { getPostAndMoreStories, getSettings } from '@lib/sanity/sanity.client'
+import { getAllPostsSlugs, getPostAndMoreStories, getSettings } from '@lib/sanity/sanity.client'
 import { Post, Settings } from '@lib/sanity/sanity.queries'
 import { lazy } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 const PreviewPostPage = lazy(() => import('components/blog/post/PreviewPostPage'))
 
@@ -29,8 +30,9 @@ interface serverSideProps {
 
 export default function ProjectSlugRoute(props: PageProps) {
 	const { settings, post, morePosts, preview, token } = props
+	const { ready } = useTranslation(['common', 'blog_post'])
 
-	if (preview) {
+	if (preview && ready) {
 		return (
 			<PreviewSuspense
 				fallback={
@@ -56,7 +58,27 @@ export default function ProjectSlugRoute(props: PageProps) {
 	return <PostPage post={post} morePosts={morePosts} settings={settings || {}} />
 }
 
-export const getServerSideProps = async (ctx: serverSideProps) => {
+export async function getStaticPaths(ctx) {
+	const locales = ctx.locales
+	const postSlugs = await getAllPostsSlugs();
+	const paths = postSlugs.map((post) => ({ params: { slug: post.slug } }))
+	const pathsWithLocales = paths.map((path) => {
+		return locales.map((locale) => {
+			return {
+				params: path.params,
+				locale
+			}
+		})
+	})
+	const flattenedPaths = pathsWithLocales.flat()
+
+	return {
+		paths: flattenedPaths,
+		fallback: true
+	}
+}
+
+export const getStaticProps = async (ctx) => {
 	const token = ctx.previewData?.token || null
 	const locale = ctx.locale
 	const preview = ctx.preview || false
