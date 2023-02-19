@@ -6,11 +6,11 @@
 	},
 	"programming": {
 		"text": "Programming Expertise.",
-		"description": "Extensive knowledge of multiple programming languages, including (insert specific languages you are proficient in), and am capable of building robust, scalable web applications using the latest development frameworks and tools. With a keen eye for detail and a passion for writing clean, efficient code, I am committed to delivering high-quality software solutions that exceed client expectations."
+		"description": "Extensive knowledge of multiple programming languages, including Python, Php, Typescript, Javascript, Html, CSS, and am capable of building robust, scalable web applications using the latest development frameworks and tools. With a keen eye for detail and a passion for writing clean, efficient code, I am committed to delivering high-quality software solutions that exceed client expectations."
 	},
 	"projectManagement": {
 		"text": "Project Management and Testing Skills.",
-		"description": "In addition to my programming expertise, I am skilled in project management, user interface design, and testing. From creating detailed project plans and timelines to working with cross-functional teams to ensure timely delivery of projects, I have a track record of successfully managing complex software development projects. I also have experience in writing and executing comprehensive test plans, ensuring the quality and reliability of the software before it is released to the public."
+		"description": "In addition to my programming expertise, I am skilled in project management, user interface design, and testing. From creating detailed project plans and timelines to working with cross-functional teams to ensure timely delivery of projects."
 	},
 	"work": {
 		"title": "Work Experience",
