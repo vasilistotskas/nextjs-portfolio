@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import Image from 'next/image'
 import Container from '@components/Container'
+import ReadMore from '@components/utils/ReadMore'
 import JobCard from '@components/utils/JobCard'
 import { Trans, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -40,9 +41,9 @@ const Home = ({ title, description, image }) => {
 											priority
 										/>
 										<p className="font-bold">{t('experience.text', { ns: 'index' })}</p>
-										<p className="col-full-column row-second-row text-sm">
-											{t('experience.description', { ns: 'index' })}
-										</p>
+										<ReadMore
+											text={t('experience.description', { ns: 'index' })}
+										></ReadMore>
 									</div>
 									<div className="mb-1 grid grid-cols-auto-1fr items-center gap-2 text-gray-600 dark:text-gray-400">
 										<Image
@@ -53,9 +54,9 @@ const Home = ({ title, description, image }) => {
 											priority
 										/>
 										<p className="font-bold">{t('programming.text', { ns: 'index' })}</p>
-										<p className="col-full-column row-second-row text-sm">
-											{t('programming.description', { ns: 'index' })}
-										</p>
+										<ReadMore
+											text={t('programming.description', { ns: 'index' })}
+										></ReadMore>
 									</div>
 									<div className="mb-1 grid grid-cols-auto-1fr items-center gap-2 text-gray-600 dark:text-gray-400">
 										<Image
@@ -68,9 +69,9 @@ const Home = ({ title, description, image }) => {
 										<p className="font-bold">
 											{t('projectManagement.text', { ns: 'index' })}
 										</p>
-										<p className="col-full-column row-second-row text-sm">
-											{t('projectManagement.description', { ns: 'index' })}
-										</p>
+										<ReadMore
+											text={t('projectManagement.description', { ns: 'index' })}
+										></ReadMore>
 									</div>
 								</div>
 								<div className="relative row-start-1 mr-auto grid w-full items-center justify-items-center md:row-auto">
