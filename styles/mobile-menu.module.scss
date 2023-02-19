@@ -5,6 +5,9 @@
 	width: 40px;
 	height: 40px;
 	position: relative;
+	@media screen and (max-width: 640px) {
+		display: grid;
+	}
 }
 
 .burger svg {
