@@ -107,11 +107,11 @@ module.exports = {
 			},
 			gridRow: {
 				'second-row': '2',
-        'one-third-row': '1 / 3'
+				'one-third-row': '1 / 3'
 			},
 			gridColumn: {
 				'full-column': '1 / span 2',
-        'two-third-column': '2 / 3'
+				'two-third-column': '2 / 3'
 			}
 		}
 	},

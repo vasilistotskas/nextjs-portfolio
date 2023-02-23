@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { cloneDeep } from 'lodash'
@@ -58,6 +58,29 @@ const LanguageSwitcher: React.FC<{
 	const [isOpen, setIsOpen] = useState(false)
 	const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
+	useEffect(() => {
+		// Add event listener to document to close toggle when clicking outside
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement
+			const languageSwitcher = document.getElementById('language-switcher')
+			const languageSwitcherMenu = document.getElementById('language-switcher-menu')
+			if (
+				!languageSwitcher?.contains(target) &&
+				!languageSwitcherMenu?.contains(target)
+			) {
+				setIsOpen(false)
+			}
+		}
+
+		if (isOpen) {
+			document.addEventListener('mousedown', handleClickOutside)
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [isOpen])
+
 	return (
 		<div className="relative grid items-center justify-center">
 			<button
@@ -86,6 +109,7 @@ const LanguageSwitcher: React.FC<{
 			</button>
 			{isOpen && (
 				<ul
+					id="language-switcher-menu"
 					className="focus-none shadow-l absolute top-11 left-0 z-40 mt-1 table max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm md:grid"
 					role="listbox"
 					aria-orientation="vertical"
