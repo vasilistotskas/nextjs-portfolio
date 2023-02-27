@@ -12,7 +12,7 @@ export default function Document() {
 					strategy="afterInteractive"
 				/>
 				<Script
-					id="googleTagManager"
+					id="googleTagManagerGtag"
 					src={`https://www.googletagmanager.com/gtag/js?id='${GOOGLE_TAG_ID}'`}
 					strategy="afterInteractive"
 				></Script>

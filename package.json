@@ -3,6 +3,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "next build",
+		"clean": "rm -rf .next build .vercel",
 		"dev": "next",
 		"dev:turbo": "next dev --turbo",
 		"format": "prettier --check --ignore-path .gitignore .",
