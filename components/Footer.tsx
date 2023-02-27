@@ -6,6 +6,7 @@ import SectionSeparator from '@components/utils/SectionSeparator'
 
 const ExternalLink = ({ href, children }) => (
 	<a
+		title={children}
 		className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400"
 		target="_blank"
 		rel="noopener noreferrer"
@@ -24,12 +25,12 @@ export default function Footer() {
 			<NowPlaying />
 			<div className="grid w-full max-w-2xl grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
 				<div className="flex flex-col space-y-4">
-					<Link href="/">
+					<Link href="/" title={t('pages.home', { ns: 'common' }) || ''}>
 						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.home', { ns: 'common' })}
 						</p>
 					</Link>
-					<Link href="/about">
+					<Link href="/about" title={t('pages.about', { ns: 'common' }) || ''}>
 						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.about', { ns: 'common' })}
 						</p>
@@ -47,12 +48,12 @@ export default function Footer() {
 					</ExternalLink>
 				</div>
 				<div className="flex flex-col space-y-4">
-					<Link href="/uses">
+					<Link href="/uses" title={t('pages.uses', { ns: 'common' }) || ''}>
 						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.uses', { ns: 'common' })}
 						</p>
 					</Link>
-					<Link href="/guestbook">
+					<Link href="/guestbook" title={t('pages.guestbook', { ns: 'common' }) || ''}>
 						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
 							{t('pages.guestbook', { ns: 'common' })}
 						</p>

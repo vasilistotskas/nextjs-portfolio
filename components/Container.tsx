@@ -2,34 +2,13 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import NextLink from 'next/link'
-import cn from 'classnames'
 
 import Footer from '@components/Footer'
 import MobileMenu from '@components/MobileMenu'
 import ContactForm from '@components/ContactForm'
 import LanguageSwitcher from '@components/LanguageSwitcher'
 import Image from 'next/image'
-
-function NavItem({ href, text, ariaLabel }) {
-	const router = useRouter()
-	const isActive = router.asPath === href
-
-	return (
-		<NextLink href={href} aria-label={ariaLabel}>
-			<p
-				className={cn(
-					isActive
-						? 'font-semibold text-gray-800 dark:text-gray-200'
-						: 'font-normal text-gray-600 dark:text-gray-400',
-					'hidden rounded-lg p-1 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:px-3 sm:py-2 md:inline-block'
-				)}
-			>
-				<span className="capsize">{text}</span>
-			</p>
-		</NextLink>
-	)
-}
+import NavItem from '@components/utils/NavItem'
 
 export default function Container(props) {
 	const [mounted, setMounted] = useState(false)
@@ -40,11 +19,14 @@ export default function Container(props) {
 
 	const { children, ...customMeta } = props
 	const router = useRouter()
+
 	const meta = {
 		title: process.env.NEXT_SETTINGS_TITLE,
 		description: process.env.NEXT_SETTINGS_DESCRIPTION,
 		image: process.env.NEXT_SETTINGS_IMG_URL,
 		type: 'website',
+		keywords:
+			'Vasilis, Totskas, developer, vasilistotskas, experience, web, programming, technology, coding, technologies, frameworks',
 		...customMeta
 	}
 
@@ -54,13 +36,15 @@ export default function Container(props) {
 				<title>{meta.title}</title>
 				<meta name="robots" content="follow, index" />
 				<meta content={meta.description} name="description" />
+				{meta.keywords && <meta content={meta.keywords} name="keywords" />}
+				{meta.author && <meta content={meta.author} name="author" />}
 				<meta
 					property="og:url"
 					content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
 				/>
 				<link
 					rel="canonical"
-					href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
+					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}${router.asPath}`}
 				/>
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
@@ -79,11 +63,12 @@ export default function Container(props) {
 				/>
 				{meta.date && <meta property="article:published_time" content={meta.date} />}
 			</Head>
-			<div className="grid grid-cols-1 items-center justify-center px-8 pt-8 pb-8 sm:pb-16 md:grid-cols-auto-1fr">
+			<div className="grid grid-cols-1 items-center justify-center px-8 pt-4 pb-8 md:grid-cols-auto-1fr">
 				<a
 					className="hidden transition-all hover:scale-110 hover:transform md:grid"
 					href={process.env.NEXT_PUBLIC_GITHUB_URL}
 					target="_blank"
+					title="Github"
 					rel="noopener noreferrer"
 				>
 					<Image
@@ -95,7 +80,13 @@ export default function Container(props) {
 					/>
 				</a>
 				<nav className="relative mx-auto grid w-full max-w-3xl grid-cols-2fr-1fr items-center border-gray-200 bg-gray-50 bg-opacity-60 text-center text-gray-900  dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100">
-					<a href="#skip" className="skip-nav" target="_blank" rel="noopener noreferrer">
+					<a
+						href="#skip"
+						className="skip-nav"
+						target="_blank"
+						title="Skip"
+						rel="noopener noreferrer"
+					>
 						Skip to content
 					</a>
 					<div className="ml-[-0.60rem] md:grid md:grid-cols-repeat-auto-fill-mimax-80-auto">
@@ -106,7 +97,7 @@ export default function Container(props) {
 						<NavItem href="/dashboard" text="Dashboard" ariaLabel="Dashboard" />
 						<NavItem href="/about" text="About" ariaLabel="About" />
 					</div>
-					<div className="grid grid-cols-auto-auto">
+					<div className="grid grid-cols-auto-auto items-center">
 						<LanguageSwitcher></LanguageSwitcher>
 						<button
 							aria-label="Toggle Dark Mode"

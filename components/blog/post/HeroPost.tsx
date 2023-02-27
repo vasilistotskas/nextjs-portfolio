@@ -13,11 +13,11 @@ export default function HeroPost(
 	const excerptTrimmed = excerpt?.substring(0, 200 - 3) + '...'
 
 	return (
-		<section className="my-4 w-full rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
-			<div className="mb-4 md:mb-8">
-				<CoverImage slug={slug} title={title ?? ''} image={coverImage} priority />
+		<section className="w-full rounded border border-blue-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-900">
+			<div className="mb-3 md:mb-6">
+				<CoverImage slug={slug} title={title || ''} image={coverImage} priority />
 			</div>
-			<div className="gap-6 md:grid md:gap-x-16 lg:gap-x-8">
+			<div className="gap-4 md:grid md:gap-x-12 lg:gap-x-6">
 				<div className="grid">
 					<h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
 						<Link
@@ -28,10 +28,10 @@ export default function HeroPost(
 						</Link>
 					</h3>
 					<div className="text-sm text-gray-900 hover:text-gray-600 dark:text-gray-100">
-						<Date dateString={date ?? ''} />
+						<Date dateString={date || ''} />
 					</div>
 				</div>
-				<div className="post_body mx-auto grid max-w-2xl gap-4 text-gray-600 dark:text-gray-400 md:gap-8">
+				<div className="post_body mx-auto grid max-w-2xl gap-2 text-gray-600 dark:text-gray-400 md:gap-4">
 					{excerptTrimmed && <p>{excerptTrimmed}</p>}
 					{author && <AuthorAvatar name={author.name} picture={author.picture} />}
 				</div>

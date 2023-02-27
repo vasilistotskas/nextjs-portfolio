@@ -14,7 +14,11 @@ export default function NotFound() {
 					{t('title')}
 				</h1>
 				<p className="mb-8 text-gray-600 dark:text-gray-400">{t('description')}</p>
-				<Link className="grid w-full items-center justify-center" href="/">
+				<Link
+					className="grid w-full items-center justify-center"
+					href="/"
+					title={t('returnHome') || ''}
+				>
 					<p className="mx-auto w-64 rounded-md bg-gray-200 p-1 text-center font-bold text-black dark:bg-gray-800 dark:text-white sm:p-4">
 						{t('returnHome')}
 					</p>

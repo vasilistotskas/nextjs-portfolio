@@ -15,7 +15,7 @@ export default function BlogHeader({
 			return (
 				<header className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 					<h1 className="mb-4">{title}</h1>
-					<h2 className="mb-4 text-xl font-bold text-gray-600 dark:text-gray-400">
+					<h2 className="text-xl font-bold text-gray-600 dark:text-gray-400">
 						<PortableText value={description} />
 					</h2>
 				</header>
@@ -24,8 +24,8 @@ export default function BlogHeader({
 		case 2:
 			return (
 				<header className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-					<h2 className="mb-4 text-xl font-bold text-gray-600 dark:text-gray-400">
-						<Link href="/" className="hover:underline">
+					<h2 className="text-xl font-bold text-gray-600 dark:text-gray-400">
+						<Link href="/" className="hover:underline" title={title}>
 							{title}
 						</Link>
 					</h2>

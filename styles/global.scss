@@ -231,6 +231,11 @@ table {
 		padding-left: 1.5rem;
 		list-style: decimal;
 	}
+	ul {
+		margin: 0.5rem 0;
+		padding-left: 1.5rem;
+		list-style: disc;
+	}
 	li {
 		@apply text-gray-900 dark:text-gray-100;
 		margin: 0.5rem 0;
@@ -238,5 +243,72 @@ table {
 	strong {
 		@apply text-gray-900 dark:text-gray-100;
 		font-weight: 600;
+	}
+}
+
+.embla {
+	position: relative;
+	overflow: hidden;
+}
+.embla__container {
+	display: flex;
+}
+.embla__slide {
+	flex: 0 0 50%;
+	min-width: 0;
+	padding: 0 1rem;
+
+	@media screen and (max-width: 920px) {
+		flex: 0 0 100%;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}
+
+.embla__button {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	justify-content: center;
+	background-color: hsla(0, 0%, 100%, 0.8);
+	cursor: pointer;
+	background-size: 8px;
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	aspect-ratio: 1/1;
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	transform: translateY(-50%);
+	text-indent: -9999px;
+	overflow: hidden;
+	padding: 0;
+	border: 1px solid #ccc;
+	transition: all 0.3s ease-in-out;
+	&.prev {
+		left: -50px;
+		right: auto;
+		background-position-x: 20px;
+		@media screen and (max-width: 920px) {
+			left: 0;
+		}
+	}
+	&.next {
+		right: -50px;
+		left: auto;
+		background-position-x: 30px;
+		@media screen and (max-width: 920px) {
+			right: 0;
+		}
+	}
+	img {
+		display: block;
+		width: 24px;
+		height: 24px;
 	}
 }

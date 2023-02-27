@@ -6,6 +6,7 @@ export default function Track(track) {
 			</p>
 			<div className="flex flex-col pl-3">
 				<a
+					title={track.title}
 					className="w-60 truncate font-medium text-gray-900 dark:text-gray-100 sm:w-96 md:w-full"
 					href={track.songUrl}
 					target="_blank"

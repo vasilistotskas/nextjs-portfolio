@@ -29,10 +29,10 @@ export async function getSecret(
 				.patch(patch)
 				.commit({ tag })
 			return newSecret
-		} catch (err) {
+		} catch (error) {
 			console.error(
 				'Failed to create a new preview secret. Ensure the `client` has a `token` specified that has `write` permissions.',
-				err
+				error
 			)
 		}
 	}

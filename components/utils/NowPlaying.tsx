@@ -103,6 +103,7 @@ export default function NowPlaying() {
 				<div className="inline-flex w-full max-w-full flex-col truncate sm:flex-row">
 					{data?.songUrl ? (
 						<a
+							title={data.title}
 							className="capsize max-w-max truncate font-medium  text-gray-800 dark:text-gray-200"
 							href={data.songUrl}
 							target="_blank"
@@ -119,7 +120,7 @@ export default function NowPlaying() {
 						{' – '}
 					</span>
 					<p className="capsize max-w-max truncate text-gray-500 dark:text-gray-300">
-						{data?.artist ?? 'Spotify'}
+						{data?.artist || 'Spotify'}
 					</p>
 				</div>
 			</div>

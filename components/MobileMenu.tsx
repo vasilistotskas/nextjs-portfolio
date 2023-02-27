@@ -55,7 +55,7 @@ export default function MobileMenu() {
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '150ms' }}
 					>
-						<Link href="/">
+						<Link href="/" title={t('pages.home', { ns: 'common' }) || ''}>
 							<p className="flex w-auto pb-4">{t('pages.home', { ns: 'common' })}</p>
 						</Link>
 					</li>
@@ -63,7 +63,7 @@ export default function MobileMenu() {
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '150ms' }}
 					>
-						<Link href="/blog">
+						<Link href="/blog" title={t('pages.blog', { ns: 'common' }) || ''}>
 							<p className="flex w-auto pb-4">{t('pages.blog', { ns: 'common' })}</p>
 						</Link>
 					</li>
@@ -71,7 +71,7 @@ export default function MobileMenu() {
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '175ms' }}
 					>
-						<Link href="/guestbook">
+						<Link href="/guestbook" title={t('pages.guestbook', { ns: 'common' }) || ''}>
 							<p className="flex w-auto pb-4">{t('pages.guestbook', { ns: 'common' })}</p>
 						</Link>
 					</li>
@@ -79,7 +79,7 @@ export default function MobileMenu() {
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '200ms' }}
 					>
-						<Link href="/dashboard">
+						<Link href="/dashboard" title={t('pages.dashboard', { ns: 'common' }) || ''}>
 							<p className="flex w-auto pb-4">{t('pages.dashboard', { ns: 'common' })}</p>
 						</Link>
 					</li>
@@ -87,7 +87,7 @@ export default function MobileMenu() {
 						className="border-b border-gray-300 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100"
 						style={{ transitionDelay: '350ms' }}
 					>
-						<Link href="/about">
+						<Link href="/about" title={t('pages.about', { ns: 'common' }) || ''}>
 							<p className="flex w-auto pb-4">{t('pages.about', { ns: 'common' })}</p>
 						</Link>
 					</li>

@@ -52,14 +52,14 @@ export default async function revalidate(req: NextApiRequest, res: NextApiRespon
 		const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`
 		console.log(updatedRoutes)
 		return res.status(200).send(updatedRoutes)
-	} catch (err) {
-		if (err instanceof TypeError) {
-			console.error(err.message)
-			return res.status(400).send(err.message)
+	} catch (error) {
+		if (error instanceof TypeError) {
+			console.error(error.message)
+			return res.status(400).send(error.message)
 		}
-		if (err instanceof Error) {
-			console.error(err.message)
-			return res.status(500).send(err.message)
+		if (error instanceof Error) {
+			console.error(error.message)
+			return res.status(500).send(error.message)
 		}
 	}
 }

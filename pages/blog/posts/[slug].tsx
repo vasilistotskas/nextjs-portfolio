@@ -16,8 +16,19 @@ interface PageProps {
 	locale: string
 }
 
+interface serverSideProps {
+	preview: boolean
+	previewData: {
+		token?: string
+	}
+	params: {
+		slug: string
+	}
+	locale: string
+}
+
 export default function ProjectSlugRoute(props: PageProps) {
-	const { settings, post, morePosts, preview, token, locale } = props
+	const { settings, post, morePosts, preview, token } = props
 
 	if (preview) {
 		return (
@@ -28,7 +39,7 @@ export default function ProjectSlugRoute(props: PageProps) {
 						preview
 						post={post}
 						morePosts={morePosts}
-						settings={settings ?? {}}
+						settings={settings || {}}
 					/>
 				}
 			>
@@ -36,24 +47,23 @@ export default function ProjectSlugRoute(props: PageProps) {
 					token={token}
 					post={post}
 					morePosts={morePosts}
-					settings={settings ?? {}}
+					settings={settings || {}}
 				/>
 			</PreviewSuspense>
 		)
 	}
 
-	return <PostPage post={post} morePosts={morePosts} settings={settings ?? {}} />
+	return <PostPage post={post} morePosts={morePosts} settings={settings || {}} />
 }
 
-export const getServerSideProps = async (ctx) => {
-	const { preview = false, previewData = {}, params = {} } = ctx
-
-	const token = previewData.token
+export const getServerSideProps = async (ctx: serverSideProps) => {
+	const token = ctx.previewData?.token || null
 	const locale = ctx.locale
+	const preview = ctx.preview || false
 
 	const [settings, { post, morePosts }, locales] = await Promise.all([
 		getSettings(),
-		getPostAndMoreStories(params.slug, token),
+		getPostAndMoreStories(ctx.params.slug, token),
 		serverSideTranslations(locale, ['common', 'blog_post'])
 	])
 
@@ -69,7 +79,7 @@ export const getServerSideProps = async (ctx) => {
 			morePosts,
 			settings,
 			preview,
-			token: previewData.token ?? null,
+			token,
 			locale,
 			...locales
 		}

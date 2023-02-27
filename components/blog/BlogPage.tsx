@@ -21,8 +21,8 @@ export default function BlogPage(props: BlogPageProps) {
 	const { preview, loading, posts, settings, blogMetaImage } = props
 	const [heroPost, ...morePosts] = posts || []
 
-	const title = settings.title ?? 'Blog'
-	const description = settings.description ?? demoDescription
+	const title = settings.title || 'Blog'
+	const description = settings.description || demoDescription
 	const descriptionPortableTextToPlain = portableTextToPlain(description)
 
 	const { t } = useTranslation(['blog'])
@@ -31,14 +31,15 @@ export default function BlogPage(props: BlogPageProps) {
 
 	return (
 		<>
-			<Layout preview={preview ?? false} loading={loading}>
+			<Layout preview={preview || false} loading={loading}>
 				<Container
 					title={title}
 					description={descriptionPortableTextToPlain}
 					image={blogMetaImage}
+					keywords="Blog, Post, Article, Web Development, Programming, Technology"
 				>
-					<div className="mx-auto flex max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700">
-						<BlogHeader title={title ?? ''} description={description} level={1} />
+					<div className="mx-auto contents max-w-2xl flex-col items-start justify-center border-gray-200 dark:border-gray-700 md:flex">
+						<BlogHeader title={title || ''} description={description} level={1} />
 						{postsEmpty && heroPostEmpty && (
 							<NoResults text={t('posts.notFound', { ns: 'blog' })}></NoResults>
 						)}

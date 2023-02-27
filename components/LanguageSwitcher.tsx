@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { cloneDeep } from 'lodash'
@@ -11,7 +11,7 @@ const LanguageSwitcher: React.FC<{
 	const router = useRouter()
 
 	const locales = useMemo(
-		() => router.locales ?? [currentLanguage],
+		() => router.locales || [currentLanguage],
 		[router.locales, currentLanguage]
 	)
 
@@ -31,7 +31,7 @@ const LanguageSwitcher: React.FC<{
 
 	const [] = useState({
 		value: i18n.language,
-		label: capitalize(languageNames.of(currentLanguage) ?? currentLanguage)
+		label: capitalize(languageNames.of(currentLanguage) || currentLanguage)
 	})
 
 	const switchToLocale = useCallback(
@@ -58,8 +58,31 @@ const LanguageSwitcher: React.FC<{
 	const [isOpen, setIsOpen] = useState(false)
 	const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
+	useEffect(() => {
+		// Add event listener to document to close toggle when clicking outside
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement
+			const languageSwitcher = document.getElementById('language-switcher')
+			const languageSwitcherMenu = document.getElementById('language-switcher-menu')
+			if (
+				!languageSwitcher?.contains(target) &&
+				!languageSwitcherMenu?.contains(target)
+			) {
+				setIsOpen(false)
+			}
+		}
+
+		if (isOpen) {
+			document.addEventListener('mousedown', handleClickOutside)
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [isOpen])
+
 	return (
-		<div className="relative">
+		<div className="relative grid items-center justify-center">
 			<button
 				className="relative flex cursor-pointer items-center justify-center rounded-lg border p-2 text-left font-normal text-gray-700 hover:bg-gray-200 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-800 sm:text-sm"
 				id="language-switcher"
@@ -86,12 +109,13 @@ const LanguageSwitcher: React.FC<{
 			</button>
 			{isOpen && (
 				<ul
-					className="focus-none shadow-l absolute left-0 mt-1 max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm"
+					id="language-switcher-menu"
+					className="focus-none shadow-l absolute top-11 left-0 z-40 mt-1 table max-h-60 w-full -translate-y-0 transform overflow-auto rounded-lg border bg-white text-base opacity-100 focus:outline-none focus-visible:outline-none sm:text-sm md:grid"
 					role="listbox"
 					aria-orientation="vertical"
 				>
 					{sortedLocales.map((locale) => {
-						const label = capitalize(languageNames.of(locale) ?? locale)
+						const label = capitalize(languageNames.of(locale) || locale)
 						const option = {
 							value: locale,
 							label
@@ -99,8 +123,8 @@ const LanguageSwitcher: React.FC<{
 						return (
 							<li
 								className={`${
-									i18n.language === option.value ? 'bg-green-200' : ''
-								} focus-none false relative cursor-pointer bg-white py-2 px-4 text-gray-800 outline-none`}
+									i18n.language === option.value ? 'bg-green-200' : 'bg-white'
+								} focus-none false relative cursor-pointer rounded-lg py-2 px-4 text-gray-800 outline-none`}
 								key={locale}
 								value={option.value}
 								role="option"

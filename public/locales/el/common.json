@@ -36,6 +36,8 @@
 			"email": "Email",
 			"message": "Μήνυμα",
 			"submit": "Αποστολή",
+			"sending": "Αποστολή...",
+			"subject": "Θέμα",
 			"success": "Thanks for reaching me out! Check your inbox for updates.",
 			"error": "Υπήρξε κάποιο πρόβλημα κατά την αποστολή του μηνύματός σας. Παρακαλώ δοκιμάστε ξανά."
 		}

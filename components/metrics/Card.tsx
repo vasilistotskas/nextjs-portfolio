@@ -4,6 +4,7 @@ export default function MetricCard({ header, link, metric, isCurrency, image }) 
 	return (
 		<div className="metric-card max-w-72 w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
 			<a
+				title={header}
 				className="flex items-center gap-2"
 				aria-label={header}
 				target="_blank"

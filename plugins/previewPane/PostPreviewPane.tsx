@@ -76,7 +76,7 @@ const Iframe = memo(function Iframe(
 		{ lifespan: 60000 }
 	)
 
-	const url = new URL('/api/preview', location.origin)
+	const url = new URL('/api/sanity/preview', location.origin)
 	url.searchParams.set('slug', slug)
 	if (secret) {
 		url.searchParams.set('secret', secret)

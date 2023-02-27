@@ -1,13 +1,14 @@
 import PostPreview from '@components/blog/post/PostPreview'
 import type { Post } from '@lib/sanity/sanity.queries'
+import { EmblaCarousel } from '@components/utils/EmblaCarousel'
 
 export default function MoreStories({ posts }: { posts: Post[] }) {
 	return (
-		<section>
-			<h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
+		<section className="relative my-4 w-full md:my-8">
+			<h2 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
 				More Stories
 			</h2>
-			<div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+			<EmblaCarousel>
 				{posts.map((post) => (
 					<PostPreview
 						key={post._id}
@@ -19,7 +20,7 @@ export default function MoreStories({ posts }: { posts: Post[] }) {
 						excerpt={post.excerpt}
 					/>
 				))}
-			</div>
+			</EmblaCarousel>
 		</section>
 	)
 }
