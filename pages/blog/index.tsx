@@ -13,7 +13,7 @@ interface PageProps {
 	settings: Settings
 	preview: boolean
 	token: string | null
-	blogMetaImage: string
+	blogMetaImage: string | null
 }
 
 export default function Page(props: PageProps) {
@@ -50,7 +50,7 @@ export const getStaticProps = async (ctx) => {
 		serverSideTranslations(locale, ['common', 'blog'])
 	])
 
-	const blogMetaImage = process.env.NEXT_SETTINGS_IMG_URL
+	const blogMetaImage = process.env.NEXT_SETTINGS_IMG_URL || null
 
 	return {
 		props: {

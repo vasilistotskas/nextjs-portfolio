@@ -133,7 +133,7 @@ export const getStaticProps = async ({ locale }) => ({
 	props: {
 		title: process.env.NEXT_SETTINGS_TITLE,
 		description: process.env.NEXT_SETTINGS_DESCRIPTION,
-		image: process.env.NEXT_SETTINGS_IMG_URL,
+		image: process.env.NEXT_SETTINGS_IMG_URL || null,
 		...(await serverSideTranslations(locale, ['common', 'index']))
 	}
 })
