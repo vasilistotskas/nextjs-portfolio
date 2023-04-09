@@ -10,7 +10,7 @@ export default function JobCard({ period, title, index }) {
 						{title}
 					</h4>
 					<div className="grid justify-items-start md:justify-items-end">
-						<p className="mr-0 ml-0 text-xs text-gray-500 dark:text-gray-400 md:mb-0">
+						<p className="ml-0 mr-0 text-xs text-gray-500 dark:text-gray-400 md:mb-0">
 							{period}
 						</p>
 					</div>

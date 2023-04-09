@@ -7,7 +7,7 @@ import { GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
 import { Analytics } from '@vercel/analytics/react'
 import { Inter } from '@next/font/google'
 
-const interVariable = Inter()
+const interVariable = Inter({ subsets: ['latin', 'greek'] })
 
 const App = ({ Component, pageProps }) => (
 	<SessionProvider session={pageProps.session}>

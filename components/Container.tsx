@@ -63,7 +63,7 @@ export default function Container(props) {
 				/>
 				{meta.date && <meta property="article:published_time" content={meta.date} />}
 			</Head>
-			<div className="grid grid-cols-1 items-center justify-center px-8 pt-4 pb-8 md:grid-cols-auto-1fr">
+			<div className="grid grid-cols-1 items-center justify-center px-8 pb-8 pt-4 md:grid-cols-auto-1fr">
 				<a
 					className="hidden transition-all hover:scale-110 hover:transform md:grid"
 					href={process.env.NEXT_PUBLIC_GITHUB_URL}
