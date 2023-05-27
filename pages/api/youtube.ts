@@ -4,7 +4,7 @@ import { google } from 'googleapis'
 import googleAuth from '@lib/google'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	const auth = await googleAuth.getClient()
+	const auth = await googleAuth
 	const youtube = google.youtube({
 		auth,
 		version: 'v3'
