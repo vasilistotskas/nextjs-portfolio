@@ -4,10 +4,10 @@ import { NextStudioHead } from 'next-sanity/studio/head'
 import { StudioLayout, StudioProvider } from 'sanity'
 import config from 'sanity.config'
 import { createGlobalStyle } from 'styled-components'
+import { Theme } from '@sanity/ui'
 
-const GlobalStyle = createGlobalStyle(({ theme }) => ({
-	// @ts-ignore
-	html: { backgroundColor: theme.sanity.color.base.bg },
+const GlobalStyle = createGlobalStyle(({ theme }: { theme: Theme }) => ({
+	html: { backgroundColor: theme.sanity.color.base.bg},
 }))
 
 export default function StudioPage() {
