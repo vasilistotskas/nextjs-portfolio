@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.0...v1.6.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* **.npmrc:** updated ([c8aeb61](https://github.com/vasilistotskas/nextjs-portfolio/commit/c8aeb614ed954edfe11333811eeb15969d101291))
+
 # [1.6.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.4...v1.6.0) (2023-06-18)
 
 
