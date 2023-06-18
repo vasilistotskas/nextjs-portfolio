@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.2.0...v1.3.0) (2023-06-18)
+
+
+### Features
+
+* added npm publish ([f3c11dc](https://github.com/vasilistotskas/nextjs-portfolio/commit/f3c11dce9fc20188fb8e8c199f39e20459fe7712))
+
 # [1.2.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.1.0...v1.2.0) (2023-06-18)
 
 
