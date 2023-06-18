@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.1.0...v1.2.0) (2023-06-18)
+
+
+### Features
+
+* semantic release npm added ([1fe3660](https://github.com/vasilistotskas/nextjs-portfolio/commit/1fe3660aef5247d0c03d9139bea43b480821ad9b))
+
 # [1.1.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.0.1...v1.1.0) (2023-06-18)
 
 
