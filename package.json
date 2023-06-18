@@ -73,6 +73,11 @@
 		"tailwindcss": "3.3.2"
 	},
 	"devDependencies": {
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/commit-analyzer": "^10.0.1",
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/github": "^9.0.3",
+		"@semantic-release/release-notes-generator": "^11.0.3",
 		"@types/node": "20.3.1",
 		"@types/react": "^18.2.12",
 		"@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -119,7 +124,10 @@
 			[
 				"@semantic-release/git",
 				{
-					"assets": ["CHANGELOG.md", "package.json"],
+					"assets": [
+						"CHANGELOG.md",
+						"package.json"
+					],
 					"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
 				}
 			],
@@ -136,5 +144,4 @@
 			]
 		]
 	}
-
 }
