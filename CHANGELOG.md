@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.5...v1.4.6) (2023-06-18)
+
+
+### Bug Fixes
+
+* og image change ([dd50661](https://github.com/vasilistotskas/nextjs-portfolio/commit/dd506612cf306b4df0be8deed7165caa58c06a17))
+
 ## [1.4.5](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.4...v1.4.5) (2023-06-18)
 
 
