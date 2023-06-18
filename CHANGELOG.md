@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.0...v1.5.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* trying to fix versioning ([f5d20d4](https://github.com/vasilistotskas/nextjs-portfolio/commit/f5d20d45baf1ee811ddc0409c336e4ad9d9b426b))
+
 # [1.5.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.6...v1.5.0) (2023-06-18)
 
 
