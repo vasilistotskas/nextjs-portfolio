@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.1...v1.4.2) (2023-06-18)
+
+
+### Bug Fixes
+
+* added CHANGELOG.md to .gitignore and remove npmPublish flag from package.json ([1538ad0](https://github.com/vasilistotskas/nextjs-portfolio/commit/1538ad0b05d073a85023d90cfb285d2315e7c699))
+
 ## [1.4.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.0...v1.4.1) (2023-06-18)
 
 
