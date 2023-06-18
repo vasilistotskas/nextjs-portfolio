@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.1...v1.5.2) (2023-06-18)
+
+
+### Bug Fixes
+
+* **ci.yml:** chaining change ([85487a4](https://github.com/vasilistotskas/nextjs-portfolio/commit/85487a4ea7a4237b0dee46a7c8a5046fdd1a3d6d))
+
 ## [1.5.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.0...v1.5.1) (2023-06-18)
 
 
