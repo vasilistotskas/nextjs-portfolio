@@ -7,7 +7,7 @@ import { createGlobalStyle } from 'styled-components'
 import { Theme } from '@sanity/ui'
 
 const GlobalStyle = createGlobalStyle(({ theme }: { theme: Theme }) => ({
-	html: { backgroundColor: theme.sanity.color.base.bg},
+	html: { backgroundColor: theme.sanity.color.base.bg }
 }))
 
 export default function StudioPage() {
