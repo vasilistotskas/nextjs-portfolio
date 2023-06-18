@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.3...v1.5.4) (2023-06-18)
+
+
+### Bug Fixes
+
+* **.npmrc:** remove useless stuf ([b2afdb4](https://github.com/vasilistotskas/nextjs-portfolio/commit/b2afdb4e5c0c61aaf5d515635302df8bfc583792))
+
 ## [1.5.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.2...v1.5.3) (2023-06-18)
 
 
