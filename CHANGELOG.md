@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.6...v1.5.0) (2023-06-18)
+
+
+### Features
+
+* **package.json:** publishConfig registry to github ([a581bb9](https://github.com/vasilistotskas/nextjs-portfolio/commit/a581bb96f30fdaba16856ff06b4fb3f34beedfa2))
+
 ## [1.4.6](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.5...v1.4.6) (2023-06-18)
 
 
