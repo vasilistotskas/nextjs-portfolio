@@ -58,3 +58,10 @@ studio/.env.development
 **/public/fallback-*.js.map
 
 .vercel
+
+# Production
+build
+dist
+
+# Turborepo
+.turbo
