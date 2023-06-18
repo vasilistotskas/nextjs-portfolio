@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.3...v1.4.4) (2023-06-18)
+
+
+### Bug Fixes
+
+* **ci.yml:** chaining change ([44b165b](https://github.com/vasilistotskas/nextjs-portfolio/commit/44b165b510e054b220f55417ca05c5d53cc417cf))
+
 ## [1.4.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.2...v1.4.3) (2023-06-18)
 
 
