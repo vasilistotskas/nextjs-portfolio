@@ -33,6 +33,35 @@
 		"trailingComma": "none",
 		"useTabs": true
 	},
+	"release": {
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			"@semantic-release/release-notes-generator",
+			"@semantic-release/changelog",
+			"@semantic-release/npm",
+			[
+				"@semantic-release/git",
+				{
+					"assets": [
+						"CHANGELOG.md",
+						"package.json"
+					],
+					"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+				}
+			],
+			[
+				"@semantic-release/github",
+				{
+					"assets": [
+						{
+							"path": "dist/*.zip",
+							"label": "Distribution"
+						}
+					]
+				}
+			]
+		]
+	},
 	"dependencies": {
 		"@next/bundle-analyzer": "^13.4.6",
 		"@portabletext/react": "^3.0.2",
@@ -77,6 +106,7 @@
 		"@semantic-release/commit-analyzer": "^10.0.1",
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^9.0.3",
+		"@semantic-release/npm": "^10.0.4",
 		"@semantic-release/release-notes-generator": "^11.0.3",
 		"@types/node": "20.3.1",
 		"@types/react": "^18.2.12",
@@ -111,37 +141,10 @@
 		"npm": ">=9.5.1"
 	},
 	"publishConfig": {
-		"access": "restricted"
+		"registry": "https://registry.npmjs.org/",
+		"tag": "latest"
 	},
 	"git": {
 		"pre-commit": "lint-staged"
-	},
-	"release": {
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			"@semantic-release/changelog",
-			[
-				"@semantic-release/git",
-				{
-					"assets": [
-						"CHANGELOG.md",
-						"package.json"
-					],
-					"message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-				}
-			],
-			[
-				"@semantic-release/github",
-				{
-					"assets": [
-						{
-							"path": "dist/*.zip",
-							"label": "Distribution"
-						}
-					]
-				}
-			]
-		]
 	}
 }
