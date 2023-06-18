@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.2...v1.5.3) (2023-06-18)
+
+
+### Bug Fixes
+
+* **prisma:** added binaryTargets ([be2db49](https://github.com/vasilistotskas/nextjs-portfolio/commit/be2db49eb8eaff40bf507a12ab250c535d8ffe98))
+
 ## [1.5.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.5.1...v1.5.2) (2023-06-18)
 
 
