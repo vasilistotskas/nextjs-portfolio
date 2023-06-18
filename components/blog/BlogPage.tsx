@@ -14,7 +14,7 @@ export interface BlogPageProps {
 	loading?: boolean
 	posts: Post[]
 	settings: Settings
-	blogMetaImage: string
+	blogMetaImage: string | null
 }
 
 export default function BlogPage(props: BlogPageProps) {

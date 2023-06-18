@@ -12,7 +12,7 @@ export default function PreviewIndexPage({
 	blogMetaImage
 }: {
 	token: null | string
-	blogMetaImage: string
+	blogMetaImage: string | null
 }) {
 	const posts: Post[] = usePreview(token, indexQuery) || []
 

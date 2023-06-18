@@ -41,7 +41,6 @@ module.exports = withBundleAnalyzer(
 			ignoreDuringBuilds: process.env.VERCEL_ENV === 'production'
 		},
 		experimental: {
-			fontLoaders: [{ loader: '@next/font/google', options: { subsets: ['latin'] } }]
 			// appDir: true
 		},
 		async headers() {

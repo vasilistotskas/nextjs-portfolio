@@ -5,14 +5,11 @@ import { appWithTranslation } from 'next-i18next'
 import GoogleTagManger from '@components/scripts/GoogleTagManager'
 import { GOOGLE_TAG_MANAGER_ID } from '@lib/googleTagManager'
 import { Analytics } from '@vercel/analytics/react'
-import { Inter } from '@next/font/google'
-
-const interVariable = Inter()
 
 const App = ({ Component, pageProps }) => (
 	<SessionProvider session={pageProps.session}>
 		<ThemeProvider attribute="class">
-			<div className={interVariable.className}>
+			<div>
 				<GoogleTagManger containerId={GOOGLE_TAG_MANAGER_ID} />
 				<Component {...pageProps} />
 				<Analytics />

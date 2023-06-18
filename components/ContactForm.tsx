@@ -125,7 +125,7 @@ export default function ContactUs() {
 											setFullName(e.target.value)
 										}}
 										required={true}
-										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
+										className="w-full rounded border border-gray-300 bg-gray-100 px-3 py-1 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									/>
 								</div>
 							</div>
@@ -146,7 +146,7 @@ export default function ContactUs() {
 											setEmail(e.target.value)
 										}}
 										required={true}
-										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
+										className="w-full rounded border border-gray-300 bg-gray-100 px-3 py-1 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									/>
 								</div>
 							</div>
@@ -167,7 +167,7 @@ export default function ContactUs() {
 											setSubject(e.target.value)
 										}}
 										required={true}
-										className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
+										className="w-full rounded border border-gray-300 bg-gray-100 px-3 py-1 text-base leading-8 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									></input>
 								</div>
 							</div>
@@ -187,7 +187,7 @@ export default function ContactUs() {
 											setMessage(e.target.value)
 										}}
 										required={true}
-										className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-6 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
+										className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 px-3 py-1 text-base leading-6 text-black outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500"
 									></textarea>
 								</div>
 							</div>
