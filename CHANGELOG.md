@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.4.0...v1.4.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* **lang:** minor lang fix ([338b4a7](https://github.com/vasilistotskas/nextjs-portfolio/commit/338b4a7666be9ca6cb37f1807893c0f04dc5244a))
+
 # [1.4.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.3.0...v1.4.0) (2023-06-18)
 
 
