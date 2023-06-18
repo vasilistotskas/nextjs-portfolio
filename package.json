@@ -1,7 +1,7 @@
 {
 	"name": "groove-nextjs-portfolio",
 	"version": "1.2.0",
-	"private": true,
+	"private": false,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vasilistotskas/nextjs-portfolio.git"
@@ -34,6 +34,9 @@
 		"useTabs": true
 	},
 	"release": {
+		"branches": [
+			"master"
+		],
 		"plugins": [
 			"@semantic-release/commit-analyzer",
 			"@semantic-release/release-notes-generator",
@@ -60,7 +63,7 @@
 				{
 					"assets": [
 						{
-							"path": "dist/*.zip",
+							"path": "dist",
 							"label": "Distribution"
 						}
 					]
