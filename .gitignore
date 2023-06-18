@@ -67,3 +67,6 @@ dist
 
 # Turborepo
 .turbo
+
+# CHANGELOG
+CHANGELOG.md

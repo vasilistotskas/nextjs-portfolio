@@ -53,12 +53,6 @@
 				}
 			],
 			[
-				"@semantic-release/npm",
-				{
-					"npmPublish": true
-				}
-			],
-			[
 				"@semantic-release/github",
 				{
 					"assets": [
