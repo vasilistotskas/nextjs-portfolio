@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.3.0...v1.4.0) (2023-06-18)
+
+
+### Features
+
+* added release branches and private set to false in package.json, added .env.example ([127a173](https://github.com/vasilistotskas/nextjs-portfolio/commit/127a17303eb036d7ae301f77981bd3f4f6adcf2a))
+
 # [1.2.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.1.0...v1.2.0) (2023-06-18)
 
 
