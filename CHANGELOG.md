@@ -1,3 +1,12 @@
+## [1.6.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.1...v1.6.2) (2023-06-27)
+
+
+### Bug Fixes
+
+* Assets rebuild ([d992c17](https://github.com/vasilistotskas/nextjs-portfolio/commit/d992c174a3c9fcd5e2d59eeacbe83afa7c59c511))
+* **ci.yml:** chaining change ([94efeb9](https://github.com/vasilistotskas/nextjs-portfolio/commit/94efeb913b19c5b9f7711276e2602d83896fa050))
+* **ci.yml:** permissions added ([be2f989](https://github.com/vasilistotskas/nextjs-portfolio/commit/be2f989d71419b042e4a5423a4990af7fb979cdc))
+
 ## [1.6.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.0...v1.6.1) (2023-06-18)
 
 
