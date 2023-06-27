@@ -2,7 +2,7 @@ name: Vercel
 
 on:
   release:
-    types: [published]
+    types: [published, created, released]
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
