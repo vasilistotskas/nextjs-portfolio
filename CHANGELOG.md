@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.2...v1.6.3) (2023-06-27)
+
+
+### Bug Fixes
+
+* **workflows/nextjs.yml:** add env var for DATABASE_URL ([9e49b70](https://github.com/vasilistotskas/nextjs-portfolio/commit/9e49b703cb5efa6ad314c9d96d9a8b4bc1fb9a16))
+
 ## [1.6.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.1...v1.6.2) (2023-06-27)
 
 
