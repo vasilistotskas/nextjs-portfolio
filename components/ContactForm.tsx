@@ -216,7 +216,7 @@ export default function ContactUs() {
 								<span className="inline-flex gap-2">
 									<a
 										title="Facebook"
-										href={process.env.NEXT_PUBLIC_FACEBOOK_URL}
+										href={process.env.NEXT_PUBLIC_FACEBOOK_URL || '#'}
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -230,7 +230,7 @@ export default function ContactUs() {
 									</a>
 									<a
 										title="Instagram"
-										href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
+										href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#'}
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -244,7 +244,7 @@ export default function ContactUs() {
 									</a>
 									<a
 										title="Twitter"
-										href={process.env.NEXT_PUBLIC_TWITTER_URL}
+										href={process.env.NEXT_PUBLIC_TWITTER_URL || '#'}
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -258,7 +258,7 @@ export default function ContactUs() {
 									</a>
 									<a
 										title="Github"
-										href={process.env.NEXT_PUBLIC_GITHUB_URL}
+										href={process.env.NEXT_PUBLIC_GITHUB_URL || '#'}
 										target="_blank"
 										rel="noopener noreferrer"
 									>

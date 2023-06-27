@@ -21,9 +21,9 @@ export default function Container(props) {
 	const router = useRouter()
 
 	const meta = {
-		title: process.env.NEXT_SETTINGS_TITLE,
-		description: process.env.NEXT_SETTINGS_DESCRIPTION,
-		image: process.env.NEXT_SETTINGS_IMG_URL,
+		title: process.env.NEXT_SETTINGS_TITLE || null,
+		description: process.env.NEXT_SETTINGS_DESCRIPTION || null,
+		image: process.env.NEXT_SETTINGS_IMG_URL || null,
 		type: 'website',
 		keywords:
 			'Vasilis, Totskas, developer, vasilistotskas, experience, web, programming, technology, coding, technologies, frameworks',

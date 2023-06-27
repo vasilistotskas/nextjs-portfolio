@@ -19,10 +19,10 @@ export default function PreviewIndexPage({
 	const settings: Settings = usePreview(token, settingsQuery) || {}
 
 	if (!settings.title) {
-		settings.title = process.env.NEXT_SETTINGS_TITLE
+		settings.title = process.env.NEXT_SETTINGS_TITLE || ''
 	}
 	if (!settings.description) {
-		settings.description = [process.env.NEXT_SETTINGS_DESCRIPTION]
+		settings.description = [process.env.NEXT_SETTINGS_DESCRIPTION || '']
 	}
 
 	return (
