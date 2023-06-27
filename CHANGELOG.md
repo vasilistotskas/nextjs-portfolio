@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.3...v1.6.4) (2023-06-27)
+
+
+### Bug Fixes
+
+* Global fixes for process.env undefined vars ([6985a5f](https://github.com/vasilistotskas/nextjs-portfolio/commit/6985a5f0eb1192041a9326bffa14aecccf6dee37))
+
 ## [1.6.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.2...v1.6.3) (2023-06-27)
 
 
