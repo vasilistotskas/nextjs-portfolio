@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.4...v1.7.0) (2023-06-27)
+
+
+### Features
+
+* **workflows:** split ci with vercel ([4bec365](https://github.com/vasilistotskas/nextjs-portfolio/commit/4bec365bd56c5e11d9bf8e984b0ff25b0f346df5))
+
 ## [1.6.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.6.3...v1.6.4) (2023-06-27)
 
 
