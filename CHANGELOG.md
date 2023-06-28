@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.1...v1.10.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* package.json publishConfig registry revert, added registry-url and npm publish in ci.yml ([40730fc](https://github.com/vasilistotskas/nextjs-portfolio/commit/40730fc9988af5aee8895f3e116bda43c3e2347c))
+
 ## [1.10.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.0...v1.10.1) (2023-06-28)
 
 
