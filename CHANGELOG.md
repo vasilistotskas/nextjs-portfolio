@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.9.0...v1.9.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **workflows:** GITHUB_TOKEN in ci.yml replaced, if check at vercel.yml removed ([85ad4cf](https://github.com/vasilistotskas/nextjs-portfolio/commit/85ad4cfa984602a36354aa3ca3d07c0ed9a6fecb))
+
 # [1.9.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.8.0...v1.9.0) (2023-06-27)
 
 
