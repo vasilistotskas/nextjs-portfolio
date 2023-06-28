@@ -36,7 +36,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.NEXTJS_PORTFOLIO_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
-      - name: Publish on NPM
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NEXTJS_PORTFOLIO_TOKEN }}
-        run: npm publish
