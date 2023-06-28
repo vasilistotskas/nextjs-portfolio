@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.9.1...v1.10.0) (2023-06-28)
+
+
+### Features
+
+* **vercel.yml:** fix on release published trigger ([b677e70](https://github.com/vasilistotskas/nextjs-portfolio/commit/b677e70781f35b09b3cfc6956e3f943048763592))
+
 ## [1.9.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.9.0...v1.9.1) (2023-06-28)
 
 
