@@ -141,7 +141,7 @@
 		"npm": ">=9.5.1"
 	},
 	"publishConfig": {
-		"@vasilistotskas:registry": "https://npm.pkg.github.com"
+		"registry": "https://npm.pkg.github.com"
 	},
 	"git": {
 		"pre-commit": "lint-staged"
