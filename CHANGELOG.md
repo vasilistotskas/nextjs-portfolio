@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.0...v1.10.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **package.json:** publishConfig registry ([275b202](https://github.com/vasilistotskas/nextjs-portfolio/commit/275b2025b70bd4df4d7c05a8fc3bebe368138fb6))
+
 # [1.10.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.9.1...v1.10.0) (2023-06-28)
 
 
