@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.2...v1.10.3) (2023-06-28)
+
+
+### Bug Fixes
+
+* **ci.yml:** remove previous step ([ca49876](https://github.com/vasilistotskas/nextjs-portfolio/commit/ca498765960ad16ffb966b2ef79a02dbe2369bee))
+
 ## [1.10.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.1...v1.10.2) (2023-06-28)
 
 
