@@ -1,5 +1,5 @@
+import { version } from '../package.json'
 import Link from 'next/link'
-
 import NowPlaying from '@components/utils/NowPlaying'
 import { useTranslation } from 'next-i18next'
 import SectionSeparator from '@components/utils/SectionSeparator'
@@ -23,7 +23,7 @@ export default function Footer() {
 		<footer className="mx-auto mb-8 flex w-full max-w-2xl flex-col items-start justify-center">
 			<SectionSeparator />
 			<NowPlaying />
-			<div className="grid w-full max-w-2xl grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
+			<div className="grid w-full max-w-2xl grid-cols-1 gap-4 pb-4 sm:grid-cols-3">
 				<div className="flex flex-col space-y-4">
 					<Link href="/" title={t('pages.home', { ns: 'common' }) || ''}>
 						<p className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400">
@@ -59,6 +59,11 @@ export default function Footer() {
 						</p>
 					</Link>
 				</div>
+			</div>
+			<div className="grid w-full justify-items-end pb-16">
+				<span className="text-sm italic text-gray-600 transition hover:text-gray-700 dark:text-gray-300">
+					{t('version', { ns: 'common' })} {version}
+				</span>
 			</div>
 		</footer>
 	)
