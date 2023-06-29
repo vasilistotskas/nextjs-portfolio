@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.12.0...v1.13.0) (2023-06-29)
+
+
+### Features
+
+* **package.json:** Bump versions ([52d4379](https://github.com/vasilistotskas/nextjs-portfolio/commit/52d4379614a7a956e7ef5f1be57f21af096596e9))
+
 # [1.12.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.11.0...v1.12.0) (2023-06-29)
 
 
