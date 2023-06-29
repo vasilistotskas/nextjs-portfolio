@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.3...v1.10.4) (2023-06-29)
+
+
+### Bug Fixes
+
+* **ci.yml:** testing for github packages ([dcba25e](https://github.com/vasilistotskas/nextjs-portfolio/commit/dcba25e51311e1bbd0795b429e56e2081aa1d63c))
+
 ## [1.10.3](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.2...v1.10.3) (2023-06-28)
 
 
