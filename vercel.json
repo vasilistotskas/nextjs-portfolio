@@ -1,6 +1,15 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"cleanUrls": true,
+	"framework": "nextjs",
+	"git": {
+		"deploymentEnabled": {
+			"master": true,
+			"main": false,
+			"develop": false,
+			"feature/*": false
+		}
+	},
 	"redirects": [
 		{
 			"source": "/vasilistotskas.pdf",
