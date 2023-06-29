@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.11.0...v1.12.0) (2023-06-29)
+
+
+### Features
+
+* **vercel.json:** Added more configuration ([f05598d](https://github.com/vasilistotskas/nextjs-portfolio/commit/f05598d014ee936c37a01f30ed14c96ea9e786b9))
+
 # [1.11.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.4...v1.11.0) (2023-06-29)
 
 
