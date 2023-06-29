@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.4...v1.11.0) (2023-06-29)
+
+
+### Features
+
+* Added version in footer and run lint, prettier ([f6f5761](https://github.com/vasilistotskas/nextjs-portfolio/commit/f6f5761617a2bc4f22d5add9b7b6171fa892983e))
+
 ## [1.10.4](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.10.3...v1.10.4) (2023-06-29)
 
 
