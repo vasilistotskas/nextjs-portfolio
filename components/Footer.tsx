@@ -1,4 +1,3 @@
-import { version } from '../package.json'
 import Link from 'next/link'
 import NowPlaying from '@components/utils/NowPlaying'
 import { useTranslation } from 'next-i18next'
@@ -59,11 +58,6 @@ export default function Footer() {
 						</p>
 					</Link>
 				</div>
-			</div>
-			<div className="grid w-full justify-items-end pb-16">
-				<span className="text-sm italic text-gray-600 transition hover:text-gray-700 dark:text-gray-300">
-					{t('version', { ns: 'common' })} {version}
-				</span>
 			</div>
 		</footer>
 	)

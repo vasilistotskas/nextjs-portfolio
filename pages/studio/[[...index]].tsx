@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { NextStudio } from 'next-sanity/studio'
-import { NextStudioHead } from 'next-sanity/studio/head'
+import { metadata } from 'next-sanity/studio/metadata'
 import { StudioLayout, StudioProvider } from 'sanity'
 import config from 'sanity.config'
 import { createGlobalStyle } from 'styled-components'
@@ -14,7 +14,9 @@ export default function StudioPage() {
 	return (
 		<>
 			<Head>
-				<NextStudioHead favicons={true} />
+				{Object.entries(metadata).map(([key, value]) => (
+					<meta key={key} name={key} content={value} />
+				))}
 			</Head>
 
 			<NextStudio config={config}>

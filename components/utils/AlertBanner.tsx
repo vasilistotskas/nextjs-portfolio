@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Container from '@components/Container'
 import { useTranslation } from 'next-i18next'
 
 export default function Alert({

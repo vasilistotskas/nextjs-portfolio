@@ -1,4 +1,3 @@
-import { PreviewSuspense } from '@sanity/preview-kit'
 import BlogPage from '@components/blog/BlogPage'
 import { getAllPosts, getSettings } from '@lib/sanity/sanity.client'
 import { Post, Settings } from '@lib/sanity/sanity.queries'
@@ -12,37 +11,22 @@ interface PageProps {
 	posts: Post[]
 	settings: Settings
 	preview: boolean
-	token: string | null
 	blogMetaImage: string | null
 }
 
 export default function Page(props: PageProps) {
-	const { posts, settings, preview, token, blogMetaImage } = props
+	const { posts, settings, preview, blogMetaImage } = props
 	const { ready } = useTranslation(['common', 'blog'])
 
 	if (preview && ready) {
-		return (
-			<PreviewSuspense
-				fallback={
-					<BlogPage
-						loading
-						preview
-						posts={posts}
-						settings={settings}
-						blogMetaImage={blogMetaImage}
-					/>
-				}
-			>
-				<PreviewBlogPage token={token} blogMetaImage={blogMetaImage} />
-			</PreviewSuspense>
-		)
+		return <PreviewBlogPage data={posts} blogMetaImage={blogMetaImage} />
 	}
 
 	return <BlogPage posts={posts} settings={settings} blogMetaImage={blogMetaImage} />
 }
 
 export const getStaticProps = async (ctx) => {
-	const { preview = false, previewData = {}, locale } = ctx
+	const { preview = false, locale } = ctx
 
 	const [settings, posts = [], locales] = await Promise.all([
 		getSettings(),
@@ -58,7 +42,6 @@ export const getStaticProps = async (ctx) => {
 			posts,
 			settings,
 			preview,
-			token: previewData.token || null,
 			...locales
 		}
 	}

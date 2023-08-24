@@ -20,12 +20,6 @@ export const EmblaCarousel = ({ children }: { children: ReactNode }) => {
 		}
 	})
 
-	const scrollTo = (index: number) => {
-		if (emblaApi) {
-			emblaApi.scrollTo(index)
-		}
-	}
-
 	const scrollPrev = () => {
 		if (emblaApi) {
 			emblaApi.scrollPrev()

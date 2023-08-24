@@ -34,6 +34,10 @@ export default async function revalidate(req: NextApiRequest, res: NextApiRespon
 			req,
 			process.env.SANITY_REVALIDATE_SECRET
 		)
+		if (!body) {
+			return res.status(400).send('No body')
+		}
+
 		if (!isValidSignature) {
 			const message = 'Invalid signature'
 			console.log(message)
@@ -74,6 +78,7 @@ async function queryStaleRoutes(body: SanityDocument): Promise<StaleRoute[]> {
 		const exists = await client.fetch(groq`*[_id == $id][0]`, { id: body._id })
 		if (!exists) {
 			const staleRoutes: StaleRoute[] = ['/']
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const currentSlug = (body.slug as any)?.current
 			if (currentSlug) {
 				staleRoutes.push(`/blog/posts/${currentSlug}`)

@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes'
 
 import Footer from '@components/Footer'
 import MobileMenu from '@components/MobileMenu'
-import ContactForm from '@components/ContactForm'
 import LanguageSwitcher from '@components/LanguageSwitcher'
 import Image from 'next/image'
 import NavItem from '@components/utils/NavItem'

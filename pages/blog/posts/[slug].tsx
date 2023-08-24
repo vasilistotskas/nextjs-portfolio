@@ -1,18 +1,12 @@
-import { PreviewSuspense } from '@sanity/preview-kit'
 import PostPage from '@components/blog/post/PostPage'
 import { getPostAndMoreStories, getSettings } from '@lib/sanity/sanity.client'
 import { Post, Settings } from '@lib/sanity/sanity.queries'
-import { lazy } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
-const PreviewPostPage = lazy(() => import('components/blog/post/PreviewPostPage'))
 
 interface PageProps {
 	post: Post
 	morePosts: Post[]
 	settings?: Settings
-	preview: boolean
-	token: string | null
 	locale: string
 }
 
@@ -28,31 +22,7 @@ interface serverSideProps {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-	const { settings, post, morePosts, preview, token } = props
-
-	if (preview) {
-		return (
-			<PreviewSuspense
-				fallback={
-					<PostPage
-						loading
-						preview
-						post={post}
-						morePosts={morePosts}
-						settings={settings || {}}
-					/>
-				}
-			>
-				<PreviewPostPage
-					token={token}
-					post={post}
-					morePosts={morePosts}
-					settings={settings || {}}
-				/>
-			</PreviewSuspense>
-		)
-	}
-
+	const { settings, post, morePosts } = props
 	return <PostPage post={post} morePosts={morePosts} settings={settings || {}} />
 }
 
@@ -63,7 +33,7 @@ export const getServerSideProps = async (ctx: serverSideProps) => {
 
 	const [settings, { post, morePosts }, locales] = await Promise.all([
 		getSettings(),
-		getPostAndMoreStories(ctx.params.slug, token),
+		getPostAndMoreStories(ctx.params.slug),
 		serverSideTranslations(locale, ['common', 'blog_post'])
 	])
 

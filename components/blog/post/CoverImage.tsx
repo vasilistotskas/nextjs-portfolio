@@ -6,6 +6,7 @@ import Link from 'next/link'
 interface CoverImageProps {
 	title: string
 	slug?: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	image: any
 	priority?: boolean
 }

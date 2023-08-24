@@ -18,6 +18,7 @@ const title =
 	process.env.NEXT_SETTINGS_TITLE || 'Vasilis Totskas – Developer, writer, creator.'
 
 const sanityConfig = {
+	basePath: '/studio',
 	projectId: projectId || '',
 	dataset: dataset || '',
 	title,

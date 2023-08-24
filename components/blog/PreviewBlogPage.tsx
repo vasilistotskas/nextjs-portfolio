@@ -1,28 +1,13 @@
 import BlogPage from '@components/blog/BlogPage'
-import { usePreview } from '@lib/sanity/sanity.preview'
-import {
-	indexQuery,
-	type Post,
-	type Settings,
-	settingsQuery
-} from '@lib/sanity/sanity.queries'
+import { useLiveQuery } from 'next-sanity/preview'
+import { indexQuery, settingsQuery } from '@lib/sanity/sanity.queries'
 
-export default function PreviewIndexPage({
-	token,
-	blogMetaImage
-}: {
-	token: null | string
-	blogMetaImage: string | null
-}) {
-	const posts: Post[] = usePreview(token, indexQuery) || []
+export default function PreviewIndexPage({ blogMetaImage, data: initialData }) {
+	const [posts, postsLoading] = useLiveQuery(initialData, indexQuery) || []
+	const [settings, settingsLoading] = useLiveQuery(initialData, settingsQuery) || []
 
-	const settings: Settings = usePreview(token, settingsQuery) || {}
-
-	if (!settings.title) {
-		settings.title = process.env.NEXT_SETTINGS_TITLE || ''
-	}
-	if (!settings.description) {
-		settings.description = [process.env.NEXT_SETTINGS_DESCRIPTION || '']
+	if (postsLoading || settingsLoading) {
+		return <>Loading...</>
 	}
 
 	return (

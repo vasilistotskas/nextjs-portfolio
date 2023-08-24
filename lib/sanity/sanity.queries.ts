@@ -41,22 +41,26 @@ export const postBySlugQuery = groq`
 
 export interface Author {
 	name?: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	picture?: any
 }
 
 export interface Post {
 	_id: string
 	title?: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	coverImage?: any
 	date?: string
 	excerpt?: string
 	author?: Author
 	slug?: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	content?: any
 }
 
 export interface Settings {
 	title?: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	description?: any[]
 	ogImage?: {
 		title?: string

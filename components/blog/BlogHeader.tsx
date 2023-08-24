@@ -7,6 +7,7 @@ export default function BlogHeader({
 	level
 }: {
 	title: string
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	description?: any[]
 	level: 1 | 2
 }) {
