@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.13.0...v1.14.0) (2023-08-24)
+
+
+### Features
+
+* **app:** Bump versions and resolve errors ([5f7da12](https://github.com/vasilistotskas/nextjs-portfolio/commit/5f7da12f31cbb804aaf86eeea2ddf4a9de3b38b7))
+
 # [1.13.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.12.0...v1.13.0) (2023-06-29)
 
 
