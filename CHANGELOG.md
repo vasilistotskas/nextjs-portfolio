@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.1...v1.15.2) (2023-09-20)
+
+
+### Bug Fixes
+
+* **package.json:** add babel-loader. ([1665520](https://github.com/vasilistotskas/nextjs-portfolio/commit/1665520d728ec0077a115e7ecebb71f8a2d96b23))
+
 ## [1.15.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.0...v1.15.1) (2023-09-20)
 
 
