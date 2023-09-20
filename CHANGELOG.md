@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.0...v1.15.1) (2023-09-20)
+
+
+### Bug Fixes
+
+* **ci:** preview.yaml install pnpm ([668bbcc](https://github.com/vasilistotskas/nextjs-portfolio/commit/668bbccce641bfdf7b8d8d974302be93adf5d221))
+
 # [1.15.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.14.0...v1.15.0) (2023-09-20)
 
 
