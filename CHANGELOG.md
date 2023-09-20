@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.14.0...v1.15.0) (2023-09-20)
+
+
+### Features
+
+* **app:** pnpm default package manager, versions bump. ([3b7425d](https://github.com/vasilistotskas/nextjs-portfolio/commit/3b7425d29a438371423d5e1824c091b7adde6528))
+
 # [1.14.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.13.0...v1.14.0) (2023-08-24)
 
 
