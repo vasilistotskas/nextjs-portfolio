@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.16.1...v1.17.0) (2023-11-05)
+
+
+### Features
+
+* **workflows:** Bump versions to latests. ([da2f1a4](https://github.com/vasilistotskas/nextjs-portfolio/commit/da2f1a43ac13b3f4405d66e547395359ec60a7d5))
+
 ## [1.16.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.16.0...v1.16.1) (2023-11-05)
 
 
