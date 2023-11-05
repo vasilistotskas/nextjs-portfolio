@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.2...v1.16.0) (2023-11-05)
+
+
+### Features
+
+* **app:** Versions bump all fresh,  fix server session. ([dce6383](https://github.com/vasilistotskas/nextjs-portfolio/commit/dce63831b6fae67a20f71b65be4ada025d85a0e9))
+
 ## [1.15.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.1...v1.15.2) (2023-09-20)
 
 
