@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.17.0...v1.18.0) (2023-11-05)
+
+
+### Features
+
+* **app:** add hreflang and correct canonical url. ([3c8afc5](https://github.com/vasilistotskas/nextjs-portfolio/commit/3c8afc5375dc12d7307618c4d114f4d3b61b4868))
+
 # [1.17.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.16.1...v1.17.0) (2023-11-05)
 
 
