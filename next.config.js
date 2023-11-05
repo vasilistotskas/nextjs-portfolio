@@ -25,12 +25,13 @@ module.exports = withBundleAnalyzer(
 		i18n,
 		reactStrictMode: true,
 		images: {
-			domains: [
-				'i.scdn.co', // Spotify Album Art
-				'pbs.twimg.com', // Twitter Profile Picture
-				'img.icons8.com' // Twitter Profile Picture
-			],
-			remotePatterns: [{ hostname: 'cdn.sanity.io' }, { hostname: 'source.unsplash.com' }]
+			remotePatterns: [
+				{ hostname: 'cdn.sanity.io' },
+				{ hostname: 'source.unsplash.com' },
+				{ hostname: 'i.scdn.co' },
+				{ hostname: 'pbs.twimg.com' },
+				{ hostname: 'img.icons8.com' }
+			]
 		},
 		typescript: {
 			// Set this to false if you want production builds to abort if there's type errors
@@ -41,7 +42,8 @@ module.exports = withBundleAnalyzer(
 			ignoreDuringBuilds: process.env.VERCEL_ENV === 'production'
 		},
 		experimental: {
-			// appDir: true
+			// appDir: true,
+			webpackBuildWorker: true
 		},
 		async headers() {
 			return [
