@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.16.0...v1.16.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* **app:** change node version. ([b10928b](https://github.com/vasilistotskas/nextjs-portfolio/commit/b10928b64de44c0ada67dc632fe24e1c2f58d14e))
+
 # [1.16.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.15.2...v1.16.0) (2023-11-05)
 
 

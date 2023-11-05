@@ -1,6 +1,6 @@
 {
 	"name": "nextjs-portfolio",
-	"version": "1.16.0",
+	"version": "1.16.1",
 	"private": false,
 	"repository": "https://github.com/vasilistotskas/nextjs-portfolio.git",
 	"license": "MIT",
@@ -137,8 +137,8 @@
 		"typescript": "^5.2.2"
 	},
 	"engines": {
-      "node": ">=18.16.0",
-      "npm": ">=9.5.1"
+		"node": ">=18.16.0",
+		"npm": ">=9.5.1"
 	},
 	"publishConfig": {
 		"@vasilistotskas:registry": "https://npm.pkg.github.com"
