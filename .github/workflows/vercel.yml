@@ -16,7 +16,7 @@ jobs:
     name: GitHub Actions Vercel Production Deployment
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@canary
       - name: Install pnpm
