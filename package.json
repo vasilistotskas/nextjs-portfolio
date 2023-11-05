@@ -137,8 +137,8 @@
 		"typescript": "^5.2.2"
 	},
 	"engines": {
-		"node": ">=21.0.0",
-		"npm": ">=10.2.0"
+      "node": ">=18.16.0",
+      "npm": ">=9.5.1"
 	},
 	"publishConfig": {
 		"@vasilistotskas:registry": "https://npm.pkg.github.com"
