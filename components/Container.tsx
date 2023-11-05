@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useTheme } from 'next-themes'
 
 import Footer from '@components/Footer'
@@ -8,16 +8,46 @@ import MobileMenu from '@components/MobileMenu'
 import LanguageSwitcher from '@components/LanguageSwitcher'
 import Image from 'next/image'
 import NavItem from '@components/utils/NavItem'
+import { useTranslation } from 'next-i18next'
 
 export default function Container(props) {
 	const [mounted, setMounted] = useState(false)
 	const { resolvedTheme, setTheme } = useTheme()
+	const { i18n } = useTranslation()
+	const { language: currentLanguage } = i18n
 
 	// After mounting, we have access to the theme
 	useEffect(() => setMounted(true), [])
 
 	const { children, ...customMeta } = props
 	const router = useRouter()
+
+	const locales = useMemo(
+		() => router.locales || [currentLanguage],
+		[router.locales, currentLanguage]
+	)
+
+	const languageLinks = locales.map((locale) => {
+		if (locale === currentLanguage) {
+			return (
+				<link
+					key={locale}
+					rel="canonical"
+					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}/${locale}${router.asPath}`}
+					hrefLang={locale}
+				/>
+			)
+		} else {
+			return (
+				<link
+					key={locale}
+					rel="alternate"
+					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}/${locale}${router.asPath}`}
+					hrefLang={locale}
+				/>
+			)
+		}
+	})
 
 	const meta = {
 		title: process.env.NEXT_SETTINGS_TITLE || null,
@@ -41,10 +71,7 @@ export default function Container(props) {
 					property="og:url"
 					content={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}${router.asPath}`}
 				/>
-				<link
-					rel="canonical"
-					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}${router.asPath}`}
-				/>
+				{languageLinks}
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:site_name" content="Vasilis Totskas" />
 				<meta property="og:description" content={meta.description} />
