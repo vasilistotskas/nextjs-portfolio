@@ -1,3 +1,15 @@
+# [1.19.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.18.0...v1.19.0) (2023-11-15)
+
+
+### Bug Fixes
+
+* **ci.yml:** audit level adjust ([59443f2](https://github.com/vasilistotskas/nextjs-portfolio/commit/59443f240ec767d2f625d7992f3c97794f1139d3))
+
+
+### Features
+
+* **app:** Bump versions and fix sitemap for blog ([332ebec](https://github.com/vasilistotskas/nextjs-portfolio/commit/332ebecb866eeac9a97b02640ae387daef6ac565))
+
 # [1.18.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.17.0...v1.18.0) (2023-11-05)
 
 
