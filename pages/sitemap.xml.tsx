@@ -24,7 +24,7 @@ export async function getServerSideProps({ res, locales }) {
 	]
 
 	const posts = await getAllPosts()
-	const postPaths = posts.map((post) => `blog/${post.slug}`)
+	const postPaths = posts.map((post) => `blog/posts/${post.slug}`)
 	allPages.push(...postPaths)
 
 	res.setHeader('Content-Type', 'text/xml')
