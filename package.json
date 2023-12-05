@@ -125,7 +125,7 @@
 		"prettier": "^3.1.0",
 		"prettier-plugin-packagejson": "^2.4.7",
 		"prettier-plugin-tailwindcss": "^0.5.8",
-		"prisma": "5.7.0-integration-netlify-node20.1",
+		"prisma": "5.6.0",
 		"reading-time": "^1.5.0",
 		"rehype": "13.0.1",
 		"rehype-autolink-headings": "7.1.0",
@@ -138,8 +138,8 @@
 		"typescript": "^5.3.2"
 	},
 	"engines": {
-		"node": ">=18.16.0",
-		"npm": ">=9.5.1"
+		"node": ">=20.0.0",
+		"pnpm": "^8.0.0"
 	},
 	"publishConfig": {
 		"@vasilistotskas:registry": "https://npm.pkg.github.com"
@@ -147,5 +147,5 @@
 	"git": {
 		"pre-commit": "lint-staged"
 	},
-	"packageManager": "^pnpm@8.10.2"
+	"packageManager": "^pnpm@8.11.0"
 }
