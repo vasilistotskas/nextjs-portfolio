@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.21.0...v1.22.0) (2023-12-05)
+
+
+### Features
+
+* **app:** Bump node to latest ([36aa5a8](https://github.com/vasilistotskas/nextjs-portfolio/commit/36aa5a86c289b1fc0be5a0668c59b6c333bee05a))
+
 # [1.21.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.20.0...v1.21.0) (2023-12-05)
 
 
