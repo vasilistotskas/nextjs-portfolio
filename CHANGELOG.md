@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.23.0...v1.24.0) (2023-12-09)
+
+
+### Features
+
+* **app:** Add ([6c1d5ec](https://github.com/vasilistotskas/nextjs-portfolio/commit/6c1d5ec327a7a4139532763031154ab5ea7803c6))
+
 # [1.23.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.22.0...v1.23.0) (2023-12-09)
 
 
