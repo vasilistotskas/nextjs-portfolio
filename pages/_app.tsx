@@ -8,6 +8,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { AppProps } from 'next/app'
 import { Session } from 'next-auth/src'
 import dynamic from 'next/dynamic'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const PreviewProvider = dynamic(() => import('components/sanity/PreviewProvider'))
 
@@ -21,22 +22,25 @@ const App = ({
 }>) => {
 	const { draftMode, token } = pageProps
 	return (
-		<SessionProvider session={pageProps.session}>
-			<ThemeProvider attribute="class">
-				<div>
-					<GoogleTagManger containerId={GOOGLE_TAG_MANAGER_ID} />
-					{/* if draftMode  */}
-					{draftMode && (
-						<PreviewProvider token={token}>
-							<Component {...pageProps} />
-						</PreviewProvider>
-					)}{' '}
-					{/* else */}
-					{!draftMode && <Component {...pageProps} />}
-					<Analytics />
-				</div>
-			</ThemeProvider>
-		</SessionProvider>
+		<>
+			<SessionProvider session={pageProps.session}>
+				<ThemeProvider attribute="class">
+					<div>
+						<GoogleTagManger containerId={GOOGLE_TAG_MANAGER_ID} />
+						{/* if draftMode  */}
+						{draftMode && (
+							<PreviewProvider token={token}>
+								<Component {...pageProps} />
+							</PreviewProvider>
+						)}{' '}
+						{/* else */}
+						{!draftMode && <Component {...pageProps} />}
+						<Analytics />
+					</div>
+				</ThemeProvider>
+			</SessionProvider>
+			<SpeedInsights />
+		</>
 	)
 }
 

@@ -35,6 +35,9 @@ dependencies:
   '@vercel/og':
     specifier: ^0.5.20
     version: 0.5.20
+  '@vercel/speed-insights':
+    specifier: ^1.0.1
+    version: 1.0.1
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -79,7 +82,7 @@ dependencies:
     version: 5.6.0(@babel/core@7.23.5)(esbuild@0.19.8)(next@14.0.4)(webpack@5.89.0)
   next-sanity:
     specifier: ^7.0.3
-    version: 7.0.3(@sanity/client@6.9.3)(@sanity/icons@2.7.0)(@sanity/types@3.21.0)(@sanity/ui@1.9.3)(next@14.0.4)(react@18.2.0)(sanity@3.21.1)(styled-components@6.1.1)
+    version: 7.0.3(@sanity/client@6.9.3)(@sanity/icons@2.7.0)(@sanity/types@3.21.1)(@sanity/ui@1.9.3)(next@14.0.4)(react@18.2.0)(sanity@3.21.1)(styled-components@6.1.1)
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
@@ -4228,18 +4231,6 @@ packages:
       - supports-color
     dev: false
 
-  /@sanity/types@3.21.0:
-    resolution:
-      {
-        integrity: sha512-Aafv7gnOQ28kiECutHKFNkui6liElSC4aGZHTqT4GOablU9yhVvUpP0Ipgz0aQpKyn2L/aod/XnvdtmBSpzfFQ==
-      }
-    dependencies:
-      '@sanity/client': 6.9.3
-      '@types/react': 18.2.43
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@sanity/types@3.21.1:
     resolution:
       {
@@ -5225,6 +5216,14 @@ packages:
       '@resvg/resvg-wasm': 2.6.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
+    dev: false
+
+  /@vercel/speed-insights@1.0.1:
+    resolution:
+      {
+        integrity: sha512-cm8KTTsDgS1AbWsgIEZuMoyPUjclzeqJihyLp0tnA21B/x9iTE8hu2S5zM+/DBzihuHxWL1dx9pCWk22ctMFWQ==
+      }
+    requiresBuild: true
     dev: false
 
   /@vercel/stega@0.1.0:
@@ -12634,7 +12633,7 @@ packages:
       - webpack
     dev: false
 
-  /next-sanity@7.0.3(@sanity/client@6.9.3)(@sanity/icons@2.7.0)(@sanity/types@3.21.0)(@sanity/ui@1.9.3)(next@14.0.4)(react@18.2.0)(sanity@3.21.1)(styled-components@6.1.1):
+  /next-sanity@7.0.3(@sanity/client@6.9.3)(@sanity/icons@2.7.0)(@sanity/types@3.21.1)(@sanity/ui@1.9.3)(next@14.0.4)(react@18.2.0)(sanity@3.21.1)(styled-components@6.1.1):
     resolution:
       {
         integrity: sha512-PCTkDEm2ofubRLA6iAB1oKLnqjy/4CGfeBP7yb/4a9F2152d1j38GlUQA/GSx3uMqX/TYq9C85XFTQ2He3bGFA==
@@ -12653,7 +12652,7 @@ packages:
       '@sanity/client': 6.9.3
       '@sanity/icons': 2.7.0(react@18.2.0)
       '@sanity/preview-kit': 5.0.5(@sanity/client@6.9.3)(react@18.2.0)
-      '@sanity/types': 3.21.0
+      '@sanity/types': 3.21.1
       '@sanity/ui': 1.9.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.1)
       '@sanity/webhook': 4.0.0
       groq: 3.19.3
