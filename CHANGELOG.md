@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.25.0...v1.25.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* **prisma:** Add "rhel-openssl-3.0.x" in `binaryTargets` ([d7f30f2](https://github.com/vasilistotskas/nextjs-portfolio/commit/d7f30f2f5841951647e6967065dfb14f1dd73c92))
+
 # [1.25.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.24.0...v1.25.0) (2023-12-11)
 
 
