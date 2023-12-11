@@ -27,26 +27,32 @@ export default function Container(props) {
 		[router.locales, currentLanguage]
 	)
 
-	const languageLinks = locales.map((locale) => {
+	const getCanonicalUrl = (locale: string) => {
+		let url = ''
 		if (locale === currentLanguage) {
-			return (
-				<link
-					key={locale}
-					rel="canonical"
-					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}/${locale}${router.asPath}`}
-					hrefLang={locale}
-				/>
-			)
+			url = `${process.env.NEXT_PUBLIC_CANONICAL_URL}${router.asPath}`
 		} else {
-			return (
-				<link
-					key={locale}
-					rel="alternate"
-					href={`${process.env.NEXT_PUBLIC_CANONICAL_URL}/${locale}${router.asPath}`}
-					hrefLang={locale}
-				/>
-			)
+			url = `${process.env.NEXT_PUBLIC_CANONICAL_URL}/${locale}${router.asPath}`
 		}
+		return url.replace(/\/$/, '')
+	}
+
+	const getCanonicalRel = (locale: string) => {
+		if (locale === currentLanguage) {
+			return 'canonical'
+		}
+		return 'alternate'
+	}
+
+	const languageLinks = locales.map((locale) => {
+		return (
+			<link
+				key={locale}
+				rel={getCanonicalRel(locale)}
+				href={getCanonicalUrl(locale)}
+				hrefLang={locale}
+			/>
+		)
 	})
 
 	const meta = {
@@ -55,7 +61,7 @@ export default function Container(props) {
 		image: process.env.NEXT_SETTINGS_IMG_URL || null,
 		type: 'website',
 		keywords:
-			'Vasilis, Totskas, developer, vasilistotskas, experience, web, programming, technology, coding, technologies, frameworks',
+			'Vasilis, Totskas, developer, vasilistotskas, experience, web, programming, technology, coding, technologies, frameworks, react, nextjs',
 		...customMeta
 	}
 
