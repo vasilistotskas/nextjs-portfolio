@@ -1,3 +1,10 @@
+## [1.25.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.25.1...v1.25.2) (2023-12-11)
+
+
+### Bug Fixes
+
+* canonical url ([ebf2350](https://github.com/vasilistotskas/nextjs-portfolio/commit/ebf23501ecbd2ac1bfe92ee5cadc0ec787236273))
+
 ## [1.25.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.25.0...v1.25.1) (2023-12-11)
 
 
