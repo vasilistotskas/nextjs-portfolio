@@ -1,3 +1,15 @@
+# [1.27.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.26.0...v1.27.0) (2024-01-23)
+
+
+### Bug Fixes
+
+* **ci.yml:** set pnpm audit level to `critical` ([0cbb953](https://github.com/vasilistotskas/nextjs-portfolio/commit/0cbb9532b510fc22c580c15716a4fbb469f61d36))
+
+
+### Features
+
+* **app:** Bump Versions ([e685e17](https://github.com/vasilistotskas/nextjs-portfolio/commit/e685e172eaf51c11e6647a16fc3b5ccf14a7135a))
+
 # [1.26.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.25.2...v1.26.0) (2023-12-25)
 
 
