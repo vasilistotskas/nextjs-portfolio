@@ -60,6 +60,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      ENABLE_EXPERIMENTAL_COREPACK: '1'
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
