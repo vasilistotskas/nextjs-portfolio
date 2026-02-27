@@ -1,3 +1,11 @@
+## [1.27.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.27.1...v1.27.2) (2026-02-27)
+
+
+### Bug Fixes
+
+* ci ([cc21f8b](https://github.com/vasilistotskas/nextjs-portfolio/commit/cc21f8b59988ad3275a806a09a4d2a7eb7bbfb46))
+* lint ([d5da851](https://github.com/vasilistotskas/nextjs-portfolio/commit/d5da85198baf379adcc3569ebebdbc8eec499919))
+
 ## [1.27.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.27.0...v1.27.1) (2026-02-27)
 
 
