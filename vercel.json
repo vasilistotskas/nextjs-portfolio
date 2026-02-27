@@ -3,12 +3,7 @@
 	"cleanUrls": true,
 	"framework": "nextjs",
 	"git": {
-		"deploymentEnabled": {
-			"master": true,
-			"main": false,
-			"develop": false,
-			"feature/*": false
-		}
+		"deploymentEnabled": false
 	},
 	"redirects": [
 		{
