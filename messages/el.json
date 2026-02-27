@@ -1,0 +1,143 @@
+{
+	"nav": {
+		"home": "Αρχική",
+		"about": "Σχετικά",
+		"contact": "Επικοινωνία",
+		"projects": "Έργα"
+	},
+	"hero": {
+		"greeting": "Γεια, Κόσμε!",
+		"name": "Βασίλης Τότσκας",
+		"role": "Fullstack Developer",
+		"company": "Advisable",
+		"companyAt": "στην",
+		"description": "Φτιάχνω σύγχρονες διαδικτυακές εφαρμογές με πάθος για καθαρό κώδικα, εξαιρετική εμπειρία ανάπτυξης και αποδοτικά interfaces.",
+		"cta": {
+			"projects": "Δες τα Έργα",
+			"contact": "Επικοινωνία"
+		},
+		"prompt": {
+			"whoami": "whoami",
+			"cat": "cat skills.txt",
+			"ls": "ls -la projects/",
+			"ready": "Έτοιμος για νέες προκλήσεις."
+		}
+	},
+	"skills": {
+		"title": "Δεξιότητες",
+		"subtitle": "// tech stack",
+		"categories": {
+			"frontend": "Frontend",
+			"backend": "Backend",
+			"devops": "DevOps",
+			"tools": "Εργαλεία"
+		}
+	},
+	"projects": {
+		"title": "Έργα",
+		"subtitle": "// πρόσφατη δουλειά",
+		"viewCode": "Κώδικας",
+		"viewDemo": "Live Demo",
+		"items": {
+			"portfolio": {
+				"name": "Portfolio Προγραμματιστή",
+				"description": "Portfolio με terminal αισθητική, φτιαγμένο με Next.js 15, React 19 και Tailwind CSS v4. Περιλαμβάνει i18n, ενσωμάτωση Spotify και στατιστικά GitHub."
+			},
+			"grooveshop": {
+				"name": "GrooveShop E-commerce",
+				"description": "Ολοκληρωμένη πλατφόρμα e-commerce με Django REST Framework, Nuxt 3 και PostgreSQL. Διαχείριση προϊόντων, καλάθι και ολοκλήρωση αγοράς."
+			}
+		}
+	},
+	"experience": {
+		"title": "Εμπειρία",
+		"subtitle": "// git log --oneline",
+		"present": "Παρόν",
+		"items": {
+			"advisable": {
+				"role": "Fullstack Developer",
+				"company": "Advisable",
+				"period": "2021 — Παρόν",
+				"description": "Ανάπτυξη και συντήρηση εφαρμογών με Django, Vue 3 και Nuxt. Σχεδιασμός API, βελτιστοποίηση βάσης δεδομένων και αρχιτεκτονική frontend."
+			},
+			"freelance": {
+				"role": "Freelance Web Developer",
+				"company": "Αυτοαπασχολούμενος",
+				"period": "2019 — 2021",
+				"description": "Σχεδιασμός και ανάπτυξη ιστοτόπων για διάφορους πελάτες με PHP, JavaScript και MySQL."
+			}
+		}
+	},
+	"about": {
+		"title": "Σχετικά με εμένα",
+		"subtitle": "// README.md",
+		"bio": "Γεια, είμαι ο Βασίλης, Fullstack Developer στην Advisable. Ασχολούμαι με ανάπτυξη εφαρμογών και ιστοτόπων χρησιμοποιώντας τεχνολογίες όπως Django (Python), Vue 3 (TypeScript), Next.js, NestJs και PostgreSQL.",
+		"education": {
+			"title": "Εκπαίδευση",
+			"degree": "Μηχανικός Υπολογιστών",
+			"school": "Πανεπιστήμιο Δυτικής Μακεδονίας",
+			"year": "2019"
+		},
+		"location": "Αθήνα, Ελλάδα",
+		"spotify": {
+			"title": "Κορυφαία Τραγούδια",
+			"subtitle": "// Ακούω τώρα"
+		},
+		"github": {
+			"title": "Στατιστικά GitHub"
+		}
+	},
+	"contact": {
+		"title": "Επικοινωνία",
+		"subtitle": "// reach out",
+		"description": "Ευχαριστώ που επικοινωνήσατε! Θα επικοινωνήσω μαζί σας το συντομότερο δυνατό.",
+		"info": {
+			"email": "Email",
+			"location": "Τοποθεσία",
+			"social": "Κοινωνικά Δίκτυα"
+		},
+		"form": {
+			"name": "Όνομα",
+			"namePlaceholder": "Γιάννης Παπαδόπουλος",
+			"email": "Email",
+			"emailPlaceholder": "giannis@example.com",
+			"subject": "Θέμα",
+			"subjectPlaceholder": "Περί τίνος πρόκειται;",
+			"message": "Μήνυμα",
+			"messagePlaceholder": "Πείτε μου για το project σας...",
+			"submit": "Αποστολή",
+			"sending": "Αποστολή...",
+			"success": "Το μήνυμα στάλθηκε! Θα επικοινωνήσω μαζί σας σύντομα.",
+			"error": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά."
+		}
+	},
+	"footer": {
+		"built": "Φτιαγμένο με",
+		"source": "Πηγαίος Κώδικας",
+		"copyright": "Όλα τα δικαιώματα διατηρούνται"
+	},
+	"spotify": {
+		"nowPlaying": "Παίζει τώρα",
+		"notPlaying": "Δεν παίζει τίποτα",
+		"on": "στο Spotify"
+	},
+	"github": {
+		"stars": "Αστέρια",
+		"followers": "Ακόλουθοι",
+		"repos": "Αποθετήρια",
+		"title": "GitHub"
+	},
+	"notFound": {
+		"title": "404 — Δεν Βρέθηκε",
+		"message": "Η σελίδα που ψάχνετε δεν υπάρχει.",
+		"back": "Αρχική Σελίδα",
+		"prompt": "cd ~"
+	},
+	"common": {
+		"loading": "Φόρτωση...",
+		"myName": "Βασίλης Τότσκας",
+		"myEmail": "vassilistotskas@msn.com",
+		"myUserName": "vasilistotskas",
+		"athensGreece": "Αθήνα, Ελλάδα"
+	}
+}

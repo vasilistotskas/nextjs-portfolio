@@ -1,57 +1,23 @@
-export type GuestbookEntry = {
-	id: string
-	email: string
-	body: string
-	created_by: string
-	created_at: string
-	updated_at: string
-}
-
-export enum Form {
-	Initial,
-	Loading,
-	Success,
-	Error
-}
-
-export type FormState = {
-	state: Form
-	message?: string
-}
-
-export type Views = {
-	total: number
-}
-
-export type Song = {
-	songUrl: string
-	artist: string
-	title: string
-}
-
 export type NowPlayingSong = {
+	isPlaying: boolean
+	title?: string
+	artist?: string
+	album?: string
+	albumImageUrl?: string
+	songUrl?: string
+}
+
+export type Track = {
+	title: string
+	artist: string
 	album: string
 	albumImageUrl: string
-	artist: string
-	isPlaying: boolean
 	songUrl: string
-	title: string
+	duration: number
 }
 
-export type TopTracks = {
-	tracks: Song[]
-}
-
-export type YouTube = {
-	subscriberCount: number
-	viewCount: number
-}
-
-export type GitHub = {
+export type GitHubStats = {
 	stars: number
-}
-
-export type Unsplash = {
-	downloads: number
-	views: number
+	followers: number
+	repos: number
 }

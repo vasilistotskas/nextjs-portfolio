@@ -1,0 +1,32 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(ls:*)",
+			"mcp__plugin_context7_context7__resolve-library-id",
+			"mcp__plugin_context7_context7__query-docs",
+			"Bash(pnpm install:*)",
+			"Bash(pnpm approve-builds:*)",
+			"Bash(pnpm type-check:*)",
+			"Bash(npx tsc:*)",
+			"Bash(pnpm lint:*)",
+			"Bash(pnpm build:*)",
+			"Bash(pnpm add:*)",
+			"Bash(pnpm dev:*)",
+			"Bash(curl:*)",
+			"Bash(xargs -I{} taskkill /PID {} /F)",
+			"Bash(netstat:*)",
+			"Bash(taskkill:*)",
+			"Bash(cmd:*)",
+			"Bash(rm:*)",
+			"Bash(node:*)",
+			"Bash(python:*)",
+			"Bash(head:*)",
+			"Bash(grep:*)",
+			"Bash(cat:*)",
+			"Bash(pkill:*)",
+			"Bash(npx lighthouse:*)",
+			"Bash(npx:*)",
+			"Bash(CHROME_PATH=\"/c/Program Files/Google/Chrome/Application/chrome.exe\" npx lighthouse:*)"
+		]
+	}
+}

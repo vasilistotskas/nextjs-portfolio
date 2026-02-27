@@ -1,0 +1,143 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"contact": "Contact",
+		"projects": "Projects"
+	},
+	"hero": {
+		"greeting": "Hello, World!",
+		"name": "Vasilis Totskas",
+		"role": "Fullstack Developer",
+		"company": "Advisable",
+		"companyAt": "at",
+		"description": "I build modern web applications with a passion for clean code, great developer experience, and performant user interfaces.",
+		"cta": {
+			"projects": "View Projects",
+			"contact": "Contact Me"
+		},
+		"prompt": {
+			"whoami": "whoami",
+			"cat": "cat skills.txt",
+			"ls": "ls -la projects/",
+			"ready": "Ready for new challenges."
+		}
+	},
+	"skills": {
+		"title": "Skills",
+		"subtitle": "// tech stack",
+		"categories": {
+			"frontend": "Frontend",
+			"backend": "Backend",
+			"devops": "DevOps",
+			"tools": "Tools"
+		}
+	},
+	"projects": {
+		"title": "Projects",
+		"subtitle": "// recent work",
+		"viewCode": "View Code",
+		"viewDemo": "Live Demo",
+		"items": {
+			"portfolio": {
+				"name": "Developer Portfolio",
+				"description": "Terminal-themed portfolio built with Next.js 15, React 19, and Tailwind CSS v4. Features i18n, Spotify integration, and GitHub stats."
+			},
+			"grooveshop": {
+				"name": "GrooveShop E-commerce",
+				"description": "Full-stack e-commerce platform built with Django REST Framework, Nuxt 3, and PostgreSQL. Features product management, cart, and checkout."
+			}
+		}
+	},
+	"experience": {
+		"title": "Experience",
+		"subtitle": "// git log --oneline",
+		"present": "Present",
+		"items": {
+			"advisable": {
+				"role": "Fullstack Developer",
+				"company": "Advisable",
+				"period": "2021 — Present",
+				"description": "Building and maintaining web applications using Django, Vue 3, and Nuxt. Working on API design, database optimization, and frontend architecture."
+			},
+			"freelance": {
+				"role": "Freelance Web Developer",
+				"company": "Self-employed",
+				"period": "2019 — 2021",
+				"description": "Designed and developed websites and web applications for various clients using PHP, JavaScript, and MySQL."
+			}
+		}
+	},
+	"about": {
+		"title": "About Me",
+		"subtitle": "// README.md",
+		"bio": "Hey, I'm Vasilis, a Fullstack Developer at Advisable. I've had a passion for computers and technology since an early age. I now have years of experience building applications and websites using technologies like Django (Python), Vue 3 (TypeScript), Next.js, NestJs, and PostgreSQL.",
+		"education": {
+			"title": "Education",
+			"degree": "Computer Engineering",
+			"school": "University of Western Macedonia",
+			"year": "2019"
+		},
+		"location": "Athens, Greece",
+		"spotify": {
+			"title": "Top Tracks",
+			"subtitle": "// Currently listening to"
+		},
+		"github": {
+			"title": "GitHub Stats"
+		}
+	},
+	"contact": {
+		"title": "Contact",
+		"subtitle": "// reach out",
+		"description": "Thanks for reaching out! I'll get back to you as soon as possible.",
+		"info": {
+			"email": "Email",
+			"location": "Location",
+			"social": "Social"
+		},
+		"form": {
+			"name": "Name",
+			"namePlaceholder": "John Doe",
+			"email": "Email",
+			"emailPlaceholder": "john@example.com",
+			"subject": "Subject",
+			"subjectPlaceholder": "What's this about?",
+			"message": "Message",
+			"messagePlaceholder": "Tell me about your project...",
+			"submit": "Send Message",
+			"sending": "Sending...",
+			"success": "Message sent! I'll get back to you soon.",
+			"error": "Something went wrong. Please try again."
+		}
+	},
+	"footer": {
+		"built": "Built with",
+		"source": "Source",
+		"copyright": "All rights reserved"
+	},
+	"spotify": {
+		"nowPlaying": "Now Playing",
+		"notPlaying": "Not currently playing",
+		"on": "on Spotify"
+	},
+	"github": {
+		"stars": "Stars",
+		"followers": "Followers",
+		"repos": "Repositories",
+		"title": "GitHub"
+	},
+	"notFound": {
+		"title": "404 — Not Found",
+		"message": "The page you're looking for doesn't exist.",
+		"back": "Go Home",
+		"prompt": "cd ~"
+	},
+	"common": {
+		"loading": "Loading...",
+		"myName": "Vasilis Totskas",
+		"myEmail": "vassilistotskas@msn.com",
+		"myUserName": "vasilistotskas",
+		"athensGreece": "Athens, Greece"
+	}
+}

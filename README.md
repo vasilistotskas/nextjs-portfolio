@@ -1,38 +1,51 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvasilistotskas%2Fvasilistotskas.com&env=NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,SANITY_API_TOKEN,SANITY_PREVIEW_SECRET,SANITY_STUDIO_REVALIDATE_SECRET&envDescription=These%20values%20are%20needed%20to%20connect%20to%20Sanity%20and%20fetch%20content%20for%20blog%20posts.)
-
 # vasilistotskas.com
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [PlanetScale](https://planetscale.com)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+Terminal-themed developer portfolio built with the latest web stack.
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript 5.7](https://www.typescriptlang.org/) (strict)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **i18n**: [next-intl](https://next-intl.dev/) (EN + EL)
+- **Email**: [Resend](https://resend.com/)
+- **Animation**: [Motion](https://motion.dev/)
 - **Deployment**: [Vercel](https://vercel.com)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **I18n**: [NextI18n](https://github.com/i18next/next-i18next)
-- **PWA**: [NextPWA](https://www.npmjs.com/package/next-pwa)
 
 ## Overview
 
-- `layouts/*` - The different page layouts each MDX category (blog, snippets) uses.
-- `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
-- `pages/api/*` - [API Routes](https://nextjs.org/docs/api-routes/introduction) powering [`/dashboard`](https://vasilistotskas.com/dashboard) subscription, guestbook, and post views.
-- `pages/dashboard` - [Personal dashboard](https://vasilistotskas.com/dashboard) tracking metrics.
-- `pages/sitemap.xml.tsx` - Automatically generated sitemap.
-- `pages/feed.xml.tsx` - Automatically generated RSS feed.
-- `pages/*` - All other static pages.
-- `prisma/*` - My Prisma schema, which uses a PlanetScale MySQL database.
-- `public/*` - Static assets including fonts and images.
-- `styles/*` - A small amount of global styles. I'm mostly using vanilla Tailwind CSS.
+- `app/[locale]/*` - Locale-aware pages (home, about, contact)
+- `app/api/*` - API routes (contact form, GitHub stats, Spotify)
+- `components/layout/*` - Header, Footer, Navigation, MobileMenu
+- `components/sections/*` - Hero, Skills, Projects, Experience
+- `components/ui/*` - Terminal, Badge, Card, NowPlaying, GitHubStats, ContactForm
+- `i18n/*` - next-intl routing and request config
+- `messages/*` - Translation files (en.json, el.json)
+- `lib/*` - Spotify API helpers, shared types, utilities
+- `public/*` - Static assets
 
 ## Running Locally
 
-This application requires Node.js v16.13+.
+Requires Node.js ≥ 20 and pnpm ≥ 10.
 
 ```bash
 git clone https://github.com/vasilistotskas/nextjs-portfolio
 cd nextjs-portfolio
+pnpm install
+cp .env.example .env.local  # fill in your keys
+pnpm dev
+```
+
+## Environment Variables
+
+```env
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+RESEND_API_KEY=
+CONTACT_EMAIL=
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
+GITHUB_TOKEN=          # optional — raises API rate limit
 ```
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/vasilistotskas/nextjs-portfolio/blob/main/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
+Please review the [license](https://github.com/vasilistotskas/nextjs-portfolio/blob/main/LICENSE.txt) and remove all personal information before deploying your own version.

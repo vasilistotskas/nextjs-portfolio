@@ -2,15 +2,20 @@ const client_id = process.env.SPOTIFY_CLIENT_ID
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
-const basic = btoa(`${client_id}:${client_secret}`)
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
-const getAccessToken = async () => {
+type TokenResponse = {
+	access_token: string
+}
+
+const getAccessToken = async (): Promise<TokenResponse> => {
 	if (!refresh_token) {
-		throw new Error('No refresh token')
+		throw new Error('SPOTIFY_REFRESH_TOKEN is not set')
 	}
+
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: 'POST',
 		headers: {
@@ -23,7 +28,7 @@ const getAccessToken = async () => {
 		})
 	})
 
-	return response.json()
+	return response.json() as Promise<TokenResponse>
 }
 
 export const getNowPlaying = async () => {
@@ -32,7 +37,8 @@ export const getNowPlaying = async () => {
 	return fetch(NOW_PLAYING_ENDPOINT, {
 		headers: {
 			Authorization: `Bearer ${access_token}`
-		}
+		},
+		cache: 'no-store'
 	})
 }
 
@@ -42,6 +48,7 @@ export const getTopTracks = async () => {
 	return fetch(TOP_TRACKS_ENDPOINT, {
 		headers: {
 			Authorization: `Bearer ${access_token}`
-		}
+		},
+		next: { revalidate: 3600 }
 	})
 }
