@@ -1,3 +1,10 @@
+## [1.29.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.29.0...v1.29.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* await ([abac8e6](https://github.com/vasilistotskas/nextjs-portfolio/commit/abac8e6ba840aac863c1d69e4d43e8df457b35a2))
+
 # [1.29.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.28.0...v1.29.0) (2026-02-27)
 
 
