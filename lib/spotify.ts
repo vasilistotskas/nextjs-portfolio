@@ -28,7 +28,7 @@ const getAccessToken = async (): Promise<TokenResponse> => {
 		})
 	})
 
-	return response.json() as Promise<TokenResponse>
+	return await response.json() as Promise<TokenResponse>
 }
 
 export const getNowPlaying = async () => {
