@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.28.0...v1.29.0) (2026-02-27)
+
+
+### Features
+
+* claude ([038f86b](https://github.com/vasilistotskas/nextjs-portfolio/commit/038f86bb8f34cd2017a49d79d6a4d65cbebda2e0))
+
 # [1.28.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.27.5...v1.28.0) (2026-02-27)
 
 
