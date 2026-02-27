@@ -9,11 +9,13 @@ const skillData = {
 	frontend: {
 		variant: 'cyan' as const,
 		skills: [
+			'Vue.js',
+			'Nuxt (v3/v4)',
 			'TypeScript',
+			'JavaScript',
 			'React',
 			'Next.js',
-			'Vue 3',
-			'Nuxt',
+			'Vite',
 			'Tailwind CSS',
 			'HTML',
 			'CSS'
@@ -21,23 +23,41 @@ const skillData = {
 	},
 	backend: {
 		variant: 'green' as const,
-		skills: ['Python', 'Django', 'Django REST', 'NestJS', 'Node.js', 'PHP', 'Codeigniter']
+		skills: ['Python', 'Django', 'Django REST', 'NestJS', 'Node.js', 'PHP']
 	},
 	devops: {
 		variant: 'yellow' as const,
-		skills: ['Docker', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Git', 'Linux', 'Nginx']
+		skills: [
+			'Kubernetes (k3s)',
+			'ArgoCD',
+			'Docker',
+			'PostgreSQL',
+			'Redis',
+			'RabbitMQ',
+			'Celery',
+			'Nginx',
+			'Git',
+			'Linux'
+		]
 	},
-	tools: {
+	infra: {
 		variant: 'purple' as const,
-		skills: ['VS Code', 'GitHub', 'Figma', 'Postman', 'TablePlus', 'Vercel']
+		skills: ['Hetzner', 'Cloudflare', 'Vercel', 'Longhorn', 'Cert-Manager']
 	}
+}
+
+const categoryLabels: Record<string, string> = {
+	frontend: 'Frontend',
+	backend: 'Backend',
+	devops: 'DevOps',
+	infra: 'Infrastructure & Cloud'
 }
 
 export default function Skills() {
 	const t = useTranslations('skills')
 
 	return (
-		<section className="px-6 py-20" id="skills">
+		<section className="px-4 md:px-6 py-8 md:py-20" id="skills">
 			<div className="mx-auto max-w-5xl">
 				{/* Section header */}
 				<motion.div
@@ -50,7 +70,7 @@ export default function Skills() {
 					<p className="text-terminal-muted mb-2 font-mono text-xs tracking-widest uppercase">
 						{t('subtitle')}
 					</p>
-					<h2 className="text-terminal-text font-mono text-2xl font-bold md:text-3xl">
+					<h2 className="text-terminal-text font-sans text-2xl font-bold md:text-3xl">
 						{t('title')}
 					</h2>
 					<div className="section-accent" />
@@ -69,21 +89,14 @@ export default function Skills() {
 							viewport={{ once: true, margin: '-60px' }}
 							transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
 						>
-							<Terminal title={`skills/${category}`}>
-								<p className="text-terminal-comment mb-3">
-									<span className="text-terminal-purple">const</span>{' '}
-									<span className="text-terminal-cyan">{category}</span>{' '}
-									<span className="text-terminal-text">= </span>
-									<span className="text-terminal-yellow">[</span>
-								</p>
-								<div className="mb-3 flex flex-wrap gap-1.5 pl-4">
+							<Terminal title={categoryLabels[category]}>
+								<div className="flex flex-wrap gap-1.5">
 									{skills.map((skill) => (
 										<Badge key={skill} variant={variant}>
 											{skill}
 										</Badge>
 									))}
 								</div>
-								<p className="text-terminal-yellow">]</p>
 							</Terminal>
 						</motion.div>
 					))}

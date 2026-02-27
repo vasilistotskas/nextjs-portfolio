@@ -2,7 +2,7 @@
 
 Terminal-themed developer portfolio built with the latest web stack.
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript 5.7](https://www.typescriptlang.org/) (strict)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **i18n**: [next-intl](https://next-intl.dev/) (EN + EL)

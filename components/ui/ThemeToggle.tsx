@@ -25,7 +25,7 @@ export default function ThemeToggle() {
 			onClick={() => setTheme(isDark ? 'light' : 'dark')}
 			aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 			className={cn(
-				'relative flex h-8 w-8 items-center justify-center rounded-md border',
+				'relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border',
 				'border-terminal-border text-terminal-comment',
 				'transition-colors duration-200',
 				'hover:border-terminal-cyan hover:text-terminal-cyan'

@@ -52,7 +52,7 @@ export default function ContactForm() {
 	}
 
 	const inputClass = cn(
-		'w-full rounded border bg-terminal-bg px-3 py-2 font-mono text-sm text-terminal-text',
+		'w-full rounded-md border bg-terminal-bg px-3.5 py-2.5 font-sans text-sm text-terminal-text',
 		'placeholder:text-terminal-muted outline-none',
 		'transition-colors border-terminal-border',
 		'focus:border-terminal-cyan focus:ring-0'
@@ -62,10 +62,10 @@ export default function ContactForm() {
 		return (
 			<div className="flex flex-col items-center gap-4 py-12 text-center">
 				<CheckCircle size={40} className="text-terminal-green" />
-				<p className="text-terminal-green font-mono">{t('success')}</p>
+				<p className="text-terminal-green font-sans font-medium">{t('success')}</p>
 				<button
 					onClick={() => setStatus('idle')}
-					className="text-terminal-muted hover:text-terminal-cyan font-mono text-xs"
+					className="text-terminal-muted hover:text-terminal-cyan font-sans text-xs"
 				>
 					Send another message
 				</button>
@@ -77,8 +77,7 @@ export default function ContactForm() {
 		<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 			{/* Name */}
 			<div>
-				<label className="text-terminal-comment mb-1.5 block font-mono text-xs">
-					<span className="text-terminal-prompt">{'// '}</span>
+				<label className="text-terminal-text mb-1.5 block font-sans text-sm font-medium">
 					{t('name')}
 				</label>
 				<input
@@ -87,7 +86,7 @@ export default function ContactForm() {
 					className={inputClass}
 				/>
 				{errors.name && (
-					<p className="text-terminal-prompt mt-1 font-mono text-xs">
+					<p className="text-terminal-prompt mt-1 font-sans text-xs">
 						{errors.name.message}
 					</p>
 				)}
@@ -95,8 +94,7 @@ export default function ContactForm() {
 
 			{/* Email */}
 			<div>
-				<label className="text-terminal-comment mb-1.5 block font-mono text-xs">
-					<span className="text-terminal-prompt">{'// '}</span>
+				<label className="text-terminal-text mb-1.5 block font-sans text-sm font-medium">
 					{t('email')}
 				</label>
 				<input
@@ -106,7 +104,7 @@ export default function ContactForm() {
 					className={inputClass}
 				/>
 				{errors.email && (
-					<p className="text-terminal-prompt mt-1 font-mono text-xs">
+					<p className="text-terminal-prompt mt-1 font-sans text-xs">
 						{errors.email.message}
 					</p>
 				)}
@@ -114,8 +112,7 @@ export default function ContactForm() {
 
 			{/* Subject */}
 			<div>
-				<label className="text-terminal-comment mb-1.5 block font-mono text-xs">
-					<span className="text-terminal-prompt">{'// '}</span>
+				<label className="text-terminal-text mb-1.5 block font-sans text-sm font-medium">
 					{t('subject')}
 				</label>
 				<input
@@ -124,7 +121,7 @@ export default function ContactForm() {
 					className={inputClass}
 				/>
 				{errors.subject && (
-					<p className="text-terminal-prompt mt-1 font-mono text-xs">
+					<p className="text-terminal-prompt mt-1 font-sans text-xs">
 						{errors.subject.message}
 					</p>
 				)}
@@ -132,8 +129,7 @@ export default function ContactForm() {
 
 			{/* Message */}
 			<div>
-				<label className="text-terminal-comment mb-1.5 block font-mono text-xs">
-					<span className="text-terminal-prompt">{'// '}</span>
+				<label className="text-terminal-text mb-1.5 block font-sans text-sm font-medium">
 					{t('message')}
 				</label>
 				<textarea
@@ -143,7 +139,7 @@ export default function ContactForm() {
 					className={cn(inputClass, 'resize-none')}
 				/>
 				{errors.message && (
-					<p className="text-terminal-prompt mt-1 font-mono text-xs">
+					<p className="text-terminal-prompt mt-1 font-sans text-xs">
 						{errors.message.message}
 					</p>
 				)}
@@ -151,9 +147,9 @@ export default function ContactForm() {
 
 			{/* Error state */}
 			{status === 'error' && (
-				<div className="border-terminal-prompt/30 bg-terminal-prompt/10 flex items-center gap-2 rounded border px-3 py-2">
+				<div className="border-terminal-prompt/30 bg-terminal-prompt/10 flex items-center gap-2 rounded-md border px-3 py-2">
 					<AlertCircle size={14} className="text-terminal-prompt" />
-					<p className="text-terminal-prompt font-mono text-xs">{t('error')}</p>
+					<p className="text-terminal-prompt font-sans text-xs">{t('error')}</p>
 				</div>
 			)}
 
@@ -161,7 +157,7 @@ export default function ContactForm() {
 			<button
 				type="submit"
 				disabled={status === 'loading'}
-				className="border-terminal-green bg-terminal-green/10 text-terminal-green hover:bg-terminal-green hover:text-terminal-bg flex w-full items-center justify-center gap-2 rounded border px-4 py-2.5 font-mono text-sm transition-all disabled:cursor-not-allowed disabled:opacity-50"
+				className="bg-terminal-green text-terminal-bg hover:shadow-[0_0_20px_-4px_var(--green)] flex w-full items-center justify-center gap-2 rounded-md px-4 py-2.5 font-sans text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
 			>
 				{status === 'loading' ? (
 					<>

@@ -5,14 +5,16 @@ type CardProps = {
 	children: ReactNode
 	className?: string
 	hover?: boolean
+	accent?: boolean
 }
 
-export default function Card({ children, className, hover = true }: CardProps) {
+export default function Card({ children, className, hover = true, accent = false }: CardProps) {
 	return (
 		<div
 			className={cn(
-				'terminal-border bg-terminal-surface rounded-lg p-6',
+				'terminal-border bg-terminal-surface rounded-lg p-3 md:p-6',
 				hover && 'card-hover',
+				accent && 'gradient-border-top',
 				className
 			)}
 		>

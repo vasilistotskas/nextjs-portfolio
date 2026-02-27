@@ -6,18 +6,20 @@
    ═══════════════════════════════════════════════════════════ */
 @layer base {
 	:root {
-		/* Light — GitHub-inspired */
+		/* Light — GitHub-inspired (refined) */
 		--bg: #f6f8fa;
 		--surface: #ffffff;
+		--surface-elevated: #ffffff;
 		--border: #d0d7de;
 		--text: #1f2328;
 		--muted: #57606a;
 		--comment: #6e7781;
 		--green: #1a7f37;
-		--cyan: #0550ae;
+		--cyan: #0969da;
 		--prompt: #cf222e;
 		--yellow: #9a6700;
 		--purple: #8250df;
+		--glow: #0969da;
 		color-scheme: light;
 	}
 
@@ -25,6 +27,7 @@
 		/* Dark — GitHub Dark-inspired */
 		--bg: #0d1117;
 		--surface: #161b22;
+		--surface-elevated: #1c2333;
 		--border: #30363d;
 		--text: #c9d1d9;
 		--muted: #848d97;
@@ -34,6 +37,7 @@
 		--prompt: #f78166;
 		--yellow: #e3b341;
 		--purple: #bc8cff;
+		--glow: #58a6ff;
 		color-scheme: dark;
 	}
 }
@@ -48,6 +52,7 @@
 
 	--color-terminal-bg: var(--bg);
 	--color-terminal-surface: var(--surface);
+	--color-terminal-surface-elevated: var(--surface-elevated);
 	--color-terminal-border: var(--border);
 	--color-terminal-text: var(--text);
 	--color-terminal-muted: var(--muted);
@@ -57,6 +62,7 @@
 	--color-terminal-prompt: var(--prompt);
 	--color-terminal-yellow: var(--yellow);
 	--color-terminal-purple: var(--purple);
+	--color-terminal-glow: var(--glow);
 
 	/* Traffic-light dots — always fixed */
 	--color-dot-red: #ff5f57;
@@ -90,13 +96,13 @@
 		background-color: var(--bg);
 		color: var(--text);
 		font-family: var(--font-sans);
-		/* Subtle dot-grid texture */
+		/* Subtle dot-grid texture — wider spacing */
 		background-image: radial-gradient(
 			circle,
-			color-mix(in srgb, var(--border) 70%, transparent) 1px,
+			color-mix(in srgb, var(--border) 60%, transparent) 1px,
 			transparent 1px
 		);
-		background-size: 28px 28px;
+		background-size: 32px 32px;
 	}
 
 	code,
@@ -160,7 +166,7 @@
 		-webkit-backdrop-filter: blur(16px) saturate(180%);
 	}
 
-	/* Card hover lift + glow */
+	/* Card hover lift + gradient border */
 	.card-hover {
 		transition:
 			border-color 0.25s ease,
@@ -168,22 +174,67 @@
 			box-shadow 0.25s ease;
 	}
 	.card-hover:hover {
-		border-color: color-mix(in srgb, var(--cyan) 50%, transparent);
+		border-color: color-mix(in srgb, var(--cyan) 40%, transparent);
 		transform: translateY(-3px);
-		box-shadow: 0 12px 40px -8px color-mix(in srgb, var(--cyan) 18%, transparent);
+		box-shadow:
+			0 0 0 1px color-mix(in srgb, var(--cyan) 15%, transparent),
+			0 12px 40px -8px color-mix(in srgb, var(--cyan) 18%, transparent);
 	}
 
 	/* Accent line beneath section headings */
 	.section-accent {
-		width: 2.5rem;
+		width: 3rem;
 		height: 2px;
-		margin-top: 1rem;
-		background: linear-gradient(90deg, var(--green), transparent);
+		margin-top: 0.75rem;
+		background: linear-gradient(90deg, var(--green), var(--cyan));
 		border-radius: 1px;
+	}
+
+	/* Section divider */
+	.section-divider {
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			color-mix(in srgb, var(--border) 60%, transparent) 50%,
+			transparent
+		);
 	}
 
 	/* Blinking cursor */
 	.cursor-blink {
 		animation: cursor-blink 1.1s step-end infinite;
+	}
+
+	/* Noise overlay — CSS-only SVG filter */
+	.noise-overlay {
+		position: relative;
+	}
+	.noise-overlay::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		opacity: 0.03;
+		pointer-events: none;
+		z-index: 1;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+		background-repeat: repeat;
+		background-size: 128px 128px;
+	}
+
+	/* Gradient top border accent for cards */
+	.gradient-border-top {
+		position: relative;
+	}
+	.gradient-border-top::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: linear-gradient(90deg, var(--green), var(--cyan));
+		border-radius: 1px 1px 0 0;
 	}
 }

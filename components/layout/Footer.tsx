@@ -14,14 +14,17 @@ export default function Footer() {
 	const year = new Date().getFullYear()
 
 	return (
-		<footer className="border-terminal-border bg-terminal-bg border-t">
+		<footer className="relative bg-terminal-bg">
+			{/* Gradient top line */}
+			<div className="section-divider" />
+
 			<div className="mx-auto max-w-5xl px-6 py-8">
 				<div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
 					{/* Now Playing */}
 					<NowPlaying />
 
 					{/* Social links */}
-					<div className="flex items-center gap-4">
+					<div className="flex items-center gap-5">
 						{socialLinks.map(({ href, icon: Icon, label }) => (
 							<a
 								key={label}
@@ -29,9 +32,9 @@ export default function Footer() {
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={label}
-								className="text-terminal-comment hover:text-terminal-cyan transition-colors"
+								className="text-terminal-comment hover:text-terminal-cyan transition-all duration-200 hover:scale-110"
 							>
-								<Icon size={16} />
+								<Icon size={18} />
 							</a>
 						))}
 					</div>

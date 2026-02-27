@@ -45,29 +45,28 @@ function ContactContent() {
 	const tc = useTranslations('common')
 
 	return (
-		<div className="mx-auto max-w-5xl px-6 py-20">
+		<div className="mx-auto max-w-5xl px-4 md:px-6 py-8 md:py-20">
 			{/* Header */}
 			<div className="mb-12">
 				<p className="text-terminal-comment mb-2 font-mono text-sm">{t('subtitle')}</p>
-				<h1 className="text-terminal-text font-mono text-3xl font-bold md:text-4xl">
+				<h1 className="text-terminal-text font-sans text-3xl font-bold md:text-4xl">
 					{t('title')}
 				</h1>
-				<p className="text-terminal-comment mt-4 font-mono text-sm">{t('description')}</p>
+				<p className="text-terminal-comment mt-4 font-sans text-sm">{t('description')}</p>
 			</div>
 
-			<div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+			<div className="grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-5">
 				{/* Contact info */}
 				<div className="space-y-6 lg:col-span-2">
 					<Card hover={false}>
 						<div className="space-y-5">
 							<div>
-								<p className="text-terminal-comment mb-2 font-mono text-xs">
-									<span className="text-terminal-prompt">{'// '}</span>
+								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium uppercase tracking-wide">
 									{t('info.email')}
 								</p>
 								<a
 									href={`mailto:${tc('myEmail')}`}
-									className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-mono text-sm transition-colors"
+									className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-sans text-sm transition-colors"
 								>
 									<Mail size={14} className="text-terminal-cyan" />
 									{tc('myEmail')}
@@ -75,19 +74,17 @@ function ContactContent() {
 							</div>
 
 							<div>
-								<p className="text-terminal-comment mb-2 font-mono text-xs">
-									<span className="text-terminal-prompt">{'// '}</span>
+								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium uppercase tracking-wide">
 									{t('info.location')}
 								</p>
-								<div className="text-terminal-text flex items-center gap-2 font-mono text-sm">
+								<div className="text-terminal-text flex items-center gap-2 font-sans text-sm">
 									<MapPin size={14} className="text-terminal-cyan" />
 									{tc('athensGreece')}
 								</div>
 							</div>
 
 							<div>
-								<p className="text-terminal-comment mb-3 font-mono text-xs">
-									<span className="text-terminal-prompt">{'// '}</span>
+								<p className="text-terminal-muted mb-3 font-sans text-xs font-medium uppercase tracking-wide">
 									{t('info.social')}
 								</p>
 								<div className="space-y-2">
@@ -97,7 +94,7 @@ function ContactContent() {
 											href={href}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-mono text-sm transition-colors"
+											className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-sans text-sm transition-colors"
 										>
 											<Icon size={14} className="text-terminal-muted" />
 											<span>{handle}</span>
@@ -112,10 +109,9 @@ function ContactContent() {
 				{/* Contact form */}
 				<div className="lg:col-span-3">
 					<Card hover={false}>
-						<p className="text-terminal-comment mb-6 font-mono text-xs">
-							<span className="text-terminal-prompt">$ </span>
-							send-message --to vassilistotskas@msn.com
-						</p>
+						<h2 className="text-terminal-text mb-6 font-sans text-lg font-semibold">
+							{t('form.heading')}
+						</h2>
 						<ContactForm />
 					</Card>
 				</div>

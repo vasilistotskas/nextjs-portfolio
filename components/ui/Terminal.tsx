@@ -11,9 +11,9 @@ export default function Terminal({ title = 'bash', children, className }: Termin
 	return (
 		<div
 			className={cn(
-				'terminal-border bg-terminal-surface relative overflow-hidden rounded-lg',
+				'terminal-border bg-terminal-surface noise-overlay relative overflow-hidden rounded-lg',
 				'shadow-sm transition-shadow duration-300',
-				'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--cyan)_20%,transparent),0_8px_30px_-8px_color-mix(in_srgb,var(--cyan)_12%,transparent)]',
+				'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--cyan)_20%,transparent),0_12px_36px_-8px_color-mix(in_srgb,var(--cyan)_15%,transparent)]',
 				className
 			)}
 		>
@@ -30,7 +30,7 @@ export default function Terminal({ title = 'bash', children, className }: Termin
 			</div>
 
 			{/* Content */}
-			<div className="p-4 font-mono text-sm">{children}</div>
+			<div className="p-5 font-mono text-sm">{children}</div>
 
 			{/* Subtle scanline sheen */}
 			<div

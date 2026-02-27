@@ -11,15 +11,16 @@
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "at",
-		"description": "I build modern web applications with a passion for clean code, great developer experience, and performant user interfaces.",
+		"tagline": "High-performance web apps & scalable infrastructure",
+		"description": "Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. From e-commerce platforms to self-hosted k3s kubernetes clusters — I build it end to end.",
 		"cta": {
 			"projects": "View Projects",
 			"contact": "Contact Me"
 		},
 		"prompt": {
 			"whoami": "whoami",
-			"cat": "cat skills.txt",
-			"ls": "ls -la projects/",
+			"cat": "cat role.txt",
+			"ls": "ls -la stack/",
 			"ready": "Ready for new challenges."
 		}
 	},
@@ -41,11 +42,11 @@
 		"items": {
 			"portfolio": {
 				"name": "Developer Portfolio",
-				"description": "Terminal-themed portfolio built with Next.js 15, React 19, and Tailwind CSS v4. Features i18n, Spotify integration, and GitHub stats."
+				"description": "Terminal-themed portfolio built with Next.js 16, React 19, and Tailwind CSS v4. Features i18n, Spotify integration, and GitHub stats."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Full-stack e-commerce platform built with Django REST Framework, Nuxt 3, and PostgreSQL. Features product management, cart, and checkout."
+				"description": "Multi-repo e-commerce platform built over 4+ years. Django REST API, Nuxt 4 storefront, and a NestJS media streaming service. Running on PostgreSQL with Docker orchestration."
 			}
 		}
 	},
@@ -57,26 +58,65 @@
 			"advisable": {
 				"role": "Fullstack Developer",
 				"company": "Advisable",
-				"period": "2021 — Present",
-				"description": "Building and maintaining web applications using Django, Vue 3, and Nuxt. Working on API design, database optimization, and frontend architecture."
+				"period": "2020 — Present",
+				"description": "Working on complex web applications, modernizing stacks and delivering projects on standalone Php/Typescript/Python and Nuxt 4 frontends."
 			},
 			"freelance": {
 				"role": "Freelance Web Developer",
 				"company": "Self-employed",
-				"period": "2019 — 2021",
-				"description": "Designed and developed websites and web applications for various clients using PHP, JavaScript, and MySQL."
+				"period": "2019 — 2020",
+				"description": "Designed and developed websites and web applications."
 			}
 		}
 	},
 	"about": {
 		"title": "About Me",
 		"subtitle": "// README.md",
-		"bio": "Hey, I'm Vasilis, a Fullstack Developer at Advisable. I've had a passion for computers and technology since an early age. I now have years of experience building applications and websites using technologies like Django (Python), Vue 3 (TypeScript), Next.js, NestJs, and PostgreSQL.",
+		"role": "Fullstack Developer",
+		"company": "Advisable",
+		"companyAt": "at",
+		"intro": "Hey there, I'm Vasilis, a Fullstack Developer based in Athens, Greece, with a strong focus on high-performance web applications and scalable infrastructure.",
+		"sections": {
+			"work": {
+				"title": "Current Work @ Advisable",
+				"body": "I am working on complex web applications, always striving to modernize our stacks. I've also worked on standalone Php/Typescript/Python stacks, delivering complex projects for our clients, including comprehensive platforms frontend built entirely on Nuxt 4."
+			},
+			"projects": {
+				"title": "Projects & Infrastructure",
+				"bodyBefore": "For more than 4 years, alongside with other projects I've been working on a personal project, a multi-repo e-commerce platform consisting of a Django API, Nuxt frontend, and a NestJs media streaming application. I've recently built a microservices-based infrastructure for",
+				"websideLabel": "webside.gr",
+				"bodyAfter": ", running on a self-hosted Hetzner k3s kubernetes cluster, including ArgoCD, Longhorn, RabbitMQ, Celery, Redis, and Cert-Manager."
+			},
+			"stack": {
+				"title": "Core Tech Stack",
+				"heart": "Nuxt",
+				"frontend": "Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"backend": "Python, Django, PHP",
+				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
+			},
+			"ai": {
+				"title": "AI",
+				"body": "I've been an early and ongoing user of AI coding tools like Claude Code (Main tool), Cursor, Windsurf, and Kiro."
+			}
+		},
+		"closing": "With a strong interest in clean architecture and driven by curiosity, I always strive to stay on the edge of all frameworks and tools I'm working with.",
+		"highlights": {
+			"title": "Highlights",
+			"experience": "{years}+ years professional experience",
+			"stack": "Fullstack: Nuxt, Python, Vue",
+			"languages": "English & Greek",
+			"certifications": "Google & TestDome certified"
+		},
 		"education": {
 			"title": "Education",
 			"degree": "Computer Engineering",
 			"school": "University of Western Macedonia",
-			"year": "2019"
+			"year": "2015 — 2024"
+		},
+		"certifications": {
+			"title": "Certifications",
+			"google": "Grow Greek Tourism Online — Google",
+			"testdome": "Python — TestDome"
 		},
 		"location": "Athens, Greece",
 		"spotify": {
@@ -97,6 +137,7 @@
 			"social": "Social"
 		},
 		"form": {
+			"heading": "Send a Message",
 			"name": "Name",
 			"namePlaceholder": "John Doe",
 			"email": "Email",

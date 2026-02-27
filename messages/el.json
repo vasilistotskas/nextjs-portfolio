@@ -3,7 +3,7 @@
 		"home": "Αρχική",
 		"about": "Σχετικά",
 		"contact": "Επικοινωνία",
-		"projects": "Έργα"
+		"projects": "Projects"
 	},
 	"hero": {
 		"greeting": "Γεια, Κόσμε!",
@@ -11,15 +11,16 @@
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "στην",
-		"description": "Φτιάχνω σύγχρονες διαδικτυακές εφαρμογές με πάθος για καθαρό κώδικα, εξαιρετική εμπειρία ανάπτυξης και αποδοτικά interfaces.",
+		"tagline": "High-performance web apps & scalable infrastructure",
+		"description": "Fullstack Developer με εστίαση σε Nuxt, Python, και Kubernetes/Docker. Από e-commerce πλατφόρμες μέχρι self-hosted k3s kubernetes clusters — χτίζω end to end.",
 		"cta": {
-			"projects": "Δες τα Έργα",
+			"projects": "Projects",
 			"contact": "Επικοινωνία"
 		},
 		"prompt": {
 			"whoami": "whoami",
-			"cat": "cat skills.txt",
-			"ls": "ls -la projects/",
+			"cat": "cat role.txt",
+			"ls": "ls -la stack/",
 			"ready": "Έτοιμος για νέες προκλήσεις."
 		}
 	},
@@ -34,18 +35,18 @@
 		}
 	},
 	"projects": {
-		"title": "Έργα",
+		"title": "Projects",
 		"subtitle": "// πρόσφατη δουλειά",
 		"viewCode": "Κώδικας",
 		"viewDemo": "Live Demo",
 		"items": {
 			"portfolio": {
-				"name": "Portfolio Προγραμματιστή",
-				"description": "Portfolio με terminal αισθητική, φτιαγμένο με Next.js 15, React 19 και Tailwind CSS v4. Περιλαμβάνει i18n, ενσωμάτωση Spotify και στατιστικά GitHub."
+				"name": "Developer Portfolio",
+				"description": "Portfolio με terminal αισθητική, φτιαγμένο με Next.js 16, React 19 και Tailwind CSS v4. Περιλαμβάνει i18n, ενσωμάτωση Spotify και στατιστικά GitHub."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Ολοκληρωμένη πλατφόρμα e-commerce με Django REST Framework, Nuxt 3 και PostgreSQL. Διαχείριση προϊόντων, καλάθι και ολοκλήρωση αγοράς."
+				"description": "Multi-repo e-commerce πλατφόρμα που αναπτύσσεται εδώ και 4+ χρόνια. Django REST API, Nuxt 4 storefront και NestJS media streaming service. Τρέχει σε PostgreSQL με Docker orchestration."
 			}
 		}
 	},
@@ -57,13 +58,13 @@
 			"advisable": {
 				"role": "Fullstack Developer",
 				"company": "Advisable",
-				"period": "2021 — Παρόν",
-				"description": "Ανάπτυξη και συντήρηση εφαρμογών με Django, Vue 3 και Nuxt. Σχεδιασμός API, βελτιστοποίηση βάσης δεδομένων και αρχιτεκτονική frontend."
+				"period": "2020 — Παρόν",
+				"description": "Εργασία σε σύνθετα web applications, εκσυγχρονισμός stacks και παράδοση projects σε Php/Typescript/Python και Nuxt 4 frontends."
 			},
 			"freelance": {
 				"role": "Freelance Web Developer",
 				"company": "Αυτοαπασχολούμενος",
-				"period": "2019 — 2021",
+				"period": "2019 — 2020",
 				"description": "Σχεδιασμός και ανάπτυξη ιστοτόπων για διάφορους πελάτες με PHP, JavaScript και MySQL."
 			}
 		}
@@ -71,12 +72,51 @@
 	"about": {
 		"title": "Σχετικά με εμένα",
 		"subtitle": "// README.md",
-		"bio": "Γεια, είμαι ο Βασίλης, Fullstack Developer στην Advisable. Ασχολούμαι με ανάπτυξη εφαρμογών και ιστοτόπων χρησιμοποιώντας τεχνολογίες όπως Django (Python), Vue 3 (TypeScript), Next.js, NestJs και PostgreSQL.",
+		"role": "Fullstack Developer",
+		"company": "Advisable",
+		"companyAt": "στην",
+		"intro": "Hello, είμαι ο Βασίλης, ένας Fullstack Developer με έδρα την Αθήνα.",
+		"sections": {
+			"work": {
+				"title": "Current Work @ Advisable",
+				"body": "Αυτή τη περίοδο εργάζομαι πάνω σε σύνθετα web applications, προσπαθώντας πάντα να τα εκσυγχρονίζω και να τα κρατάω updated. Έχω δουλέψει σε αυτόνομα Php/Typescript/Python stacks, παραδίδοντας πολύπλοκα projects, συμπεριλαμβανομένων ολοκληρωμένων πλατφορμών με το frontend χτισμένο εξ ολοκλήρου χρησιμοποιώντας σύγχρονες τεχνολογίες (Nuxt)."
+			},
+			"projects": {
+				"title": "Projects & Infrastructure",
+				"bodyBefore": "Για περισσότερα από 4 χρόνια, παράλληλα με άλλα projects, δουλεύω πάνω σε ένα προσωπικό project: μια multi-repo e-commerce πλατφόρμα που αποτελείται από ένα Django API, Nuxt frontend και μια εφαρμογή media streaming σε NestJs. Σχετικά με το κομμάτι του DevOps, έχτισα μια microservices-based υποδομή για το",
+				"websideLabel": "webside.gr",
+				"bodyAfter": ", η οποία τρέχει σε ένα self-hosted k3s kubernetes cluster στην Hetzner, περιλαμβάνοντας ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager κ.α."
+			},
+			"stack": {
+				"title": "Core Tech Stack",
+				"heart": "Nuxt",
+				"frontend": "Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"backend": "Python, Django, PHP",
+				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
+			},
+			"ai": {
+				"title": "AI",
+				"body": "Σταθερή χρήση και εξοικείωση με AI coding tools όπως το Claude Code, Kiro και Cursor."
+			}
+		},
+		"closing": "Με έντονο ενδιαφέρον για clean architecture και οδηγούμενος από περιέργεια, προσπαθώ πάντα να είμαι στην αιχμή όλων των frameworks και εργαλείων που χρησιμοποιώ.",
+		"highlights": {
+			"title": "Επισημάνσεις",
+			"experience": "{years}+ χρόνια επαγγελματικής εμπειρίας",
+			"stack": "Fullstack: Nuxt, Python, Vue",
+			"languages": "Αγγλικά & Ελληνικά",
+			"certifications": "Πιστοποιήσεις Google & TestDome"
+		},
 		"education": {
 			"title": "Εκπαίδευση",
-			"degree": "Μηχανικός Υπολογιστών",
+			"degree": "Μηχανικών Πληροφορικής",
 			"school": "Πανεπιστήμιο Δυτικής Μακεδονίας",
-			"year": "2019"
+			"year": "2015 — 2024"
+		},
+		"certifications": {
+			"title": "Πιστοποιήσεις",
+			"google": "Grow Greek Tourism Online — Google",
+			"testdome": "Python — TestDome"
 		},
 		"location": "Αθήνα, Ελλάδα",
 		"spotify": {
@@ -97,6 +137,7 @@
 			"social": "Κοινωνικά Δίκτυα"
 		},
 		"form": {
+			"heading": "Στείλτε Μήνυμα",
 			"name": "Όνομα",
 			"namePlaceholder": "Γιάννης Παπαδόπουλος",
 			"email": "Email",
@@ -124,7 +165,7 @@
 	"github": {
 		"stars": "Αστέρια",
 		"followers": "Ακόλουθοι",
-		"repos": "Αποθετήρια",
+		"repos": "Repositories",
 		"title": "GitHub"
 	},
 	"notFound": {

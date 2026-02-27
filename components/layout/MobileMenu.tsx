@@ -37,29 +37,37 @@ export default function MobileMenu() {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -10 }}
 						transition={{ duration: 0.15 }}
-						className="border-terminal-border bg-terminal-bg absolute top-full right-0 left-0 border-b px-6 py-4"
+						className="border-terminal-border absolute top-full right-0 left-0 border-b px-6 py-4 backdrop-blur-xl"
+						style={{
+							backgroundColor: 'color-mix(in srgb, var(--bg) 90%, transparent)'
+						}}
 					>
 						<nav className="flex flex-col gap-4">
-							{navItems.map(({ href, key }) => {
+							{navItems.map(({ href, key }, index) => {
 								const fullHref = `/${locale}${href === '/' ? '' : href}`
 								const isActive =
 									href === '/' ? pathname === `/${locale}` : pathname.startsWith(fullHref)
 
 								return (
-									<Link
+									<motion.div
 										key={key}
-										href={fullHref}
-										onClick={() => setIsOpen(false)}
-										className={cn(
-											'font-mono text-sm transition-colors',
-											isActive
-												? 'text-terminal-cyan'
-												: 'text-terminal-comment hover:text-terminal-text'
-										)}
+										initial={{ opacity: 0, x: -12 }}
+										animate={{ opacity: 1, x: 0 }}
+										transition={{ delay: index * 0.05, duration: 0.2 }}
 									>
-										<span className="text-terminal-prompt mr-2">$</span>
-										{t(key)}
-									</Link>
+										<Link
+											href={fullHref}
+											onClick={() => setIsOpen(false)}
+											className={cn(
+												'font-sans text-sm font-medium transition-colors',
+												isActive
+													? 'text-terminal-cyan'
+													: 'text-terminal-comment hover:text-terminal-text'
+											)}
+										>
+											{t(key)}
+										</Link>
+									</motion.div>
 								)
 							})}
 						</nav>

@@ -29,13 +29,13 @@ export default function Header() {
 			)}
 		>
 			<div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-				{/* Logo */}
+				{/* Logo — mono for ~/, sans for portfolio */}
 				<Link
 					href={`/${locale}`}
-					className="group flex items-center gap-0.5 font-mono text-sm transition-opacity hover:opacity-80"
+					className="group flex items-center gap-0.5 text-base transition-opacity hover:opacity-80"
 				>
-					<span className="text-terminal-prompt">~/</span>
-					<span className="text-terminal-text">portfolio</span>
+					<span className="font-mono text-terminal-prompt">~/</span>
+					<span className="font-sans font-semibold text-terminal-text">portfolio</span>
 					<span className="cursor-blink bg-terminal-green ml-0.5 inline-block h-[1em] w-[0.45em] align-middle" />
 				</Link>
 

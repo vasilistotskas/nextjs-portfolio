@@ -24,29 +24,43 @@ export default function Hero() {
 	]
 
 	return (
-		<section className="relative flex min-h-[90vh] items-center px-6 py-20">
-			{/* Ambient glow behind terminal */}
+		<section className="relative flex min-h-[90vh] items-center px-4 md:px-6 py-8 md:py-20">
+			{/* Ambient glow behind terminal — stronger */}
 			<div
 				className="pointer-events-none absolute inset-0 overflow-hidden"
 				aria-hidden="true"
 			>
 				<div
 					className="absolute top-1/2 left-1/3 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
-					style={{ background: 'var(--green)', opacity: 0.06 }}
+					style={{ background: 'var(--green)', opacity: 0.1 }}
 				/>
 				<div
 					className="absolute top-1/4 right-1/5 h-[320px] w-[320px] rounded-full blur-[100px]"
-					style={{ background: 'var(--cyan)', opacity: 0.04 }}
+					style={{ background: 'var(--cyan)', opacity: 0.07 }}
+				/>
+				<div
+					className="absolute bottom-1/4 right-1/3 h-[280px] w-[280px] rounded-full blur-[110px]"
+					style={{ background: 'var(--purple)', opacity: 0.05 }}
 				/>
 			</div>
 
 			<div className="relative mx-auto w-full max-w-5xl">
+				{/* Tagline above terminal — sans-serif for non-dev audience */}
+				<motion.p
+					initial={{ opacity: 0, y: 12 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, ease: 'easeOut' }}
+					className="text-terminal-comment mb-6 font-sans text-lg"
+				>
+					{t('tagline')}
+				</motion.p>
+
 				{/* Terminal window */}
 				<motion.div
-					initial={{ y: 24 }}
-					animate={{ y: 0 }}
+					initial={{ opacity: 0, y: 24, scale: 0.98 }}
+					animate={{ opacity: 1, y: 0, scale: 1 }}
 					transition={{ duration: 0.5, ease: 'easeOut' }}
-					className="terminal-border bg-terminal-surface relative overflow-hidden rounded-xl shadow-2xl shadow-black/20"
+					className="terminal-border bg-terminal-surface noise-overlay relative overflow-hidden rounded-xl shadow-2xl shadow-black/20"
 				>
 					{/* Scanline overlay */}
 					<div
@@ -72,7 +86,7 @@ export default function Hero() {
 					</div>
 
 					{/* Terminal content */}
-					<div className="space-y-2 p-6 font-mono text-sm md:text-base">
+					<div className="space-y-2 p-3 md:p-6 font-mono text-sm md:text-base">
 						{lines.map((line, i) => (
 							<motion.div
 								key={i}
@@ -105,7 +119,7 @@ export default function Hero() {
 				>
 					<Link
 						href={`/${locale}#projects`}
-						className="group border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-bg flex items-center gap-2 rounded-md border px-5 py-2.5 font-mono text-sm transition-all duration-200 hover:shadow-[0_0_20px_-4px_var(--green)]"
+						className="group bg-terminal-green text-terminal-bg hover:shadow-[0_0_24px_-4px_var(--green)] flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200"
 					>
 						{t('cta.projects')}
 						<ArrowRight
@@ -115,7 +129,7 @@ export default function Hero() {
 					</Link>
 					<Link
 						href={`/${locale}/contact`}
-						className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex items-center gap-2 rounded-md border px-5 py-2.5 font-mono text-sm transition-all duration-200"
+						className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex items-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-medium transition-all duration-200"
 					>
 						{t('cta.contact')}
 					</Link>

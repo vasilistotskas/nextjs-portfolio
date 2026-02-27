@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title: `${t('myName')} — Fullstack Developer`,
 		description:
-			'Fullstack Developer specializing in modern web applications with Django, Vue, and Next.js.'
+			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.'
 	}
 }
 

@@ -3,6 +3,7 @@
 import { useLocale } from 'next-intl'
 import { useRouter, usePathname } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 export default function LanguageSwitcher() {
 	const locale = useLocale()
@@ -16,16 +17,17 @@ export default function LanguageSwitcher() {
 	}
 
 	return (
-		<div className="border-terminal-border flex items-center gap-1 rounded border px-1 py-0.5 font-mono text-xs">
+		<div className="border-terminal-border flex items-center gap-1 rounded border px-1 py-0.5 font-sans text-xs font-medium">
 			{routing.locales.map((loc, i) => (
 				<span key={loc} className="flex items-center gap-1">
 					<button
 						onClick={() => switchLocale(loc)}
-						className={
+						className={cn(
+							'cursor-pointer',
 							locale === loc
 								? 'text-terminal-cyan'
 								: 'text-terminal-muted hover:text-terminal-text transition-colors'
-						}
+						)}
 					>
 						{loc.toUpperCase()}
 					</button>

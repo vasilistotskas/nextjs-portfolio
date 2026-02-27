@@ -10,6 +10,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ScrollProgress from '@/components/ui/ScrollProgress'
 import '@/app/globals.css'
 
 const geist = Geist({
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			template: `%s | ${t('myName')}`
 		},
 		description:
-			'Fullstack Developer specializing in modern web applications with Django, Vue, Next.js.',
+			'Fullstack Developer specializing in modern web applications with Python, Django, Nuxt, Vue, Next.js.',
 		authors: [{ name: t('myName') }],
 		creator: t('myName'),
 		openGraph: {
@@ -80,6 +81,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 			<body className="bg-terminal-bg text-terminal-text antialiased">
 				<NextIntlClientProvider messages={messages}>
 					<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+						<ScrollProgress />
 						<div className="flex min-h-screen flex-col">
 							<Header />
 							<main className="flex-1">{children}</main>
