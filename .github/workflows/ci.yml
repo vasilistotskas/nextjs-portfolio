@@ -18,7 +18,6 @@ jobs:
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
-      packages: write # to be able to publish to GitHub Packages
     steps:
       - uses: actions/checkout@v6
         with:
@@ -27,7 +26,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24.x'
-          registry-url: 'https://npm.pkg.github.com'
       - name: Install pnpm
         run: npm install -g pnpm
       - name: Install dependencies
@@ -36,7 +34,5 @@ jobs:
         run: pnpm audit signatures --audit-level=critical
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.NEXTJS_PORTFOLIO_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
