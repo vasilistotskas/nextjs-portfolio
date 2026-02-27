@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.27.5...v1.28.0) (2026-02-27)
+
+
+### Features
+
+* progress ([31f3adc](https://github.com/vasilistotskas/nextjs-portfolio/commit/31f3adc9ffce53d5f88f8cc3367e18f92ee7191e))
+
 ## [1.27.5](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.27.4...v1.27.5) (2026-02-27)
 
 
