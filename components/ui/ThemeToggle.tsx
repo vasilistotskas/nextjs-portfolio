@@ -3,17 +3,16 @@
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { cn } from '@/lib/utils'
 
 export default function ThemeToggle() {
 	const { theme, setTheme } = useTheme()
-	const [mounted, setMounted] = useState(false)
-
-	// eslint-disable-next-line react-hooks/set-state-in-effect
-	useEffect(() => {
-		setMounted(true)
-	}, [])
+	const mounted = useSyncExternalStore(
+		() => () => {},
+		() => true,
+		() => false
+	)
 
 	if (!mounted) {
 		return <div className="border-terminal-border h-8 w-8 rounded-md border" />
