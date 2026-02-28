@@ -1,9 +1,20 @@
 import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 import { getTopTracks } from '@/lib/spotify'
+import type { TimeRange } from '@/lib/spotify'
 
-export async function GET() {
+const VALID_RANGES = new Set<TimeRange>(['short_term', 'medium_term'])
+
+export async function GET(request: NextRequest) {
 	try {
-		const response = await getTopTracks()
+		const timeRange = (request.nextUrl.searchParams.get('time_range') ??
+			'short_term') as TimeRange
+
+		if (!VALID_RANGES.has(timeRange)) {
+			return NextResponse.json({ tracks: [] }, { status: 400 })
+		}
+
+		const response = await getTopTracks(timeRange)
 
 		if (!response.ok) {
 			return NextResponse.json({ tracks: [] }, { status: 502 })

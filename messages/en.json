@@ -123,7 +123,12 @@
 		"location": "Athens, Greece",
 		"spotify": {
 			"title": "Top Tracks",
-			"subtitle": "// Currently listening to"
+			"subtitle": "// Currently listening to",
+			"noTracks": "No tracks available",
+			"range": {
+				"short_term": "4 Weeks",
+				"medium_term": "6 Months"
+			}
 		},
 		"github": {
 			"title": "GitHub Stats"
@@ -162,6 +167,11 @@
 	"spotify": {
 		"nowPlaying": "Now Playing",
 		"notPlaying": "Not currently playing",
+		"lastPlayed": "Played {time}",
+		"justNow": "just now",
+		"minutesAgo": "{n}m ago",
+		"hoursAgo": "{n}h ago",
+		"daysAgo": "{n}d ago",
 		"on": "on Spotify"
 	},
 	"github": {

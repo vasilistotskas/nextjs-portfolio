@@ -123,7 +123,12 @@
 		"location": "Αθήνα, Ελλάδα",
 		"spotify": {
 			"title": "Κορυφαία Τραγούδια",
-			"subtitle": "// Ακούω τώρα"
+			"subtitle": "// Ακούω τώρα",
+			"noTracks": "Δεν υπάρχουν τραγούδια",
+			"range": {
+				"short_term": "4 Εβδομάδες",
+				"medium_term": "6 Μήνες"
+			}
 		},
 		"github": {
 			"title": "Στατιστικά GitHub"
@@ -162,6 +167,11 @@
 	"spotify": {
 		"nowPlaying": "Παίζει τώρα",
 		"notPlaying": "Δεν παίζει τίποτα",
+		"lastPlayed": "Πριν {time}",
+		"justNow": "λίγο",
+		"minutesAgo": "{n} λεπτά",
+		"hoursAgo": "{n} ώρες",
+		"daysAgo": "{n} μέρες",
 		"on": "στο Spotify"
 	},
 	"github": {

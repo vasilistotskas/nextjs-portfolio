@@ -5,6 +5,9 @@ export type NowPlayingSong = {
 	album?: string
 	albumImageUrl?: string
 	songUrl?: string
+	playedAt?: string
+	progressMs?: number
+	durationMs?: number
 }
 
 export type Track = {
