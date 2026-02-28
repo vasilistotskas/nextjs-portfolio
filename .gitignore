@@ -70,3 +70,6 @@ dist
 
 # CHANGELOG
 CHANGELOG.md
+
+# AI
+.claude/settings.local.json
