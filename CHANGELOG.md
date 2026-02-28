@@ -1,3 +1,15 @@
+# [1.30.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.29.1...v1.30.0) (2026-02-28)
+
+
+### Bug Fixes
+
+* lock ([0f9cc20](https://github.com/vasilistotskas/nextjs-portfolio/commit/0f9cc2038100690ff73d3679aebc4e9a64eaf6a2))
+
+
+### Features
+
+* UI/UX improvements ([1a82a08](https://github.com/vasilistotskas/nextjs-portfolio/commit/1a82a08fef7abb9b475eeea67e358933950196c2))
+
 ## [1.29.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.29.0...v1.29.1) (2026-02-27)
 
 
