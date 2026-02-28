@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'motion/react'
 import { ArrowRight, Terminal } from 'lucide-react'
 import { useTypewriter } from '@/hooks/useTypewriter'
+import HeroBackground3DWrapper from '@/components/ui/HeroBackground3DWrapper'
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
@@ -50,43 +51,39 @@ export default function Hero() {
 	})
 
 	return (
-		<section className="relative flex min-h-[90vh] items-center px-4 md:px-6 py-8 md:py-20">
-			{/* Ambient glows with drift + pulse */}
-			<div
-				className="pointer-events-none absolute inset-0 overflow-hidden"
-				aria-hidden="true"
-			>
+		<section className="relative flex md:min-h-[90vh] items-center px-4 md:px-6 py-8 md:py-20">
+			{/* 3D particle background (lazy-loaded, no SSR) */}
+			<HeroBackground3DWrapper />
+
+			{/* CSS glow fallback (visible until canvas loads / if WebGL unavailable) */}
+			<noscript>
 				<div
-					className="absolute top-1/2 left-1/3 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
-					style={{
-						background: 'var(--green)',
-						opacity: 0.18,
-						animation: 'glow-drift-1 12s ease-in-out infinite, glow-pulse 8s ease-in-out infinite',
-						['--glow-base-opacity' as string]: '0.14',
-						['--glow-peak-opacity' as string]: '0.22'
-					} as React.CSSProperties}
-				/>
-				<div
-					className="absolute top-1/4 right-1/5 h-[320px] w-[320px] rounded-full blur-[100px]"
-					style={{
-						background: 'var(--cyan)',
-						opacity: 0.14,
-						animation: 'glow-drift-2 15s ease-in-out infinite, glow-pulse 8s ease-in-out 2s infinite',
-						['--glow-base-opacity' as string]: '0.10',
-						['--glow-peak-opacity' as string]: '0.18'
-					} as React.CSSProperties}
-				/>
-				<div
-					className="absolute bottom-1/4 right-1/3 h-[280px] w-[280px] rounded-full blur-[110px]"
-					style={{
-						background: 'var(--purple)',
-						opacity: 0.10,
-						animation: 'glow-drift-1 14s ease-in-out 1s infinite, glow-pulse 8s ease-in-out 4s infinite',
-						['--glow-base-opacity' as string]: '0.07',
-						['--glow-peak-opacity' as string]: '0.13'
-					} as React.CSSProperties}
-				/>
-			</div>
+					className="pointer-events-none absolute inset-0 overflow-hidden"
+					aria-hidden="true"
+				>
+					<div
+						className="absolute top-1/2 left-1/3 h-120 w-120 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
+						style={{
+							background: 'var(--green)',
+							opacity: 0.18
+						}}
+					/>
+					<div
+						className="absolute top-1/4 right-1/5 h-80 w-[320px] rounded-full blur-[100px]"
+						style={{
+							background: 'var(--cyan)',
+							opacity: 0.14
+						}}
+					/>
+					<div
+						className="absolute bottom-1/4 right-1/3 h-70 w-70 rounded-full blur-[110px]"
+						style={{
+							background: 'var(--purple)',
+							opacity: 0.1
+						}}
+					/>
+				</div>
+			</noscript>
 
 			<div className="relative mx-auto w-full max-w-5xl">
 				{/* Large title heading */}

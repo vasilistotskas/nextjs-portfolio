@@ -32,6 +32,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
+	transpilePackages: ['three'],
 	images: {
 		remotePatterns: [
 			{ hostname: 'i.scdn.co' },
