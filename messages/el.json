@@ -6,6 +6,8 @@
 		"projects": "Projects"
 	},
 	"hero": {
+		"title": "Βασίλης Τότσκας",
+		"titleSuffix": "Fullstack Developer",
 		"greeting": "Γεια, Κόσμε!",
 		"name": "Βασίλης Τότσκας",
 		"role": "Fullstack Developer",

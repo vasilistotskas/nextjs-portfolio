@@ -1,64 +1,114 @@
 'use client'
 
+import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'motion/react'
 import { ArrowRight, Terminal } from 'lucide-react'
+import { useTypewriter } from '@/hooks/useTypewriter'
+
+type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export default function Hero() {
 	const t = useTranslations('hero')
 	const locale = useLocale()
+	const [step, setStep] = useState<Step>(0)
 
-	const lines = [
-		{ prompt: '~', command: t('prompt.whoami'), delay: 0.3 },
-		{ output: t('name'), color: 'text-terminal-green', delay: 0.7 },
-		{ prompt: '~', command: t('prompt.cat'), delay: 1.1 },
-		{
-			output: `${t('role')} ${t('companyAt')} ${t('company')}`,
-			color: 'text-terminal-cyan',
-			delay: 1.5
-		},
-		{ prompt: '~', command: t('prompt.ls'), delay: 1.9 },
-		{ output: t('description'), color: 'text-terminal-text', delay: 2.3 },
-		{ prompt: '~', command: '', isActive: true, delay: 2.9 }
-	]
+	const advance = useCallback(
+		(next: Step) => () => setStep(next),
+		[]
+	)
+
+	// Step 1: type "whoami"
+	const whoami = useTypewriter({
+		text: t('prompt.whoami'),
+		baseSpeed: 15,
+		variationRange: 25,
+		startDelay: 0,
+		onComplete: advance(2),
+		enabled: step === 1
+	})
+
+	// Step 3: type "cat role.txt"
+	const catRole = useTypewriter({
+		text: t('prompt.cat'),
+		baseSpeed: 15,
+		variationRange: 25,
+		startDelay: 0,
+		onComplete: advance(4),
+		enabled: step === 3
+	})
+
+	// Step 5: type "ls -la stack/"
+	const lsStack = useTypewriter({
+		text: t('prompt.ls'),
+		baseSpeed: 15,
+		variationRange: 25,
+		startDelay: 0,
+		onComplete: advance(6),
+		enabled: step === 5
+	})
 
 	return (
 		<section className="relative flex min-h-[90vh] items-center px-4 md:px-6 py-8 md:py-20">
-			{/* Ambient glow behind terminal — stronger */}
+			{/* Ambient glows with drift + pulse */}
 			<div
 				className="pointer-events-none absolute inset-0 overflow-hidden"
 				aria-hidden="true"
 			>
 				<div
 					className="absolute top-1/2 left-1/3 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
-					style={{ background: 'var(--green)', opacity: 0.1 }}
+					style={{
+						background: 'var(--green)',
+						opacity: 0.18,
+						animation: 'glow-drift-1 12s ease-in-out infinite, glow-pulse 8s ease-in-out infinite',
+						['--glow-base-opacity' as string]: '0.14',
+						['--glow-peak-opacity' as string]: '0.22'
+					} as React.CSSProperties}
 				/>
 				<div
 					className="absolute top-1/4 right-1/5 h-[320px] w-[320px] rounded-full blur-[100px]"
-					style={{ background: 'var(--cyan)', opacity: 0.07 }}
+					style={{
+						background: 'var(--cyan)',
+						opacity: 0.14,
+						animation: 'glow-drift-2 15s ease-in-out infinite, glow-pulse 8s ease-in-out 2s infinite',
+						['--glow-base-opacity' as string]: '0.10',
+						['--glow-peak-opacity' as string]: '0.18'
+					} as React.CSSProperties}
 				/>
 				<div
 					className="absolute bottom-1/4 right-1/3 h-[280px] w-[280px] rounded-full blur-[110px]"
-					style={{ background: 'var(--purple)', opacity: 0.05 }}
+					style={{
+						background: 'var(--purple)',
+						opacity: 0.10,
+						animation: 'glow-drift-1 14s ease-in-out 1s infinite, glow-pulse 8s ease-in-out 4s infinite',
+						['--glow-base-opacity' as string]: '0.07',
+						['--glow-peak-opacity' as string]: '0.13'
+					} as React.CSSProperties}
 				/>
 			</div>
 
 			<div className="relative mx-auto w-full max-w-5xl">
-				{/* Tagline above terminal — sans-serif for non-dev audience */}
-				<motion.p
-					initial={{ opacity: 0, y: 12 }}
+				{/* Large title heading */}
+				<motion.div
+					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, ease: 'easeOut' }}
-					className="text-terminal-comment mb-6 font-sans text-lg"
+					transition={{ duration: 0.6, ease: 'easeOut' }}
+					onAnimationComplete={advance(1)}
+					className="mb-6"
 				>
-					{t('tagline')}
-				</motion.p>
+					<h1 className="text-gradient text-5xl md:text-7xl font-bold font-sans">
+						{t('title')}
+					</h1>
+					<p className="text-terminal-comment mt-2 text-xl md:text-2xl font-sans">
+						{t('titleSuffix')}
+					</p>
+				</motion.div>
 
 				{/* Terminal window */}
 				<motion.div
 					initial={{ opacity: 0, y: 24, scale: 0.98 }}
-					animate={{ opacity: 1, y: 0, scale: 1 }}
+					animate={step >= 1 ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.98 }}
 					transition={{ duration: 0.5, ease: 'easeOut' }}
 					className="terminal-border bg-terminal-surface noise-overlay relative overflow-hidden rounded-xl shadow-2xl shadow-black/20"
 				>
@@ -87,53 +137,117 @@ export default function Hero() {
 
 					{/* Terminal content */}
 					<div className="space-y-2 p-3 md:p-6 font-mono text-sm md:text-base">
-						{lines.map((line, i) => (
-							<motion.div
-								key={i}
-								initial={{ x: -8 }}
-								animate={{ x: 0 }}
-								transition={{ delay: line.delay, duration: 0.28, ease: 'easeOut' }}
-							>
-								{'output' in line ? (
-									<p className={line.color}>{line.output}</p>
-								) : (
-									<p>
-										<span className="text-terminal-green">{line.prompt} $ </span>
-										<span className="text-terminal-cyan">{line.command}</span>
-										{line.isActive && (
-											<span className="cursor-blink bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
-										)}
-									</p>
+						{/* Line 1: whoami command */}
+						{step >= 1 && (
+							<p>
+								<span className="text-terminal-green">{'~ $ '}</span>
+								<span className="text-terminal-cyan">{whoami.displayedText}</span>
+								{!whoami.isComplete && (
+									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
 								)}
-							</motion.div>
-						))}
+							</p>
+						)}
+
+						{/* Line 2: whoami output */}
+						{step >= 2 && (
+							<motion.p
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.3 }}
+								onAnimationComplete={advance(3)}
+								className="text-terminal-green"
+							>
+								{t('name')}
+							</motion.p>
+						)}
+
+						{/* Line 3: cat role.txt command */}
+						{step >= 3 && (
+							<p>
+								<span className="text-terminal-green">{'~ $ '}</span>
+								<span className="text-terminal-cyan">{catRole.displayedText}</span>
+								{!catRole.isComplete && (
+									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+								)}
+							</p>
+						)}
+
+						{/* Line 4: role output */}
+						{step >= 4 && (
+							<motion.p
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.3 }}
+								onAnimationComplete={advance(5)}
+								className="text-terminal-cyan"
+							>
+								{`${t('role')} ${t('companyAt')} ${t('company')}`}
+							</motion.p>
+						)}
+
+						{/* Line 5: ls -la stack/ command */}
+						{step >= 5 && (
+							<p>
+								<span className="text-terminal-green">{'~ $ '}</span>
+								<span className="text-terminal-cyan">{lsStack.displayedText}</span>
+								{!lsStack.isComplete && (
+									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+								)}
+							</p>
+						)}
+
+						{/* Line 6: description output */}
+						{step >= 6 && (
+							<motion.p
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.3 }}
+								className="text-terminal-text"
+							>
+								{t('description')}
+							</motion.p>
+						)}
+
+						{/* Final cursor prompt */}
+						{step >= 6 && (
+							<motion.p
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.3, delay: 0.35 }}
+							>
+								<span className="text-terminal-green">{'~ $ '}</span>
+								<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+							</motion.p>
+						)}
 					</div>
 				</motion.div>
 
 				{/* CTA buttons */}
-				<motion.div
-					initial={{ opacity: 0, y: 12 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 3.3, duration: 0.4, ease: 'easeOut' }}
-					className="mt-8 flex flex-wrap gap-3"
-				>
-					<Link
-						href={`/${locale}#projects`}
-						className="group bg-terminal-green text-terminal-bg hover:shadow-[0_0_24px_-4px_var(--green)] flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200"
+				{step >= 6 && (
+					<motion.div
+						initial={{ opacity: 0, y: 12 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.3, duration: 0.4, ease: 'easeOut' }}
+						className="mt-8 flex flex-wrap gap-3"
 					>
-						{t('cta.projects')}
-						<ArrowRight
-							size={14}
-							className="transition-transform duration-200 group-hover:translate-x-1"
-						/>
-					</Link>
-					<Link
-						href={`/${locale}/contact`}
-						className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex items-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-medium transition-all duration-200"
-					>
-						{t('cta.contact')}
-					</Link>
-				</motion.div>
+						<Link
+							href={`/${locale}#projects`}
+							className="group bg-terminal-green text-terminal-bg hover:shadow-[0_0_24px_-4px_var(--green)] flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200"
+						>
+							{t('cta.projects')}
+							<ArrowRight
+								size={14}
+								className="transition-transform duration-200 group-hover:translate-x-1"
+							/>
+						</Link>
+						<Link
+							href={`/${locale}/contact`}
+							className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex items-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-medium transition-all duration-200"
+						>
+							{t('cta.contact')}
+						</Link>
+					</motion.div>
+				)}
 			</div>
 		</section>
 	)
