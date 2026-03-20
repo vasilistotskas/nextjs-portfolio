@@ -86,9 +86,7 @@ export default function TopTracks() {
 					))}
 				</div>
 			) : tracks.length === 0 ? (
-				<p className="text-terminal-muted font-mono text-sm">
-					{t('noTracks')}
-				</p>
+				<p className="text-terminal-muted font-mono text-sm">{t('noTracks')}</p>
 			) : (
 				<ol className="space-y-3">
 					{tracks.map((track, i) => (
@@ -109,7 +107,7 @@ export default function TopTracks() {
 											alt={track.album}
 											fill
 											className="object-cover"
-										sizes="32px"
+											sizes="32px"
 										/>
 									</div>
 								)}

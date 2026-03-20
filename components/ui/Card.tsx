@@ -8,7 +8,12 @@ type CardProps = {
 	accent?: boolean
 }
 
-export default function Card({ children, className, hover = true, accent = false }: CardProps) {
+export default function Card({
+	children,
+	className,
+	hover = true,
+	accent = false
+}: CardProps) {
 	return (
 		<div
 			className={cn(

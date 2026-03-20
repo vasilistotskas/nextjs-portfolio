@@ -73,7 +73,7 @@ function BrowserMockup({ url, accent }: { url: string; accent: string }) {
 			</div>
 			{/* Preview area */}
 			<div
-				className="relative h-28 md:h-36 overflow-hidden"
+				className="relative h-28 overflow-hidden md:h-36"
 				style={{
 					background: `linear-gradient(135deg, color-mix(in srgb, ${accent} 15%, var(--surface)), color-mix(in srgb, ${accent} 5%, var(--bg)))`
 				}}
@@ -114,7 +114,7 @@ export default function Projects() {
 	const t = useTranslations('projects')
 
 	return (
-		<section className="px-4 md:px-6 py-8 md:py-20" id="projects">
+		<section className="px-4 py-8 md:px-6 md:py-20" id="projects">
 			<div className="mx-auto max-w-5xl">
 				{/* Section header */}
 				<motion.div
@@ -167,14 +167,20 @@ export default function Projects() {
 										}}
 									/>
 
-									<div className={`relative z-[1] flex h-full ${isFeatured ? 'md:flex-row' : ''} flex-col`}>
+									<div
+										className={`relative z-[1] flex h-full ${isFeatured ? 'md:flex-row' : ''} flex-col`}
+									>
 										{/* Browser mockup */}
-										<div className={`${isFeatured ? 'md:w-1/2' : ''} p-3 md:p-4 pb-0 md:pb-0 ${isFeatured ? 'md:pb-4 md:pr-0' : ''}`}>
+										<div
+											className={`${isFeatured ? 'md:w-1/2' : ''} p-3 pb-0 md:p-4 md:pb-0 ${isFeatured ? 'md:pr-0 md:pb-4' : ''}`}
+										>
 											<BrowserMockup url={project.url} accent={project.accent} />
 										</div>
 
 										{/* Content */}
-										<div className={`${isFeatured ? 'md:w-1/2' : ''} flex flex-col p-3 md:p-6`}>
+										<div
+											className={`${isFeatured ? 'md:w-1/2' : ''} flex flex-col p-3 md:p-6`}
+										>
 											{/* Project index */}
 											<span className="text-terminal-border group-hover:text-terminal-cyan/20 absolute top-4 right-5 font-mono text-4xl font-bold transition-colors duration-300 select-none">
 												{String(index + 1).padStart(2, '0')}
@@ -189,7 +195,9 @@ export default function Projects() {
 
 											{/* Description */}
 											<p className="text-terminal-comment mb-5 flex-1 font-sans text-sm leading-relaxed">
-												{t(`items.${project.key as 'portfolio' | 'grooveshop'}.description`)}
+												{t(
+													`items.${project.key as 'portfolio' | 'grooveshop'}.description`
+												)}
 											</p>
 
 											{/* Tech stack */}
@@ -215,7 +223,7 @@ export default function Projects() {
 														{repo.label}
 														<ArrowRight
 															size={10}
-															className="opacity-0 -translate-x-1 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0"
+															className="-translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100"
 														/>
 													</a>
 												))}
@@ -230,7 +238,7 @@ export default function Projects() {
 														{t('viewDemo')}
 														<ArrowRight
 															size={10}
-															className="opacity-0 -translate-x-1 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0"
+															className="-translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100"
 														/>
 													</a>
 												)}

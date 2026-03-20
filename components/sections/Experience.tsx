@@ -9,7 +9,7 @@ export default function Experience() {
 	const t = useTranslations('experience')
 
 	return (
-		<section className="px-4 md:px-6 py-8 md:py-20" id="experience">
+		<section className="px-4 py-8 md:px-6 md:py-20" id="experience">
 			<div className="mx-auto max-w-5xl">
 				{/* Section header */}
 				<motion.div

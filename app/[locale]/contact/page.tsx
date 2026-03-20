@@ -45,7 +45,7 @@ function ContactContent() {
 	const tc = useTranslations('common')
 
 	return (
-		<div className="mx-auto max-w-5xl px-4 md:px-6 py-8 md:py-20">
+		<div className="mx-auto max-w-5xl px-4 py-8 md:px-6 md:py-20">
 			{/* Header */}
 			<div className="mb-12">
 				<p className="text-terminal-comment mb-2 font-mono text-sm">{t('subtitle')}</p>
@@ -61,7 +61,7 @@ function ContactContent() {
 					<Card hover={false}>
 						<div className="space-y-5">
 							<div>
-								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium uppercase tracking-wide">
+								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium tracking-wide uppercase">
 									{t('info.email')}
 								</p>
 								<a
@@ -74,7 +74,7 @@ function ContactContent() {
 							</div>
 
 							<div>
-								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium uppercase tracking-wide">
+								<p className="text-terminal-muted mb-2 font-sans text-xs font-medium tracking-wide uppercase">
 									{t('info.location')}
 								</p>
 								<div className="text-terminal-text flex items-center gap-2 font-sans text-sm">
@@ -84,7 +84,7 @@ function ContactContent() {
 							</div>
 
 							<div>
-								<p className="text-terminal-muted mb-3 font-sans text-xs font-medium uppercase tracking-wide">
+								<p className="text-terminal-muted mb-3 font-sans text-xs font-medium tracking-wide uppercase">
 									{t('info.social')}
 								</p>
 								<div className="space-y-2">

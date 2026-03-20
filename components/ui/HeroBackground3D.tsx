@@ -186,9 +186,7 @@ function CursorLight({ color }: { color: string }) {
 		)
 	})
 
-	return (
-		<pointLight ref={lightRef} intensity={0.4} distance={10} color={color} />
-	)
+	return <pointLight ref={lightRef} intensity={0.4} distance={10} color={color} />
 }
 
 /* ─── Network graph: instanced nodes + pulsing connection lines ─── */
@@ -242,10 +240,7 @@ function NetworkGraph({ palette }: { palette: ThemePalette }) {
 
 	return (
 		<group>
-			<instancedMesh
-				ref={nodesRef}
-				args={[nodeGeometry, nodeMaterial, NODE_COUNT]}
-			/>
+			<instancedMesh ref={nodesRef} args={[nodeGeometry, nodeMaterial, NODE_COUNT]} />
 			<group>
 				{lineGeometries.map((geo, idx) => (
 					<lineSegments key={idx} geometry={geo}>
@@ -316,9 +311,7 @@ function CodeSymbol({
 		meshRef.current.rotation.y += delta * (hovered ? 0.4 : 0.08)
 		const target = hovered ? 1.35 : 1
 		const s = meshRef.current.scale.x
-		meshRef.current.scale.setScalar(
-			THREE.MathUtils.lerp(s, target, delta * 6)
-		)
+		meshRef.current.scale.setScalar(THREE.MathUtils.lerp(s, target, delta * 6))
 	})
 
 	return (
@@ -407,10 +400,7 @@ export default function HeroBackground3D() {
 				}}
 				style={{ background: 'transparent' }}
 			>
-				<PerformanceMonitor
-					onIncline={handleIncline}
-					onDecline={handleDecline}
-				/>
+				<PerformanceMonitor onIncline={handleIncline} onDecline={handleDecline} />
 				<Scene palette={palette} />
 			</Canvas>
 		</div>

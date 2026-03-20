@@ -57,7 +57,7 @@ export default function Skills() {
 	const t = useTranslations('skills')
 
 	return (
-		<section className="px-4 md:px-6 py-8 md:py-20" id="skills">
+		<section className="px-4 py-8 md:px-6 md:py-20" id="skills">
 			<div className="mx-auto max-w-5xl">
 				{/* Section header */}
 				<motion.div

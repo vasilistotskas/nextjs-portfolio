@@ -10,6 +10,7 @@ Manage translation keys across both locale files: `messages/en.json` and `messag
 ## Usage
 
 The user will specify one of:
+
 - **Add**: a new key path and values for both English and Greek
 - **Rename**: an existing key path to a new path
 - **Remove**: an existing key path from both files

@@ -14,7 +14,7 @@ export default function Footer() {
 	const year = new Date().getFullYear()
 
 	return (
-		<footer className="relative bg-terminal-bg">
+		<footer className="bg-terminal-bg relative">
 			{/* Gradient top line */}
 			<div className="section-divider" />
 

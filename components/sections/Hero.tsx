@@ -15,10 +15,7 @@ export default function Hero() {
 	const locale = useLocale()
 	const [step, setStep] = useState<Step>(0)
 
-	const advance = useCallback(
-		(next: Step) => () => setStep(next),
-		[]
-	)
+	const advance = useCallback((next: Step) => () => setStep(next), [])
 
 	// Step 1: type "whoami"
 	const whoami = useTypewriter({
@@ -51,7 +48,7 @@ export default function Hero() {
 	})
 
 	return (
-		<section className="relative flex md:min-h-[90vh] items-center px-4 md:px-6 py-8 md:py-20">
+		<section className="relative flex items-center px-4 py-8 md:min-h-[90vh] md:px-6 md:py-20">
 			{/* 3D particle background (lazy-loaded, no SSR) */}
 			<HeroBackground3DWrapper />
 
@@ -76,7 +73,7 @@ export default function Hero() {
 						}}
 					/>
 					<div
-						className="absolute bottom-1/4 right-1/3 h-70 w-70 rounded-full blur-[110px]"
+						className="absolute right-1/3 bottom-1/4 h-70 w-70 rounded-full blur-[110px]"
 						style={{
 							background: 'var(--purple)',
 							opacity: 0.1
@@ -94,10 +91,10 @@ export default function Hero() {
 					onAnimationComplete={advance(1)}
 					className="mb-6"
 				>
-					<h1 className="text-gradient text-5xl md:text-7xl font-bold font-sans">
+					<h1 className="text-gradient font-sans text-5xl font-bold md:text-7xl">
 						{t('title')}
 					</h1>
-					<p className="text-terminal-comment mt-2 text-xl md:text-2xl font-sans">
+					<p className="text-terminal-comment mt-2 font-sans text-xl md:text-2xl">
 						{t('titleSuffix')}
 					</p>
 				</motion.div>
@@ -105,7 +102,11 @@ export default function Hero() {
 				{/* Terminal window */}
 				<motion.div
 					initial={{ opacity: 0, y: 24, scale: 0.98 }}
-					animate={step >= 1 ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.98 }}
+					animate={
+						step >= 1
+							? { opacity: 1, y: 0, scale: 1 }
+							: { opacity: 0, y: 24, scale: 0.98 }
+					}
 					transition={{ duration: 0.5, ease: 'easeOut' }}
 					className="terminal-border bg-terminal-surface noise-overlay relative overflow-hidden rounded-xl shadow-2xl shadow-black/20"
 				>
@@ -133,7 +134,7 @@ export default function Hero() {
 					</div>
 
 					{/* Terminal content */}
-					<div className="space-y-2 p-3 md:p-6 font-mono text-sm md:text-base">
+					<div className="space-y-2 p-3 font-mono text-sm md:p-6 md:text-base">
 						{/* Line 1: whoami command */}
 						{step >= 1 && (
 							<p>
@@ -229,7 +230,7 @@ export default function Hero() {
 					>
 						<Link
 							href={`/${locale}#projects`}
-							className="group bg-terminal-green text-terminal-bg hover:shadow-[0_0_24px_-4px_var(--green)] flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200"
+							className="group bg-terminal-green text-terminal-bg flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200 hover:shadow-[0_0_24px_-4px_var(--green)]"
 						>
 							{t('cta.projects')}
 							<ArrowRight

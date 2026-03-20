@@ -110,7 +110,7 @@ export default function NowPlaying() {
 							alt={data.album ?? 'Album art'}
 							fill
 							className="object-cover"
-						sizes="32px"
+							sizes="32px"
 						/>
 					</div>
 				)}
@@ -121,8 +121,7 @@ export default function NowPlaying() {
 						{label}
 					</p>
 					<p className="text-terminal-text truncate font-mono text-xs">
-						{data.title} —{' '}
-						<span className="text-terminal-comment">{data.artist}</span>
+						{data.title} — <span className="text-terminal-comment">{data.artist}</span>
 					</p>
 					{showProgress && (
 						<div className="mt-1 flex items-center gap-2">
@@ -132,7 +131,7 @@ export default function NowPlaying() {
 									style={{ width: `${pct}%` }}
 								/>
 							</div>
-							<span className="text-terminal-muted whitespace-nowrap font-mono text-[10px]">
+							<span className="text-terminal-muted font-mono text-[10px] whitespace-nowrap">
 								{formatDuration(progress)} / {formatDuration(data.durationMs!)}
 							</span>
 						</div>
