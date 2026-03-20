@@ -32,7 +32,7 @@ export default function Footer() {
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={label}
-								className="text-terminal-comment hover:text-terminal-cyan transition-all duration-200 hover:scale-110"
+								className="text-terminal-comment hover:text-terminal-green transition-colors duration-200"
 							>
 								<Icon size={18} />
 							</a>
@@ -45,7 +45,7 @@ export default function Footer() {
 							href="https://github.com/vasilistotskas/nextjs-portfolio"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="hover:text-terminal-cyan transition-colors"
+							className="hover:text-terminal-green transition-colors"
 						>
 							{t('source')}
 						</Link>

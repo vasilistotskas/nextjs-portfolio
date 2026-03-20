@@ -24,7 +24,9 @@
 			"cat": "cat role.txt",
 			"ls": "ls -la stack/",
 			"ready": "Ready for new challenges."
-		}
+		},
+		"location": "Athens, GR",
+		"scroll": "scroll"
 	},
 	"skills": {
 		"title": "Skills",

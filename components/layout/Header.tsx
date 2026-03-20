@@ -34,7 +34,7 @@ export default function Header() {
 					href={`/${locale}`}
 					className="group flex items-center gap-0.5 text-base transition-opacity hover:opacity-80"
 				>
-					<span className="text-terminal-prompt font-mono">~/</span>
+					<span className="text-terminal-green font-mono">~/</span>
 					<span className="text-terminal-text font-sans font-semibold">portfolio</span>
 					<span className="cursor-blink bg-terminal-green ml-0.5 inline-block h-[1em] w-[0.45em] align-middle" />
 				</Link>

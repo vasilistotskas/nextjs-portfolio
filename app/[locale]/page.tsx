@@ -29,9 +29,13 @@ export default async function HomePage({ params }: Props) {
 	return (
 		<>
 			<Hero />
+			<div className="section-divider" />
 			<Skills />
+			<div className="section-divider" />
 			<Projects />
+			<div className="section-divider" />
 			<Experience />
+			<div className="section-divider" />
 
 			{/* GitHub Stats section */}
 			<section className="px-6 pb-20">

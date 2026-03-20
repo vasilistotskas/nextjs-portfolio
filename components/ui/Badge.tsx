@@ -7,22 +7,14 @@ type BadgeProps = {
 }
 
 export default function Badge({ children, variant = 'default', className }: BadgeProps) {
+	const isAccent = variant === 'green' || variant === 'cyan'
 	return (
 		<span
 			className={cn(
-				'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[11px] leading-tight font-medium tracking-wide',
-				{
-					'border-terminal-green/25 bg-terminal-green/8 text-terminal-green border':
-						variant === 'green',
-					'border-terminal-cyan/25 bg-terminal-cyan/8 text-terminal-cyan border':
-						variant === 'cyan',
-					'border-terminal-yellow/25 bg-terminal-yellow/8 text-terminal-yellow border':
-						variant === 'yellow',
-					'border-terminal-purple/25 bg-terminal-purple/8 text-terminal-purple border':
-						variant === 'purple',
-					'border-terminal-border bg-terminal-bg/50 text-terminal-comment border':
-						variant === 'default'
-				},
+				'inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[11px] leading-tight font-medium tracking-wide',
+				isAccent
+					? 'border-terminal-green/20 bg-terminal-green/8 text-terminal-green'
+					: 'border-terminal-border bg-terminal-surface/50 text-terminal-muted',
 				className
 			)}
 		>

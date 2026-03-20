@@ -54,14 +54,14 @@ function GitHubStatsContent({ stats }: { stats: GitHubStatsType | null }) {
 	return (
 		<div className="font-mono">
 			<p className="text-terminal-comment mb-3 text-xs">
-				<span className="text-terminal-prompt">$ </span>
+				<span className="text-terminal-green">$ </span>
 				gh api /users/vasilistotskas --jq &apos;.&apos;
 			</p>
 			<div className="grid grid-cols-3 gap-4">
 				{items.map(({ icon: Icon, label, value }) => (
 					<div key={label} className="text-center">
 						<div className="mb-1 flex items-center justify-center">
-							<Icon size={14} className="text-terminal-cyan" />
+							<Icon size={14} className="text-terminal-green/60" />
 						</div>
 						<p className="text-terminal-green text-lg font-bold">{value}</p>
 						<p className="text-terminal-comment text-xs">{label}</p>

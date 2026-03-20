@@ -48,41 +48,10 @@ export default function Hero() {
 	})
 
 	return (
-		<section className="relative flex items-center px-4 py-8 md:min-h-[90vh] md:px-6 md:py-20">
-			{/* 3D particle background (lazy-loaded, no SSR) */}
+		<section className="relative flex items-center px-4 py-8 md:min-h-[75vh] md:px-6 md:py-16">
 			<HeroBackground3DWrapper />
 
-			{/* CSS glow fallback (visible until canvas loads / if WebGL unavailable) */}
-			<noscript>
-				<div
-					className="pointer-events-none absolute inset-0 overflow-hidden"
-					aria-hidden="true"
-				>
-					<div
-						className="absolute top-1/2 left-1/3 h-120 w-120 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
-						style={{
-							background: 'var(--green)',
-							opacity: 0.18
-						}}
-					/>
-					<div
-						className="absolute top-1/4 right-1/5 h-80 w-[320px] rounded-full blur-[100px]"
-						style={{
-							background: 'var(--cyan)',
-							opacity: 0.14
-						}}
-					/>
-					<div
-						className="absolute right-1/3 bottom-1/4 h-70 w-70 rounded-full blur-[110px]"
-						style={{
-							background: 'var(--purple)',
-							opacity: 0.1
-						}}
-					/>
-				</div>
-			</noscript>
-
-			<div className="relative mx-auto w-full max-w-5xl">
+			<div className="relative z-10 mx-auto w-full max-w-5xl">
 				{/* Large title heading */}
 				<motion.div
 					initial={{ opacity: 0, y: 16 }}
@@ -91,10 +60,16 @@ export default function Hero() {
 					onAnimationComplete={advance(1)}
 					className="mb-6"
 				>
-					<h1 className="text-gradient font-sans text-5xl font-bold md:text-7xl">
+					{/* Status indicator */}
+					<div className="mb-4 flex items-center gap-2.5 font-mono text-xs">
+						<span className="status-dot" />
+						<span className="text-terminal-green">{t('location')}</span>
+					</div>
+
+					<h1 className="text-terminal-text font-sans text-5xl font-bold tracking-tight md:text-8xl">
 						{t('title')}
 					</h1>
-					<p className="text-terminal-comment mt-2 font-sans text-xl md:text-2xl">
+					<p className="text-terminal-comment mt-3 font-sans text-xl md:text-2xl">
 						{t('titleSuffix')}
 					</p>
 				</motion.div>
@@ -108,24 +83,14 @@ export default function Hero() {
 							: { opacity: 0, y: 24, scale: 0.98 }
 					}
 					transition={{ duration: 0.5, ease: 'easeOut' }}
-					className="terminal-border bg-terminal-surface noise-overlay relative overflow-hidden rounded-xl shadow-2xl shadow-black/20"
+					className="glass terminal-border noise-overlay relative overflow-hidden rounded-xl"
 				>
-					{/* Scanline overlay */}
-					<div
-						className="pointer-events-none absolute inset-0 z-10 rounded-xl opacity-[0.018]"
-						aria-hidden="true"
-						style={{
-							backgroundImage:
-								'repeating-linear-gradient(transparent, transparent 1px, rgba(0,0,0,1) 1px, rgba(0,0,0,1) 2px)'
-						}}
-					/>
-
 					{/* Title bar */}
 					<div className="border-terminal-border bg-terminal-bg/70 flex items-center gap-3 border-b px-5 py-3">
 						<div className="flex gap-2">
-							<span className="bg-dot-red h-3 w-3 rounded-full" />
-							<span className="bg-dot-yellow h-3 w-3 rounded-full" />
-							<span className="bg-dot-green h-3 w-3 rounded-full" />
+							<span className="bg-terminal-green/25 h-3 w-3 rounded-full" />
+							<span className="bg-terminal-green/15 h-3 w-3 rounded-full" />
+							<span className="bg-terminal-green/15 h-3 w-3 rounded-full" />
 						</div>
 						<span className="text-terminal-muted flex flex-1 items-center justify-center gap-2 font-mono text-xs">
 							<Terminal size={10} />
@@ -220,33 +185,45 @@ export default function Hero() {
 					</div>
 				</motion.div>
 
-				{/* CTA buttons */}
-				{step >= 6 && (
-					<motion.div
-						initial={{ opacity: 0, y: 12 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.3, duration: 0.4, ease: 'easeOut' }}
-						className="mt-8 flex flex-wrap gap-3"
+				{/* CTA buttons — always in DOM to prevent layout jump */}
+				<motion.div
+					initial={{ opacity: 0, y: 12 }}
+					animate={step >= 6 ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+					transition={{ delay: 0.3, duration: 0.4, ease: 'easeOut' }}
+					className="pointer-events-auto mt-8 flex flex-wrap gap-3"
+					style={{ pointerEvents: step >= 6 ? 'auto' : 'none' }}
+				>
+					<Link
+						href={`/${locale}#projects`}
+						className="group bg-terminal-green flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold text-white transition-all duration-200 hover:shadow-[0_0_24px_-4px_var(--green)]"
 					>
-						<Link
-							href={`/${locale}#projects`}
-							className="group bg-terminal-green text-terminal-bg flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200 hover:shadow-[0_0_24px_-4px_var(--green)]"
-						>
-							{t('cta.projects')}
-							<ArrowRight
-								size={14}
-								className="transition-transform duration-200 group-hover:translate-x-1"
-							/>
-						</Link>
-						<Link
-							href={`/${locale}/contact`}
-							className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex items-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-medium transition-all duration-200"
-						>
-							{t('cta.contact')}
-						</Link>
-					</motion.div>
-				)}
+						{t('cta.projects')}
+						<ArrowRight
+							size={14}
+							className="transition-transform duration-200 group-hover:translate-x-1"
+						/>
+					</Link>
+					<Link
+						href={`/${locale}/contact`}
+						className="border-terminal-border text-terminal-comment hover:border-terminal-green hover:text-terminal-green flex items-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-medium transition-all duration-200"
+					>
+						{t('cta.contact')}
+					</Link>
+				</motion.div>
 			</div>
+
+			{/* Scroll indicator — always in DOM */}
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={step >= 6 ? { opacity: 1 } : { opacity: 0 }}
+				transition={{ delay: 0.8, duration: 0.6 }}
+				className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+			>
+				<span className="text-terminal-muted scroll-indicator font-mono text-[10px] tracking-[0.2em] uppercase">
+					{t('scroll')}
+				</span>
+				<div className="from-terminal-green/50 h-8 w-px bg-gradient-to-b to-transparent" />
+			</motion.div>
 		</section>
 	)
 }

@@ -26,7 +26,7 @@ const skillData = {
 		skills: ['Python', 'Django', 'Django REST', 'NestJS', 'Node.js', 'PHP']
 	},
 	devops: {
-		variant: 'yellow' as const,
+		variant: 'default' as const,
 		skills: [
 			'Kubernetes (k3s)',
 			'ArgoCD',
@@ -41,7 +41,7 @@ const skillData = {
 		]
 	},
 	infra: {
-		variant: 'purple' as const,
+		variant: 'default' as const,
 		skills: ['Hetzner', 'Cloudflare', 'Vercel', 'Longhorn', 'Cert-Manager']
 	}
 }
@@ -90,13 +90,34 @@ export default function Skills() {
 							transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
 						>
 							<Terminal title={categoryLabels[category]}>
-								<div className="flex flex-wrap gap-1.5">
+								<p className="text-terminal-comment mb-3 text-[11px]">
+									<span className="text-terminal-green">{'$ '}</span>
+									<span className="text-terminal-cyan">cat</span>
+									{` skills/${category}.json`}
+								</p>
+								<motion.div
+									className="flex flex-wrap gap-1.5"
+									initial="hidden"
+									whileInView="show"
+									viewport={{ once: true }}
+									variants={{
+										hidden: {},
+										show: { transition: { staggerChildren: 0.04 } }
+									}}
+								>
 									{skills.map((skill) => (
-										<Badge key={skill} variant={variant}>
-											{skill}
-										</Badge>
+										<motion.div
+											key={skill}
+											variants={{
+												hidden: { opacity: 0, y: 8 },
+												show: { opacity: 1, y: 0 }
+											}}
+											transition={{ duration: 0.3, ease: 'easeOut' }}
+										>
+											<Badge variant={variant}>{skill}</Badge>
+										</motion.div>
 									))}
-								</div>
+								</motion.div>
 							</Terminal>
 						</motion.div>
 					))}

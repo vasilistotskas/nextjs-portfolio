@@ -36,7 +36,7 @@ export default function Navigation() {
 							'after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:transition-transform after:duration-250',
 							isActive
 								? 'after:bg-terminal-green after:scale-x-100'
-								: 'after:bg-terminal-cyan after:scale-x-0 hover:after:scale-x-100'
+								: 'after:bg-terminal-green/50 after:scale-x-0 hover:after:scale-x-100'
 						)}
 					>
 						{t(key)}

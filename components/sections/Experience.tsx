@@ -29,12 +29,12 @@ export default function Experience() {
 				</motion.div>
 
 				<div className="relative space-y-6 pl-8">
-					{/* Gradient timeline line */}
+					{/* Timeline line */}
 					<div
 						className="absolute top-0 left-0 h-full w-px"
 						style={{
 							background:
-								'linear-gradient(to bottom, var(--cyan), color-mix(in srgb, var(--cyan) 20%, transparent))'
+								'linear-gradient(to bottom, var(--green), color-mix(in srgb, var(--green) 20%, transparent))'
 						}}
 					/>
 
@@ -49,20 +49,20 @@ export default function Experience() {
 						>
 							{/* Subtler timeline dot */}
 							<span className="absolute top-4 -left-[2.15rem] flex h-4 w-4 items-center justify-center">
-								<span className="bg-terminal-cyan absolute h-3 w-3 animate-ping rounded-full opacity-10" />
-								<span className="border-terminal-cyan bg-terminal-bg h-2.5 w-2.5 rounded-full border-2" />
+								<span className="bg-terminal-green/20 absolute h-3 w-3 animate-ping rounded-full" />
+								<span className="border-terminal-green bg-terminal-bg h-2.5 w-2.5 rounded-full border-2" />
 							</span>
 
-							<div className="terminal-border card-hover bg-terminal-surface rounded-lg p-5">
+							<div className="glass terminal-border card-hover rounded-lg p-5">
 								{/* Simplified header — date only */}
-								<p className="text-terminal-purple mb-3 font-mono text-xs">
+								<p className="text-terminal-muted mb-3 font-mono text-xs">
 									{t(`items.${key}.period`)}
 								</p>
 
 								<h3 className="text-terminal-text mb-1 font-sans text-lg font-semibold">
 									{t(`items.${key}.role`)}
 								</h3>
-								<p className="text-terminal-green mb-3 font-mono text-sm">
+								<p className="text-terminal-cyan mb-3 font-mono text-sm">
 									@ {t(`items.${key}.company`)}
 								</p>
 								<p className="text-terminal-comment font-sans text-sm leading-relaxed">

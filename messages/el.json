@@ -24,7 +24,9 @@
 			"cat": "cat role.txt",
 			"ls": "ls -la stack/",
 			"ready": "Έτοιμος για νέες προκλήσεις."
-		}
+		},
+		"location": "Αθήνα, Ελλάδα",
+		"scroll": "scroll"
 	},
 	"skills": {
 		"title": "Δεξιότητες",

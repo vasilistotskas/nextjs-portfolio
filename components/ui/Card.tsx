@@ -17,7 +17,7 @@ export default function Card({
 	return (
 		<div
 			className={cn(
-				'terminal-border bg-terminal-surface rounded-lg p-3 md:p-6',
+				'glass terminal-border rounded-lg p-3 md:p-6',
 				hover && 'card-hover',
 				accent && 'gradient-border-top',
 				className
