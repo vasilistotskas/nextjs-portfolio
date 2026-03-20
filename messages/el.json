@@ -49,6 +49,10 @@
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
 				"description": "Multi-repo e-commerce πλατφόρμα που αναπτύσσεται εδώ και 4+ χρόνια. Django REST API, Nuxt 4 storefront και NestJS media streaming service. Τρέχει σε PostgreSQL με Docker orchestration."
+			},
+			"webside": {
+				"name": "Webside.gr",
+				"description": "Production e-commerce κατάστημα βασισμένο στο GrooveShop. Deployed σε self-hosted Hetzner k3s Kubernetes cluster με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
 			}
 		}
 	},

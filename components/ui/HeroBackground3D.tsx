@@ -193,6 +193,7 @@ function CursorLight({ color }: { color: string }) {
 function NetworkGraph({ palette }: { palette: ThemePalette }) {
 	const nodesRef = useRef<THREE.InstancedMesh>(null)
 	const tempObj = useRef(new THREE.Object3D())
+	const elapsed = useRef(0)
 
 	useEffect(() => {
 		if (!nodesRef.current) return
@@ -206,8 +207,9 @@ function NetworkGraph({ palette }: { palette: ThemePalette }) {
 	}, [])
 
 	// All mutations in useFrame — avoids compiler immutability conflicts
-	useFrame(({ clock }) => {
-		const t = clock.getElapsedTime()
+	useFrame((_, delta) => {
+		elapsed.current += delta
+		const t = elapsed.current
 
 		// Animate node positions (gentle bob)
 		if (nodesRef.current) {

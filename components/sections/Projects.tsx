@@ -54,6 +54,21 @@ const projects = [
 			{ name: 'Docker', variant: 'purple' as const },
 			{ name: 'TypeScript', variant: 'yellow' as const }
 		]
+	},
+	{
+		key: 'webside',
+		accent: 'var(--purple)',
+		url: 'webside.gr',
+		repos: [] as Repo[],
+		demo: 'https://webside.gr',
+		tech: [
+			{ name: 'GrooveShop', variant: 'green' as const },
+			{ name: 'Nuxt 4', variant: 'cyan' as const },
+			{ name: 'Django', variant: 'green' as const },
+			{ name: 'Kubernetes', variant: 'purple' as const },
+			{ name: 'ArgoCD', variant: 'cyan' as const },
+			{ name: 'Hetzner', variant: 'yellow' as const }
+		]
 	}
 ]
 
@@ -189,14 +204,14 @@ export default function Projects() {
 											{/* Header */}
 											<div className="mb-4">
 												<h3 className="text-terminal-cyan font-sans text-lg font-semibold">
-													{t(`items.${project.key as 'portfolio' | 'grooveshop'}.name`)}
+													{t(`items.${project.key as 'portfolio' | 'grooveshop' | 'webside'}.name`)}
 												</h3>
 											</div>
 
 											{/* Description */}
 											<p className="text-terminal-comment mb-5 flex-1 font-sans text-sm leading-relaxed">
 												{t(
-													`items.${project.key as 'portfolio' | 'grooveshop'}.description`
+													`items.${project.key as 'portfolio' | 'grooveshop' | 'webside'}.description`
 												)}
 											</p>
 
