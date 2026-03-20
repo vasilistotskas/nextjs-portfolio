@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'motion/react'
 import { ArrowRight, Terminal } from 'lucide-react'
 import { useTypewriter } from '@/hooks/useTypewriter'
-import HeroBackground3DWrapper from '@/components/ui/HeroBackground3DWrapper'
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
@@ -20,8 +19,8 @@ export default function Hero() {
 	// Step 1: type "whoami"
 	const whoami = useTypewriter({
 		text: t('prompt.whoami'),
-		baseSpeed: 15,
-		variationRange: 25,
+		baseSpeed: 12,
+		variationRange: 18,
 		startDelay: 0,
 		onComplete: advance(2),
 		enabled: step === 1
@@ -30,8 +29,8 @@ export default function Hero() {
 	// Step 3: type "cat role.txt"
 	const catRole = useTypewriter({
 		text: t('prompt.cat'),
-		baseSpeed: 15,
-		variationRange: 25,
+		baseSpeed: 12,
+		variationRange: 18,
 		startDelay: 0,
 		onComplete: advance(4),
 		enabled: step === 3
@@ -40,8 +39,8 @@ export default function Hero() {
 	// Step 5: type "ls -la stack/"
 	const lsStack = useTypewriter({
 		text: t('prompt.ls'),
-		baseSpeed: 15,
-		variationRange: 25,
+		baseSpeed: 12,
+		variationRange: 18,
 		startDelay: 0,
 		onComplete: advance(6),
 		enabled: step === 5
@@ -49,8 +48,6 @@ export default function Hero() {
 
 	return (
 		<section className="relative flex items-center px-4 py-8 md:min-h-[75vh] md:px-6 md:py-16">
-			<HeroBackground3DWrapper />
-
 			<div className="relative z-10 mx-auto w-full max-w-5xl">
 				{/* Large title heading */}
 				<motion.div
@@ -98,90 +95,89 @@ export default function Hero() {
 						</span>
 					</div>
 
-					{/* Terminal content */}
+					{/* Terminal content — all lines always in DOM */}
 					<div className="space-y-2 p-3 font-mono text-sm md:p-6 md:text-base">
 						{/* Line 1: whoami command */}
-						{step >= 1 && (
-							<p>
-								<span className="text-terminal-green">{'~ $ '}</span>
-								<span className="text-terminal-cyan">{whoami.displayedText}</span>
-								{!whoami.isComplete && (
-									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
-								)}
-							</p>
-						)}
+						<p
+							className="transition-opacity duration-200"
+							style={{ opacity: step >= 1 ? 1 : 0 }}
+						>
+							<span className="text-terminal-green">{'~ $ '}</span>
+							<span className="text-terminal-cyan">{whoami.displayedText}</span>
+							{step >= 1 && !whoami.isComplete && (
+								<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+							)}
+						</p>
 
 						{/* Line 2: whoami output */}
-						{step >= 2 && (
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 0.3 }}
-								onAnimationComplete={advance(3)}
-								className="text-terminal-green"
-							>
-								{t('name')}
-							</motion.p>
-						)}
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: step >= 2 ? 1 : 0 }}
+							transition={{ duration: 0.15 }}
+							onAnimationComplete={() => {
+								if (step === 2) setStep(3)
+							}}
+							className="text-terminal-green"
+						>
+							{t('name')}
+						</motion.p>
 
 						{/* Line 3: cat role.txt command */}
-						{step >= 3 && (
-							<p>
-								<span className="text-terminal-green">{'~ $ '}</span>
-								<span className="text-terminal-cyan">{catRole.displayedText}</span>
-								{!catRole.isComplete && (
-									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
-								)}
-							</p>
-						)}
+						<p
+							className="transition-opacity duration-200"
+							style={{ opacity: step >= 3 ? 1 : 0 }}
+						>
+							<span className="text-terminal-green">{'~ $ '}</span>
+							<span className="text-terminal-cyan">{catRole.displayedText}</span>
+							{step >= 3 && !catRole.isComplete && (
+								<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+							)}
+						</p>
 
 						{/* Line 4: role output */}
-						{step >= 4 && (
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 0.3 }}
-								onAnimationComplete={advance(5)}
-								className="text-terminal-cyan"
-							>
-								{`${t('role')} ${t('companyAt')} ${t('company')}`}
-							</motion.p>
-						)}
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: step >= 4 ? 1 : 0 }}
+							transition={{ duration: 0.15 }}
+							onAnimationComplete={() => {
+								if (step === 4) setStep(5)
+							}}
+							className="text-terminal-cyan"
+						>
+							{`${t('role')} ${t('companyAt')} ${t('company')}`}
+						</motion.p>
 
 						{/* Line 5: ls -la stack/ command */}
-						{step >= 5 && (
-							<p>
-								<span className="text-terminal-green">{'~ $ '}</span>
-								<span className="text-terminal-cyan">{lsStack.displayedText}</span>
-								{!lsStack.isComplete && (
-									<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
-								)}
-							</p>
-						)}
+						<p
+							className="transition-opacity duration-200"
+							style={{ opacity: step >= 5 ? 1 : 0 }}
+						>
+							<span className="text-terminal-green">{'~ $ '}</span>
+							<span className="text-terminal-cyan">{lsStack.displayedText}</span>
+							{step >= 5 && !lsStack.isComplete && (
+								<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+							)}
+						</p>
 
 						{/* Line 6: description output */}
-						{step >= 6 && (
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 0.3 }}
-								className="text-terminal-text"
-							>
-								{t('description')}
-							</motion.p>
-						)}
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: step >= 6 ? 1 : 0 }}
+							transition={{ duration: 0.2 }}
+							className="text-terminal-text"
+						>
+							{t('description')}
+						</motion.p>
 
 						{/* Final cursor prompt */}
-						{step >= 6 && (
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ duration: 0.3, delay: 0.35 }}
-							>
-								<span className="text-terminal-green">{'~ $ '}</span>
-								<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
-							</motion.p>
-						)}
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: step >= 6 ? 1 : 0 }}
+							transition={{ duration: 0.2, delay: 0.15 }}
+						>
+							<span className="text-terminal-green">{'~ $ '}</span>
+							<span className="cursor-glow bg-terminal-green ml-0.5 inline-block h-[1.1em] w-[0.5em] align-text-bottom" />
+						</motion.p>
 					</div>
 				</motion.div>
 

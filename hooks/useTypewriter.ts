@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 
 type UseTypewriterOptions = {
 	text: string
@@ -21,6 +21,7 @@ export function useTypewriter({
 }: UseTypewriterOptions) {
 	const [charIndex, setCharIndex] = useState(0)
 	const [active, setActive] = useState(false)
+	const completedRef = useRef(false)
 
 	const isComplete = charIndex >= text.length
 	const displayedText = text.slice(0, charIndex)
@@ -40,21 +41,22 @@ export function useTypewriter({
 		const char = text[charIndex]
 		const pause =
 			char === ' '
-				? baseSpeed + variationRange * 1.5
+				? baseSpeed + variationRange * 0.8
 				: baseSpeed + (Math.random() - 0.5) * 2 * variationRange
-		const delay = Math.max(15, pause)
+		const delay = Math.max(10, pause)
 
 		const timer = setTimeout(() => setCharIndex((prev) => prev + 1), delay)
 		return () => clearTimeout(timer)
 	}, [active, charIndex, text, baseSpeed, variationRange])
 
-	// Fire onComplete when done
+	// Fire onComplete when done — only once
 	const stableOnComplete = useCallback(() => {
 		onComplete?.()
 	}, [onComplete])
 
 	useEffect(() => {
-		if (isComplete && active && text.length > 0) {
+		if (isComplete && active && text.length > 0 && !completedRef.current) {
+			completedRef.current = true
 			stableOnComplete()
 		}
 	}, [isComplete, active, text.length, stableOnComplete])
