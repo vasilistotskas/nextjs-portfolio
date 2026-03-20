@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.32.0...v1.33.0) (2026-03-20)
+
+
+### Features
+
+* new project ([ea28900](https://github.com/vasilistotskas/nextjs-portfolio/commit/ea2890022297ee22478d3f24a3f1a772dfb1fd23))
+
 # [1.32.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.31.0...v1.32.0) (2026-02-28)
 
 
