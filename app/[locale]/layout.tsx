@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 	variable: '--font-geist-mono'
 })
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vasilistotskas.com'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vasilistotskas.com'
 
 type Props = {
 	children: ReactNode
