@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.35.0...v1.35.1) (2026-03-25)
+
+
+### Bug Fixes
+
+* canonical ([a54b95c](https://github.com/vasilistotskas/nextjs-portfolio/commit/a54b95c6df09a311d2aa7ec7f0de10d998d94328))
+
 # [1.35.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.34.1...v1.35.0) (2026-03-25)
 
 
