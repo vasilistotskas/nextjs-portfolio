@@ -1,3 +1,15 @@
+# [1.35.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.34.1...v1.35.0) (2026-03-25)
+
+
+### Bug Fixes
+
+* ci ([a6ef158](https://github.com/vasilistotskas/nextjs-portfolio/commit/a6ef15804a2c3bd927b417dd201be9d8bc465bdf))
+
+
+### Features
+
+* SEO ([15b31b6](https://github.com/vasilistotskas/nextjs-portfolio/commit/15b31b6e9eed921d4a8006260b6466513e4a6fe4))
+
 ## [1.34.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.34.0...v1.34.1) (2026-03-20)
 
 
