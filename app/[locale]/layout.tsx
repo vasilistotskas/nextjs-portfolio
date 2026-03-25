@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 	variable: '--font-geist-mono'
 })
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vasilistotskas.com'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vasilistotskas.com'
 
 type Props = {
 	children: ReactNode
@@ -65,14 +65,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		authors: [{ name: myName, url: baseUrl }],
 		creator: myName,
 		publisher: myName,
-		alternates: {
-			canonical: `/${locale}`,
-			languages: {
-				en: '/en',
-				el: '/el',
-				'x-default': '/en'
-			}
-		},
 		openGraph: {
 			type: 'website',
 			locale: locale === 'el' ? 'el_GR' : 'en_US',

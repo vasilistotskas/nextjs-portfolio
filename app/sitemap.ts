@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vasilistotskas.com'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vasilistotskas.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = ['', '/about', '/contact']
