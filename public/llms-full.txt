@@ -1,0 +1,151 @@
+# Vasilis Totskas — Fullstack Developer Portfolio (Full Context)
+
+> Comprehensive information about Vasilis Totskas and his work, intended for large language models and AI assistants.
+
+## Personal Information
+
+- **Name**: Vasilis Totskas
+- **Role**: Fullstack Developer at Advisable
+- **Location**: Athens, Greece
+- **Email**: vassilistotskas@msn.com
+- **GitHub**: https://github.com/vasilistotskas
+- **LinkedIn**: https://linkedin.com/in/vasilistotskas
+- **Twitter**: https://twitter.com/vasilistotskas
+- **Website**: https://vasilistotskas.com
+
+## Professional Background
+
+Vasilis Totskas is a Fullstack Developer based in Athens, Greece, with a strong focus on high-performance web applications and scalable infrastructure. He has been working professionally since 2019, starting as a freelance web developer before joining Advisable in 2020 where he continues to work today.
+
+At Advisable, he works on complex web applications, modernizing technology stacks and delivering projects using standalone PHP/TypeScript/Python stacks and Nuxt 4 frontends for clients. He has also built comprehensive client-facing platforms with frontends built entirely on Nuxt 4.
+
+## Education
+
+- **Degree**: Computer Engineering
+- **Institution**: University of Western Macedonia
+- **Period**: 2015 — 2024
+
+## Certifications
+
+- Grow Greek Tourism Online — Google
+- Python — TestDome
+
+## Technical Skills
+
+### Frontend
+- Vue.js, Nuxt.js (v3/v4) — primary frontend framework
+- JavaScript, TypeScript
+- React, Next.js
+- NestJs
+- Vite
+- HTML, CSS, Tailwind CSS
+
+### Backend
+- Python, Django (Django REST Framework)
+- PHP
+
+### DevOps & Infrastructure
+- Kubernetes (k3s, self-hosted clusters)
+- ArgoCD (GitOps continuous delivery)
+- Docker (containerization and orchestration)
+- RabbitMQ (message broker)
+- Celery (distributed task queue)
+- Redis (caching and message broker)
+- PostgreSQL (primary database)
+- Hetzner (cloud infrastructure)
+- Cloudflare (CDN and DNS)
+- Longhorn (distributed storage for Kubernetes)
+- Cert-Manager (TLS certificate management)
+
+### Languages
+- English (fluent)
+- Greek (native)
+
+## Notable Projects
+
+### GrooveShop E-commerce Platform
+A multi-repository e-commerce platform built over 4+ years as a personal project. Consists of:
+- **Django REST API**: Backend service handling business logic, authentication, and data management
+- **Nuxt 4 Storefront**: Modern frontend application for the e-commerce experience
+- **NestJS Media Streaming Service**: Dedicated microservice for media content delivery
+- **Infrastructure**: PostgreSQL database with Docker orchestration
+
+GitHub: https://github.com/vasilistotskas/grooveshop-django-api
+
+### Webside.gr
+A production e-commerce store powered by the GrooveShop platform, deployed on a self-hosted infrastructure:
+- Hetzner k3s Kubernetes cluster
+- ArgoCD for GitOps deployment
+- Longhorn for distributed storage
+- RabbitMQ for message queuing
+- Celery for background task processing
+- Redis for caching
+- Cert-Manager for automated TLS certificates
+
+Live: https://webside.gr
+
+### Developer Portfolio (This Site)
+A terminal/code-themed personal portfolio built with modern web technologies:
+- Next.js 15 with App Router
+- React 19
+- TypeScript 5.7 (strict mode)
+- Tailwind CSS v4 (CSS-first configuration)
+- next-intl v4 for internationalization (English and Greek)
+- Spotify API integration (now playing, top tracks)
+- GitHub API integration (stats display)
+- Motion library for animations
+- Deployed to Vercel via GitHub Actions
+
+Live: https://vasilistotskas.com
+Source: https://github.com/vasilistotskas/nextjs-portfolio
+
+## AI & Tools
+
+Vasilis has been an early and ongoing user of AI coding tools including Claude Code (primary tool), Cursor, Windsurf, and Kiro. He actively leverages AI assistance in his development workflow.
+
+## Site Structure
+
+This portfolio website is available in two languages (English and Greek) and contains the following pages:
+
+### Home (/)
+- Hero section with terminal-themed introduction
+- Skills overview organized by category (Frontend, Backend, DevOps, Tools)
+- Featured projects with descriptions and links
+- Professional experience timeline
+- GitHub statistics
+
+### About (/about)
+- Detailed biography in a terminal-styled README format
+- Current work description
+- Projects and infrastructure overview
+- Core tech stack breakdown
+- Professional highlights (years of experience, certifications, languages)
+- Education and certification details
+- Contact information
+- GitHub statistics
+- Spotify top tracks integration
+
+### Contact (/contact)
+- Contact form (name, email, subject, message)
+- Email address
+- Location
+- Social media links (GitHub, LinkedIn, Twitter)
+
+## Technical Implementation Details
+
+### Theming
+The site uses a terminal/code aesthetic with a custom theming system:
+- Semantic CSS variables for light and dark modes
+- Dark mode default with next-themes (class-based switching)
+- Custom utility classes: .glass, .glow-green, .card-hover, .text-gradient, .terminal-border
+- Color tokens: terminal-bg, terminal-surface, terminal-text, terminal-green, terminal-cyan, terminal-yellow, terminal-purple, terminal-muted, terminal-comment, terminal-prompt
+
+### Fonts
+- Geist Sans (primary)
+- Geist Mono (monospace/code elements)
+
+### API Routes
+- /api/contact — Email sending via Resend
+- /api/github — GitHub statistics proxy
+- /api/spotify/now-playing — Current Spotify track (Edge Runtime)
+- /api/spotify/top-tracks — Top Spotify tracks

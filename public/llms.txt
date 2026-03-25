@@ -1,0 +1,36 @@
+# Vasilis Totskas — Fullstack Developer Portfolio
+
+> Personal portfolio of Vasilis Totskas, a Fullstack Developer based in Athens, Greece, specializing in modern web applications with Nuxt, Python, and Kubernetes/Docker.
+
+## About
+
+Vasilis Totskas is a Fullstack Developer at Advisable with 5+ years of professional experience building high-performance web applications and scalable infrastructure. He holds a Computer Engineering degree from the University of Western Macedonia and is Google & TestDome certified.
+
+## Core Skills
+
+- **Frontend**: Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, React, Next.js, HTML, CSS, Tailwind CSS
+- **Backend**: Python, Django, PHP
+- **DevOps & Infrastructure**: Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, PostgreSQL, Hetzner, Cloudflare
+
+## Notable Projects
+
+- [GrooveShop E-commerce](https://github.com/vasilistotskas/grooveshop-django-api): Multi-repo e-commerce platform built over 4+ years — Django REST API, Nuxt 4 storefront, NestJS media streaming service
+- [Webside.gr](https://webside.gr): Production e-commerce store deployed on a self-hosted Hetzner k3s Kubernetes cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis, and Cert-Manager
+- [Developer Portfolio](https://vasilistotskas.com): This site — Next.js 15, React 19, Tailwind CSS v4, i18n (English & Greek), Spotify integration, GitHub stats
+
+## Pages
+
+- [Home](https://vasilistotskas.com/en): Overview with skills, projects, experience, and GitHub stats
+- [About](https://vasilistotskas.com/en/about): Detailed bio, tech stack, certifications, education, and Spotify top tracks
+- [Contact](https://vasilistotskas.com/en/contact): Contact form and social links
+
+## Contact
+
+- Email: vassilistotskas@msn.com
+- GitHub: https://github.com/vasilistotskas
+- LinkedIn: https://linkedin.com/in/vasilistotskas
+- Twitter: https://twitter.com/vasilistotskas
+
+## Detailed Info
+
+For the full unabridged version see [llms-full.txt](https://vasilistotskas.com/llms-full.txt).

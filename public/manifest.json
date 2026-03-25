@@ -41,7 +41,6 @@
 	"background_color": "#FFFFFF",
 	"display": "standalone",
 	"orientation": "portrait",
-	"prefer_related_applications": true,
 	"start_url": "/",
 	"scope": "/"
 }

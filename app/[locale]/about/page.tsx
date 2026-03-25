@@ -27,7 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 	return {
 		title: t('title'),
-		description: `${tc('myName')} — ${t('title')}`
+		description: `${tc('myName')} — ${t('title')}`,
+		alternates: {
+			canonical: `/${locale}/about`,
+			languages: {
+				en: '/en/about',
+				el: '/el/about',
+				'x-default': '/en/about'
+			}
+		},
+		openGraph: {
+			url: `/${locale}/about`
+		}
 	}
 }
 

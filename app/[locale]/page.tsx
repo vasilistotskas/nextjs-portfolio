@@ -18,7 +18,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title: `${t('myName')} — Fullstack Developer`,
 		description:
-			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.'
+			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.',
+		alternates: {
+			canonical: `/${locale}`,
+			languages: {
+				en: '/en',
+				el: '/el',
+				'x-default': '/en'
+			}
+		},
+		openGraph: {
+			url: `/${locale}`
+		}
 	}
 }
 
