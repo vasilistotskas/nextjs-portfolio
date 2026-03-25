@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { Github, Linkedin, Twitter } from 'lucide-react'
+import { GithubIcon, LinkedinIcon, TwitterIcon } from '@/components/ui/BrandIcons'
 import NowPlaying from '@/components/ui/NowPlaying'
 
 const socialLinks = [
-	{ href: 'https://github.com/vasilistotskas', icon: Github, label: 'GitHub' },
-	{ href: 'https://linkedin.com/in/vasilistotskas', icon: Linkedin, label: 'LinkedIn' },
-	{ href: 'https://twitter.com/vasilistotskas', icon: Twitter, label: 'Twitter' }
+	{ href: 'https://github.com/vasilistotskas', icon: GithubIcon, label: 'GitHub' },
+	{
+		href: 'https://linkedin.com/in/vasilistotskas',
+		icon: LinkedinIcon,
+		label: 'LinkedIn'
+	},
+	{ href: 'https://twitter.com/vasilistotskas', icon: TwitterIcon, label: 'Twitter' }
 ]
 
 export default function Footer() {

@@ -43,7 +43,8 @@
       "Bash(wc:*)",
       "Bash(pnpm remove:*)",
       "WebFetch(domain:developer.spotify.com)",
-      "WebFetch(domain:r3f.docs.pmnd.rs)"
+      "WebFetch(domain:r3f.docs.pmnd.rs)",
+      "Bash(find /c/Dev/nextjs-portfolio/hooks -name *.ts -o -name *.tsx)"
     ]
   }
 }

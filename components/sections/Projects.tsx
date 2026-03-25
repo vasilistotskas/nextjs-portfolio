@@ -1,7 +1,8 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { Github, ExternalLink, ArrowRight } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
+import { GithubIcon } from '@/components/ui/BrandIcons'
 import { motion } from 'motion/react'
 import Badge from '@/components/ui/Badge'
 
@@ -223,7 +224,7 @@ export default function Projects() {
 														rel="noopener noreferrer"
 														className="text-terminal-muted hover:text-terminal-green group/link flex items-center gap-1.5 font-mono text-xs transition-colors duration-200"
 													>
-														<Github size={12} />
+														<GithubIcon size={12} />
 														{repo.label}
 														<ArrowRight
 															size={10}

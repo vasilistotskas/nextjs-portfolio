@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
-import { Mail, MapPin, Github, Linkedin, Twitter } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
+import { GithubIcon, LinkedinIcon, TwitterIcon } from '@/components/ui/BrandIcons'
 import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ui/ContactForm'
 
@@ -22,19 +23,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const socialLinks = [
 	{
 		href: 'https://github.com/vasilistotskas',
-		icon: Github,
+		icon: GithubIcon,
 		label: 'GitHub',
 		handle: '@vasilistotskas'
 	},
 	{
 		href: 'https://linkedin.com/in/vasilistotskas',
-		icon: Linkedin,
+		icon: LinkedinIcon,
 		label: 'LinkedIn',
 		handle: 'vasilistotskas'
 	},
 	{
 		href: 'https://twitter.com/vasilistotskas',
-		icon: Twitter,
+		icon: TwitterIcon,
 		label: 'Twitter',
 		handle: '@vasilistotskas'
 	}
