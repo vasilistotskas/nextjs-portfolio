@@ -17,13 +17,13 @@ export default function LanguageSwitcher() {
 	}
 
 	return (
-		<div className="border-terminal-border flex items-center gap-1 rounded border px-1 py-0.5 font-sans text-xs font-medium">
+		<div className="border-terminal-border flex items-center rounded border font-sans text-sm font-medium md:text-xs">
 			{routing.locales.map((loc, i) => (
-				<span key={loc} className="flex items-center gap-1">
+				<span key={loc} className="flex items-center">
 					<button
 						onClick={() => switchLocale(loc)}
 						className={cn(
-							'cursor-pointer',
+							'cursor-pointer px-2 py-1.5 md:px-1.5 md:py-0.5',
 							locale === loc
 								? 'text-terminal-cyan'
 								: 'text-terminal-muted hover:text-terminal-text transition-colors'
