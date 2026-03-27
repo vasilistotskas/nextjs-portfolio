@@ -191,7 +191,7 @@ export default function Hero() {
 				>
 					<Link
 						href={`/${locale}#projects`}
-						className="group bg-terminal-green flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold text-white transition-all duration-200 hover:shadow-[0_0_24px_-4px_var(--green)]"
+						className="group bg-terminal-green text-terminal-bg flex items-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-all duration-200 hover:shadow-[0_0_24px_-4px_var(--green)]"
 					>
 						{t('cta.projects')}
 						<ArrowRight
