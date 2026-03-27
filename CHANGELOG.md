@@ -1,3 +1,10 @@
+## [1.35.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.35.1...v1.35.2) (2026-03-27)
+
+
+### Bug Fixes
+
+* replace twitter with x ([5c75dfd](https://github.com/vasilistotskas/nextjs-portfolio/commit/5c75dfddc2a6637ebdc0fe966559f9386cc15a72))
+
 ## [1.35.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.35.0...v1.35.1) (2026-03-25)
 
 
