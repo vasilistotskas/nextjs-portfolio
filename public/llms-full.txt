@@ -10,7 +10,7 @@
 - **Email**: vassilistotskas@msn.com
 - **GitHub**: https://github.com/vasilistotskas
 - **LinkedIn**: https://linkedin.com/in/vasilistotskas
-- **Twitter**: https://twitter.com/vasilistotskas
+- **X**: https://x.com/vasilis_totskas
 - **Website**: https://vasilistotskas.com
 
 ## Professional Background
@@ -129,7 +129,7 @@ This portfolio website is available in two languages (English and Greek) and con
 - Contact form (name, email, subject, message)
 - Email address
 - Location
-- Social media links (GitHub, LinkedIn, Twitter)
+- Social media links (GitHub, LinkedIn, X)
 
 ## Technical Implementation Details
 

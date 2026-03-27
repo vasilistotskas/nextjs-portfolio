@@ -154,7 +154,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 				sameAs: [
 					`https://github.com/${t('myUserName')}`,
 					`https://linkedin.com/in/${t('myUserName')}`,
-					`https://twitter.com/${t('myUserName')}`
+					'https://x.com/vasilis_totskas'
 				],
 				knowsLanguage: ['en', 'el']
 			}

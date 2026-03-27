@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Mail, MapPin } from 'lucide-react'
-import { GithubIcon, LinkedinIcon, TwitterIcon } from '@/components/ui/BrandIcons'
+import { GithubIcon, LinkedinIcon, XIcon } from '@/components/ui/BrandIcons'
 import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ui/ContactForm'
 
@@ -45,10 +45,10 @@ const socialLinks = [
 		handle: 'vasilistotskas'
 	},
 	{
-		href: 'https://twitter.com/vasilistotskas',
-		icon: TwitterIcon,
-		label: 'Twitter',
-		handle: '@vasilistotskas'
+		href: 'https://x.com/vasilis_totskas',
+		icon: XIcon,
+		label: 'X',
+		handle: '@vasilis_totskas'
 	}
 ]
 

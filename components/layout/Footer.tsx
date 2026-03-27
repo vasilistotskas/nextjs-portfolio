@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { GithubIcon, LinkedinIcon, TwitterIcon } from '@/components/ui/BrandIcons'
+import { GithubIcon, LinkedinIcon, XIcon } from '@/components/ui/BrandIcons'
 import NowPlaying from '@/components/ui/NowPlaying'
 
 const socialLinks = [
@@ -10,7 +10,7 @@ const socialLinks = [
 		icon: LinkedinIcon,
 		label: 'LinkedIn'
 	},
-	{ href: 'https://twitter.com/vasilistotskas', icon: TwitterIcon, label: 'Twitter' }
+	{ href: 'https://x.com/vasilis_totskas', icon: XIcon, label: 'X' }
 ]
 
 export default function Footer() {
