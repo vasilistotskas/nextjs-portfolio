@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.36.0...v1.37.0) (2026-04-10)
+
+
+### Features
+
+* UI updates ([ff35a2f](https://github.com/vasilistotskas/nextjs-portfolio/commit/ff35a2fdfbc3aa4a811cfce57ddc8077e0fadcad))
+
 # [1.36.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.35.2...v1.36.0) (2026-04-06)
 
 
