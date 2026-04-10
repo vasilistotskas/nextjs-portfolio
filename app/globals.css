@@ -121,6 +121,9 @@
 @layer base {
 	html {
 		font-family: var(--font-sans);
+	}
+
+	html[data-scroll-behavior='smooth'] {
 		scroll-behavior: smooth;
 	}
 

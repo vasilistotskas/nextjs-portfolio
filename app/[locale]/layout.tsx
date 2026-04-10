@@ -6,6 +6,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import Script from 'next/script'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import Header from '@/components/layout/Header'
@@ -165,11 +166,14 @@ export default async function LocaleLayout({ children, params }: Props) {
 		<html
 			lang={locale}
 			suppressHydrationWarning
+			data-scroll-behavior="smooth"
 			className={`${geist.variable} ${geistMono.variable}`}
 		>
 			<body className="bg-terminal-bg text-terminal-text antialiased">
-				<script
+				<Script
+					id="json-ld"
 					type="application/ld+json"
+					strategy="beforeInteractive"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 				<NextIntlClientProvider messages={messages}>

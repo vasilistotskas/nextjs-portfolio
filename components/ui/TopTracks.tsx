@@ -51,7 +51,7 @@ export default function TopTracks() {
 			<p className="text-terminal-comment mb-4 font-mono text-xs">{t('subtitle')}</p>
 
 			{/* Time range toggle */}
-			<div className="mb-4 flex gap-1 rounded-lg border border-[var(--border)] p-1">
+			<div className="mb-4 flex gap-1 rounded-lg border border-(--border) p-1">
 				{TIME_RANGES.map((range) => (
 					<button
 						key={range}
@@ -101,13 +101,13 @@ export default function TopTracks() {
 									{String(i + 1).padStart(2, '0')}
 								</span>
 								{track.albumImageUrl && (
-									<div className="relative h-8 w-8 flex-shrink-0 overflow-hidden rounded">
+									<div className="relative h-12 w-12 shrink-0 overflow-hidden rounded">
 										<Image
 											src={track.albumImageUrl}
 											alt={track.album}
 											fill
 											className="object-cover"
-											sizes="32px"
+											sizes="48px"
 										/>
 									</div>
 								)}
@@ -119,7 +119,7 @@ export default function TopTracks() {
 										{track.artist}
 									</p>
 								</div>
-								<span className="text-terminal-muted flex-shrink-0 font-mono text-xs">
+								<span className="text-terminal-muted shrink-0 font-mono text-xs">
 									{formatDuration(track.duration)}
 								</span>
 							</a>

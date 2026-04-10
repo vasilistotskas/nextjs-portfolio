@@ -76,12 +76,38 @@ export default function NowPlaying() {
 		return () => clearInterval(interval)
 	}, [])
 
+	// Loading state
+	if (data === null) {
+		return (
+			<div className="text-terminal-muted flex items-center gap-2 font-mono text-xs animate-pulse">
+				<Music size={12} />
+				<span>...</span>
+			</div>
+		)
+	}
+
 	// Nothing at all — no current track, no recent track
 	if (!data?.title) {
 		return (
-			<div className="text-terminal-muted flex items-center gap-2 font-mono text-xs">
-				<Music size={12} />
-				<span>{t('notPlaying')}</span>
+			<div className="flex items-center gap-3 opacity-60 grayscale">
+				<a
+					href="https://open.spotify.com/track/1LhMjesLXWBBN21j4pW5yD"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-100"
+				>
+					<div className="relative h-8 w-8 shrink-0 overflow-hidden rounded bg-terminal-border">
+						<Music size={16} className="absolute inset-0 m-auto text-terminal-muted" />
+					</div>
+					<div className="min-w-0">
+						<p className="truncate font-mono text-xs text-terminal-muted">
+							[OFFLINE] - {t('notPlaying') || 'Nothing playing'}
+						</p>
+						<p className="text-terminal-text truncate font-mono text-xs opacity-80">
+							Fall back — <span className="text-terminal-comment">Lithe</span>
+						</p>
+					</div>
+				</a>
 			</div>
 		)
 	}
@@ -104,13 +130,13 @@ export default function NowPlaying() {
 				className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-80"
 			>
 				{data.albumImageUrl && (
-					<div className="relative h-8 w-8 flex-shrink-0 overflow-hidden rounded">
+					<div className="relative h-12 w-12 shrink-0 overflow-hidden rounded">
 						<Image
 							src={data.albumImageUrl}
 							alt={data.album ?? 'Album art'}
 							fill
 							className="object-cover"
-							sizes="32px"
+							sizes="48px"
 						/>
 					</div>
 				)}

@@ -60,14 +60,17 @@ export default function ContactForm() {
 
 	if (status === 'success') {
 		return (
-			<div className="flex flex-col items-center gap-4 py-12 text-center">
-				<CheckCircle size={40} className="text-terminal-green" />
-				<p className="text-terminal-green font-sans font-medium">{t('success')}</p>
+			<div className="border-terminal-green/30 bg-terminal-green/5 flex flex-col items-center gap-4 rounded-lg border border-dashed py-12 text-center">
+				<CheckCircle size={40} className="text-terminal-green mb-2" />
+				<div className="text-terminal-green font-mono text-sm">
+					{'~ $ '} <span className="text-terminal-cyan">echo $MESSAGE {'>'} /dev/vassilis</span>
+				</div>
+				<p className="text-terminal-text mt-2 font-sans font-medium">{t('success')}</p>
 				<button
 					onClick={() => setStatus('idle')}
-					className="text-terminal-muted hover:text-terminal-cyan font-sans text-xs"
+					className="text-terminal-comment hover:text-terminal-cyan decoration-terminal-comment/30 mt-4 font-mono text-xs underline underline-offset-4"
 				>
-					Send another message
+					[ Send another message ]
 				</button>
 			</div>
 		)

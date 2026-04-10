@@ -71,8 +71,40 @@ function GitHubStatsContent({ stats }: { stats: GitHubStatsType | null }) {
 		</div>
 	)
 }
+// Skeleton UI for loading state
+export function GitHubStatsSkeleton() {
+	return (
+		<div className="font-mono">
+			<p className="text-terminal-comment mb-3 text-xs">
+				<span className="text-terminal-green">$ </span>
+				gh api /users/vasilistotskas --jq &apos;.&apos;
+			</p>
+			<div className="grid grid-cols-3 gap-4">
+				{[1, 2, 3].map((i) => (
+					<div key={i} className="text-center">
+						<div className="mb-1 flex items-center justify-center">
+							<div className="bg-terminal-border/50 h-3.5 w-3.5 rounded-full animate-pulse" />
+						</div>
+						<div className="mx-auto mb-1 h-6 w-8 rounded bg-terminal-border/50 animate-pulse" />
+						<div className="mx-auto h-3 w-16 rounded bg-terminal-border/30 animate-pulse" />
+					</div>
+				))}
+			</div>
+		</div>
+	)
+}
 
-export default async function GitHubStats() {
+async function GitHubStatsAsync() {
 	const stats = await fetchGitHubStats()
 	return <GitHubStatsContent stats={stats} />
+}
+
+import { Suspense } from 'react'
+
+export default function GitHubStats() {
+	return (
+		<Suspense fallback={<GitHubStatsSkeleton />}>
+			<GitHubStatsAsync />
+		</Suspense>
+	)
 }

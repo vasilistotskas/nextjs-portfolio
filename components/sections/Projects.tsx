@@ -5,7 +5,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/BrandIcons'
 import { motion } from 'motion/react'
 import Badge from '@/components/ui/Badge'
-
+import Image from 'next/image'
 type Repo = {
 	url: string
 	label: string
@@ -76,7 +76,7 @@ const projects = [
 	}
 ]
 
-function BrowserMockup({ url }: { url: string }) {
+function BrowserMockup({ url, imageKey }: { url: string; imageKey?: string }) {
 	return (
 		<div className="terminal-border overflow-hidden rounded-lg">
 			{/* Browser chrome */}
@@ -91,14 +91,23 @@ function BrowserMockup({ url }: { url: string }) {
 				</div>
 			</div>
 			{/* Preview area */}
-			<div className="bg-terminal-bg/40 relative h-28 overflow-hidden md:h-36">
-				{/* Decorative abstract bars suggesting code */}
-				<div className="absolute inset-0 flex flex-col justify-center gap-2 px-6 py-4">
-					<div className="bg-terminal-border h-2 w-3/4 rounded-full opacity-40" />
-					<div className="bg-terminal-border h-2 w-1/2 rounded-full opacity-30" />
-					<div className="bg-terminal-border h-2 w-2/3 rounded-full opacity-20" />
-					<div className="bg-terminal-border h-2 w-2/5 rounded-full opacity-30" />
-				</div>
+			<div className="bg-terminal-bg/40 relative h-36 overflow-hidden border-t border-terminal-border md:h-48 group-hover:bg-terminal-bg/80 transition-colors">
+				{imageKey ? (
+					<Image
+						src={`/mockups/${imageKey}.png`}
+						alt={url}
+						fill
+						className="object-cover object-top opacity-85 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+						sizes="(max-width: 768px) 100vw, 50vw"
+					/>
+				) : (
+					<div className="absolute inset-0 flex flex-col justify-center gap-2 px-6 py-4">
+						<div className="bg-terminal-border h-2 w-3/4 rounded-full opacity-40" />
+						<div className="bg-terminal-border h-2 w-1/2 rounded-full opacity-30" />
+						<div className="bg-terminal-border h-2 w-2/3 rounded-full opacity-20" />
+						<div className="bg-terminal-border h-2 w-2/5 rounded-full opacity-30" />
+					</div>
+				)}
 			</div>
 		</div>
 	)
@@ -158,7 +167,7 @@ export default function Projects() {
 										<div
 											className={`${isFeatured ? 'md:w-1/2' : ''} p-3 pb-0 md:p-4 md:pb-0 ${isFeatured ? 'md:pr-0 md:pb-4' : ''}`}
 										>
-											<BrowserMockup url={project.url} />
+											<BrowserMockup url={project.url} imageKey={project.key} />
 										</div>
 
 										{/* Content */}
