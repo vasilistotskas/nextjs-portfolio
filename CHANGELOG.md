@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.37.0...v1.37.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* locale script ([d34fb30](https://github.com/vasilistotskas/nextjs-portfolio/commit/d34fb30e422ac4bf92f7564ff38b17b7c6e56bf7))
+
 # [1.37.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.36.0...v1.37.0) (2026-04-10)
 
 
