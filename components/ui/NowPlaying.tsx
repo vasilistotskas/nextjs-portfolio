@@ -89,7 +89,7 @@ export default function NowPlaying() {
 	// Nothing at all — no current track, no recent track
 	if (!data?.title) {
 		return (
-			<div className="flex items-center gap-3 opacity-60 grayscale">
+			<div className="flex max-w-full items-center gap-3 opacity-60 grayscale">
 				<a
 					href="https://open.spotify.com/track/1LhMjesLXWBBN21j4pW5yD"
 					target="_blank"
@@ -122,7 +122,7 @@ export default function NowPlaying() {
 	const pct = showProgress ? Math.min((progress / data.durationMs!) * 100, 100) : 0
 
 	return (
-		<div className="flex items-center gap-3">
+		<div className="flex max-w-full items-center gap-3">
 			<a
 				href={data.songUrl}
 				target="_blank"
