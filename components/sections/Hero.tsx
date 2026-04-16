@@ -13,7 +13,9 @@ export default function Hero() {
 	const t = useTranslations('hero')
 	const locale = useLocale()
 	const [step, setStep] = useState<Step>(0)
-	const [history, setHistory] = useState<Array<{cmd: string, output: React.ReactNode}>>([])
+	const [history, setHistory] = useState<Array<{ cmd: string; output: React.ReactNode }>>(
+		[]
+	)
 	const [inputVal, setInputVal] = useState('')
 	const [isCleared, setIsCleared] = useState(false)
 
@@ -198,7 +200,7 @@ export default function Hero() {
 							{step >= 6 && (
 								<input
 									type="text"
-									className="text-terminal-cyan bg-transparent flex-1 outline-none font-mono caret-terminal-green"
+									className="text-terminal-cyan caret-terminal-green flex-1 bg-transparent font-mono outline-none"
 									autoComplete="off"
 									spellCheck="false"
 									onChange={(e) => setInputVal(e.target.value)}
@@ -216,26 +218,42 @@ export default function Hero() {
 											if (val === 'help') {
 												out = (
 													<div className="text-terminal-comment">
-														Available commands: <br />
-														- <span className="text-terminal-cyan">whoami</span>: Display user info<br />
-														- <span className="text-terminal-cyan">contact</span>: How to reach me<br />
-														- <span className="text-terminal-cyan">projects</span>: Jump to my works<br />
-														- <span className="text-terminal-cyan">clear</span>: Clear terminal output
+														Available commands: <br />-{' '}
+														<span className="text-terminal-cyan">whoami</span>: Display
+														user info
+														<br />- <span className="text-terminal-cyan">contact</span>:
+														How to reach me
+														<br />- <span className="text-terminal-cyan">projects</span>:
+														Jump to my works
+														<br />- <span className="text-terminal-cyan">clear</span>:
+														Clear terminal output
 													</div>
 												)
 											} else if (val === 'whoami') {
-												out = <span className="text-terminal-green">{t('name')} - Fullstack Developer</span>
+												out = (
+													<span className="text-terminal-green">
+														{t('name')} - Fullstack Developer
+													</span>
+												)
 											} else if (val === 'contact') {
 												out = <span>Email: vassilistotskas@msn.com</span>
 											} else if (val === 'projects') {
 												out = <span>Scroll down or use `cd /projects`!</span>
 											} else if (val === 'sudo') {
-												out = <span className="text-terminal-comment">Permission denied.</span>
+												out = (
+													<span className="text-terminal-comment">
+														Permission denied.
+													</span>
+												)
 											} else if (val) {
-												out = <span className="text-red-400">bash: {val}: command not found</span>
+												out = (
+													<span className="text-red-400">
+														bash: {val}: command not found
+													</span>
+												)
 											}
 											if (val) {
-												setHistory(h => [...h, { cmd: val, output: out }])
+												setHistory((h) => [...h, { cmd: val, output: out }])
 											}
 											setInputVal('')
 										}

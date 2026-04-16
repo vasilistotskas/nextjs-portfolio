@@ -83,10 +83,10 @@ export function GitHubStatsSkeleton() {
 				{[1, 2, 3].map((i) => (
 					<div key={i} className="text-center">
 						<div className="mb-1 flex items-center justify-center">
-							<div className="bg-terminal-border/50 h-3.5 w-3.5 rounded-full animate-pulse" />
+							<div className="bg-terminal-border/50 h-3.5 w-3.5 animate-pulse rounded-full" />
 						</div>
-						<div className="mx-auto mb-1 h-6 w-8 rounded bg-terminal-border/50 animate-pulse" />
-						<div className="mx-auto h-3 w-16 rounded bg-terminal-border/30 animate-pulse" />
+						<div className="bg-terminal-border/50 mx-auto mb-1 h-6 w-8 animate-pulse rounded" />
+						<div className="bg-terminal-border/30 mx-auto h-3 w-16 animate-pulse rounded" />
 					</div>
 				))}
 			</div>

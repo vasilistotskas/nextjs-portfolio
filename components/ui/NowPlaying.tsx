@@ -79,7 +79,7 @@ export default function NowPlaying() {
 	// Loading state
 	if (data === null) {
 		return (
-			<div className="text-terminal-muted flex items-center gap-2 font-mono text-xs animate-pulse">
+			<div className="text-terminal-muted flex animate-pulse items-center gap-2 font-mono text-xs">
 				<Music size={12} />
 				<span>...</span>
 			</div>
@@ -96,11 +96,11 @@ export default function NowPlaying() {
 					rel="noopener noreferrer"
 					className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-100"
 				>
-					<div className="relative h-8 w-8 shrink-0 overflow-hidden rounded bg-terminal-border">
-						<Music size={16} className="absolute inset-0 m-auto text-terminal-muted" />
+					<div className="bg-terminal-border relative h-8 w-8 shrink-0 overflow-hidden rounded">
+						<Music size={16} className="text-terminal-muted absolute inset-0 m-auto" />
 					</div>
 					<div className="min-w-0">
-						<p className="truncate font-mono text-xs text-terminal-muted">
+						<p className="text-terminal-muted truncate font-mono text-xs">
 							[OFFLINE] - {t('notPlaying') || 'Nothing playing'}
 						</p>
 						<p className="text-terminal-text truncate font-mono text-xs opacity-80">

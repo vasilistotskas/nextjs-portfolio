@@ -63,7 +63,8 @@ export default function ContactForm() {
 			<div className="border-terminal-green/30 bg-terminal-green/5 flex flex-col items-center gap-4 rounded-lg border border-dashed py-12 text-center">
 				<CheckCircle size={40} className="text-terminal-green mb-2" />
 				<div className="text-terminal-green font-mono text-sm">
-					{'~ $ '} <span className="text-terminal-cyan">echo $MESSAGE {'>'} /dev/vassilis</span>
+					{'~ $ '}{' '}
+					<span className="text-terminal-cyan">echo $MESSAGE {'>'} /dev/vassilis</span>
 				</div>
 				<p className="text-terminal-text mt-2 font-sans font-medium">{t('success')}</p>
 				<button

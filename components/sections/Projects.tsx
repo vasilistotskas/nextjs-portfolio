@@ -91,7 +91,7 @@ function BrowserMockup({ url, imageKey }: { url: string; imageKey?: string }) {
 				</div>
 			</div>
 			{/* Preview area */}
-			<div className="bg-terminal-bg/40 relative h-36 overflow-hidden border-t border-terminal-border md:h-48 group-hover:bg-terminal-bg/80 transition-colors">
+			<div className="bg-terminal-bg/40 border-terminal-border group-hover:bg-terminal-bg/80 relative h-36 overflow-hidden border-t transition-colors md:h-48">
 				{imageKey ? (
 					<Image
 						src={`/mockups/${imageKey}.png`}

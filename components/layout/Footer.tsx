@@ -22,7 +22,7 @@ export default function Footer() {
 			{/* Gradient top line */}
 			<div className="section-divider" />
 
-			<div className="mx-auto max-w-5xl px-6 py-8">
+			<div className="mx-auto max-w-5xl px-3 py-4 md:px-6 md:py-8">
 				<div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
 					{/* Now Playing */}
 					<NowPlaying />
