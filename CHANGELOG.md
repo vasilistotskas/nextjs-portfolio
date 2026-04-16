@@ -1,3 +1,10 @@
+# [1.38.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.37.1...v1.38.0) (2026-04-16)
+
+
+### Features
+
+* bump versions ([a9cf9e5](https://github.com/vasilistotskas/nextjs-portfolio/commit/a9cf9e51013e14143a5a975b042b643a85737c5f))
+
 ## [1.37.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.37.0...v1.37.1) (2026-04-10)
 
 
