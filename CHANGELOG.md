@@ -1,3 +1,10 @@
+## [1.38.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.38.0...v1.38.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* UI ([78ce47c](https://github.com/vasilistotskas/nextjs-portfolio/commit/78ce47cac2347abfc4ea21b246bb8360bca61593))
+
 # [1.38.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.37.1...v1.38.0) (2026-04-16)
 
 
