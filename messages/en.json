@@ -144,6 +144,7 @@
 		"title": "Contact",
 		"subtitle": "// reach out",
 		"description": "Thanks for reaching out! I'll get back to you as soon as possible.",
+		"metaDescription": "{name} — Fullstack Developer based in Athens, Greece. Get in touch about web development work, collaborations, or any questions.",
 		"info": {
 			"email": "Email",
 			"location": "Location",

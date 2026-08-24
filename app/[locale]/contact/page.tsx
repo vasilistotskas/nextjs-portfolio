@@ -9,11 +9,14 @@ import ContactForm from '@/components/ui/ContactForm'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('contact')
+	const tc = await getTranslations('common')
 
+	// `contact.description` is the on-page intro ("Thanks for reaching out!") —
+	// it reads as a reply, which is wrong in a search result or link preview.
 	return buildPageMetadata({
 		path: '/contact',
 		title: t('title'),
-		description: t('description')
+		description: t('metaDescription', { name: tc('myName') })
 	})
 }
 
