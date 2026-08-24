@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 import Hero from '@/components/sections/Hero'
 import Skills from '@/components/sections/Skills'
 import Projects from '@/components/sections/Projects'
@@ -8,25 +9,13 @@ import Card from '@/components/ui/Card'
 import GitHubStats from '@/components/ui/GitHubStats'
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale()
 	const t = await getTranslations('common')
 
-	return {
+	return buildPageMetadata({
 		title: `${t('myName')} — Fullstack Developer`,
 		description:
-			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.',
-		alternates: {
-			canonical: `/${locale}`,
-			languages: {
-				en: '/en',
-				el: '/el',
-				'x-default': '/en'
-			}
-		},
-		openGraph: {
-			url: `/${locale}`
-		}
-	}
+			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.'
+	})
 }
 
 export default function HomePage() {

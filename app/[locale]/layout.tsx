@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { routing } from '@/i18n/routing'
+import { siteDescription, siteUrl } from '@/lib/seo'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
@@ -22,26 +23,24 @@ const geistMono = Geist_Mono({
 	variable: '--font-geist-mono'
 })
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vasilistotskas.com'
-
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
 
+// Root-level metadata only. Anything nested (openGraph, twitter, alternates) is
+// merged shallowly by Next.js, so a page defining it replaces this object
+// entirely — those live in `buildPageMetadata` and are emitted per page.
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale()
 	const t = await getTranslations('common')
 	const myName = t('myName')
-	const description =
-		'Fullstack Developer specializing in modern web applications with Python, Django, Nuxt, Vue, Next.js.'
 
 	return {
-		metadataBase: new URL(baseUrl),
+		metadataBase: new URL(siteUrl),
 		title: {
 			default: `${myName} — Fullstack Developer`,
 			template: `%s | ${myName}`
 		},
-		description,
+		description: siteDescription,
 		keywords: [
 			'Fullstack Developer',
 			'Web Developer',
@@ -56,31 +55,9 @@ export async function generateMetadata(): Promise<Metadata> {
 			'Docker',
 			'Portfolio'
 		],
-		authors: [{ name: myName, url: baseUrl }],
+		authors: [{ name: myName, url: siteUrl }],
 		creator: myName,
 		publisher: myName,
-		openGraph: {
-			type: 'website',
-			locale: locale === 'el' ? 'el_GR' : 'en_US',
-			alternateLocale: locale === 'el' ? 'en_US' : 'el_GR',
-			url: `/${locale}`,
-			siteName: `${myName} Portfolio`,
-			title: `${myName} — Fullstack Developer`,
-			description,
-			images: [
-				{
-					url: '/banner.png',
-					alt: `${myName} — Fullstack Developer Portfolio`
-				}
-			]
-		},
-		twitter: {
-			card: 'summary_large_image',
-			creator: `@${t('myUserName')}`,
-			title: `${myName} — Fullstack Developer`,
-			description,
-			images: ['/banner.png']
-		},
 		robots: {
 			index: true,
 			follow: true,
@@ -129,18 +106,17 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 		'@graph': [
 			{
 				'@type': 'WebSite',
-				'@id': `${baseUrl}/#website`,
-				url: baseUrl,
+				'@id': `${siteUrl}/#website`,
+				url: siteUrl,
 				name: `${t('myName')} Portfolio`,
-				description:
-					'Fullstack Developer specializing in modern web applications with Python, Django, Nuxt, Vue, Next.js.',
-				inLanguage: ['en', 'el']
+				description: siteDescription,
+				inLanguage: [...routing.locales]
 			},
 			{
 				'@type': 'Person',
-				'@id': `${baseUrl}/#person`,
+				'@id': `${siteUrl}/#person`,
 				name: t('myName'),
-				url: baseUrl,
+				url: siteUrl,
 				jobTitle: 'Fullstack Developer',
 				worksFor: {
 					'@type': 'Organization',
@@ -151,7 +127,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 					`https://linkedin.com/in/${t('myUserName')}`,
 					'https://x.com/vasilis_totskas'
 				],
-				knowsLanguage: ['en', 'el']
+				knowsLanguage: [...routing.locales]
 			}
 		]
 	}

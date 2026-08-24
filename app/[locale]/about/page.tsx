@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 import { useTranslations } from 'next-intl'
 import {
 	MapPin,
@@ -17,25 +18,14 @@ import GitHubStats from '@/components/ui/GitHubStats'
 import TopTracks from '@/components/ui/TopTracks'
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale()
 	const t = await getTranslations('about')
 	const tc = await getTranslations('common')
 
-	return {
+	return buildPageMetadata({
+		path: '/about',
 		title: t('title'),
-		description: `${tc('myName')} — ${t('title')}`,
-		alternates: {
-			canonical: `/${locale}/about`,
-			languages: {
-				en: '/en/about',
-				el: '/el/about',
-				'x-default': '/en/about'
-			}
-		},
-		openGraph: {
-			url: `/${locale}/about`
-		}
-	}
+		description: `${tc('myName')} — ${t('title')}`
+	})
 }
 
 function AboutContent() {

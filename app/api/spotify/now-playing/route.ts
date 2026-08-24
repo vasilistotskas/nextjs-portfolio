@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify'
 
-export const runtime = 'edge'
-
 type SpotifyCurrentlyPlaying = {
 	is_playing: boolean
 	progress_ms: number
@@ -37,7 +35,9 @@ export async function GET() {
 	try {
 		const response = await getNowPlaying()
 
-		if (response.status !== 204 && response.status <= 400) {
+		// 204 means nothing is playing; >= 400 is an error. `<= 400` treated a
+		// 400 Bad Request as a successful payload.
+		if (response.status !== 204 && response.status < 400) {
 			const song = (await response.json()) as SpotifyCurrentlyPlaying
 
 			if (song.item) {

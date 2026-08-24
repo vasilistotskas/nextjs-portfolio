@@ -29,7 +29,13 @@ const getAccessToken = async (): Promise<TokenResponse> => {
 		})
 	})
 
-	return (await response.json()) as Promise<TokenResponse>
+	// Without this the caller would send `Bearer undefined` and every Spotify
+	// call would fail with an opaque 401 instead of the real reason.
+	if (!response.ok) {
+		throw new Error(`Spotify token refresh failed: ${response.status}`)
+	}
+
+	return (await response.json()) as TokenResponse
 }
 
 export const getNowPlaying = async () => {

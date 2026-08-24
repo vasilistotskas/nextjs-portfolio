@@ -44,8 +44,17 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 ### API Routes
 
 - `api/contact` — Resend email (instantiate `new Resend()` inside the handler, not at module level)
-- `api/github` — GitHub stats proxy
 - `api/spotify/now-playing` and `api/spotify/top-tracks` — Spotify API proxies using refresh token flow in `lib/spotify.ts`
+- There is no `api/github` route: `components/ui/GitHubStats.tsx` is a Server Component that calls the GitHub API directly.
+- Routes run on the default Node runtime. Do not add `export const runtime = 'edge'` — it is deprecated in Next.js 16 and also opts the route out of static generation.
+
+### Metadata & SEO
+
+- Next.js merges metadata between segments **shallowly**. A page that sets _any_ `openGraph` or `twitter` key **replaces the parent object wholesale** — it does not merge into it. Setting just `openGraph: { url }` on a page silently drops `og:image`, `og:type`, `og:site_name` and `og:locale`.
+- Therefore every page builds its metadata through `buildPageMetadata()` in `lib/seo.ts`, which emits complete `openGraph`/`twitter`/`alternates` objects. Pages pass only `path`, `title` and `description`.
+- The root layout carries **only** non-nested fields (`metadataBase`, title template, keywords, robots, icons, manifest). Do not add `openGraph`/`twitter` there — pages override it entirely, so it would be dead config.
+- `siteUrl` lives in `lib/seo.ts`. Don't re-derive `process.env.NEXT_PUBLIC_SITE_URL` in individual files.
+- Locale lists (`alternates.languages`, `og:locale:alternate`, JSON-LD `inLanguage`) derive from `routing.locales` — never hardcode `['en', 'el']`.
 
 ### Key Conventions
 

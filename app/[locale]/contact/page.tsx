@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
+import { buildPageMetadata } from '@/lib/seo'
 import { useTranslations } from 'next-intl'
 import { Mail, MapPin } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, XIcon } from '@/components/ui/BrandIcons'
@@ -7,24 +8,13 @@ import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ui/ContactForm'
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale()
 	const t = await getTranslations('contact')
 
-	return {
+	return buildPageMetadata({
+		path: '/contact',
 		title: t('title'),
-		description: t('description'),
-		alternates: {
-			canonical: `/${locale}/contact`,
-			languages: {
-				en: '/en/contact',
-				el: '/el/contact',
-				'x-default': '/en/contact'
-			}
-		},
-		openGraph: {
-			url: `/${locale}/contact`
-		}
-	}
+		description: t('description')
+	})
 }
 
 const socialLinks = [
