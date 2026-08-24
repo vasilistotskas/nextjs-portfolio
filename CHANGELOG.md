@@ -1,3 +1,11 @@
+## [1.40.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.0...v1.40.1) (2026-08-24)
+
+
+### Bug Fixes
+
+* **ci:** generate route types before type-check ([b5bc2ff](https://github.com/vasilistotskas/nextjs-portfolio/commit/b5bc2ff025ba8fb0929a3837d6fc9466d28c857b))
+* restore eslint 9 and drop deprecated zod APIs ([dc312be](https://github.com/vasilistotskas/nextjs-portfolio/commit/dc312be51fa6200852976b3d9f540c33fd0c1336))
+
 # [1.40.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.39.1...v1.40.0) (2026-07-25)
 
 
