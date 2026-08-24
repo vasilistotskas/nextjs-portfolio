@@ -2,13 +2,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
-
-const contactSchema = z.object({
-	name: z.string().min(2, 'Name must be at least 2 characters'),
-	email: z.string().email('Invalid email address'),
-	subject: z.string().min(3, 'Subject must be at least 3 characters'),
-	message: z.string().min(10, 'Message must be at least 10 characters')
-})
+import { contactSchema } from '@/lib/validation'
 
 export async function POST(request: NextRequest) {
 	try {
@@ -17,7 +11,7 @@ export async function POST(request: NextRequest) {
 
 		if (!parsed.success) {
 			return NextResponse.json(
-				{ error: 'Invalid input', details: parsed.error.flatten() },
+				{ error: 'Invalid input', details: z.flattenError(parsed.error) },
 				{ status: 400 }
 			)
 		}

@@ -3,19 +3,11 @@
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { useState } from 'react'
 import { Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-const contactSchema = z.object({
-	name: z.string().min(2),
-	email: z.string().email(),
-	subject: z.string().min(3),
-	message: z.string().min(10)
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+import type { ContactFormData } from '@/lib/validation'
+import { contactSchema } from '@/lib/validation'
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
