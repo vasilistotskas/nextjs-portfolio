@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import Hero from '@/components/sections/Hero'
 import Skills from '@/components/sections/Skills'
 import Projects from '@/components/sections/Projects'
@@ -7,13 +7,9 @@ import Experience from '@/components/sections/Experience'
 import Card from '@/components/ui/Card'
 import GitHubStats from '@/components/ui/GitHubStats'
 
-type Props = {
-	params: Promise<{ locale: string }>
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { locale } = await params
-	const t = await getTranslations({ locale, namespace: 'common' })
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = await getLocale()
+	const t = await getTranslations('common')
 
 	return {
 		title: `${t('myName')} — Fullstack Developer`,
@@ -33,10 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export default async function HomePage({ params }: Props) {
-	const { locale } = await params
-	setRequestLocale(locale)
-
+export default function HomePage() {
 	return (
 		<>
 			<Hero />

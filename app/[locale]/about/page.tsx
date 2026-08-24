@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import {
 	MapPin,
@@ -16,14 +16,10 @@ import Card from '@/components/ui/Card'
 import GitHubStats from '@/components/ui/GitHubStats'
 import TopTracks from '@/components/ui/TopTracks'
 
-type Props = {
-	params: Promise<{ locale: string }>
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { locale } = await params
-	const t = await getTranslations({ locale, namespace: 'about' })
-	const tc = await getTranslations({ locale, namespace: 'common' })
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = await getLocale()
+	const t = await getTranslations('about')
+	const tc = await getTranslations('common')
 
 	return {
 		title: t('title'),
@@ -264,9 +260,6 @@ function AboutContent() {
 	)
 }
 
-export default async function AboutPage({ params }: Props) {
-	const { locale } = await params
-	setRequestLocale(locale)
-
+export default function AboutPage() {
 	return <AboutContent />
 }

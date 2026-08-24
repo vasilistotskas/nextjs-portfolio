@@ -23,10 +23,13 @@ Next.js 15 App Router personal portfolio with a terminal/code aesthetic. Deploye
 ### Routing & i18n
 
 - **next-intl v4** with locales `en` and `el` (Greek). All pages live under `app/[locale]/`.
-- `app/layout.tsx` is a minimal shell that just renders children; the real layout (fonts, providers, header/footer) is in `app/[locale]/layout.tsx`.
-- `i18n/routing.ts` defines the routing config; `i18n/request.ts` resolves locale and loads `messages/{locale}.json`.
-- Every page and layout that uses translations must call `setRequestLocale(locale)` for static rendering.
-- `generateStaticParams` in the locale layout returns both locales for SSG.
+- `app/[locale]/layout.tsx` **is** the root layout — it renders `<html>`/`<body>`. There is deliberately no `app/layout.tsx`: `locale` is only a **root param** when its dynamic segment sits _above_ the root layout, and a pass-through `app/layout.tsx` would make that segment nested instead. If you add one back, `next/root-params` silently stops resolving.
+- `i18n/routing.ts` defines the routing config; `i18n/request.ts` reads the locale via `next/root-params` and loads `messages/{locale}.json`.
+- **Do not call `setRequestLocale`** — it is deprecated. Locale flows implicitly through root params, so pages take no `params` and server code reads `getLocale()` / `getTranslations('ns')` without passing a locale.
+- `i18n/request.ts` must stay **total** (never throw). It is also evaluated while rendering the built-in 404 for paths that never matched a locale, where the root param is absent; throwing blanks that page out.
+- The root layout rejects invalid locales with `hasLocale` + `notFound()`. This is **not** redundant with `proxy.ts`: `[locale]` matches any single segment and the proxy skips paths containing a dot, so `/foo.txt` reaches the layout with `locale = 'foo.txt'` and would otherwise render the default locale with a 200.
+- `generateStaticParams` in the root layout returns both locales for SSG.
+- `next/root-params` is Server Components only — not Client Components, Server Actions, or Route Handlers. `app/api/*` must receive locale explicitly.
 
 ### Styling — Tailwind CSS v4
 

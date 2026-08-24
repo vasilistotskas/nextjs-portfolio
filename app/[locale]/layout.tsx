@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
+import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -25,18 +24,13 @@ const geistMono = Geist_Mono({
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vasilistotskas.com'
 
-type Props = {
-	children: ReactNode
-	params: Promise<{ locale: string }>
-}
-
-export async function generateStaticParams() {
+export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { locale } = await params
-	const t = await getTranslations({ locale, namespace: 'common' })
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = await getLocale()
+	const t = await getTranslations('common')
 	const myName = t('myName')
 	const description =
 		'Fullstack Developer specializing in modern web applications with Python, Django, Nuxt, Vue, Next.js.'
@@ -117,17 +111,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function RootLayout({ children, params }: LayoutProps<'/[locale]'>) {
+	// `[locale]` matches any single segment, and `proxy.ts` deliberately skips
+	// paths containing a dot, so requests like `/foo.txt` reach this layout with
+	// `locale = 'foo.txt'`. Reject anything that is not a real locale here —
+	// otherwise it would render as the default locale with a 200.
 	const { locale } = await params
 
-	if (!routing.locales.includes(locale as 'en' | 'el')) {
+	if (!hasLocale(routing.locales, locale)) {
 		notFound()
 	}
 
-	setRequestLocale(locale)
-
-	const messages = await getMessages()
-	const t = await getTranslations({ locale, namespace: 'common' })
+	const t = await getTranslations('common')
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -175,7 +170,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 				/>
 			</head>
 			<body className="bg-terminal-bg text-terminal-text antialiased">
-				<NextIntlClientProvider messages={messages}>
+				<NextIntlClientProvider>
 					<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
 						<ScrollProgress />
 						<div className="flex min-h-screen flex-col">

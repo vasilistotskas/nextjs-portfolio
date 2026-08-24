@@ -1,18 +1,14 @@
 import type { Metadata } from 'next'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Mail, MapPin } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, XIcon } from '@/components/ui/BrandIcons'
 import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ui/ContactForm'
 
-type Props = {
-	params: Promise<{ locale: string }>
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { locale } = await params
-	const t = await getTranslations({ locale, namespace: 'contact' })
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = await getLocale()
+	const t = await getTranslations('contact')
 
 	return {
 		title: t('title'),
@@ -132,9 +128,6 @@ function ContactContent() {
 	)
 }
 
-export default async function ContactPage({ params }: Props) {
-	const { locale } = await params
-	setRequestLocale(locale)
-
+export default function ContactPage() {
 	return <ContactContent />
 }
