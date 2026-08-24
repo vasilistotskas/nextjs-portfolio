@@ -22,7 +22,7 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"start": "next start",
-		"type-check": "tsc --noEmit"
+		"type-check": "next typegen && tsc --noEmit"
 	},
 	"release": {
 		"branches": [
