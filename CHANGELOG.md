@@ -1,3 +1,16 @@
+# [1.41.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.2...v1.41.0) (2026-08-24)
+
+
+### Bug Fixes
+
+* **ci:** restore setup-node in release and deploy ([a0a8765](https://github.com/vasilistotskas/nextjs-portfolio/commit/a0a8765f8877b2f2c557c5815587a8c840715f6a))
+* **seo:** add dedicated contact meta description ([da229ae](https://github.com/vasilistotskas/nextjs-portfolio/commit/da229ae031995f2bfdf56e948b4563d84874f4d9))
+
+
+### Features
+
+* Update ci versions ([599327f](https://github.com/vasilistotskas/nextjs-portfolio/commit/599327f94edc01a0368f066f5bb8dcdb22ff38ee))
+
 ## [1.40.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.1...v1.40.2) (2026-08-24)
 
 
