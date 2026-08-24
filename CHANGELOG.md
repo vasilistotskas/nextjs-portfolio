@@ -1,3 +1,11 @@
+## [1.41.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.41.0...v1.41.1) (2026-08-24)
+
+
+### Bug Fixes
+
+* **deps:** patch nanoid, js-yaml and postcss advisories ([4efcecf](https://github.com/vasilistotskas/nextjs-portfolio/commit/4efcecf57f7176d8e6cac1a2726a789c4af33c8a))
+* **i18n:** reword greek contact meta description ([e30c327](https://github.com/vasilistotskas/nextjs-portfolio/commit/e30c327beba526a11bba383aa2221a8a8dbc2001))
+
 # [1.41.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.2...v1.41.0) (2026-08-24)
 
 
