@@ -1,3 +1,10 @@
+## [1.40.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.1...v1.40.2) (2026-08-24)
+
+
+### Bug Fixes
+
+* **seo:** emit complete open graph metadata per page ([1ee6ce6](https://github.com/vasilistotskas/nextjs-portfolio/commit/1ee6ce67baa3a961fd5daac2fb5564d1b16bbd50))
+
 ## [1.40.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.40.0...v1.40.1) (2026-08-24)
 
 
