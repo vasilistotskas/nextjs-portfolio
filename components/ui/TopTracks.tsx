@@ -12,8 +12,10 @@ const TIME_RANGES: TimeRange[] = ['short_term', 'medium_term']
 
 export default function TopTracks() {
 	const t = useTranslations('about.spotify')
+	const tq = useTranslations('spotify')
 	const [timeRange, setTimeRange] = useState<TimeRange>('short_term')
 	const [tracks, setTracks] = useState<Track[] | null>(null)
+	const [unavailable, setUnavailable] = useState(false)
 	const [fetchId, setFetchId] = useState(0)
 
 	const loading = tracks === null || fetchId > 0
@@ -23,14 +25,16 @@ export default function TopTracks() {
 
 		fetch(`/api/spotify/top-tracks?time_range=${timeRange}`)
 			.then((res) => res.json())
-			.then((data: { tracks: Track[] }) => {
+			.then((data: { tracks: Track[]; unavailable?: boolean }) => {
 				if (!cancelled) {
+					setUnavailable(Boolean(data.unavailable))
 					setTracks(data.tracks)
 					setFetchId(0)
 				}
 			})
 			.catch(() => {
 				if (!cancelled) {
+					setUnavailable(true)
 					setTracks([])
 					setFetchId(0)
 				}
@@ -85,6 +89,8 @@ export default function TopTracks() {
 						</div>
 					))}
 				</div>
+			) : unavailable ? (
+				<p className="text-terminal-muted font-sans text-sm">{tq('quiet')}</p>
 			) : tracks.length === 0 ? (
 				// Naming the range and offering the other one beats "No tracks
 				// available", which reads like the integration is broken.

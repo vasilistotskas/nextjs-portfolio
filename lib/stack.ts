@@ -83,10 +83,10 @@ export const skillGroups: readonly SkillGroup[] = [
 		skills: [
 			{ name: 'Python', daily: true },
 			{ name: 'Django', daily: true },
-			{ name: 'Django REST', daily: true },
+			{ name: 'Go', daily: true },
+			{ name: 'PHP', daily: true },
 			{ name: 'NestJS' },
-			{ name: 'Node.js' },
-			{ name: 'PHP' }
+			{ name: 'Node.js' }
 		]
 	},
 	{
@@ -95,6 +95,7 @@ export const skillGroups: readonly SkillGroup[] = [
 		skills: [
 			{ name: 'PostgreSQL', daily: true },
 			{ name: 'Redis', daily: true },
+			{ name: 'Meilisearch' },
 			{ name: 'RabbitMQ' },
 			{ name: 'Celery' }
 		]

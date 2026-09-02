@@ -66,6 +66,14 @@ export default function NowPlaying() {
 
 	useEffect(() => {
 		let cancelled = false
+		let interval: ReturnType<typeof setInterval> | undefined
+
+		// Nothing to poll for once Spotify says it cannot answer; a reload is the
+		// only thing that can change the outcome.
+		const stopPolling = () => {
+			if (interval) clearInterval(interval)
+			interval = undefined
+		}
 
 		// Nothing playing is the normal state, not a failure — fall back to what
 		// is actually on repeat rather than printing a hardcoded track.
@@ -95,6 +103,12 @@ export default function NowPlaying() {
 				if (!res.ok) throw new Error(String(res.status))
 				const data = (await res.json()) as NowPlayingSong
 
+				if (data.unavailable) {
+					stopPolling()
+					if (!cancelled) setSong({ mode: 'quiet' })
+					return
+				}
+
 				if (data.title) {
 					const next: Shown = {
 						mode: data.isPlaying ? 'live' : 'recent',
@@ -114,15 +128,16 @@ export default function NowPlaying() {
 				const fallback = await loadRepeat()
 				if (!cancelled) setSong(fallback)
 			} catch {
+				stopPolling()
 				if (!cancelled) setSong({ mode: 'quiet' })
 			}
 		}
 
 		void load()
-		const interval = setInterval(() => void load(), 30000)
+		interval = setInterval(() => void load(), 30000)
 		return () => {
 			cancelled = true
-			clearInterval(interval)
+			stopPolling()
 		}
 	}, [])
 

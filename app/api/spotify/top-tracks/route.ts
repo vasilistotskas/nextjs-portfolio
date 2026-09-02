@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { getTopTracks } from '@/lib/spotify'
+import { SpotifyUnavailableError, getTopTracks } from '@/lib/spotify'
 import type { TimeRange } from '@/lib/spotify'
+
+// A music widget that cannot authenticate is not a server error. Answer 200
+// with an empty list and let the UI show its quiet state.
+const UNAVAILABLE = { tracks: [], unavailable: true } as const
 
 const VALID_RANGES = new Set<TimeRange>(['short_term', 'medium_term'])
 
@@ -17,7 +21,7 @@ export async function GET(request: NextRequest) {
 		const response = await getTopTracks(timeRange)
 
 		if (!response.ok) {
-			return NextResponse.json({ tracks: [] }, { status: 502 })
+			return NextResponse.json(UNAVAILABLE)
 		}
 
 		type SpotifyTopTracks = {
@@ -53,7 +57,11 @@ export async function GET(request: NextRequest) {
 			}
 		)
 	} catch (err) {
+		if (err instanceof SpotifyUnavailableError) {
+			// Already logged once, with the reason, by the token refresh.
+			return NextResponse.json(UNAVAILABLE)
+		}
 		console.error('Spotify top-tracks error:', err)
-		return NextResponse.json({ tracks: [] }, { status: 500 })
+		return NextResponse.json(UNAVAILABLE)
 	}
 }

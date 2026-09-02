@@ -29,16 +29,27 @@ const projects: Project[] = [
 	},
 	{
 		key: 'grooveshop',
-		url: 'grooveshop.dev',
+		url: 'demo.grooveshop.space',
 		repos: [
 			{ url: 'https://github.com/vasilistotskas/grooveshop-django-api', label: 'API' },
 			{
 				url: 'https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt',
 				label: 'Storefront'
 			},
-			{ url: 'https://github.com/vasilistotskas/grooveshop-media-stream', label: 'Media' }
+			{
+				url: 'https://github.com/vasilistotskas/grooveshop-media-stream',
+				label: 'Media'
+			},
+			{
+				url: 'https://github.com/vasilistotskas/grooveshop-agent-gateway',
+				label: 'Agent gateway'
+			},
+			{
+				url: 'https://github.com/vasilistotskas/grooveshop-infrastructure',
+				label: 'Infrastructure'
+			}
 		],
-		demo: null,
+		demo: 'https://demo.grooveshop.space/',
 		status: 'oss'
 	},
 	{

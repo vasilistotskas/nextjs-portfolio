@@ -81,7 +81,7 @@
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "A multi-repo e-commerce platform built over four years: a Django REST API, a Nuxt 4 storefront and a NestJS media streaming service, on PostgreSQL with Docker orchestration."
+				"description": "Five services built over four years: a Django REST API, a Nuxt 4 storefront, a NestJS media service and a Go agent gateway that makes the catalogue shoppable by AI agents over MCP. PostgreSQL, Redis, Meilisearch and Celery underneath, on k3s with Argo CD."
 			},
 			"webside": {
 				"name": "Webside.gr",

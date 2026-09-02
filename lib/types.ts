@@ -8,6 +8,8 @@ export type NowPlayingSong = {
 	playedAt?: string
 	progressMs?: number
 	durationMs?: number
+	/** Spotify could not be reached or authorised. Stop asking. */
+	unavailable?: boolean
 }
 
 export type Track = {

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify'
+import { SpotifyUnavailableError, getNowPlaying, getRecentlyPlayed } from '@/lib/spotify'
 
 type SpotifyCurrentlyPlaying = {
 	is_playing: boolean
@@ -76,7 +76,12 @@ export async function GET() {
 
 		return NextResponse.json({ isPlaying: false })
 	} catch (err) {
+		if (err instanceof SpotifyUnavailableError) {
+			// `unavailable` tells the client to stop polling until a reload,
+			// instead of two requests a minute against a dead integration.
+			return NextResponse.json({ isPlaying: false, unavailable: true })
+		}
 		console.error('Spotify now-playing error:', err)
-		return NextResponse.json({ isPlaying: false })
+		return NextResponse.json({ isPlaying: false, unavailable: true })
 	}
 }
