@@ -15,7 +15,7 @@
 	"packageManager": "pnpm@11.25.0",
 	"scripts": {
 		"build": "pnpm run clean && next build",
-		"check:wgsl": "vgpu check components/ui/stack-field.wgsl",
+		"check:wgsl": "vgpu check components/ui/hero-field.wgsl",
 		"clean": "rm -rf .next build .vercel",
 		"dev": "next dev --turbopack",
 		"format": "prettier --check --ignore-path .gitignore --ignore-path .prettierignore .",

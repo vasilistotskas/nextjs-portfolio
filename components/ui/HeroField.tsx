@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ALL_LAYERS } from '@/lib/stack'
-import { startStackField } from '@/lib/stack-field'
-import type { Palette, StackFieldHandle } from '@/lib/stack-field'
+import { startHeroField } from '@/lib/hero-field'
+import type { HeroFieldHandle, Palette } from '@/lib/hero-field'
 
 function channels(value: string): [number, number, number] {
 	const hex = value.trim().replace('#', '')
@@ -24,23 +23,17 @@ function readPalette(): Palette {
 	return {
 		accent: channels(style.getPropertyValue('--green')),
 		ground: channels(style.getPropertyValue('--bg')),
-		light: document.documentElement.classList.contains('dark') ? 0 : 1
+		light: document.documentElement.classList.contains('light') ? 1 : 0
 	}
 }
 
-type StackFieldProps = {
-	/** Bitmask of lit layers. Defaults to the whole stack. */
-	litMask?: number
-	className?: string
-}
-
 /**
- * The stack map. Renders nothing at all without WebGPU, which leaves the CSS
+ * The hero field. Renders nothing at all without WebGPU, which leaves the CSS
  * gradient underneath as the fallback.
  */
-export default function StackField({ litMask = ALL_LAYERS, className }: StackFieldProps) {
+export default function HeroField({ className }: { className?: string }) {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
-	const fieldRef = useRef<StackFieldHandle | null>(null)
+	const fieldRef = useRef<HeroFieldHandle | null>(null)
 	const [failed, setFailed] = useState(false)
 
 	useEffect(() => {
@@ -53,9 +46,8 @@ export default function StackField({ litMask = ALL_LAYERS, className }: StackFie
 		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
 		const still = reduced.matches
 
-		const field = startStackField(canvas, {
+		const field = startHeroField(canvas, {
 			palette: readPalette(),
-			litMask,
 			still,
 			onError: () => setFailed(true)
 		})
@@ -65,15 +57,14 @@ export default function StackField({ litMask = ALL_LAYERS, className }: StackFie
 
 		const handlePointerMove = (event: PointerEvent) => {
 			// Touch has no hover, and a finger dragging the page should not light
-			// the map under it.
+			// the field under it.
 			if (event.pointerType === 'touch') return
 			const rect = host.getBoundingClientRect()
 			if (rect.width === 0 || rect.height === 0) return
 			const aspect = rect.width / rect.height
-			const fit = Math.min(1, Math.max(0.82, aspect / 1.7))
 			field.setPointer(
-				(((event.clientX - rect.left) / rect.width - 0.5) * aspect) / fit,
-				((event.clientY - rect.top) / rect.height - 0.5) / fit,
+				((event.clientX - rect.left) / rect.width - 0.5) * aspect,
+				(event.clientY - rect.top) / rect.height - 0.5,
 				1
 			)
 		}
@@ -107,14 +98,7 @@ export default function StackField({ litMask = ALL_LAYERS, className }: StackFie
 			field.dispose()
 			fieldRef.current = null
 		}
-		// `litMask` is applied through the effect below so a change never tears
-		// down the GPU context.
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
-
-	useEffect(() => {
-		fieldRef.current?.setLitMask(litMask)
-	}, [litMask])
 
 	/*
 		Follow the class on <html> rather than the theme context. The provider

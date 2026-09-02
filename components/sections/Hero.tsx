@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { ArrowRight } from 'lucide-react'
-import StackField from '@/components/ui/StackField'
+import HeroField from '@/components/ui/HeroField'
 import { useCommandPalette } from '@/components/ui/CommandPalette'
 
 export default function Hero() {
@@ -15,18 +15,16 @@ export default function Hero() {
 	return (
 		<section className="relative isolate overflow-hidden">
 			{/*
-				The stack map. A band across the top so no text ever sits on the
-				graphic; full bleed only from lg up, where the section is tall enough
-				that the shader's own fade keeps the copy on quiet ground. At tablet
-				widths the section is short and the map lands on the headline, so the
-				band stays.
+				The hero field. A band across the top on small screens so no text ever
+				sits on the graphic; full bleed only from lg up, where the section is
+				tall enough that the shader's own fade keeps the copy on quiet ground.
 			*/}
 			<div
 				aria-hidden="true"
 				className="absolute inset-x-0 top-0 h-40 sm:h-52 lg:inset-0 lg:h-full"
 			>
 				<div className="stack-fallback absolute inset-0" />
-				<StackField className="field-fade-in absolute inset-0 block h-full w-full" />
+				<HeroField className="field-fade-in absolute inset-0 block h-full w-full" />
 			</div>
 
 			<div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col px-4 pt-44 pb-12 sm:pt-60 md:px-6 lg:min-h-[36rem] lg:justify-end lg:pt-28 lg:pb-16">

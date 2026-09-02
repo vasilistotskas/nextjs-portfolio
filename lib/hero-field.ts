@@ -1,6 +1,6 @@
 import { clock, effect, frame, frameLoop, init, surface } from 'vgpu'
 import type { Effect, FrameLoopHandle, Surface } from 'vgpu'
-import shaderSource from '@/components/ui/stack-field.wgsl'
+import shaderSource from '@/components/ui/hero-field.wgsl'
 
 type Gpu = Awaited<ReturnType<typeof init>>
 
@@ -11,17 +11,15 @@ export type Palette = {
 	light: 0 | 1
 }
 
-export type StackFieldOptions = {
+export type HeroFieldOptions = {
 	palette: Palette
-	litMask: number
 	/** Render one frozen frame instead of animating. */
 	still: boolean
 	onError: () => void
 }
 
-export type StackFieldHandle = {
+export type HeroFieldHandle = {
 	setPointer: (x: number, y: number, on: 0 | 1) => void
-	setLitMask: (value: number) => void
 	setPalette: (palette: Palette) => void
 	/** Pause when the hero scrolls away or the tab is hidden. */
 	setRunning: (running: boolean) => void
@@ -30,14 +28,23 @@ export type StackFieldHandle = {
 	dispose: () => void
 }
 
+/**
+ * Visible text lines, from the canvas's CSS height. The hero is a tall panel on
+ * desktop and a short band on mobile; a fixed line count turned that band into
+ * noise, and deriving it from device pixels made the glyphs change size with the
+ * display's pixel ratio.
+ */
+const linesFor = (cssHeight: number) =>
+	Math.max(12, Math.min(26, Math.round(cssHeight / 22)))
+
 const FPS = 30
 /** Frozen clock reading for the reduced-motion frame — a settled, legible pose. */
-const STILL_TIME = 7.3
+const STILL_TIME = 21.5
 
-export function startStackField(
+export function startHeroField(
 	canvas: HTMLCanvasElement,
-	{ palette, litMask, still, onError }: StackFieldOptions
-): StackFieldHandle {
+	{ palette, still, onError }: HeroFieldOptions
+): HeroFieldHandle {
 	let disposed = false
 	let gpu: Gpu | undefined
 	let output: Surface | undefined
@@ -46,10 +53,9 @@ export function startStackField(
 	let unsubscribeResize: (() => void) | undefined
 	let pendingFrame = 0
 
-	// Kept outside the render callback so the values survive until the context
+	// Kept outside the render callback so the value survives until the context
 	// finishes initialising.
 	let currentPalette = palette
-	let currentMask = litMask
 	let running = true
 	const pointer = { x: 0, y: 0, on: 0 as 0 | 1 }
 
@@ -97,7 +103,7 @@ export function startStackField(
 
 	void (async () => {
 		try {
-			const context = await init({ label: 'stack-field' })
+			const context = await init({ label: 'hero-field' })
 			if (disposed) {
 				context.dispose()
 				return
@@ -108,7 +114,7 @@ export function startStackField(
 			output = canvasSurface
 
 			field = effect(gpu, shaderSource, {
-				label: 'stack-field',
+				label: 'hero-field',
 				set: {
 					params: {
 						time: still ? STILL_TIME : 0,
@@ -119,7 +125,7 @@ export function startStackField(
 						texel: canvasSurface.texelSize,
 						accent: [...currentPalette.accent, 1],
 						ground: [...currentPalette.ground, 1],
-						litMask: currentMask
+						lines: linesFor(canvas.clientHeight || 400)
 					}
 				}
 			})
@@ -129,7 +135,8 @@ export function startStackField(
 				field?.set({
 					params: {
 						texel: canvasSurface.texelSize,
-						aspect: width / Math.max(1, height)
+						aspect: width / Math.max(1, height),
+						lines: linesFor(canvas.clientHeight || 400)
 					}
 				})
 			})
@@ -150,11 +157,6 @@ export function startStackField(
 			pointer.y = y
 			pointer.on = on
 			if (still && on) scheduleStill()
-		},
-		setLitMask(value) {
-			currentMask = value
-			field?.set({ params: { litMask: value } })
-			if (still) scheduleStill()
 		},
 		setPalette(next) {
 			currentPalette = next

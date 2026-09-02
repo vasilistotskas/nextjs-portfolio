@@ -6,8 +6,8 @@
  * per-project layer lists. It is deliberately generic — no project or vendor
  * names live here, only layers — so a new project is a mask, not a redesign.
  *
- * Order matters: the index of a layer is its bit in the mask and its node index
- * in `components/ui/stack-field.wgsl`. Append, never reorder.
+ * Order matters: the index of a layer is its bit in the project masks below.
+ * Append, never reorder.
  */
 export const layers = [
 	'browser',
@@ -23,9 +23,6 @@ export const layers = [
 ] as const
 
 export type Layer = (typeof layers)[number]
-
-/** Every layer lit — what the hero shows. */
-export const ALL_LAYERS = (1 << layers.length) - 1
 
 export function mask(...on: readonly Layer[]): number {
 	return on.reduce((value, layer) => value | (1 << layers.indexOf(layer)), 0)
