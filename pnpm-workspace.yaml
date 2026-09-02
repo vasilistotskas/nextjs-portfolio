@@ -10,6 +10,16 @@ minimumReleaseAgeExclude:
   - '@hookform/resolvers@5.4.3'
   - react-hook-form@7.83.0
   - '@types/react-dom@19.2.5'
+  - '@eloqnt/config@0.1.0'
+  - '@eloqnt/format-json@0.1.0'
+  - '@eloqnt/format-po@0.1.0'
+  - '@eslint/eslintrc@3.3.7'
+  - '@types/node@26.4.1'
+  - icu-minify@4.14.2
+  - lucide-react@1.39.0
+  - next-intl-swc-plugin-extractor@4.14.2
+  - next-intl@4.14.2
+  - use-intl@4.14.2
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@swc/core'

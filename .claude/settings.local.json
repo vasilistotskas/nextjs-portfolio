@@ -46,5 +46,9 @@
       "WebFetch(domain:r3f.docs.pmnd.rs)",
       "Bash(find /c/Dev/nextjs-portfolio/hooks -name *.ts -o -name *.tsx)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "vgpu"
+  ],
+  "enableAllProjectMcpServers": true
 }
