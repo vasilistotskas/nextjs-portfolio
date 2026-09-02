@@ -1,6 +1,6 @@
 'use client'
 
-import { useTheme } from 'next-themes'
+import { useTheme } from '@/components/providers/ThemeProvider'
 import { Moon, Sun } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useSyncExternalStore } from 'react'
@@ -28,7 +28,7 @@ export default function ThemeToggle() {
 				'relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border',
 				'border-terminal-border text-terminal-comment',
 				'transition-colors duration-200',
-				'hover:border-terminal-cyan hover:text-terminal-cyan'
+				'hover:border-terminal-green hover:text-terminal-green'
 			)}
 		>
 			<AnimatePresence mode="wait" initial={false}>

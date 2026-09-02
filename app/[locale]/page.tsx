@@ -5,20 +5,21 @@ import Hero from '@/components/sections/Hero'
 import Skills from '@/components/sections/Skills'
 import Projects from '@/components/sections/Projects'
 import Experience from '@/components/sections/Experience'
-import Card from '@/components/ui/Card'
 import GitHubStats from '@/components/ui/GitHubStats'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('common')
+	const th = await getTranslations('hero')
 
 	return buildPageMetadata({
 		title: `${t('myName')} — Fullstack Developer`,
-		description:
-			'Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. Building high-performance web apps & scalable infrastructure.'
+		description: th('summary')
 	})
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+	const t = await getTranslations('github')
+
 	return (
 		<>
 			<Hero />
@@ -30,12 +31,12 @@ export default function HomePage() {
 			<Experience />
 			<div className="section-divider" />
 
-			{/* GitHub Stats section */}
-			<section className="px-6 pb-20">
+			<section className="px-4 py-14 md:px-6 md:py-20">
 				<div className="mx-auto max-w-5xl">
-					<Card>
-						<GitHubStats />
-					</Card>
+					<h2 className="text-terminal-text mb-8 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
+						{t('title')}
+					</h2>
+					<GitHubStats />
 				</div>
 			</section>
 		</>

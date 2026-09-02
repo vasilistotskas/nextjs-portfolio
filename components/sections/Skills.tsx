@@ -1,127 +1,52 @@
-'use client'
-
 import { useTranslations } from 'next-intl'
-import { motion } from 'motion/react'
-import Terminal from '@/components/ui/Terminal'
-import Badge from '@/components/ui/Badge'
+import { skillGroups } from '@/lib/stack'
 
-const skillData = {
-	frontend: {
-		variant: 'cyan' as const,
-		skills: [
-			'Vue.js',
-			'Nuxt (v3/v4)',
-			'TypeScript',
-			'JavaScript',
-			'React',
-			'Next.js',
-			'Vite',
-			'Tailwind CSS',
-			'HTML',
-			'CSS'
-		]
-	},
-	backend: {
-		variant: 'green' as const,
-		skills: ['Python', 'Django', 'Django REST', 'NestJS', 'Node.js', 'PHP']
-	},
-	devops: {
-		variant: 'default' as const,
-		skills: [
-			'Kubernetes (k3s)',
-			'ArgoCD',
-			'Docker',
-			'PostgreSQL',
-			'Redis',
-			'RabbitMQ',
-			'Celery',
-			'Nginx',
-			'Git',
-			'Linux'
-		]
-	},
-	infra: {
-		variant: 'default' as const,
-		skills: ['Hetzner', 'Cloudflare', 'Vercel', 'Longhorn', 'Cert-Manager']
-	}
-}
-
-const categoryLabels: Record<string, string> = {
-	frontend: 'Frontend',
-	backend: 'Backend',
-	devops: 'DevOps',
-	infra: 'Infrastructure & Cloud'
-}
-
+/**
+ * Skills grouped by the same vocabulary as the hero map, so the two describe one
+ * system rather than two. `daily` is a weight difference, not a second list.
+ */
 export default function Skills() {
 	const t = useTranslations('skills')
+	const ts = useTranslations('stack')
 
 	return (
-		<section className="px-4 py-8 md:px-6 md:py-20" id="skills">
+		<section className="px-4 py-14 md:px-6 md:py-20" id="skills">
 			<div className="mx-auto max-w-5xl">
-				{/* Section header */}
-				<motion.div
-					initial={{ opacity: 0, y: 16 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, margin: '-80px' }}
-					transition={{ duration: 0.45, ease: 'easeOut' }}
-					className="mb-12"
-				>
-					<p className="text-terminal-muted mb-2 font-mono text-xs tracking-widest uppercase">
-						{t('subtitle')}
-					</p>
-					<h2 className="text-terminal-text font-sans text-2xl font-bold md:text-3xl">
-						{t('title')}
-					</h2>
-					<div className="section-accent" />
-				</motion.div>
+				<h2 className="text-terminal-text mb-3 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
+					{t('title')}
+				</h2>
+				<p className="text-terminal-comment mb-10 max-w-[60ch] font-sans text-sm">
+					{t('intro')}
+				</p>
 
-				<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-					{(
-						Object.entries(skillData) as Array<
-							[keyof typeof skillData, (typeof skillData)[keyof typeof skillData]]
-						>
-					).map(([category, { variant, skills }], index) => (
-						<motion.div
-							key={category}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, margin: '-60px' }}
-							transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
-						>
-							<Terminal title={categoryLabels[category]}>
-								<p className="text-terminal-comment mb-3 text-[11px]">
-									<span className="text-terminal-green">{'$ '}</span>
-									<span className="text-terminal-cyan">cat</span>
-									{` skills/${category}.json`}
-								</p>
-								<motion.div
-									className="flex flex-wrap gap-1.5"
-									initial="hidden"
-									whileInView="show"
-									viewport={{ once: true }}
-									variants={{
-										hidden: {},
-										show: { transition: { staggerChildren: 0.04 } }
-									}}
-								>
-									{skills.map((skill) => (
-										<motion.div
-											key={skill}
-											variants={{
-												hidden: { opacity: 0, y: 8 },
-												show: { opacity: 1, y: 0 }
-											}}
-											transition={{ duration: 0.3, ease: 'easeOut' }}
-										>
-											<Badge variant={variant}>{skill}</Badge>
-										</motion.div>
-									))}
-								</motion.div>
-							</Terminal>
-						</motion.div>
+				<div className="grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2">
+					{skillGroups.map((group) => (
+						<div key={group.key} className="min-w-0">
+							<h3 className="text-terminal-text font-sans text-base font-semibold">
+								{ts(`groups.${group.key}`)}
+							</h3>
+							<p className="text-terminal-muted mt-1 font-mono text-[11px]">
+								{group.layers.map((layer) => ts(`layers.${layer}`)).join(' / ')}
+							</p>
+							<ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 p-0">
+								{group.skills.map((skill) => (
+									<li
+										key={skill.name}
+										className={
+											skill.daily
+												? 'text-terminal-text font-sans text-sm font-medium'
+												: 'text-terminal-muted font-sans text-sm'
+										}
+									>
+										{skill.name}
+									</li>
+								))}
+							</ul>
+						</div>
 					))}
 				</div>
+
+				<p className="text-terminal-muted mt-10 font-sans text-xs">{t('legend')}</p>
 			</div>
 		</section>
 	)

@@ -1,8 +1,10 @@
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════
-   SEMANTIC TOKENS — Premium Glass
-   B&W base + emerald green accent
+   SEMANTIC TOKENS
+   B&W base + emerald green accent. One accent, on purpose:
+   the cyan/yellow/purple set carried no meaning and competed
+   with the green.
    ═══════════════════════════════════════════════════════════ */
 @layer base {
 	:root {
@@ -12,7 +14,7 @@
 		--border: rgba(0, 0, 0, 0.1);
 		--text: #09090b;
 		--muted: #525252;
-		--comment: #09090b;
+		--comment: #3f3f46;
 		--green: #059669;
 		--cyan: #10b981;
 		--prompt: #525252;
@@ -32,8 +34,8 @@
 		--surface-elevated: #1c1c1c;
 		--border: rgba(255, 255, 255, 0.1);
 		--text: #fafafa;
-		--muted: #b0b0b8;
-		--comment: #fafafa;
+		--muted: #a1a1aa;
+		--comment: #d4d4d8;
 		--green: #34d399;
 		--cyan: #6ee7b7;
 		--prompt: #b0b0b8;
@@ -51,10 +53,19 @@
 /* ═══════════════════════════════════════════════════════════
    TAILWIND THEME
    ═══════════════════════════════════════════════════════════ */
-@theme {
-	--font-mono: 'Geist Mono', 'Fira Code', 'Cascadia Code', monospace;
-	--font-sans: 'Geist', system-ui, sans-serif;
+/*
+	Font tokens must be `inline`. next/font declares `--font-plex-sans` on <body>,
+	and a plain `@theme` emits `--font-sans: var(--font-plex-sans)` onto `:root`,
+	where that property does not exist — the whole value then computes to nothing.
+	`inline` substitutes the value into the utilities instead, so it resolves on
+	the element being styled.
+*/
+@theme inline {
+	--font-sans: var(--font-plex-sans), system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains-mono), 'Cascadia Code', ui-monospace, monospace;
+}
 
+@theme {
 	--color-terminal-bg: var(--bg);
 	--color-terminal-surface: var(--surface);
 	--color-terminal-surface-elevated: var(--surface-elevated);
@@ -63,7 +74,6 @@
 	--color-terminal-muted: var(--muted);
 	--color-terminal-comment: var(--comment);
 	--color-terminal-green: var(--green);
-	--color-terminal-cyan: var(--cyan);
 	--color-terminal-prompt: var(--prompt);
 	--color-terminal-yellow: var(--yellow);
 	--color-terminal-purple: var(--purple);
@@ -94,24 +104,22 @@
 	}
 }
 
-@keyframes scroll-hint {
-	0%,
-	100% {
-		transform: translateY(0);
-		opacity: 0.4;
+@keyframes field-in {
+	from {
+		opacity: 0;
 	}
-	50% {
-		transform: translateY(8px);
+	to {
 		opacity: 1;
 	}
 }
 
-@keyframes shimmer {
-	0% {
-		transform: translateX(-100%);
-	}
+@keyframes eq-bounce {
+	0%,
 	100% {
-		transform: translateX(100%);
+		transform: scaleY(0.35);
+	}
+	50% {
+		transform: scaleY(1);
 	}
 }
 
@@ -119,9 +127,11 @@
    BASE
    ═══════════════════════════════════════════════════════════ */
 @layer base {
-	html {
-		font-family: var(--font-sans);
-	}
+	/*
+		The font variables are declared on <body>, not <html>, so that React never
+		renders a class on <html> and clobbers the theme class. `font-family`
+		therefore belongs on body too.
+	*/
 
 	html[data-scroll-behavior='smooth'] {
 		scroll-behavior: smooth;
@@ -130,7 +140,12 @@
 	body {
 		background-color: var(--bg);
 		color: var(--text);
-		font-family: var(--font-sans);
+		font-family: var(--font-plex-sans), system-ui, sans-serif;
+		/*
+			No `background-attachment: fixed`: it forces a full-page repaint on
+			every scroll frame, which is the single most expensive thing this page
+			used to do on a mid-range phone.
+		*/
 		background-image:
 			radial-gradient(
 				ellipse 600px 400px at 15% 20%,
@@ -142,7 +157,7 @@
 				color-mix(in srgb, var(--green) 4%, transparent),
 				transparent
 			);
-		background-attachment: fixed;
+		background-repeat: no-repeat;
 	}
 
 	/* Global noise texture */
@@ -162,7 +177,7 @@
 	pre,
 	kbd,
 	samp {
-		font-family: var(--font-mono);
+		font-family: var(--font-jetbrains-mono), 'Cascadia Code', ui-monospace, monospace;
 	}
 
 	::selection {
@@ -186,26 +201,30 @@
    UTILITIES
    ═══════════════════════════════════════════════════════════ */
 @layer utilities {
-	/* Border */
 	.terminal-border {
 		border: 1px solid var(--glass-border);
 	}
 
-	/* Glass morphism */
+	/*
+		`.glass` is the cheap surface used on every card. The blur is opt-in via
+		`.glass-blur` and belongs only on the two elements that genuinely float
+		over content: the sticky header and the command palette.
+	*/
 	.glass {
 		background: var(--glass-bg);
+	}
+
+	.glass-blur {
 		backdrop-filter: blur(16px) saturate(1.5);
 		-webkit-backdrop-filter: blur(16px) saturate(1.5);
 	}
 
-	/* Green glow halo */
 	.glow-green {
 		box-shadow:
 			0 0 30px -5px color-mix(in srgb, var(--green) 30%, transparent),
 			0 0 80px -15px color-mix(in srgb, var(--green) 15%, transparent);
 	}
 
-	/* Gradient text */
 	.text-gradient {
 		background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 100%);
 		-webkit-background-clip: text;
@@ -213,7 +232,6 @@
 		background-clip: text;
 	}
 
-	/* Card hover — green glow */
 	.card-hover {
 		transition:
 			border-color 0.3s ease,
@@ -226,30 +244,10 @@
 			0 8px 32px -4px color-mix(in srgb, var(--green) 12%, transparent);
 	}
 
-	/* Cursor glow for terminal */
-	.cursor-glow {
-		animation: cursor-blink 1.1s step-end infinite;
-		box-shadow: 0 0 6px color-mix(in srgb, var(--green) 60%, transparent);
-	}
-
-	/* Accent line beneath section headings */
-	.section-accent {
-		width: 3rem;
-		height: 2px;
-		margin-top: 0.75rem;
-		background: linear-gradient(90deg, var(--green), var(--cyan));
-		border-radius: 1px;
-	}
-
 	/* Section divider */
 	.section-divider {
 		height: 1px;
 		background: linear-gradient(90deg, transparent, var(--glass-border) 50%, transparent);
-	}
-
-	/* Blinking cursor */
-	.cursor-blink {
-		animation: cursor-blink 1.1s step-end infinite;
 	}
 
 	/* Noise overlay (per-element) */
@@ -269,7 +267,6 @@
 		background-size: 128px 128px;
 	}
 
-	/* Gradient top border accent */
 	.gradient-border-top {
 		position: relative;
 	}
@@ -284,7 +281,7 @@
 		border-radius: 1px 1px 0 0;
 	}
 
-	/* Status availability dot with pulse ring */
+	/* Availability dot */
 	.status-dot {
 		position: relative;
 		display: inline-block;
@@ -300,11 +297,79 @@
 		inset: 0;
 		border-radius: 50%;
 		background-color: var(--green);
-		animation: pulse-ring 2.5s ease-out infinite;
 	}
 
-	/* Scroll indicator bounce */
-	.scroll-indicator {
-		animation: scroll-hint 2.5s ease-in-out infinite;
+	/* What the hero canvas sits on, and what a visitor without WebGPU sees. */
+	.stack-fallback {
+		background:
+			radial-gradient(
+				ellipse 55% 70% at 24% 34%,
+				color-mix(in srgb, var(--green) 11%, transparent),
+				transparent 70%
+			),
+			radial-gradient(
+				ellipse 45% 60% at 76% 62%,
+				color-mix(in srgb, var(--green) 7%, transparent),
+				transparent 70%
+			);
+	}
+
+	/* Three bars that say "playing" before the label does. */
+	.eq {
+		display: inline-flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 10px;
+	}
+	.eq i {
+		display: block;
+		width: 2px;
+		height: 100%;
+		border-radius: 1px;
+		background-color: currentColor;
+		transform: scaleY(0.4);
+		transform-origin: bottom;
+	}
+
+	.cursor-blink,
+	.cursor-glow {
+		/* Animation is added under `no-preference` below. */
+		opacity: 1;
+	}
+}
+
+/*
+	Every looping animation lives here, so the whole page is still by default for
+	anyone who asked their OS for less motion. Motion-library animations are
+	handled separately by `<MotionConfig reducedMotion="user">`.
+*/
+@media (prefers-reduced-motion: no-preference) {
+	@layer utilities {
+		.status-dot::before {
+			animation: pulse-ring 2.5s ease-out infinite;
+		}
+
+		.cursor-blink,
+		.cursor-glow {
+			animation: cursor-blink 1.1s step-end infinite;
+		}
+
+		.cursor-glow {
+			box-shadow: 0 0 6px color-mix(in srgb, var(--green) 60%, transparent);
+		}
+
+		.field-fade-in {
+			animation: field-in 700ms ease-out both;
+		}
+
+		.eq i {
+			animation: eq-bounce 1.1s ease-in-out infinite;
+		}
+		.eq i:nth-child(2) {
+			animation-delay: -0.35s;
+		}
+		.eq i:nth-child(3) {
+			animation-delay: -0.7s;
+		}
 	}
 }

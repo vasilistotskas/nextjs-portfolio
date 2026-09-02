@@ -15,19 +15,17 @@ const socialLinks = [
 
 export default function Footer() {
 	const t = useTranslations('footer')
+	const tc = useTranslations('common')
 	const year = new Date().getFullYear()
 
 	return (
-		<footer className="bg-terminal-bg relative">
-			{/* Gradient top line */}
+		<footer className="bg-terminal-bg relative mt-8">
 			<div className="section-divider" />
 
-			<div className="mx-auto max-w-5xl px-3 py-4 md:px-6 md:py-8">
-				<div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-					{/* Now Playing */}
+			<div className="mx-auto max-w-5xl px-4 py-8 md:px-6">
+				<div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
 					<NowPlaying />
 
-					{/* Social links */}
 					<div className="flex items-center gap-5">
 						{socialLinks.map(({ href, icon: Icon, label }) => (
 							<a
@@ -43,8 +41,7 @@ export default function Footer() {
 						))}
 					</div>
 
-					{/* Copyright */}
-					<div className="text-terminal-comment flex items-center gap-2 font-mono text-xs">
+					<p className="text-terminal-muted font-mono text-xs">
 						<Link
 							href="https://github.com/vasilistotskas/nextjs-portfolio"
 							target="_blank"
@@ -53,11 +50,9 @@ export default function Footer() {
 						>
 							{t('source')}
 						</Link>
-						<span>·</span>
-						<span>
-							© {year} vasilistotskas · {t('copyright')}
-						</span>
-					</div>
+						{'. '}
+						{t('copyright', { year, name: tc('myName') })}
+					</p>
 				</div>
 			</div>
 		</footer>

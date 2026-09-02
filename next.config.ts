@@ -32,7 +32,28 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
-	transpilePackages: ['three'],
+	// Resolve `.wgsl` import graphs at build time and hand `effect()` one
+	// finished shader. Turbopack needs `as: '*.js'` so it treats the loader
+	// output as a module; the webpack hook only runs for commands without
+	// `--turbopack`, and the two configurations coexist.
+	turbopack: {
+		rules: {
+			'*.wgsl': {
+				loaders: ['@vgpu/wgsl/loader-webpack'],
+				as: '*.js'
+			}
+		}
+	},
+	webpack(config) {
+		config.module ??= { rules: [] }
+		config.module.rules ??= []
+		config.module.rules.push({
+			test: /\.wgsl$/,
+			loader: '@vgpu/wgsl/loader-webpack',
+			options: { minify: true }
+		})
+		return config
+	},
 	images: {
 		remotePatterns: [
 			{ hostname: 'i.scdn.co' },

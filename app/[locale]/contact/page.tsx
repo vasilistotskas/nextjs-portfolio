@@ -49,11 +49,12 @@ function ContactContent() {
 		<div className="mx-auto max-w-5xl px-4 py-8 md:px-6 md:py-20">
 			{/* Header */}
 			<div className="mb-12">
-				<p className="text-terminal-comment mb-2 font-mono text-sm">{t('subtitle')}</p>
-				<h1 className="text-terminal-text font-sans text-3xl font-bold md:text-4xl">
+				<h1 className="text-terminal-text font-sans text-3xl font-semibold tracking-tight md:text-4xl">
 					{t('title')}
 				</h1>
-				<p className="text-terminal-comment mt-4 font-sans text-sm">{t('description')}</p>
+				<p className="text-terminal-comment mt-4 max-w-[52ch] font-sans text-base">
+					{t('description')}
+				</p>
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-5">
@@ -67,9 +68,9 @@ function ContactContent() {
 								</p>
 								<a
 									href={`mailto:${tc('myEmail')}`}
-									className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-sans text-sm transition-colors"
+									className="text-terminal-text hover:text-terminal-green flex items-center gap-2 font-sans text-sm transition-colors"
 								>
-									<Mail size={14} className="text-terminal-cyan" />
+									<Mail size={14} className="text-terminal-green" />
 									{tc('myEmail')}
 								</a>
 							</div>
@@ -79,7 +80,7 @@ function ContactContent() {
 									{t('info.location')}
 								</p>
 								<div className="text-terminal-text flex items-center gap-2 font-sans text-sm">
-									<MapPin size={14} className="text-terminal-cyan" />
+									<MapPin size={14} className="text-terminal-green" />
 									{tc('athensGreece')}
 								</div>
 							</div>
@@ -95,7 +96,7 @@ function ContactContent() {
 											href={href}
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-terminal-text hover:text-terminal-cyan flex items-center gap-2 font-sans text-sm transition-colors"
+											className="text-terminal-text hover:text-terminal-green flex items-center gap-2 font-sans text-sm transition-colors"
 										>
 											<Icon size={14} className="text-terminal-muted" />
 											<span>{handle}</span>

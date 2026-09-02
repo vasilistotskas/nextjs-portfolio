@@ -3,11 +3,25 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { Music } from 'lucide-react'
+import { Clock, Music, Repeat } from 'lucide-react'
 import { formatDuration } from '@/lib/utils'
-import type { NowPlayingSong } from '@/lib/types'
+import type { NowPlayingSong, Track } from '@/lib/types'
 
-function getRelativeTime(dateStr: string, t: (key: string) => string): string {
+type Mode = 'loading' | 'live' | 'recent' | 'repeat' | 'quiet'
+
+type Shown = {
+	mode: Mode
+	title?: string
+	artist?: string
+	album?: string
+	albumImageUrl?: string
+	songUrl?: string
+	playedAt?: string
+	progressMs?: number
+	durationMs?: number
+}
+
+function relativeTime(dateStr: string, t: (key: string) => string): string {
 	const diff = Date.now() - new Date(dateStr).getTime()
 	const minutes = Math.floor(diff / 60000)
 	const hours = Math.floor(diff / 3600000)
@@ -19,151 +33,199 @@ function getRelativeTime(dateStr: string, t: (key: string) => string): string {
 	return t('daysAgo').replace('{n}', String(days))
 }
 
-function useProgress(data: NowPlayingSong | null) {
+/** Smooth the progress bar between the 30-second polls. */
+function useProgress(song: Shown) {
 	const [progress, setProgress] = useState(0)
-	const fetchedAtRef = useRef(0)
+	const fetchedAt = useRef(0)
+
+	const live = song.mode === 'live' && song.progressMs != null && song.durationMs != null
 
 	useEffect(() => {
-		if (!data?.isPlaying || !data.progressMs || !data.durationMs) {
-			return
-		}
-
-		fetchedAtRef.current = Date.now()
-
-		let rafId: number
+		if (!live) return
+		fetchedAt.current = Date.now()
+		let raf = 0
 
 		const tick = () => {
-			const elapsed = Date.now() - fetchedAtRef.current
-			const current = Math.min(data.progressMs! + elapsed, data.durationMs!)
+			const elapsed = Date.now() - fetchedAt.current
+			const current = Math.min(song.progressMs! + elapsed, song.durationMs!)
 			setProgress(current)
-
-			if (current < data.durationMs!) {
-				rafId = requestAnimationFrame(tick)
-			}
+			if (current < song.durationMs!) raf = requestAnimationFrame(tick)
 		}
 
-		rafId = requestAnimationFrame(tick)
-		return () => cancelAnimationFrame(rafId)
-	}, [data])
+		raf = requestAnimationFrame(tick)
+		return () => cancelAnimationFrame(raf)
+	}, [live, song.progressMs, song.durationMs])
 
-	if (!data?.isPlaying || !data.progressMs || !data.durationMs) {
-		return 0
-	}
-
-	return progress
+	return live ? progress : 0
 }
 
 export default function NowPlaying() {
 	const t = useTranslations('spotify')
-	const [data, setData] = useState<NowPlayingSong | null>(null)
-	const progress = useProgress(data)
+	const [song, setSong] = useState<Shown>({ mode: 'loading' })
+	const progress = useProgress(song)
 
 	useEffect(() => {
-		const fetchNowPlaying = async () => {
+		let cancelled = false
+
+		// Nothing playing is the normal state, not a failure — fall back to what
+		// is actually on repeat rather than printing a hardcoded track.
+		const loadRepeat = async (): Promise<Shown> => {
 			try {
-				const res = await fetch('/api/spotify/now-playing')
-				if (res.ok) {
-					const json = (await res.json()) as NowPlayingSong
-					setData(json)
+				const res = await fetch('/api/spotify/top-tracks?time_range=short_term')
+				if (!res.ok) return { mode: 'quiet' }
+				const data = (await res.json()) as { tracks: Track[] }
+				const top = data.tracks?.[0]
+				if (!top) return { mode: 'quiet' }
+				return {
+					mode: 'repeat',
+					title: top.title,
+					artist: top.artist,
+					album: top.album,
+					albumImageUrl: top.albumImageUrl,
+					songUrl: top.songUrl
 				}
 			} catch {
-				// silently fail
+				return { mode: 'quiet' }
 			}
 		}
 
-		fetchNowPlaying()
-		const interval = setInterval(fetchNowPlaying, 30000)
-		return () => clearInterval(interval)
+		const load = async () => {
+			try {
+				const res = await fetch('/api/spotify/now-playing')
+				if (!res.ok) throw new Error(String(res.status))
+				const data = (await res.json()) as NowPlayingSong
+
+				if (data.title) {
+					const next: Shown = {
+						mode: data.isPlaying ? 'live' : 'recent',
+						title: data.title,
+						artist: data.artist,
+						album: data.album,
+						albumImageUrl: data.albumImageUrl,
+						songUrl: data.songUrl,
+						playedAt: data.playedAt,
+						progressMs: data.progressMs,
+						durationMs: data.durationMs
+					}
+					if (!cancelled) setSong(next)
+					return
+				}
+
+				const fallback = await loadRepeat()
+				if (!cancelled) setSong(fallback)
+			} catch {
+				if (!cancelled) setSong({ mode: 'quiet' })
+			}
+		}
+
+		void load()
+		const interval = setInterval(() => void load(), 30000)
+		return () => {
+			cancelled = true
+			clearInterval(interval)
+		}
 	}, [])
 
-	// Loading state
-	if (data === null) {
+	if (song.mode === 'loading') {
 		return (
-			<div className="text-terminal-muted flex animate-pulse items-center gap-2 font-mono text-xs">
-				<Music size={12} />
-				<span>...</span>
+			<div className="flex items-center gap-3" aria-hidden="true">
+				<div className="bg-terminal-border/60 h-11 w-11 shrink-0 animate-pulse rounded" />
+				<div className="space-y-1.5">
+					<div className="bg-terminal-border/60 h-2.5 w-20 animate-pulse rounded" />
+					<div className="bg-terminal-border/40 h-2.5 w-32 animate-pulse rounded" />
+				</div>
 			</div>
 		)
 	}
 
-	// Nothing at all — no current track, no recent track
-	if (!data?.title) {
+	if (song.mode === 'quiet') {
 		return (
-			<div className="flex max-w-full items-center gap-3 opacity-60 grayscale">
-				<a
-					href="https://open.spotify.com/track/1LhMjesLXWBBN21j4pW5yD"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-100"
-				>
-					<div className="bg-terminal-border relative h-8 w-8 shrink-0 overflow-hidden rounded">
-						<Music size={16} className="text-terminal-muted absolute inset-0 m-auto" />
-					</div>
-					<div className="min-w-0">
-						<p className="text-terminal-muted truncate font-mono text-xs">
-							[OFFLINE] - {t('notPlaying') || 'Nothing playing'}
-						</p>
-						<p className="text-terminal-text truncate font-mono text-xs opacity-80">
-							Fall back — <span className="text-terminal-comment">Lithe</span>
-						</p>
-					</div>
-				</a>
+			<div className="text-terminal-muted flex items-center gap-3">
+				<span className="bg-terminal-surface/60 border-terminal-border flex h-11 w-11 shrink-0 items-center justify-center rounded border">
+					<Music size={15} />
+				</span>
+				<p className="font-mono text-xs">{t('quiet')}</p>
 			</div>
 		)
 	}
 
-	const label = data.isPlaying
-		? t('nowPlaying')
-		: data.playedAt
-			? t('lastPlayed').replace('{time}', getRelativeTime(data.playedAt, t))
-			: t('notPlaying')
+	const label =
+		song.mode === 'live'
+			? t('nowPlaying')
+			: song.mode === 'repeat'
+				? t('onRepeat')
+				: song.playedAt
+					? t('lastPlayed').replace('{time}', relativeTime(song.playedAt, t))
+					: t('lastPlayed').replace('{time}', '')
 
-	const showProgress = data.isPlaying && data.durationMs && data.durationMs > 0
-	const pct = showProgress ? Math.min((progress / data.durationMs!) * 100, 100) : 0
+	const showProgress = song.mode === 'live' && !!song.durationMs
+	const percent = showProgress ? Math.min((progress / song.durationMs!) * 100, 100) : 0
 
 	return (
-		<div className="flex max-w-full items-center gap-3">
-			<a
-				href={data.songUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-80"
-			>
-				{data.albumImageUrl && (
-					<div className="relative h-12 w-12 shrink-0 overflow-hidden rounded">
-						<Image
-							src={data.albumImageUrl}
-							alt={data.album ?? 'Album art'}
-							fill
-							className="object-cover"
-							sizes="48px"
-						/>
-					</div>
-				)}
-				<div className="min-w-0">
-					<p
-						className={`truncate font-mono text-xs ${data.isPlaying ? 'text-terminal-green' : 'text-terminal-muted'}`}
-					>
-						{label}
-					</p>
-					<p className="text-terminal-text truncate font-mono text-xs">
-						{data.title} — <span className="text-terminal-comment">{data.artist}</span>
-					</p>
-					{showProgress && (
-						<div className="mt-1 flex items-center gap-2">
-							<div className="bg-terminal-border h-1 w-24 overflow-hidden rounded-full">
-								<div
-									className="bg-terminal-green h-full rounded-full transition-[width] duration-1000 ease-linear"
-									style={{ width: `${pct}%` }}
-								/>
-							</div>
-							<span className="text-terminal-muted font-mono text-[10px] whitespace-nowrap">
-								{formatDuration(progress)} / {formatDuration(data.durationMs!)}
-							</span>
-						</div>
+		<a
+			href={song.songUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="group flex max-w-full min-w-0 items-center gap-3 transition-opacity hover:opacity-80"
+		>
+			{song.albumImageUrl ? (
+				<span className="relative block h-11 w-11 shrink-0 overflow-hidden rounded">
+					<Image
+						src={song.albumImageUrl}
+						alt=""
+						fill
+						className="object-cover"
+						sizes="44px"
+					/>
+				</span>
+			) : (
+				<span className="bg-terminal-surface/60 border-terminal-border flex h-11 w-11 shrink-0 items-center justify-center rounded border">
+					<Music size={15} className="text-terminal-muted" />
+				</span>
+			)}
+
+			<span className="min-w-0 flex-1">
+				<span
+					className={`flex items-center gap-2 font-mono text-[11px] ${
+						song.mode === 'live' ? 'text-terminal-green' : 'text-terminal-muted'
+					}`}
+				>
+					{song.mode === 'live' ? (
+						// Three bars beat the word "live": the state reads before the label.
+						<span className="eq" aria-hidden="true">
+							<i />
+							<i />
+							<i />
+						</span>
+					) : song.mode === 'repeat' ? (
+						<Repeat size={11} aria-hidden="true" />
+					) : (
+						<Clock size={11} aria-hidden="true" />
 					)}
-				</div>
-			</a>
-		</div>
+					{label}
+				</span>
+
+				<span className="text-terminal-text mt-0.5 block truncate font-mono text-xs">
+					{song.title}
+					{song.artist ? (
+						<span className="text-terminal-comment"> — {song.artist}</span>
+					) : null}
+				</span>
+
+				{showProgress && (
+					<span className="mt-1.5 flex items-center gap-2">
+						<span className="bg-terminal-border block h-[3px] w-24 overflow-hidden rounded-full">
+							<span
+								className="bg-terminal-green block h-full rounded-full transition-[width] duration-1000 ease-linear"
+								style={{ width: `${percent}%` }}
+							/>
+						</span>
+						<span className="text-terminal-muted font-mono text-[10px] whitespace-nowrap">
+							{formatDuration(progress)} / {formatDuration(song.durationMs!)}
+						</span>
+					</span>
+				)}
+			</span>
+		</a>
 	)
 }

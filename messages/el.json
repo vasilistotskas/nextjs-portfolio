@@ -6,61 +6,91 @@
 		"projects": "Projects"
 	},
 	"hero": {
-		"title": "Βασίλης Τότσκας",
-		"titleSuffix": "Fullstack Developer",
-		"greeting": "Γεια, Κόσμε!",
 		"name": "Βασίλης Τότσκας",
-		"role": "Fullstack Developer",
-		"company": "Advisable",
-		"companyAt": "στην",
-		"tagline": "High-performance web apps & scalable infrastructure",
-		"description": "Fullstack Developer με εστίαση σε Nuxt, Python, και Kubernetes/Docker. Από e-commerce πλατφόρμες μέχρι self-hosted k3s kubernetes clusters — χτίζω end to end.",
-		"cta": {
-			"projects": "Projects",
-			"contact": "Επικοινωνία"
-		},
-		"prompt": {
-			"whoami": "whoami",
-			"cat": "cat role.txt",
-			"ls": "ls -la stack/",
-			"ready": "Έτοιμος για νέες προκλήσεις."
-		},
+		"summary": "Web εφαρμογές από άκρη σε άκρη, από το interface μέχρι την υποδομή που τις κρατάει όρθιες.",
 		"location": "Αθήνα, Ελλάδα",
-		"scroll": "scroll"
+		"cta": {
+			"projects": "Δες τη δουλειά μου",
+			"contact": "Επικοινωνία"
+		}
+	},
+	"stack": {
+		"layers": {
+			"browser": "browser",
+			"edge": "edge",
+			"frontend": "frontend",
+			"media": "media",
+			"api": "api",
+			"database": "database",
+			"cache": "cache",
+			"queue": "queue",
+			"workers": "workers",
+			"storage": "storage"
+		},
+		"groups": {
+			"interface": "Interface",
+			"services": "Υπηρεσίες",
+			"data": "Δεδομένα",
+			"platform": "Πλατφόρμα"
+		}
+	},
+	"terminal": {
+		"title": "παλέτα εντολών",
+		"open": "Άνοιγμα παλέτας εντολών",
+		"heroHint": "για το terminal",
+		"close": "Κλείσιμο",
+		"placeholder": "Γράψε μια εντολή",
+		"intro": "Γράψε help για να δεις τι μπορεί να κάνει.",
+		"footerHint": "Το Enter εκτελεί. Το πάνω βέλος φέρνει την προηγούμενη εντολή. Το Esc κλείνει.",
+		"role": "Fullstack developer",
+		"notFound": "{command}: η εντολή δεν βρέθηκε",
+		"unknownTarget": "Δεν υπάρχει τέτοιος προορισμός.",
+		"sudo": "Άρνηση πρόσβασης.",
+		"opening": "Άνοιγμα {target}",
+		"themeSet": "Το θέμα άλλαξε.",
+		"langSet": "Η γλώσσα άλλαξε σε {lang}.",
+		"commands": {
+			"help": "όλες οι εντολές",
+			"whoami": "ποιος είμαι",
+			"stack": "τα επίπεδα στα οποία δουλεύω",
+			"projects": "τι έχω φτιάξει",
+			"contact": "πώς να επικοινωνήσεις",
+			"resume": "άνοιγμα βιογραφικού",
+			"theme": "εναλλαγή φωτεινού και σκοτεινού",
+			"lang": "αλλαγή γλώσσας",
+			"clear": "καθαρισμός"
+		}
 	},
 	"skills": {
 		"title": "Δεξιότητες",
-		"subtitle": "// tech stack",
-		"categories": {
-			"frontend": "Frontend",
-			"backend": "Backend",
-			"devops": "DevOps",
-			"tools": "Εργαλεία"
-		}
+		"intro": "Ομαδοποιημένες ανά επίπεδο από το οποίο περνάει ένα request, όχι ανά τίτλο θέσης.",
+		"legend": "Με έντονα γράμματα όσα χρησιμοποιώ καθημερινά."
 	},
 	"projects": {
 		"title": "Projects",
-		"subtitle": "// πρόσφατη δουλειά",
-		"viewCode": "Κώδικας",
-		"viewDemo": "Live Demo",
+		"intro": "Τρία συστήματα, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
+		"viewDemo": "Live site",
+		"status": {
+			"live": "Σε λειτουργία",
+			"oss": "Ανοιχτού κώδικα"
+		},
 		"items": {
 			"portfolio": {
-				"name": "Developer Portfolio",
-				"description": "Portfolio με terminal αισθητική, φτιαγμένο με Next.js 16, React 19 και Tailwind CSS v4. Περιλαμβάνει i18n, ενσωμάτωση Spotify και στατιστικά GitHub."
+				"name": "Αυτό το portfolio",
+				"description": "Next.js 16, React 19 και Tailwind v4, σε δύο γλώσσες. Το hero είναι ένας WebGPU shader που σχεδιάζει τον ίδιο χάρτη επιπέδων γύρω από τον οποίο είναι οργανωμένο το υπόλοιπο site."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Multi-repo e-commerce πλατφόρμα που αναπτύσσεται εδώ και 4+ χρόνια. Django REST API, Nuxt 4 storefront και NestJS media streaming service. Τρέχει σε PostgreSQL με Docker orchestration."
+				"description": "Μια multi-repo e-commerce πλατφόρμα τεσσάρων ετών: ένα Django REST API, ένα Nuxt 4 storefront και μια υπηρεσία media streaming σε NestJS, πάνω σε PostgreSQL με Docker orchestration."
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "Production e-commerce κατάστημα βασισμένο στο GrooveShop. Deployed σε self-hosted Hetzner k3s Kubernetes cluster με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
+				"description": "Κατάστημα σε παραγωγή βασισμένο στο GrooveShop, που τρέχει κάθε επίπεδο του χάρτη σε self-hosted k3s cluster στη Hetzner, με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
 			}
 		}
 	},
 	"experience": {
 		"title": "Εμπειρία",
-		"subtitle": "// git log --oneline",
 		"present": "Παρόν",
 		"items": {
 			"advisable": {
@@ -79,7 +109,6 @@
 	},
 	"about": {
 		"title": "Σχετικά με εμένα",
-		"subtitle": "// README.md",
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "στην",
@@ -128,12 +157,12 @@
 		},
 		"location": "Αθήνα, Ελλάδα",
 		"spotify": {
-			"title": "Κορυφαία Τραγούδια",
-			"subtitle": "// Ακούω τώρα",
-			"noTracks": "Δεν υπάρχουν τραγούδια",
+			"title": "Κορυφαία τραγούδια",
+			"emptyRange": "Δεν υπάρχουν τραγούδια για {range}.",
+			"emptyRangeAction": "Δοκίμασε {range}.",
 			"range": {
-				"short_term": "4 Εβδομάδες",
-				"medium_term": "6 Μήνες"
+				"short_term": "4 εβδομάδες",
+				"medium_term": "6 μήνες"
 			}
 		},
 		"github": {
@@ -142,8 +171,7 @@
 	},
 	"contact": {
 		"title": "Επικοινωνία",
-		"subtitle": "// reach out",
-		"description": "Ευχαριστώ που επικοινωνήσατε! Θα επικοινωνήσω μαζί σας το συντομότερο δυνατό.",
+		"description": "Τα μηνύματα φτάνουν στο inbox μου. Τα διαβάζω όλα και απαντάω, στα Ελληνικά ή στα Αγγλικά.",
 		"metaDescription": "{name} — Fullstack Developer από την Αθήνα. Επικοινωνήστε για συνεργασίες και προτάσεις.",
 		"info": {
 			"email": "Email",
@@ -167,19 +195,18 @@
 		}
 	},
 	"footer": {
-		"built": "Φτιαγμένο με",
-		"source": "Source",
-		"copyright": "All rights reserved"
+		"source": "Πηγαίος κώδικας στο GitHub",
+		"copyright": "© {year} {name}."
 	},
 	"spotify": {
 		"nowPlaying": "Παίζει τώρα",
-		"notPlaying": "Δεν παίζει τίποτα",
-		"lastPlayed": "Πριν {time}",
-		"justNow": "λίγο",
-		"minutesAgo": "{n} λεπτά",
-		"hoursAgo": "{n} ώρες",
-		"daysAgo": "{n} μέρες",
-		"on": "στο Spotify"
+		"onRepeat": "Στο repeat αυτόν τον μήνα",
+		"lastPlayed": "Τελευταία ακρόαση {time}",
+		"quiet": "Ησυχία στο Spotify αυτή τη στιγμή",
+		"justNow": "μόλις τώρα",
+		"minutesAgo": "πριν {n} λεπτά",
+		"hoursAgo": "πριν {n} ώρες",
+		"daysAgo": "πριν {n} μέρες"
 	},
 	"github": {
 		"stars": "Αστέρια",

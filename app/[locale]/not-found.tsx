@@ -30,7 +30,7 @@ export default function NotFound() {
 							<span className="text-terminal-prompt">$ </span>
 							ls /pages/
 						</p>
-						<p className="text-terminal-cyan">home/ about/ contact/</p>
+						<p className="text-terminal-green">home/ about/ contact/</p>
 						<p className="text-terminal-comment mt-4">
 							<span className="text-terminal-prompt">$ </span>
 							{t('prompt')}

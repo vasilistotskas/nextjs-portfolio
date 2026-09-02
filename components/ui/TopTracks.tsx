@@ -46,10 +46,10 @@ export default function TopTracks() {
 		setTimeRange(range)
 	}
 
+	const otherRange: TimeRange = timeRange === 'short_term' ? 'medium_term' : 'short_term'
+
 	return (
 		<div>
-			<p className="text-terminal-comment mb-4 font-mono text-xs">{t('subtitle')}</p>
-
 			{/* Time range toggle */}
 			<div className="mb-4 flex gap-1 rounded-lg border border-(--border) p-1">
 				{TIME_RANGES.map((range) => (
@@ -86,7 +86,18 @@ export default function TopTracks() {
 					))}
 				</div>
 			) : tracks.length === 0 ? (
-				<p className="text-terminal-muted font-mono text-sm">{t('noTracks')}</p>
+				// Naming the range and offering the other one beats "No tracks
+				// available", which reads like the integration is broken.
+				<p className="text-terminal-muted font-sans text-sm">
+					{t('emptyRange', { range: t(`range.${timeRange}`) })}{' '}
+					<button
+						type="button"
+						onClick={() => handleRangeChange(otherRange)}
+						className="text-terminal-green cursor-pointer underline decoration-dotted underline-offset-4"
+					>
+						{t('emptyRangeAction', { range: t(`range.${otherRange}`) })}
+					</button>
+				</p>
 			) : (
 				<ol className="space-y-3">
 					{tracks.map((track, i) => (
@@ -112,7 +123,7 @@ export default function TopTracks() {
 									</div>
 								)}
 								<div className="min-w-0 flex-1">
-									<p className="text-terminal-text group-hover:text-terminal-cyan truncate font-mono text-sm">
+									<p className="text-terminal-text group-hover:text-terminal-green truncate font-mono text-sm">
 										{track.title}
 									</p>
 									<p className="text-terminal-comment truncate font-mono text-xs">

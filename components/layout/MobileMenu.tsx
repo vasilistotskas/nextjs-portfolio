@@ -25,7 +25,7 @@ export default function MobileMenu() {
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				aria-label="Toggle menu"
-				className="border-terminal-border text-terminal-comment hover:border-terminal-cyan hover:text-terminal-cyan flex h-8 w-8 items-center justify-center rounded border transition-colors"
+				className="border-terminal-border text-terminal-comment hover:border-terminal-green hover:text-terminal-green flex h-8 w-8 items-center justify-center rounded border transition-colors"
 			>
 				{isOpen ? <X size={14} /> : <Menu size={14} />}
 			</button>
@@ -61,7 +61,7 @@ export default function MobileMenu() {
 											className={cn(
 												'font-sans text-sm font-medium transition-colors',
 												isActive
-													? 'text-terminal-cyan'
+													? 'text-terminal-green'
 													: 'text-terminal-comment hover:text-terminal-text'
 											)}
 										>

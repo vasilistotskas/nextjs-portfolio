@@ -1,36 +1,36 @@
+import { Suspense } from 'react'
 import { useTranslations } from 'next-intl'
-import { Star, Users, BookOpen } from 'lucide-react'
 import type { GitHubStats as GitHubStatsType } from '@/lib/types'
+
+const USER = 'vasilistotskas'
+
+function headers() {
+	return {
+		Accept: 'application/vnd.github.v3+json',
+		...(process.env.GITHUB_TOKEN
+			? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+			: {})
+	}
+}
 
 async function fetchGitHubStats(): Promise<GitHubStatsType | null> {
 	try {
-		const res = await fetch(`https://api.github.com/users/vasilistotskas`, {
-			headers: {
-				Accept: 'application/vnd.github.v3+json',
-				...(process.env.GITHUB_TOKEN
-					? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-					: {})
-			},
-			next: { revalidate: 3600 }
-		})
-		const reposRes = await fetch(
-			`https://api.github.com/users/vasilistotskas/repos?per_page=100`,
-			{
-				headers: {
-					Accept: 'application/vnd.github.v3+json',
-					...(process.env.GITHUB_TOKEN
-						? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-						: {})
-				},
+		const [userRes, reposRes] = await Promise.all([
+			fetch(`https://api.github.com/users/${USER}`, {
+				headers: headers(),
 				next: { revalidate: 3600 }
-			}
-		)
+			}),
+			fetch(`https://api.github.com/users/${USER}/repos?per_page=100`, {
+				headers: headers(),
+				next: { revalidate: 3600 }
+			})
+		])
 
-		if (!res.ok || !reposRes.ok) return null
+		if (!userRes.ok || !reposRes.ok) return null
 
-		const user = (await res.json()) as { public_repos: number; followers: number }
+		const user = (await userRes.json()) as { public_repos: number; followers: number }
 		const repos = (await reposRes.json()) as Array<{ stargazers_count: number }>
-		const stars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)
+		const stars = repos.reduce((total, repo) => total + repo.stargazers_count, 0)
 
 		return { stars, followers: user.followers, repos: user.public_repos }
 	} catch {
@@ -38,59 +38,52 @@ async function fetchGitHubStats(): Promise<GitHubStatsType | null> {
 	}
 }
 
+function Row({ items }: { items: Array<{ label: string; value: number | null }> }) {
+	return (
+		<dl className="flex flex-wrap gap-x-10 gap-y-4">
+			{items.map(({ label, value }) => (
+				<div key={label}>
+					<dt className="text-terminal-muted font-sans text-xs">{label}</dt>
+					<dd className="text-terminal-text m-0 font-mono text-xl font-medium tabular-nums">
+						{value === null ? (
+							<span className="bg-terminal-border/50 inline-block h-5 w-8 animate-pulse rounded align-middle" />
+						) : (
+							value
+						)}
+					</dd>
+				</div>
+			))}
+		</dl>
+	)
+}
+
 function GitHubStatsContent({ stats }: { stats: GitHubStatsType | null }) {
 	const t = useTranslations('github')
 
-	if (!stats) {
-		return <p className="text-terminal-muted font-mono text-sm">Stats unavailable</p>
-	}
-
-	const items = [
-		{ icon: Star, label: t('stars'), value: stats.stars },
-		{ icon: Users, label: t('followers'), value: stats.followers },
-		{ icon: BookOpen, label: t('repos'), value: stats.repos }
-	]
+	if (!stats) return null
 
 	return (
-		<div className="font-mono">
-			<p className="text-terminal-comment mb-3 text-xs">
-				<span className="text-terminal-green">$ </span>
-				gh api /users/vasilistotskas --jq &apos;.&apos;
-			</p>
-			<div className="grid grid-cols-3 gap-4">
-				{items.map(({ icon: Icon, label, value }) => (
-					<div key={label} className="text-center">
-						<div className="mb-1 flex items-center justify-center">
-							<Icon size={14} className="text-terminal-green/60" />
-						</div>
-						<p className="text-terminal-green text-lg font-bold">{value}</p>
-						<p className="text-terminal-comment text-xs">{label}</p>
-					</div>
-				))}
-			</div>
-		</div>
+		<Row
+			items={[
+				{ label: t('repos'), value: stats.repos },
+				{ label: t('stars'), value: stats.stars },
+				{ label: t('followers'), value: stats.followers }
+			]}
+		/>
 	)
 }
-// Skeleton UI for loading state
+
 export function GitHubStatsSkeleton() {
+	const t = useTranslations('github')
+
 	return (
-		<div className="font-mono">
-			<p className="text-terminal-comment mb-3 text-xs">
-				<span className="text-terminal-green">$ </span>
-				gh api /users/vasilistotskas --jq &apos;.&apos;
-			</p>
-			<div className="grid grid-cols-3 gap-4">
-				{[1, 2, 3].map((i) => (
-					<div key={i} className="text-center">
-						<div className="mb-1 flex items-center justify-center">
-							<div className="bg-terminal-border/50 h-3.5 w-3.5 animate-pulse rounded-full" />
-						</div>
-						<div className="bg-terminal-border/50 mx-auto mb-1 h-6 w-8 animate-pulse rounded" />
-						<div className="bg-terminal-border/30 mx-auto h-3 w-16 animate-pulse rounded" />
-					</div>
-				))}
-			</div>
-		</div>
+		<Row
+			items={[
+				{ label: t('repos'), value: null },
+				{ label: t('stars'), value: null },
+				{ label: t('followers'), value: null }
+			]}
+		/>
 	)
 }
 
@@ -98,8 +91,6 @@ async function GitHubStatsAsync() {
 	const stats = await fetchGitHubStats()
 	return <GitHubStatsContent stats={stats} />
 }
-
-import { Suspense } from 'react'
 
 export default function GitHubStats() {
 	return (

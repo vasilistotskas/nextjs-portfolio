@@ -25,7 +25,7 @@ export default function LanguageSwitcher() {
 						className={cn(
 							'cursor-pointer px-2 py-1.5 md:px-1.5 md:py-0.5',
 							locale === loc
-								? 'text-terminal-cyan'
+								? 'text-terminal-green'
 								: 'text-terminal-muted hover:text-terminal-text transition-colors'
 						)}
 					>

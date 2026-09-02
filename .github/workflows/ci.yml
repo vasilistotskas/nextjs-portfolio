@@ -22,6 +22,11 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
+      # `next build` never validates WGSL, on Turbopack or webpack. This does:
+      # it resolves the same import graph the loader does and fails on parse and
+      # purity errors. Add --require-validation on a runner with a GPU adapter
+      # to also compile the shader against a real device.
+      - run: pnpm check:wgsl
       - run: pnpm type-check
       - run: pnpm build
         env:

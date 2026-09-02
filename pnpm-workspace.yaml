@@ -1,8 +1,12 @@
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
+  # Dawn native binary. Only needed for headless Node rendering and
+  # `vgpu check --require-validation`; the browser bundle never loads it.
+  '@vgpu/adapter-node': false
   sharp: true
   unrs-resolver: true
+  webgpu: false
 minimumReleaseAgeExclude:
   - framer-motion@12.40.0
   - motion-dom@12.40.0

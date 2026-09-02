@@ -47,7 +47,7 @@ export default function ContactForm() {
 		'w-full rounded-md border bg-terminal-bg px-3.5 py-2.5 font-sans text-sm text-terminal-text',
 		'placeholder:text-terminal-muted outline-none',
 		'transition-colors border-terminal-border',
-		'focus:border-terminal-cyan focus:ring-0'
+		'focus:border-terminal-green focus:ring-0'
 	)
 
 	if (status === 'success') {
@@ -56,12 +56,12 @@ export default function ContactForm() {
 				<CheckCircle size={40} className="text-terminal-green mb-2" />
 				<div className="text-terminal-green font-mono text-sm">
 					{'~ $ '}{' '}
-					<span className="text-terminal-cyan">echo $MESSAGE {'>'} /dev/vassilis</span>
+					<span className="text-terminal-green">echo $MESSAGE {'>'} /dev/vassilis</span>
 				</div>
 				<p className="text-terminal-text mt-2 font-sans font-medium">{t('success')}</p>
 				<button
 					onClick={() => setStatus('idle')}
-					className="text-terminal-comment hover:text-terminal-cyan decoration-terminal-comment/30 mt-4 font-mono text-xs underline underline-offset-4"
+					className="text-terminal-comment hover:text-terminal-green decoration-terminal-comment/30 mt-4 font-mono text-xs underline underline-offset-4"
 				>
 					[ Send another message ]
 				</button>

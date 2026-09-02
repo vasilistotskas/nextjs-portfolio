@@ -2,25 +2,32 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import { siteDescription, siteUrl } from '@/lib/seo'
+import Providers from '@/components/providers/Providers'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import '@/app/globals.css'
 
-const geist = Geist({
-	subsets: ['latin'],
-	variable: '--font-geist-sans'
+// Both faces carry Greek. Geist and Geist Mono do not, so every character on
+// `/el` was silently rendering in the visitor's OS fallback font while the
+// computed font-family still said "Geist".
+const plexSans = IBM_Plex_Sans({
+	subsets: ['latin', 'greek'],
+	weight: ['400', '500', '600'],
+	display: 'swap',
+	variable: '--font-plex-sans'
 })
 
-const geistMono = Geist_Mono({
-	subsets: ['latin'],
-	variable: '--font-geist-mono'
+const jetbrainsMono = JetBrains_Mono({
+	subsets: ['latin', 'greek'],
+	display: 'swap',
+	variable: '--font-jetbrains-mono'
 })
 
 export function generateStaticParams() {
@@ -132,28 +139,37 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 		]
 	}
 
+	// No `className` on <html>: the theme class is written there by the pre-paint
+	// script, and any className React renders on <html> is re-applied on client
+	// navigation — which wiped `dark` on every locale switch and silently flipped
+	// the page to light. The font variables live on <body>, which React owns.
 	return (
-		<html
-			lang={locale}
-			suppressHydrationWarning
-			data-scroll-behavior="smooth"
-			className={`${geist.variable} ${geistMono.variable}`}
-		>
+		<html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
 			<head>
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 				/>
 			</head>
-			<body className="bg-terminal-bg text-terminal-text antialiased">
+			<body
+				className={`${plexSans.variable} ${jetbrainsMono.variable} bg-terminal-bg text-terminal-text antialiased`}
+			>
 				<NextIntlClientProvider>
-					<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-						<ScrollProgress />
-						<div className="flex min-h-screen flex-col">
-							<Header />
-							<main className="flex-1">{children}</main>
-							<Footer />
-						</div>
+					{/*
+						ThemeProvider stays above `Providers` so its context wraps every
+						client component below. It injects its pre-paint script into
+						<head> through `useServerInsertedHTML` rather than rendering a
+						<script> element into the React tree.
+					*/}
+					<ThemeProvider>
+						<Providers>
+							<ScrollProgress />
+							<div className="flex min-h-screen flex-col">
+								<Header />
+								<main className="flex-1">{children}</main>
+								<Footer />
+							</div>
+						</Providers>
 					</ThemeProvider>
 				</NextIntlClientProvider>
 				{process.env.VERCEL && (

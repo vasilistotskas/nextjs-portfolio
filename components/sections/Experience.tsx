@@ -1,7 +1,4 @@
-'use client'
-
 import { useTranslations } from 'next-intl'
-import { motion } from 'motion/react'
 
 const experienceKeys = ['advisable', 'freelance'] as const
 
@@ -9,69 +6,46 @@ export default function Experience() {
 	const t = useTranslations('experience')
 
 	return (
-		<section className="px-4 py-8 md:px-6 md:py-20" id="experience">
+		<section className="px-4 py-14 md:px-6 md:py-20" id="experience">
 			<div className="mx-auto max-w-5xl">
-				{/* Section header */}
-				<motion.div
-					initial={{ opacity: 0, y: 16 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, margin: '-80px' }}
-					transition={{ duration: 0.45, ease: 'easeOut' }}
-					className="mb-12"
-				>
-					<p className="text-terminal-muted mb-2 font-mono text-xs tracking-widest uppercase">
-						{t('subtitle')}
-					</p>
-					<h2 className="text-terminal-text font-sans text-2xl font-bold md:text-3xl">
-						{t('title')}
-					</h2>
-					<div className="section-accent" />
-				</motion.div>
+				<h2 className="text-terminal-text mb-10 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
+					{t('title')}
+				</h2>
 
-				<div className="relative space-y-6 pl-8">
-					{/* Timeline line */}
+				{/* A timeline, because the content genuinely is a sequence. */}
+				<ol className="relative m-0 list-none space-y-6 p-0 pl-8">
 					<div
-						className="absolute top-0 left-0 h-full w-px"
+						aria-hidden="true"
+						className="absolute top-1 left-0 h-full w-px"
 						style={{
 							background:
-								'linear-gradient(to bottom, var(--green), color-mix(in srgb, var(--green) 20%, transparent))'
+								'linear-gradient(to bottom, var(--green), color-mix(in srgb, var(--green) 15%, transparent))'
 						}}
 					/>
 
-					{experienceKeys.map((key, index) => (
-						<motion.div
-							key={key}
-							initial={{ opacity: 0, x: -16 }}
-							whileInView={{ opacity: 1, x: 0 }}
-							viewport={{ once: true, margin: '-60px' }}
-							transition={{ duration: 0.45, delay: index * 0.12, ease: 'easeOut' }}
-							className="relative"
-						>
-							{/* Subtler timeline dot */}
-							<span className="absolute top-4 -left-[2.15rem] flex h-4 w-4 items-center justify-center">
-								<span className="bg-terminal-green/20 absolute h-3 w-3 animate-ping rounded-full" />
-								<span className="border-terminal-green bg-terminal-bg h-2.5 w-2.5 rounded-full border-2" />
-							</span>
-
+					{experienceKeys.map((key) => (
+						<li key={key} className="relative">
+							<span
+								aria-hidden="true"
+								className="border-terminal-green bg-terminal-bg absolute top-5 -left-[2.05rem] h-2.5 w-2.5 rounded-full border-2"
+							/>
 							<div className="glass terminal-border card-hover rounded-lg p-5">
-								{/* Simplified header — date only */}
 								<p className="text-terminal-muted mb-3 font-mono text-xs">
 									{t(`items.${key}.period`)}
 								</p>
-
 								<h3 className="text-terminal-text mb-1 font-sans text-lg font-semibold">
 									{t(`items.${key}.role`)}
 								</h3>
-								<p className="text-terminal-cyan mb-3 font-mono text-sm">
-									@ {t(`items.${key}.company`)}
+								<p className="text-terminal-green mb-3 font-mono text-sm">
+									{t(`items.${key}.company`)}
 								</p>
 								<p className="text-terminal-comment font-sans text-sm leading-relaxed">
 									{t(`items.${key}.description`)}
 								</p>
 							</div>
-						</motion.div>
+						</li>
 					))}
-				</div>
+				</ol>
 			</div>
 		</section>
 	)

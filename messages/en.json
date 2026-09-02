@@ -6,61 +6,91 @@
 		"projects": "Projects"
 	},
 	"hero": {
-		"title": "Vasilis Totskas",
-		"titleSuffix": "Fullstack Developer",
-		"greeting": "Hello, World!",
 		"name": "Vasilis Totskas",
-		"role": "Fullstack Developer",
-		"company": "Advisable",
-		"companyAt": "at",
-		"tagline": "High-performance web apps & scalable infrastructure",
-		"description": "Fullstack Developer focused on Nuxt, Python, and Kubernetes/Docker. From e-commerce platforms to self-hosted k3s kubernetes clusters — I build it end to end.",
-		"cta": {
-			"projects": "View Projects",
-			"contact": "Contact Me"
-		},
-		"prompt": {
-			"whoami": "whoami",
-			"cat": "cat role.txt",
-			"ls": "ls -la stack/",
-			"ready": "Ready for new challenges."
-		},
+		"summary": "Web products built end to end, from the interface to the infrastructure behind it.",
 		"location": "Athens, GR",
-		"scroll": "scroll"
+		"cta": {
+			"projects": "See the work",
+			"contact": "Get in touch"
+		}
+	},
+	"stack": {
+		"layers": {
+			"browser": "browser",
+			"edge": "edge",
+			"frontend": "frontend",
+			"media": "media",
+			"api": "api",
+			"database": "database",
+			"cache": "cache",
+			"queue": "queue",
+			"workers": "workers",
+			"storage": "storage"
+		},
+		"groups": {
+			"interface": "Interface",
+			"services": "Services",
+			"data": "Data",
+			"platform": "Platform"
+		}
+	},
+	"terminal": {
+		"title": "command palette",
+		"open": "Open the command palette",
+		"heroHint": "for the terminal",
+		"close": "Close",
+		"placeholder": "Type a command",
+		"intro": "Type help to see what this can do.",
+		"footerHint": "Enter runs a command. Arrow up recalls the last one. Esc closes.",
+		"role": "Fullstack developer",
+		"notFound": "{command}: command not found",
+		"unknownTarget": "No such destination.",
+		"sudo": "Permission denied.",
+		"opening": "Opening {target}",
+		"themeSet": "Theme switched.",
+		"langSet": "Language switched to {lang}.",
+		"commands": {
+			"help": "list every command",
+			"whoami": "who I am",
+			"stack": "the layers I work across",
+			"projects": "what I have shipped",
+			"contact": "how to reach me",
+			"resume": "open my CV",
+			"theme": "switch light or dark",
+			"lang": "switch language",
+			"clear": "clear the output"
+		}
 	},
 	"skills": {
 		"title": "Skills",
-		"subtitle": "// tech stack",
-		"categories": {
-			"frontend": "Frontend",
-			"backend": "Backend",
-			"devops": "DevOps",
-			"tools": "Tools"
-		}
+		"intro": "Grouped by the layers a request travels through, rather than by job title.",
+		"legend": "Bold is what I work with daily."
 	},
 	"projects": {
 		"title": "Projects",
-		"subtitle": "// recent work",
-		"viewCode": "View Code",
-		"viewDemo": "Live Demo",
+		"intro": "Three systems, ordered by how much of the stack they run.",
+		"viewDemo": "Live site",
+		"status": {
+			"live": "Live",
+			"oss": "Open source"
+		},
 		"items": {
 			"portfolio": {
-				"name": "Developer Portfolio",
-				"description": "Terminal-themed portfolio built with Next.js 16, React 19, and Tailwind CSS v4. Features i18n, Spotify integration, and GitHub stats."
+				"name": "This portfolio",
+				"description": "Next.js 16, React 19 and Tailwind v4, in two languages. The hero is a WebGPU shader drawing the same layer map the rest of the site is organised around."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Multi-repo e-commerce platform built over 4+ years. Django REST API, Nuxt 4 storefront, and a NestJS media streaming service. Running on PostgreSQL with Docker orchestration."
+				"description": "A multi-repo e-commerce platform built over four years: a Django REST API, a Nuxt 4 storefront and a NestJS media streaming service, on PostgreSQL with Docker orchestration."
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "Production e-commerce store powered by GrooveShop. Deployed on a self-hosted Hetzner k3s Kubernetes cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis, and Cert-Manager."
+				"description": "A production store powered by GrooveShop, running every layer of the map on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
 			}
 		}
 	},
 	"experience": {
 		"title": "Experience",
-		"subtitle": "// git log --oneline",
 		"present": "Present",
 		"items": {
 			"advisable": {
@@ -79,7 +109,6 @@
 	},
 	"about": {
 		"title": "About Me",
-		"subtitle": "// README.md",
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "at",
@@ -128,12 +157,12 @@
 		},
 		"location": "Athens, Greece",
 		"spotify": {
-			"title": "Top Tracks",
-			"subtitle": "// Currently listening to",
-			"noTracks": "No tracks available",
+			"title": "Top tracks",
+			"emptyRange": "No tracks for {range}.",
+			"emptyRangeAction": "Try {range}.",
 			"range": {
-				"short_term": "4 Weeks",
-				"medium_term": "6 Months"
+				"short_term": "4 weeks",
+				"medium_term": "6 months"
 			}
 		},
 		"github": {
@@ -142,8 +171,7 @@
 	},
 	"contact": {
 		"title": "Contact",
-		"subtitle": "// reach out",
-		"description": "Thanks for reaching out! I'll get back to you as soon as possible.",
+		"description": "Messages land in my inbox. I read every one and reply, in English or Greek.",
 		"metaDescription": "{name} — Fullstack Developer based in Athens, Greece. Get in touch about web development work, collaborations, or any questions.",
 		"info": {
 			"email": "Email",
@@ -167,19 +195,18 @@
 		}
 	},
 	"footer": {
-		"built": "Built with",
-		"source": "Source",
-		"copyright": "All rights reserved"
+		"source": "Source on GitHub",
+		"copyright": "© {year} {name}."
 	},
 	"spotify": {
-		"nowPlaying": "Now Playing",
-		"notPlaying": "Not currently playing",
-		"lastPlayed": "Played {time}",
+		"nowPlaying": "Now playing",
+		"onRepeat": "On repeat this month",
+		"lastPlayed": "Last played {time}",
+		"quiet": "Spotify is quiet right now",
 		"justNow": "just now",
 		"minutesAgo": "{n}m ago",
 		"hoursAgo": "{n}h ago",
-		"daysAgo": "{n}d ago",
-		"on": "on Spotify"
+		"daysAgo": "{n}d ago"
 	},
 	"github": {
 		"stars": "Stars",
