@@ -13,7 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 	return buildPageMetadata({
 		title: `${t('myName')} — Fullstack Developer`,
-		description: th('summary')
+		// Not the hero line: that one is short and first-person, which reads well
+		// under the name and badly as a search result.
+		description: th('metaDescription')
 	})
 }
 

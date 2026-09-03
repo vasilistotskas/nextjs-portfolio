@@ -7,12 +7,13 @@
 	},
 	"hero": {
 		"name": "Βασίλης Τότσκας",
-		"summary": "Web εφαρμογές από άκρη σε άκρη, από το interface μέχρι την υποδομή που τις κρατάει όρθιες.",
+		"summary": "Φτιάχνω web εφαρμογές και τις κρατάω στον αέρα.",
 		"location": "Αθήνα, Ελλάδα",
 		"cta": {
 			"projects": "Δες τη δουλειά μου",
 			"contact": "Επικοινωνία"
-		}
+		},
+		"metaDescription": "Fullstack developer στην Αθήνα. Φτιάχνω web εφαρμογές — interface, services και υποδομή — και τις τρέχω σε παραγωγή."
 	},
 	"stack": {
 		"layers": {
@@ -103,7 +104,7 @@
 				"role": "Freelance Web Developer",
 				"company": "Αυτοαπασχολούμενος",
 				"period": "2019 — 2020",
-				"description": "Σχεδιασμός και ανάπτυξη ιστοτόπων για διάφορους πελάτες με PHP, JavaScript και MySQL."
+				"description": "Σχεδιασμός και ανάπτυξη ιστοτόπων για διάφορους πελάτες με PHP, Python, Typescript, JavaScript και PostgreSQL."
 			}
 		}
 	},

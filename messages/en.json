@@ -7,12 +7,13 @@
 	},
 	"hero": {
 		"name": "Vasilis Totskas",
-		"summary": "Web products built end to end, from the interface to the infrastructure behind it.",
+		"summary": "I build web products, and I keep them running.",
 		"location": "Athens, GR",
 		"cta": {
 			"projects": "See the work",
 			"contact": "Get in touch"
-		}
+		},
+		"metaDescription": "Fullstack developer in Athens, Greece. I build web products — interface, services and infrastructure — and I run them in production."
 	},
 	"stack": {
 		"layers": {
