@@ -1,12 +1,11 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
+import { EXPIRY_WARNING_MS, alertOnce } from '@/lib/spotify-alert'
+import { basicAuth, TOKEN_ENDPOINT } from '@/lib/spotify-auth'
+import type { TokenState } from '@/lib/spotify-store'
+import { readTokenState, timeUntilExpiry } from '@/lib/spotify-store'
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
 type TokenResponse = {
 	access_token: string
@@ -33,6 +32,15 @@ export class SpotifyUnavailableError extends Error {
 const FAILURE_COOLDOWN_MS = 10 * 60 * 1000
 let lastFailure: { at: number; reason: string } | null = null
 
+/**
+ * Access tokens are good for an hour, so refreshing on every request was pure
+ * waste — a NowPlaying poll every few seconds meant thousands of needless
+ * calls to the token endpoint. Expire a little early to stay clear of the
+ * boundary.
+ */
+const ACCESS_TOKEN_TTL_MS = 55 * 60 * 1000
+let accessToken: { value: string; until: number; forToken: string } | null = null
+
 function describe(status: number, body: string): string {
 	try {
 		const parsed = JSON.parse(body) as { error?: string; error_description?: string }
@@ -44,25 +52,53 @@ function describe(status: number, body: string): string {
 	return `HTTP ${status}`
 }
 
+/**
+ * Nag before the six-month grant lapses rather than after. Fire-and-forget:
+ * the widget must not wait on an email, and a failed send is logged inside
+ * `alertOnce`.
+ */
+function warnIfExpiringSoon(state: TokenState): void {
+	const remaining = timeUntilExpiry(state)
+	if (remaining === null || remaining > EXPIRY_WARNING_MS) return
+	void alertOnce('expiring', state)
+}
+
 const getAccessToken = async (): Promise<TokenResponse> => {
-	if (!refresh_token) {
-		throw new SpotifyUnavailableError('SPOTIFY_REFRESH_TOKEN is not set')
+	const state = await readTokenState()
+
+	if (!state) {
+		throw new SpotifyUnavailableError('no Spotify refresh token is stored')
 	}
 
 	if (lastFailure && Date.now() - lastFailure.at < FAILURE_COOLDOWN_MS) {
-		throw new SpotifyUnavailableError(lastFailure.reason)
+		// Unless consent was re-granted since the failure, in which case the
+		// cooldown is stale and the site should recover at once rather than sit
+		// dark for the rest of it.
+		const reauthorised =
+			state.authorizedAt && Date.parse(state.authorizedAt) > lastFailure.at
+		if (!reauthorised) throw new SpotifyUnavailableError(lastFailure.reason)
+		lastFailure = null
+	}
+
+	if (
+		accessToken &&
+		accessToken.until > Date.now() &&
+		accessToken.forToken === state.refreshToken
+	) {
+		return { access_token: accessToken.value }
 	}
 
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: 'POST',
 		headers: {
-			Authorization: `Basic ${basic}`,
+			Authorization: `Basic ${basicAuth()}`,
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		body: new URLSearchParams({
 			grant_type: 'refresh_token',
-			refresh_token
-		})
+			refresh_token: state.refreshToken
+		}),
+		cache: 'no-store'
 	})
 
 	// Without this the caller would send `Bearer undefined` and every Spotify
@@ -70,17 +106,28 @@ const getAccessToken = async (): Promise<TokenResponse> => {
 	if (!response.ok) {
 		const reason = describe(response.status, await response.text())
 		lastFailure = { at: Date.now(), reason }
+		accessToken = null
 		// One line, once per cooldown, saying what to actually do about it.
 		console.error(
 			`Spotify token refresh failed: ${reason}. ` +
 				`Pausing Spotify calls for ${FAILURE_COOLDOWN_MS / 60000} minutes. ` +
-				`"invalid_grant" means SPOTIFY_REFRESH_TOKEN must be re-issued through the authorization-code flow.`
+				`"invalid_grant" means consent has lapsed — re-authorise at /api/spotify/reauth.`
 		)
+		// Mail as well, so this is noticed the same day rather than whenever
+		// someone happens to look at the site.
+		void alertOnce('broken', state, reason)
 		throw new SpotifyUnavailableError(reason)
 	}
 
 	lastFailure = null
-	return (await response.json()) as TokenResponse
+	const { access_token } = (await response.json()) as TokenResponse
+	accessToken = {
+		value: access_token,
+		until: Date.now() + ACCESS_TOKEN_TTL_MS,
+		forToken: state.refreshToken
+	}
+	warnIfExpiringSoon(state)
+	return { access_token }
 }
 
 export const getNowPlaying = async () => {

@@ -6,7 +6,10 @@
  * months re-authorisation is the only option:
  * https://developer.spotify.com/documentation/web-api/tutorials/refreshing-tokens
  *
- * So this is a twice-yearly chore. Run it, click Agree, done:
+ * Prefer /api/spotify/reauth on the live site: it stores the new token where the
+ * running deployment reads it, so nothing has to be redeployed, and it works
+ * from a phone. This script is the local fallback — for seeding a fresh
+ * checkout, or for when the Blob store is unavailable.
  *
  *   node scripts/spotify-refresh-token.mjs
  *

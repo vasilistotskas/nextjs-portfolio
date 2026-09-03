@@ -45,6 +45,13 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 
 - `api/contact` — Resend email (instantiate `new Resend()` inside the handler, not at module level)
 - `api/spotify/now-playing` and `api/spotify/top-tracks` — Spotify API proxies using refresh token flow in `lib/spotify.ts`
+- `api/spotify/reauth` + `api/spotify/reauth/callback` — re-grant Spotify consent. Spotify grants die 6 months after the user approves them and refreshing does **not** extend that, so this recurs forever; only the ceremony is automated, not the consent.
+- `api/spotify/token-status` — how many days the grant has left. Both are gated by `SPOTIFY_REAUTH_SECRET` and answer 404 (not 401) without it.
+
+**The refresh token is not read from the environment.** Vercel binds env vars at build time, so a new value there needs a redeploy before the site sees it. It lives in a _private_ Vercel Blob (`lib/spotify-store.ts`), read per request behind a 60s in-process cache, so a token written by the re-auth route is live within the minute. `SPOTIFY_REFRESH_TOKEN` remains as a fallback for when no store is bound — every blob failure falls back rather than throwing.
+
+`lib/spotify.ts` caches the access token for 55 minutes; before that it refreshed on every single NowPlaying poll. On `invalid_grant` it mails via Resend (`lib/spotify-alert.ts`) and warns 21 days before expiry, deduping through `alertedAt` in the store because module state is per-instance. `.github/workflows/spotify-health.yml` polls the public endpoint twice a month as a backstop that shares no dependency with the mail path.
+
 - There is no `api/github` route: `components/ui/GitHubStats.tsx` is a Server Component that calls the GitHub API directly.
 - Routes run on the default Node runtime. Do not add `export const runtime = 'edge'` — it is deprecated in Next.js 16 and also opts the route out of static generation.
 
@@ -67,8 +74,9 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 
 ## Env Vars
 
-Required: `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`, `RESEND_API_KEY`, `CONTACT_EMAIL`, `NEXT_PUBLIC_SITE_URL`
-Optional: `GITHUB_TOKEN` (raises GitHub API rate limit)
+Required: `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `RESEND_API_KEY`, `CONTACT_EMAIL`, `NEXT_PUBLIC_SITE_URL`, `SPOTIFY_REAUTH_SECRET`
+Blob-backed: `BLOB_READ_WRITE_TOKEN` (OIDC covers this on Vercel; needed locally)
+Optional: `GITHUB_TOKEN` (raises GitHub API rate limit), `SPOTIFY_REFRESH_TOKEN` (fallback when no Blob store is bound)
 
 <!-- BEGIN:nextjs-agent-rules -->
 
