@@ -1,3 +1,10 @@
+# [1.45.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.44.1...v1.45.0) (2026-09-03)
+
+
+### Features
+
+* **spotify:** re-grant consent from the live site, and say so when it lapses ([65524d4](https://github.com/vasilistotskas/nextjs-portfolio/commit/65524d4e5ee2b1f727c4da0845ea325738c23ec3))
+
 ## [1.44.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.44.0...v1.44.1) (2026-09-03)
 
 
