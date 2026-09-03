@@ -1,36 +1,37 @@
-# Vasilis Totskas — Fullstack Developer Portfolio
+# Vasilis Totskas — Fullstack Developer
 
-> Personal portfolio of Vasilis Totskas, a Fullstack Developer based in Athens, Greece, specializing in modern web applications with Nuxt, Python, and Kubernetes/Docker.
+> Personal portfolio of Vasilis Totskas, a fullstack developer based in Athens, Greece. He develops applications for web, desktop and mobile, and builds the infrastructure that runs them.
 
-## About
+Working professionally since 2019 — freelance until 2020, and at Advisable since. He holds a Computer Engineering degree from the University of Western Macedonia and is certified by Google and TestDome. He works in English and Greek, and the site is published in both.
 
-Vasilis Totskas is a Fullstack Developer at Advisable with 5+ years of professional experience building high-performance web applications and scalable infrastructure. He holds a Computer Engineering degree from the University of Western Macedonia and is Google & TestDome certified.
-
-## Core Skills
-
-- **Frontend**: Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, React, Next.js, HTML, CSS, Tailwind CSS
-- **Backend**: Python, Django, PHP
-- **DevOps & Infrastructure**: Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, PostgreSQL, Hetzner, Cloudflare
-
-## Notable Projects
-
-- [GrooveShop E-commerce](https://github.com/vasilistotskas/grooveshop-django-api): Multi-repo e-commerce platform built over 4+ years — Django REST API, Nuxt 4 storefront, NestJS media streaming service
-- [Webside.gr](https://webside.gr): Production e-commerce store deployed on a self-hosted Hetzner k3s Kubernetes cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis, and Cert-Manager
-- [Developer Portfolio](https://vasilistotskas.com): This site — Next.js 15, React 19, Tailwind CSS v4, i18n (English & Greek), Spotify integration, GitHub stats
+The work groups into four layers. Interface: Vue.js, Nuxt (v3/v4), TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
 
 ## Pages
 
-- [Home](https://vasilistotskas.com/en): Overview with skills, projects, experience, and GitHub stats
-- [About](https://vasilistotskas.com/en/about): Detailed bio, tech stack, certifications, education, and Spotify top tracks
-- [Contact](https://vasilistotskas.com/en/contact): Contact form and social links
+- [Home](https://www.vasilistotskas.com/en): Skills grouped by layer, projects, experience and GitHub activity
+- [About](https://www.vasilistotskas.com/en/about): Biography, tech stack, education, certifications and Spotify listening
+- [Contact](https://www.vasilistotskas.com/en/contact): Contact form and social links
+- [Home (Greek)](https://www.vasilistotskas.com/el): The same site in Greek; every page exists under /el
 
-## Contact
+## Projects
 
-- Email: vassilistotskas@msn.com
-- GitHub: https://github.com/vasilistotskas
-- LinkedIn: https://linkedin.com/in/vasilistotskas
-- X: https://x.com/vasilis_totskas
+- [Webside.gr](https://webside.gr): Production e-commerce store powered by GrooveShop, running every layer on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager
+- [GrooveShop demo](https://demo.grooveshop.space/): Live demo of the GrooveShop platform
+- [GrooveShop API](https://github.com/vasilistotskas/grooveshop-django-api): Django REST backend — business logic, auth and data
+- [GrooveShop storefront](https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt): Nuxt 4 storefront with SSR, proxying to the Django API through Nitro
+- [GrooveShop media stream](https://github.com/vasilistotskas/grooveshop-media-stream): NestJS image processing and media delivery microservice
+- [GrooveShop agent gateway](https://github.com/vasilistotskas/grooveshop-agent-gateway): Go service making every tenant storefront shoppable by AI agents over MCP, with UCP/ACP surfaces, product feeds and a chatbot backend
+- [GrooveShop infrastructure](https://github.com/vasilistotskas/grooveshop-infrastructure): Kubernetes manifests and GitOps configuration for the platform
+- [This portfolio](https://github.com/vasilistotskas/nextjs-portfolio): Next.js 16, React 19 and Tailwind v4 in two languages, with a WebGPU hero rendered through vgpu
 
-## Detailed Info
+## Profiles
 
-For the full unabridged version see [llms-full.txt](https://vasilistotskas.com/llms-full.txt).
+- [GitHub](https://github.com/vasilistotskas): Source for every project listed above
+- [LinkedIn](https://linkedin.com/in/vasilistotskas): Professional history
+- [X](https://x.com/vasilis_totskas): Occasional posts
+- [Email](mailto:vassilistotskas@msn.com): vassilistotskas@msn.com
+
+## Optional
+
+- [Full context](https://www.vasilistotskas.com/llms-full.txt): Expanded version of this file, including implementation detail about the site itself
+- [CV](https://www.vasilistotskas.com/vasilistotskas.pdf): Résumé as PDF

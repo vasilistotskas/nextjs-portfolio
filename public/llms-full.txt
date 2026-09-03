@@ -1,6 +1,6 @@
-# Vasilis Totskas — Fullstack Developer Portfolio (Full Context)
+# Vasilis Totskas — Fullstack Developer (Full Context)
 
-> Comprehensive information about Vasilis Totskas and his work, intended for large language models and AI assistants.
+> Comprehensive information about Vasilis Totskas and his work, for large language models and AI assistants. The short version is at https://www.vasilistotskas.com/llms.txt
 
 ## Personal Information
 
@@ -11,13 +11,15 @@
 - **GitHub**: https://github.com/vasilistotskas
 - **LinkedIn**: https://linkedin.com/in/vasilistotskas
 - **X**: https://x.com/vasilis_totskas
-- **Website**: https://vasilistotskas.com
+- **Website**: https://www.vasilistotskas.com
 
 ## Professional Background
 
-Vasilis Totskas is a Fullstack Developer based in Athens, Greece, with a strong focus on high-performance web applications and scalable infrastructure. He has been working professionally since 2019, starting as a freelance web developer before joining Advisable in 2020 where he continues to work today.
+Vasilis Totskas develops applications for web, desktop and mobile, and builds the infrastructure that runs them. He has worked professionally since 2019, starting as a freelance web developer before joining Advisable in 2020, where he still works.
 
-At Advisable, he works on complex web applications, modernizing technology stacks and delivering projects using standalone PHP/TypeScript/Python stacks and Nuxt 4 frontends for clients. He has also built comprehensive client-facing platforms with frontends built entirely on Nuxt 4.
+At Advisable he works on complex web applications, modernising technology stacks and delivering projects on standalone PHP, TypeScript and Python stacks as well as Nuxt 4 frontends.
+
+Outside that role he builds and operates GrooveShop, a multi-tenant e-commerce platform, and runs it in production for a real store. Building the product and operating the infrastructure it runs on are the same job for him — the self-hosted Kubernetes cluster behind webside.gr is his own.
 
 ## Education
 
@@ -30,50 +32,58 @@ At Advisable, he works on complex web applications, modernizing technology stack
 - Grow Greek Tourism Online — Google
 - Python — TestDome
 
+## Languages
+
+- Greek (native)
+- English (fluent)
+
 ## Technical Skills
 
-### Frontend
-- Vue.js, Nuxt.js (v3/v4) — primary frontend framework
-- JavaScript, TypeScript
-- React, Next.js
-- NestJs
-- Vite
-- HTML, CSS, Tailwind CSS
+Skills are grouped by the layer a request passes through rather than by job title. "Daily" marks what he reaches for every day.
 
-### Backend
-- Python, Django (Django REST Framework)
-- PHP
+### Interface (browser, frontend)
+- Vue.js — daily
+- Nuxt (v3/v4) — daily
+- TypeScript — daily
+- Tailwind CSS — daily
+- JavaScript, React, Next.js, Vite, HTML, CSS
 
-### DevOps & Infrastructure
-- Kubernetes (k3s, self-hosted clusters)
-- ArgoCD (GitOps continuous delivery)
-- Docker (containerization and orchestration)
-- RabbitMQ (message broker)
-- Celery (distributed task queue)
-- Redis (caching and message broker)
-- PostgreSQL (primary database)
-- Hetzner (cloud infrastructure)
-- Cloudflare (CDN and DNS)
-- Longhorn (distributed storage for Kubernetes)
-- Cert-Manager (TLS certificate management)
+### Services (api, media)
+- Python — daily
+- Django and Django REST Framework — daily
+- Go — daily
+- PHP — daily
+- NestJS, Node.js
 
-### Languages
-- English (fluent)
-- Greek (native)
+### Data (database, cache, queue)
+- PostgreSQL — daily
+- Redis — daily
+- Meilisearch, RabbitMQ, Celery
+
+### Platform (edge, workers, storage)
+- Docker — daily
+- Kubernetes (k3s, self-hosted clusters) — daily
+- Linux — daily
+- Git — daily
+- ArgoCD (GitOps continuous delivery), Nginx, Cloudflare, Hetzner, Vercel, Longhorn (distributed storage), Cert-Manager (TLS)
 
 ## Notable Projects
 
-### GrooveShop E-commerce Platform
-A multi-repository e-commerce platform built over 4+ years as a personal project. Consists of:
-- **Django REST API**: Backend service handling business logic, authentication, and data management
-- **Nuxt 4 Storefront**: Modern frontend application for the e-commerce experience
-- **NestJS Media Streaming Service**: Dedicated microservice for media content delivery
-- **Infrastructure**: PostgreSQL database with Docker orchestration
+### GrooveShop — e-commerce platform
+A multi-tenant, multi-repository e-commerce platform built over more than four years, made of five components:
 
-GitHub: https://github.com/vasilistotskas/grooveshop-django-api
+- **Django REST API** — business logic, authentication and data
+- **Nuxt 4 storefront** — SSR frontend; its Nitro server proxies `/api/...` calls to Django after validating them with Zod
+- **NestJS media stream** — standalone image processing and media delivery; the frontend builds URLs pointing straight at it
+- **Go agent gateway** — makes every tenant storefront shoppable by AI agents: an MCP server over stateless HTTP with commerce tools (search, products, categories, shipping, cart, checkout, order tracking), UCP/ACP surfaces for agentic checkout, product feeds for Google Merchant, Meta, TikTok and ACP, and an SSE backend powering a storefront chatbot
+- **Infrastructure** — PostgreSQL, Redis, Meilisearch, RabbitMQ and Celery workers, on K3s and synced by Argo CD
+
+Live demo: https://demo.grooveshop.space/
+Repositories: https://github.com/vasilistotskas/grooveshop-django-api, https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt, https://github.com/vasilistotskas/grooveshop-media-stream, https://github.com/vasilistotskas/grooveshop-agent-gateway, https://github.com/vasilistotskas/grooveshop-infrastructure
 
 ### Webside.gr
-A production e-commerce store powered by the GrooveShop platform, deployed on a self-hosted infrastructure:
+A production e-commerce store powered by GrooveShop, running every layer of the platform on self-hosted infrastructure:
+
 - Hetzner k3s Kubernetes cluster
 - ArgoCD for GitOps deployment
 - Longhorn for distributed storage
@@ -84,68 +94,64 @@ A production e-commerce store powered by the GrooveShop platform, deployed on a 
 
 Live: https://webside.gr
 
-### Developer Portfolio (This Site)
-A terminal/code-themed personal portfolio built with modern web technologies:
-- Next.js 15 with App Router
-- React 19
-- TypeScript 5.7 (strict mode)
-- Tailwind CSS v4 (CSS-first configuration)
-- next-intl v4 for internationalization (English and Greek)
-- Spotify API integration (now playing, top tracks)
-- GitHub API integration (stats display)
-- Motion library for animations
-- Deployed to Vercel via GitHub Actions
+### Developer portfolio (this site)
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript strict
+- Tailwind CSS v4, CSS-first configuration with no `tailwind.config`
+- next-intl v4 for English and Greek; `app/[locale]/layout.tsx` is the root layout so `next/root-params` resolves
+- IBM Plex Sans and JetBrains Mono, both loaded with the Greek subset
+- A WebGPU hero rendered with vgpu: one fullscreen WGSL fragment shader drawing the shape of source code — indentation, runs of identifiers, blank lines between blocks, a caret and a parse wave. It pauses off screen and when the tab is hidden, renders a single still frame under `prefers-reduced-motion`, and renders nothing at all without WebGPU, leaving a CSS gradient in its place
+- A command palette opened with `/`, or from a header button on touch
+- Spotify integration (now playing, top tracks) and GitHub statistics
+- Deployed to Vercel through GitHub Actions; releases automated with semantic-release
 
-Live: https://vasilistotskas.com
+Live: https://www.vasilistotskas.com
 Source: https://github.com/vasilistotskas/nextjs-portfolio
 
 ## AI & Tools
 
-Vasilis has been an early and ongoing user of AI coding tools including Claude Code (primary tool), Cursor, Windsurf, and Kiro. He actively leverages AI assistance in his development workflow.
+Vasilis has been an early and ongoing user of AI coding tools including Claude Code (primary tool), Cursor, Windsurf and Kiro, and uses AI assistance throughout his development workflow. The GrooveShop agent gateway is the other side of that interest: making a commerce platform legible to AI agents rather than only to browsers.
 
 ## Site Structure
 
-This portfolio website is available in two languages (English and Greek) and contains the following pages:
+The site is published in English and Greek. Every page exists under both `/en` and `/el`.
 
 ### Home (/)
-- Hero section with terminal-themed introduction
-- Skills overview organized by category (Frontend, Backend, DevOps, Tools)
-- Featured projects with descriptions and links
-- Professional experience timeline
-- GitHub statistics
+- Hero: name, role summary and calls to action, over the WebGPU code field
+- Skills grouped by layer — Interface, Services, Data, Platform — with daily-use weighting
+- Projects, ordered by how much of the stack each one runs
+- Experience timeline
+- GitHub activity
 
 ### About (/about)
-- Detailed biography in a terminal-styled README format
-- Current work description
-- Projects and infrastructure overview
-- Core tech stack breakdown
-- Professional highlights (years of experience, certifications, languages)
-- Education and certification details
-- Contact information
-- GitHub statistics
-- Spotify top tracks integration
+- Biography in a terminal-styled README format
+- Current work, projects and infrastructure
+- Core tech stack
+- Highlights, education and certifications
+- Contact information, GitHub statistics and Spotify top tracks
 
 ### Contact (/contact)
 - Contact form (name, email, subject, message)
-- Email address
-- Location
-- Social media links (GitHub, LinkedIn, X)
+- Email address, location and social links
 
 ## Technical Implementation Details
 
 ### Theming
-The site uses a terminal/code aesthetic with a custom theming system:
-- Semantic CSS variables for light and dark modes
-- Dark mode default with next-themes (class-based switching)
-- Custom utility classes: .glass, .glow-green, .card-hover, .text-gradient, .terminal-border
-- Color tokens: terminal-bg, terminal-surface, terminal-text, terminal-green, terminal-cyan, terminal-yellow, terminal-purple, terminal-muted, terminal-comment, terminal-prompt
+- Semantic CSS variables for light and dark, switched by a `light`/`dark` class on `<html>`
+- Dark by default; the choice is stored in `localStorage` under `theme`
+- A pre-paint script is injected into `<head>` through `useServerInsertedHTML`, so there is no flash of the wrong theme
+- Colour tokens: terminal-bg, terminal-surface, terminal-text, terminal-green, terminal-muted, terminal-comment, terminal-prompt, terminal-yellow. One accent colour, green
+- Custom utilities: `.glass`, `.glass-blur`, `.glow-green`, `.card-hover`, `.terminal-border`, `.stack-fallback`
 
 ### Fonts
-- Geist Sans (primary)
-- Geist Mono (monospace/code elements)
+- IBM Plex Sans (interface)
+- JetBrains Mono (code, labels and the command palette)
+- Both loaded with `subsets: ['latin', 'greek']`, because the Greek pages need Greek glyphs
 
 ### API Routes
-- /api/contact — Email sending via Resend
-- /api/github — GitHub statistics proxy
-- /api/spotify/now-playing — Current Spotify track (Edge Runtime)
-- /api/spotify/top-tracks — Top Spotify tracks
+All run on the default Node runtime.
+
+- `/api/contact` — email delivery through Resend
+- `/api/spotify/now-playing` — current or most recent track
+- `/api/spotify/top-tracks` — top tracks over a selectable range
+
+GitHub statistics are fetched directly by a Server Component; there is no `/api/github` route.
