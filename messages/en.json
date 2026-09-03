@@ -7,13 +7,13 @@
 	},
 	"hero": {
 		"name": "Vasilis Totskas",
-		"summary": "I develop web products and run them in production.",
+		"summary": "I develop applications and build the infrastructure that runs them.",
 		"location": "Athens, GR",
 		"cta": {
 			"projects": "See the work",
 			"contact": "Get in touch"
 		},
-		"metaDescription": "Fullstack developer in Athens, Greece. I build web products — interface, services and infrastructure — and I run them in production."
+		"metaDescription": "Fullstack developer in Athens, Greece. I develop applications for web, desktop and mobile, and build the infrastructure that runs them."
 	},
 	"stack": {
 		"layers": {
@@ -113,7 +113,7 @@
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "at",
-		"intro": "Hey there, I'm Vasilis, a Fullstack Developer based in Athens, Greece, with a strong focus on high-performance web applications and scalable infrastructure.",
+		"intro": "Hey there, I'm Vasilis, a Fullstack Developer based in Athens, Greece. I develop applications for web, desktop and mobile, and build the infrastructure that runs them.",
 		"sections": {
 			"work": {
 				"title": "Current Work @ Advisable",
@@ -173,7 +173,7 @@
 	"contact": {
 		"title": "Contact",
 		"description": "Messages land in my inbox. I read every one and reply, in English or Greek.",
-		"metaDescription": "{name} — Fullstack Developer based in Athens, Greece. Get in touch about web development work, collaborations, or any questions.",
+		"metaDescription": "{name} — Fullstack Developer based in Athens, Greece. Get in touch about application development, infrastructure work, or collaborations.",
 		"info": {
 			"email": "Email",
 			"location": "Location",

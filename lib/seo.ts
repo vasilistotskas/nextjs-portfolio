@@ -9,7 +9,7 @@ export const siteUrl =
 	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.vasilistotskas.com'
 
 export const siteDescription =
-	'Fullstack Developer specializing in modern web applications with Python, Django, Nuxt, Vue, Next.js.'
+	'Fullstack Developer building applications for web, desktop and mobile, and the infrastructure that runs them. Python, Django, Go, Nuxt, Vue, Next.js.'
 
 const OG_IMAGE = '/banner.png'
 

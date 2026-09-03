@@ -7,13 +7,13 @@
 	},
 	"hero": {
 		"name": "Βασίλης Τότσκας",
-		"summary": "Αναπτύσσω web εφαρμογές και τις τρέχω σε παραγωγή.",
+		"summary": "Αναπτύσσω εφαρμογές και στήνω την υποδομή που τις τρέχει.",
 		"location": "Αθήνα, Ελλάδα",
 		"cta": {
 			"projects": "Δες τη δουλειά μου",
 			"contact": "Επικοινωνία"
 		},
-		"metaDescription": "Fullstack developer στην Αθήνα. Φτιάχνω web εφαρμογές — interface, services και υποδομή — και τις τρέχω σε παραγωγή."
+		"metaDescription": "Fullstack developer στην Αθήνα. Αναπτύσσω εφαρμογές για web, desktop και mobile, και στήνω την υποδομή που τις τρέχει."
 	},
 	"stack": {
 		"layers": {
@@ -113,7 +113,7 @@
 		"role": "Fullstack Developer",
 		"company": "Advisable",
 		"companyAt": "στην",
-		"intro": "Hello, είμαι ο Βασίλης, ένας Fullstack Developer με έδρα την Αθήνα.",
+		"intro": "Γεια, είμαι ο Βασίλης, Fullstack Developer με έδρα την Αθήνα. Αναπτύσσω εφαρμογές για web, desktop και mobile, και στήνω την υποδομή που τις τρέχει.",
 		"sections": {
 			"work": {
 				"title": "Current Work @ Advisable",
@@ -173,7 +173,7 @@
 	"contact": {
 		"title": "Επικοινωνία",
 		"description": "Τα μηνύματα φτάνουν στο inbox μου. Τα διαβάζω όλα και απαντάω, στα Ελληνικά ή στα Αγγλικά.",
-		"metaDescription": "{name} — Fullstack Developer από την Αθήνα. Επικοινωνήστε για συνεργασίες και προτάσεις.",
+		"metaDescription": "{name} — Fullstack Developer από την Αθήνα. Επικοινωνήστε για ανάπτυξη εφαρμογών, υποδομές ή συνεργασίες.",
 		"info": {
 			"email": "Email",
 			"location": "Τοποθεσία",
