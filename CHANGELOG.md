@@ -1,3 +1,11 @@
+# [1.44.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.2...v1.44.0) (2026-09-03)
+
+
+### Features
+
+* **scripts:** let the token script update Vercel too ([601f54f](https://github.com/vasilistotskas/nextjs-portfolio/commit/601f54f1fd484f614a5f186d9a03c8f60119c881))
+* **scripts:** one command to re-mint the Spotify refresh token ([f843dd1](https://github.com/vasilistotskas/nextjs-portfolio/commit/f843dd11fbfa76beef77123c1d97ca94dbce5c8c))
+
 ## [1.43.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.1...v1.43.2) (2026-09-03)
 
 
