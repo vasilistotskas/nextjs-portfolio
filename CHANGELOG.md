@@ -1,3 +1,10 @@
+## [1.43.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.0...v1.43.1) (2026-09-03)
+
+
+### Bug Fixes
+
+* **hero:** the field stopped moving and ignored the cursor ([8735425](https://github.com/vasilistotskas/nextjs-portfolio/commit/8735425c99977741d1203e447de2ff30dd4a75b6))
+
 # [1.43.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.42.0...v1.43.0) (2026-09-03)
 
 
