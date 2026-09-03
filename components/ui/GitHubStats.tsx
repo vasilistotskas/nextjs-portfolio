@@ -38,6 +38,30 @@ async function fetchGitHubStats(): Promise<GitHubStatsType | null> {
 	}
 }
 
+/**
+ * The section owns its own heading so that it can disappear whole.
+ * Without `GITHUB_TOKEN` these calls run unauthenticated against a shared-IP
+ * rate limit, and a rate-limited response used to leave a heading sitting over
+ * an empty space.
+ */
+function Section({ children }: { children: React.ReactNode }) {
+	const t = useTranslations('github')
+
+	return (
+		<>
+			<div className="section-divider" />
+			<section className="px-4 py-14 md:px-6 md:py-20">
+				<div className="mx-auto max-w-5xl">
+					<h2 className="text-terminal-text mb-8 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
+						{t('title')}
+					</h2>
+					{children}
+				</div>
+			</section>
+		</>
+	)
+}
+
 function Row({ items }: { items: Array<{ label: string; value: number | null }> }) {
 	return (
 		<dl className="flex flex-wrap gap-x-10 gap-y-4">
@@ -57,38 +81,37 @@ function Row({ items }: { items: Array<{ label: string; value: number | null }> 
 	)
 }
 
-function GitHubStatsContent({ stats }: { stats: GitHubStatsType | null }) {
+function labelled(t: (key: string) => string, stats: GitHubStatsType | null) {
+	return [
+		{ label: t('repos'), value: stats ? stats.repos : null },
+		{ label: t('stars'), value: stats ? stats.stars : null },
+		{ label: t('followers'), value: stats ? stats.followers : null }
+	]
+}
+
+function GitHubStatsContent({ stats }: { stats: GitHubStatsType }) {
 	const t = useTranslations('github')
-
-	if (!stats) return null
-
 	return (
-		<Row
-			items={[
-				{ label: t('repos'), value: stats.repos },
-				{ label: t('stars'), value: stats.stars },
-				{ label: t('followers'), value: stats.followers }
-			]}
-		/>
+		<Section>
+			<Row items={labelled(t, stats)} />
+		</Section>
 	)
 }
 
 export function GitHubStatsSkeleton() {
 	const t = useTranslations('github')
-
 	return (
-		<Row
-			items={[
-				{ label: t('repos'), value: null },
-				{ label: t('stars'), value: null },
-				{ label: t('followers'), value: null }
-			]}
-		/>
+		<Section>
+			<Row items={labelled(t, null)} />
+		</Section>
 	)
 }
 
 async function GitHubStatsAsync() {
 	const stats = await fetchGitHubStats()
+	// Nothing to show and nothing worth explaining to a visitor: drop the
+	// section rather than leave a heading over a blank.
+	if (!stats) return null
 	return <GitHubStatsContent stats={stats} />
 }
 

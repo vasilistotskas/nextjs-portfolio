@@ -19,9 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	})
 }
 
-export default async function HomePage() {
-	const t = await getTranslations('github')
-
+export default function HomePage() {
 	return (
 		<>
 			<Hero />
@@ -31,16 +29,9 @@ export default async function HomePage() {
 			<Projects />
 			<div className="section-divider" />
 			<Experience />
-			<div className="section-divider" />
-
-			<section className="px-4 py-14 md:px-6 md:py-20">
-				<div className="mx-auto max-w-5xl">
-					<h2 className="text-terminal-text mb-8 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
-						{t('title')}
-					</h2>
-					<GitHubStats />
-				</div>
-			</section>
+			{/* Brings its own divider and heading, so it can disappear whole when
+			    GitHub rate-limits an unauthenticated request. */}
+			<GitHubStats />
 		</>
 	)
 }
