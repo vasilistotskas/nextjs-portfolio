@@ -59,9 +59,19 @@ export function startHeroField(
 	let running = true
 	const pointer = { x: 0, y: 0, on: 0 as 0 | 1 }
 
+	// Reduced motion rules out looping animation, not response to a deliberate
+	// action, so the still frame still carries the pointer. Without this the
+	// uniforms were only ever written inside the render loop, and a
+	// reduced-motion visitor got a field that ignored the cursor entirely.
 	const drawStill = () => {
 		if (disposed || !field || !output) return
-		field.set({ params: { time: STILL_TIME } })
+		field.set({
+			params: {
+				time: STILL_TIME,
+				pointer: [pointer.x, pointer.y],
+				pointerOn: pointer.on
+			}
+		})
 		frame(gpu!, (currentFrame) => currentFrame.pass(output!, field!))
 	}
 
@@ -156,7 +166,7 @@ export function startHeroField(
 			pointer.x = x
 			pointer.y = y
 			pointer.on = on
-			if (still && on) scheduleStill()
+			if (still) scheduleStill()
 		},
 		setPalette(next) {
 			currentPalette = next

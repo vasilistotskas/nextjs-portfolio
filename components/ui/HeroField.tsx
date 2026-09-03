@@ -54,6 +54,14 @@ export default function HeroField({ className }: { className?: string }) {
 		fieldRef.current = field
 
 		const host = canvas.parentElement ?? canvas
+		/*
+			Listen on the section, not on the canvas wrapper. The hero copy sits
+			above the wrapper on a higher stacking layer and spans the whole hero,
+			so it swallowed every pointer event before the field saw one — the
+			cursor did nothing on desktop, which the animation hid. Geometry is
+			still measured from the wrapper, so coordinates are unchanged.
+		*/
+		const interaction: HTMLElement = canvas.closest('section') ?? host
 
 		const handlePointerMove = (event: PointerEvent) => {
 			// Touch has no hover, and a finger dragging the page should not light
@@ -70,19 +78,28 @@ export default function HeroField({ className }: { className?: string }) {
 		}
 		const handlePointerLeave = () => field.setPointer(0, 0, 0)
 
-		host.addEventListener('pointermove', handlePointerMove)
-		host.addEventListener('pointerleave', handlePointerLeave)
+		interaction.addEventListener('pointermove', handlePointerMove)
+		interaction.addEventListener('pointerleave', handlePointerLeave)
+
+		/*
+			Run only while the hero is on screen and the tab is in front. Both
+			conditions are tracked, because an earlier version only ever *stopped*
+			on `visibilitychange` and never started again — open the site in a
+			background tab, come back to it, and the field was frozen for good.
+		*/
+		let onScreen = false
+		const sync = () => field.setRunning(onScreen && !document.hidden)
 
 		const visibility = new IntersectionObserver(
-			([entry]) => field.setRunning(entry.isIntersecting && !document.hidden),
+			([entry]) => {
+				onScreen = entry.isIntersecting
+				sync()
+			},
 			{ threshold: 0.02 }
 		)
 		visibility.observe(host)
 
-		const handleVisibilityChange = () => {
-			if (document.hidden) field.setRunning(false)
-		}
-		document.addEventListener('visibilitychange', handleVisibilityChange)
+		document.addEventListener('visibilitychange', sync)
 
 		// In still mode nothing drives the frame boundary, so a resize needs an
 		// explicit redraw to pick up the new canvas size.
@@ -90,9 +107,9 @@ export default function HeroField({ className }: { className?: string }) {
 		resize.observe(host)
 
 		return () => {
-			host.removeEventListener('pointermove', handlePointerMove)
-			host.removeEventListener('pointerleave', handlePointerLeave)
-			document.removeEventListener('visibilitychange', handleVisibilityChange)
+			interaction.removeEventListener('pointermove', handlePointerMove)
+			interaction.removeEventListener('pointerleave', handlePointerLeave)
+			document.removeEventListener('visibilitychange', sync)
 			visibility.disconnect()
 			resize.disconnect()
 			field.dispose()
