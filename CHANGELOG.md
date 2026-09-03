@@ -1,3 +1,20 @@
+# [1.43.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.42.0...v1.43.0) (2026-09-03)
+
+
+### Bug Fixes
+
+* **copy:** drop the ambiguous idiom from the hero line ([39679a2](https://github.com/vasilistotskas/nextjs-portfolio/commit/39679a22614521a429e8d3c259d7388b01f432ae))
+* **copy:** the work is not only web ([3d26d72](https://github.com/vasilistotskas/nextjs-portfolio/commit/3d26d720804533ee8c06231f1c3e59a9ef128866))
+* **i18n:** shorten the Greek footer source label ([b1957e5](https://github.com/vasilistotskas/nextjs-portfolio/commit/b1957e510284fb136f53a000f0ef4ab902d27f2b))
+* **spotify:** degrade quietly when the refresh token is dead ([19b75f7](https://github.com/vasilistotskas/nextjs-portfolio/commit/19b75f750b932adae09844773fa24d0d61740e75))
+
+
+### Features
+
+* **copy:** give the hero a sentence with a subject ([51b8e97](https://github.com/vasilistotskas/nextjs-portfolio/commit/51b8e975d189d537929547e66205cc2c6391b69a))
+* **hero:** swap the stack map for a quiet code field ([37b379b](https://github.com/vasilistotskas/nextjs-portfolio/commit/37b379b26c03540d295508e4c41e739c289762fc))
+* **ui:** rebuild the site around a project-agnostic stack map ([84e9bf7](https://github.com/vasilistotskas/nextjs-portfolio/commit/84e9bf703e14cde53a8845eb917e92d1f9e9f559))
+
 # [1.42.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.41.1...v1.42.0) (2026-09-02)
 
 
