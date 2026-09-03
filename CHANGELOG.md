@@ -1,3 +1,10 @@
+## [1.43.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.1...v1.43.2) (2026-09-03)
+
+
+### Bug Fixes
+
+* **github:** drop the section instead of leaving a heading over nothing ([a74d18e](https://github.com/vasilistotskas/nextjs-portfolio/commit/a74d18e0f92a70972237410e6b126fb7914fff7c))
+
 ## [1.43.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.0...v1.43.1) (2026-09-03)
 
 
