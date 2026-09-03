@@ -75,6 +75,37 @@ if (!clientId || !clientSecret) {
 	process.exit(1)
 }
 
+/**
+ * Check the id/secret pair before sending anyone to Spotify. The authorize page
+ * only reports "client_id: Invalid" and gives no hint about which half is
+ * wrong, so verify here with a client-credentials grant, which needs no user.
+ */
+async function preflight() {
+	const res = await fetch('https://accounts.spotify.com/api/token', {
+		method: 'POST',
+		headers: {
+			Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: new URLSearchParams({ grant_type: 'client_credentials' })
+	})
+	if (res.ok) return
+	const body = await res.json().catch(() => ({}))
+	console.error('')
+	console.error(`Spotify rejected the credentials in .env: ${body.error ?? res.status}`)
+	console.error(`  SPOTIFY_CLIENT_ID     = ${clientId}`)
+	console.error(`  SPOTIFY_CLIENT_SECRET = ${clientSecret.length} characters`)
+	console.error('')
+	console.error('Check both against the app page — Client ID and "View client secret":')
+	console.error('  https://developer.spotify.com/dashboard')
+	console.error(
+		'Rotating a secret invalidates the old one at once, so .env needs the new value.'
+	)
+	process.exit(1)
+}
+
+await preflight()
+
 const state = Math.random().toString(36).slice(2)
 const authorizeUrl =
 	'https://accounts.spotify.com/authorize?' +
