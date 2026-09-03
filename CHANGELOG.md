@@ -1,3 +1,10 @@
+## [1.44.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.44.0...v1.44.1) (2026-09-03)
+
+
+### Bug Fixes
+
+* **scripts:** name the culprit when Spotify rejects the credentials ([0c99ca7](https://github.com/vasilistotskas/nextjs-portfolio/commit/0c99ca75c5c57c803de4e6ecee89e4513045eafb))
+
 # [1.44.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.43.2...v1.44.0) (2026-09-03)
 
 
