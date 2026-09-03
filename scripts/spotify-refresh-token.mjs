@@ -12,9 +12,13 @@
  *
  * It reads SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET from .env, captures the
  * authorisation code on the loopback redirect URI registered on the app, and
- * writes the new SPOTIFY_REFRESH_TOKEN straight back into .env. The token is
- * never printed, so it cannot end up in your scrollback — copy it out of .env
- * into the Vercel environment variable and redeploy.
+ * writes the new SPOTIFY_REFRESH_TOKEN straight back into .env.
+ *
+ * If VERCEL_TOKEN and VERCEL_ORG_ID are also set in .env it pushes the value to
+ * the Vercel project too, so the whole rotation is one command. Without them it
+ * says so and you paste it in by hand.
+ *
+ * The token is never printed, so it cannot end up in your scrollback.
  */
 import { createServer } from 'node:http'
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -108,6 +112,53 @@ const exchange = async (code) => {
 	return body.refresh_token
 }
 
+/**
+ * Replace the value on Vercel as well, when a token is available. Vercel keeps
+ * one row per environment, so every existing row is removed before the new
+ * value is created for all three.
+ */
+async function pushToVercel(token) {
+	const vercelToken = env.VERCEL_TOKEN
+	const teamId = env.VERCEL_ORG_ID
+	if (!vercelToken) return { skipped: 'VERCEL_TOKEN is not set in .env' }
+
+	const base = 'https://api.vercel.com'
+	const project = 'nextjs-portfolio'
+	const team = teamId ? `?teamId=${teamId}` : ''
+	const auth = { Authorization: `Bearer ${vercelToken}` }
+
+	const listed = await fetch(`${base}/v9/projects/${project}/env${team}`, {
+		headers: auth
+	})
+	if (!listed.ok) return { failed: `list failed (${listed.status})` }
+	const existing = (await listed.json()).envs.filter(
+		(e) => e.key === 'SPOTIFY_REFRESH_TOKEN'
+	)
+
+	for (const row of existing) {
+		const del = await fetch(`${base}/v9/projects/${project}/env/${row.id}${team}`, {
+			method: 'DELETE',
+			headers: auth
+		})
+		if (!del.ok) return { failed: `delete failed (${del.status})` }
+	}
+
+	const created = await fetch(`${base}/v10/projects/${project}/env${team}`, {
+		method: 'POST',
+		headers: { ...auth, 'content-type': 'application/json' },
+		body: JSON.stringify([
+			{
+				key: 'SPOTIFY_REFRESH_TOKEN',
+				value: token,
+				type: 'sensitive',
+				target: ['production', 'preview', 'development']
+			}
+		])
+	})
+	if (!created.ok) return { failed: `create failed (${created.status})` }
+	return { pushed: true, replaced: existing.length }
+}
+
 const server = createServer(async (req, res) => {
 	const url = new URL(req.url, `http://127.0.0.1:${PORT}`)
 	if (url.pathname !== '/callback') {
@@ -145,11 +196,26 @@ const server = createServer(async (req, res) => {
 				'<p style="font:16px system-ui">Done. The new refresh token is in .env — you can close this tab.</p>'
 			)
 		console.log(`\n✓ SPOTIFY_REFRESH_TOKEN written to .env (${token.length} characters).`)
+		console.log('  Not printed here on purpose.')
+
+		const vercel = await pushToVercel(token)
+		if (vercel.pushed) {
+			console.log(
+				`✓ Pushed to Vercel for all three environments (replaced ${vercel.replaced}).`
+			)
+			console.log(
+				'  Redeploy for it to take effect: push to master, or re-run the CI job.'
+			)
+		} else if (vercel.skipped) {
+			console.log(`· Vercel not updated: ${vercel.skipped}`)
+			console.log('  Copy the value from .env into the Vercel variable, then redeploy.')
+		} else {
+			console.log(`✗ Vercel update failed: ${vercel.failed}`)
+			console.log('  The value is safe in .env — copy it across by hand.')
+		}
+
 		console.log(
-			'  Not printed here on purpose. Copy it from .env into Vercel, then redeploy.'
-		)
-		console.log(
-			'  Valid for 180 days — around',
+			'\n  Valid for 180 days — around',
 			new Date(Date.now() + 180 * 864e5).toISOString().slice(0, 10)
 		)
 	} catch (e) {
