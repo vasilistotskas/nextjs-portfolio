@@ -74,6 +74,10 @@ jobs:
           node-version: '24'
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm dlx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm dlx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm dlx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      # The Vercel CLI depends on esbuild, whose postinstall pnpm refuses to run
+      # unless it is approved. `pnpm dlx` installs into a throwaway store, so the
+      # project's `allowBuilds` does not reach it; since pnpm 12 the ignored build
+      # is an error (ERR_PNPM_IGNORED_BUILDS) rather than a warning.
+      - run: pnpm dlx --allow-build esbuild vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm dlx --allow-build esbuild vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm dlx --allow-build esbuild vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
