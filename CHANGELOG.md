@@ -1,3 +1,10 @@
+## [1.46.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.46.0...v1.46.1) (2026-09-10)
+
+
+### Bug Fixes
+
+* **ci:** approve esbuild's build script for the Vercel CLI under pnpm 12 ([a4d7715](https://github.com/vasilistotskas/nextjs-portfolio/commit/a4d7715a24d1bce35c819747ff30357d06f630d1))
+
 # [1.46.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.45.0...v1.46.0) (2026-09-10)
 
 
