@@ -2,26 +2,28 @@
 
 > Personal portfolio of Vasilis Totskas, a fullstack developer based in Athens, Greece. He develops applications for web, desktop and mobile, and builds the infrastructure that runs them.
 
-Working professionally since 2019 — freelance until 2020, and at Advisable since. He holds a Computer Engineering degree from the University of Western Macedonia and is certified by Google and TestDome. He works in English and Greek, and the site is published in both.
+Working professionally since 2020 at Advisable, where he started as an intern and is a web developer today. Since August 2026 he is also serving his military service as a full stack engineer in the Greek Army (ΚΕ.Π.Υ.Ε.Σ.), working with FastAPI and Angular. He holds a Computer Engineering degree from the University of Western Macedonia and is certified by Google and TestDome. He works in English and Greek, and the site is published in both.
 
-The work groups into four layers. Interface: Vue.js, Nuxt (v3/v4), TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
+The work groups into four layers. Interface: Vue.js, Nuxt (v3/v4), TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Angular, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus FastAPI, NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
 
 ## Pages
 
 - [Home](https://www.vasilistotskas.com/en): Skills grouped by layer, projects, experience and GitHub activity
 - [About](https://www.vasilistotskas.com/en/about): Biography, tech stack, education, certifications and Spotify listening
 - [Contact](https://www.vasilistotskas.com/en/contact): Contact form and social links
+- [Webside.gr case study](https://www.vasilistotskas.com/en/projects/webside): The production store — orders and revenue from its database, how it runs, screenshots
+- [GrooveShop case study](https://www.vasilistotskas.com/en/projects/grooveshop): The multi-tenant platform — tenancy, commerce features, agent gateway, services, screenshots
 - [Home (Greek)](https://www.vasilistotskas.com/el): The same site in Greek; every page exists under /el
 
 ## Projects
 
-- [Webside.gr](https://webside.gr): Production e-commerce store powered by GrooveShop, running every layer on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager
+- [Webside.gr](https://webside.gr): Production e-commerce store powered by GrooveShop, taking real orders since May 2026, running every layer on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager
 - [GrooveShop demo](https://demo.grooveshop.space/): Live demo of the GrooveShop platform
+- [GrooveShop docs](https://docs.grooveshop.space): Admin guide and developer documentation for the platform
 - [GrooveShop API](https://github.com/vasilistotskas/grooveshop-django-api): Django REST backend — business logic, auth and data
 - [GrooveShop storefront](https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt): Nuxt 4 storefront with SSR, proxying to the Django API through Nitro
 - [GrooveShop media stream](https://github.com/vasilistotskas/grooveshop-media-stream): NestJS image processing and media delivery microservice
 - [GrooveShop agent gateway](https://github.com/vasilistotskas/grooveshop-agent-gateway): Go service making every tenant storefront shoppable by AI agents over MCP, with UCP/ACP surfaces, product feeds and a chatbot backend
-- [GrooveShop infrastructure](https://github.com/vasilistotskas/grooveshop-infrastructure): Kubernetes manifests and GitOps configuration for the platform
 - [This portfolio](https://github.com/vasilistotskas/nextjs-portfolio): Next.js 16, React 19 and Tailwind v4 in two languages, with a WebGPU hero rendered through vgpu
 
 ## Profiles

@@ -17,6 +17,9 @@ export default getRequestConfig(async () => {
 
 	return {
 		locale,
+		// Dates on the site are Athens calendar dates. Left unset, this would be
+		// the server's zone, which on Vercel is UTC.
+		timeZone: 'Europe/Athens',
 		messages: (await import(`../messages/${locale}.json`)).default
 	}
 })

@@ -16,7 +16,8 @@ import { useTheme } from '@/components/providers/ThemeProvider'
 import { AnimatePresence, motion } from 'motion/react'
 import { TerminalIcon, X } from 'lucide-react'
 import { routing } from '@/i18n/routing'
-import { projectLayers, skillGroups } from '@/lib/stack'
+import { skillGroups } from '@/lib/stack'
+import { projects } from '@/lib/projects'
 import { useTypewriter } from '@/hooks/useTypewriter'
 
 type PaletteContextValue = {
@@ -36,12 +37,6 @@ export function useCommandPalette(): PaletteContextValue {
 }
 
 type Entry = { command: string; output: ReactNode }
-
-const PROJECT_URLS: Record<string, string> = {
-	webside: 'https://webside.gr',
-	grooveshop: 'https://github.com/vasilistotskas/grooveshop-django-api',
-	portfolio: 'https://github.com/vasilistotskas/nextjs-portfolio'
-}
 
 const SOCIAL_URLS: Record<string, string> = {
 	github: 'https://github.com/vasilistotskas',
@@ -170,19 +165,31 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
 
 				case 'ls':
 				case 'projects': {
-					const keys = Object.keys(projectLayers)
+					const linkClass =
+						'text-terminal-green underline decoration-dotted underline-offset-4'
 					return (
 						<ul className="mt-1 list-none space-y-1 p-0">
-							{keys.map((key) => (
-								<li key={key}>
-									<a
-										href={PROJECT_URLS[key]}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-terminal-green underline decoration-dotted underline-offset-4"
-									>
-										{tp(`items.${key as 'portfolio' | 'grooveshop' | 'webside'}.name`)}
-									</a>
+							{projects.map((project) => (
+								<li key={project.key}>
+									{/* A case study is the better first stop; the rest go to source. */}
+									{project.caseStudy ? (
+										<button
+											type="button"
+											onClick={() => goTo(`/projects/${project.key}`)}
+											className={linkClass}
+										>
+											{tp(`items.${project.key}.name`)}
+										</button>
+									) : (
+										<a
+											href={project.repos[0]?.url ?? project.live}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={linkClass}
+										>
+											{tp(`items.${project.key}.name`)}
+										</a>
+									)}
 								</li>
 							))}
 						</ul>

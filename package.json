@@ -23,6 +23,7 @@
 		"format:fix": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore .",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"screenshots": "node scripts/screenshots.mjs",
 		"spotify:token": "node scripts/spotify-refresh-token.mjs",
 		"start": "next start",
 		"type-check": "next typegen && tsc --noEmit"
@@ -88,6 +89,7 @@
 		"@types/react-dom": "^19.3.0",
 		"eslint": "^10.12.0",
 		"eslint-config-next": "^16.4.0",
+		"playwright-core": "^1.64.0",
 		"prettier": "^3.9.9",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"semantic-release": "^25.0.9",

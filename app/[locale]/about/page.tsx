@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { buildPageMetadata } from '@/lib/seo'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import {
 	MapPin,
 	GraduationCap,
@@ -31,6 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 function AboutContent() {
 	const t = useTranslations('about')
 	const tc = useTranslations('common')
+	const locale = useLocale()
 
 	const experienceYears = new Date().getFullYear() - 2020
 
@@ -96,8 +98,11 @@ function AboutContent() {
 						{tc('myName')}
 					</h1>
 					<p className="text-terminal-comment font-sans text-lg">
-						{t('role')} {t('companyAt')}{' '}
-						<span className="text-terminal-green font-medium">{t('company')}</span>
+						{t.rich('current', {
+							org: (chunks) => (
+								<span className="text-terminal-green font-medium">{chunks}</span>
+							)
+						})}
 					</p>
 					{/* Its own line: inline, this wrapped and left a dangling separator. */}
 					<p className="text-terminal-muted mt-1 flex items-center gap-1.5 font-sans text-sm">
@@ -128,6 +133,14 @@ function AboutContent() {
 								<p className="text-terminal-text">{t('sections.work.body')}</p>
 							</div>
 
+							{/* Military service */}
+							<div>
+								<h3 className="text-terminal-green mb-1.5 font-semibold">
+									{t('sections.service.title')}
+								</h3>
+								<p className="text-terminal-text">{t('sections.service.body')}</p>
+							</div>
+
 							{/* Projects & Infrastructure */}
 							<div>
 								<h3 className="text-terminal-green mb-1.5 font-semibold">
@@ -135,14 +148,12 @@ function AboutContent() {
 								</h3>
 								<p className="text-terminal-text">
 									{t('sections.projects.bodyBefore')}{' '}
-									<a
-										href="https://webside.gr"
-										target="_blank"
-										rel="noopener noreferrer"
+									<Link
+										href={`/${locale}/projects/webside`}
 										className="text-terminal-green decoration-terminal-green/30 hover:decoration-terminal-green underline underline-offset-2 transition-colors"
 									>
 										{t('sections.projects.websideLabel')}
-									</a>
+									</Link>
 									{t('sections.projects.bodyAfter')}
 								</p>
 							</div>

@@ -5,7 +5,7 @@
 ## Personal Information
 
 - **Name**: Vasilis Totskas
-- **Role**: Fullstack Developer at Advisable
+- **Role**: Full Stack Engineer at the Greek Army (military service, since August 2026) and Web Developer at Advisable
 - **Location**: Athens, Greece
 - **Email**: vassilistotskas@msn.com
 - **GitHub**: https://github.com/vasilistotskas
@@ -15,7 +15,9 @@
 
 ## Professional Background
 
-Vasilis Totskas develops applications for web, desktop and mobile, and builds the infrastructure that runs them. He has worked professionally since 2019, starting as a freelance web developer before joining Advisable in 2020, where he still works.
+Vasilis Totskas develops applications for web, desktop and mobile, and builds the infrastructure that runs them. He has worked professionally since July 2020, when he joined Advisable as an intern; he has been a web developer there since January 2021.
+
+Since August 2026 he is also serving his military service as a full stack engineer at ΚΕ.Π.Υ.Ε.Σ. in the Greek Army, building applications with FastAPI and Angular on Oracle Database.
 
 At Advisable he works on complex web applications, modernising technology stacks and delivering projects on standalone PHP, TypeScript and Python stacks as well as Nuxt 4 frontends.
 
@@ -46,14 +48,14 @@ Skills are grouped by the layer a request passes through rather than by job titl
 - Nuxt (v3/v4) — daily
 - TypeScript — daily
 - Tailwind CSS — daily
-- JavaScript, React, Next.js, Vite, HTML, CSS
+- JavaScript, React, Next.js, Angular, Vite, HTML, CSS
 
 ### Services (api, media)
 - Python — daily
 - Django and Django REST Framework — daily
 - Go — daily
 - PHP — daily
-- NestJS, Node.js
+- FastAPI, NestJS, Node.js
 
 ### Data (database, cache, queue)
 - PostgreSQL — daily
@@ -70,7 +72,7 @@ Skills are grouped by the layer a request passes through rather than by job titl
 ## Notable Projects
 
 ### GrooveShop — e-commerce platform
-A multi-tenant, multi-repository e-commerce platform built over more than four years, made of five components:
+A multi-tenant, multi-repository e-commerce platform built over more than four years. Each store is its own PostgreSQL schema, resolved from the request host, with its own domain, theme, credentials and feature switches (loyalty, gift cards, promotions, B2B). Four stores run on it, including the demo. It is made of five components:
 
 - **Django REST API** — business logic, authentication and data
 - **Nuxt 4 storefront** — SSR frontend; its Nitro server proxies `/api/...` calls to Django after validating them with Zod
@@ -78,11 +80,15 @@ A multi-tenant, multi-repository e-commerce platform built over more than four y
 - **Go agent gateway** — makes every tenant storefront shoppable by AI agents: an MCP server over stateless HTTP with commerce tools (search, products, categories, shipping, cart, checkout, order tracking), UCP/ACP surfaces for agentic checkout, product feeds for Google Merchant, Meta, TikTok and ACP, and an SSE backend powering a storefront chatbot
 - **Infrastructure** — PostgreSQL, Redis, Meilisearch, RabbitMQ and Celery workers, on K3s and synced by Argo CD
 
+Built-in commerce: a rule-based promotion engine, stored-value gift cards, loyalty points with tiers, a wholesale programme with VIES VAT validation, Viva Wallet and Stripe payments, ACS and BoxNow shipping, and Meilisearch search with Greeklish transliteration.
+
+Case study: https://www.vasilistotskas.com/en/projects/grooveshop
 Live demo: https://demo.grooveshop.space/
-Repositories: https://github.com/vasilistotskas/grooveshop-django-api, https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt, https://github.com/vasilistotskas/grooveshop-media-stream, https://github.com/vasilistotskas/grooveshop-agent-gateway, https://github.com/vasilistotskas/grooveshop-infrastructure
+Documentation: https://docs.grooveshop.space
+Repositories: https://github.com/vasilistotskas/grooveshop-django-api, https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt, https://github.com/vasilistotskas/grooveshop-media-stream, https://github.com/vasilistotskas/grooveshop-agent-gateway (the infrastructure repository is private)
 
 ### Webside.gr
-A production e-commerce store powered by GrooveShop, running every layer of the platform on self-hosted infrastructure:
+A production e-commerce store for phone and computer accessories, one tenant of GrooveShop since August 2026. It has taken real orders since May 2026: more than 200 orders and more than €6,000 in revenue (cancelled and returned orders excluded). It runs every layer of the platform on self-hosted infrastructure:
 
 - Hetzner k3s Kubernetes cluster
 - ArgoCD for GitOps deployment
@@ -92,6 +98,9 @@ A production e-commerce store powered by GrooveShop, running every layer of the 
 - Redis for caching
 - Cert-Manager for automated TLS certificates
 
+Releases go through Argo CD sync hooks: a pre-sync job checks migrations are safe, migrates every tenant schema, collects static files and applies the Meilisearch index settings; post-sync jobs purge the Cloudflare edge cache and warm the storefront.
+
+Case study: https://www.vasilistotskas.com/en/projects/webside
 Live: https://webside.gr
 
 ### Developer portfolio (this site)
@@ -128,6 +137,9 @@ The site is published in English and Greek. Every page exists under both `/en` a
 - Core tech stack
 - Highlights, education and certifications
 - Contact information, GitHub statistics and Spotify top tracks
+
+### Projects (/projects/webside, /projects/grooveshop)
+- Case studies with production figures, architecture, the layers each runs, and screenshots
 
 ### Contact (/contact)
 - Contact form (name, email, subject, message)

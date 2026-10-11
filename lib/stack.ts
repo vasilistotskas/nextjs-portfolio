@@ -69,6 +69,7 @@ export const skillGroups: readonly SkillGroup[] = [
 			{ name: 'JavaScript' },
 			{ name: 'React' },
 			{ name: 'Next.js' },
+			{ name: 'Angular' },
 			{ name: 'Vite' },
 			{ name: 'HTML' },
 			{ name: 'CSS' }
@@ -82,6 +83,7 @@ export const skillGroups: readonly SkillGroup[] = [
 			{ name: 'Django', daily: true },
 			{ name: 'Go', daily: true },
 			{ name: 'PHP', daily: true },
+			{ name: 'FastAPI' },
 			{ name: 'NestJS' },
 			{ name: 'Node.js' }
 		]

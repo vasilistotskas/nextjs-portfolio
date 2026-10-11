@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-const experienceKeys = ['advisable', 'freelance'] as const
+const experienceKeys = ['army', 'advisable', 'advisableIntern'] as const
 
 export default function Experience() {
 	const t = useTranslations('experience')

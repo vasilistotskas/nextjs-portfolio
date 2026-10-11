@@ -71,6 +71,8 @@
 		"title": "Projects",
 		"intro": "Three systems, ordered by how much of the stack they run.",
 		"viewDemo": "Live site",
+		"docs": "Docs",
+		"caseStudy": "Case study",
 		"status": {
 			"live": "Live",
 			"oss": "Open source"
@@ -82,11 +84,77 @@
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Five services built over four years: a Django REST API, a Nuxt 4 storefront, a NestJS media service and a Go agent gateway that makes the catalogue shoppable by AI agents over MCP. PostgreSQL, Redis, Meilisearch and Celery underneath, on k3s with Argo CD."
+				"description": "A multi-tenant e-commerce platform built over four years: every store gets its own database schema behind one Django REST API, with a Nuxt 4 storefront, a NestJS media service and a Go agent gateway that makes each store shoppable by AI agents over MCP. Promotions, gift cards, loyalty and B2B pricing are built in."
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "A production store powered by GrooveShop, running every layer of the map on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
+				"description": "A production store on GrooveShop: {orders} orders and {revenue} in revenue since May 2026. It runs every layer of the map on a self-hosted Hetzner k3s cluster with Argo CD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
+			}
+		}
+	},
+	"caseStudy": {
+		"back": "All projects",
+		"layers": "Layers it runs",
+		"gallery": "Screenshots",
+		"next": "Next: {name}",
+		"contact": "Want something like this? Get in touch",
+		"metrics": {
+			"orders": "Orders",
+			"revenue": "Revenue",
+			"averageOrder": "Average order",
+			"since": "Trading since",
+			"note": "From the production database on {date}. Cancelled and returned orders are not counted."
+		},
+		"shots": {
+			"home": "Home page",
+			"product": "Product page",
+			"blog": "Blog",
+			"loyalty": "Loyalty programme",
+			"gift-cards": "Gift cards",
+			"mobile": "Home page on a phone"
+		},
+		"items": {
+			"webside": {
+				"title": "Webside.gr, a store in production",
+				"summary": "Webside is a Greek store for phone and computer accessories that runs on GrooveShop, the platform I build. I write the software and operate everything under it, from the Kubernetes cluster to the release pipeline.",
+				"stack": "Nuxt 4 · Django 6 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"sections": {
+					"store": {
+						"title": "The store",
+						"body": "Webside sells phone and computer accessories, with a Greek-language tech blog alongside the catalogue. It started taking real orders in May 2026, and September and October have been its busiest months so far."
+					},
+					"platform": {
+						"title": "One tenant of the platform",
+						"body": "Since August 2026 Webside is one store on the multi-tenant GrooveShop platform: its own PostgreSQL schema, domain, theme and credentials, served by the same API, storefront and workers as every other store. Its data moved with it, order history and uploaded media included."
+					},
+					"operations": {
+						"title": "Running it",
+						"body": "Everything runs on a self-hosted k3s cluster at Hetzner that I set up and operate. Argo CD deploys from Git. Before a release goes live, a pre-sync job checks the migrations are safe, migrates every store, collects static files and applies the search index settings. After it, post-sync jobs purge the Cloudflare edge cache and warm the storefront.\n\nLonghorn provides the volumes, Cert-Manager renews TLS, Sealed Secrets keeps credentials encrypted in Git, and VictoriaMetrics alerts when something drifts."
+					}
+				}
+			},
+			"grooveshop": {
+				"title": "GrooveShop, a multi-tenant commerce platform",
+				"summary": "GrooveShop is the e-commerce platform I've been building for more than four years. One deployment runs many stores: each gets its own database schema, domain, theme, and payment and courier credentials, and turns features such as loyalty, gift cards or B2B on and off.",
+				"stack": "Django 6 · DRF · django-tenants · Channels · Nuxt 4 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery",
+				"sections": {
+					"platform": {
+						"title": "One platform, many stores",
+						"body": "A request's host name selects the store's own PostgreSQL schema, so stores share code and infrastructure but never data. A control plane provisions stores, bills them and suspends them, and every release migrates all of them in one tenant-aware step before it goes live. Four stores run on it today, the demo among them."
+					},
+					"commerce": {
+						"title": "Commerce, built in",
+						"body": "A rule-based promotion engine with coupons and automatic discounts, stored-value gift cards with a ledger, loyalty points with tiers, and a wholesale programme with VIES VAT validation and group pricing. Payments go through Viva Wallet or Stripe, or cash on delivery; shipping through ACS and BoxNow. Search is Meilisearch with Greeklish transliteration, so a Greek product is found when typed in Latin letters, and order updates reach the browser over WebSockets."
+					},
+					"agents": {
+						"title": "Shoppable by AI agents",
+						"body": "A Go gateway makes every store usable by AI agents: an MCP server with commerce tools for search, cart, checkout and order tracking, UCP and ACP endpoints for agentic checkout, product feeds for Google Merchant, Meta and TikTok, and the backend of the storefront's own shopping chatbot."
+					},
+					"services": {
+						"title": "The services",
+						"body": "A Django REST API holds the business logic and data. The Nuxt 4 storefront renders on the server, and its Nitro layer validates every request with Zod before proxying it to Django. A NestJS service resizes and serves images, the Go gateway serves agents, and a documentation site covers both the admin panel and the internals."
+					}
+				}
 			}
 		}
 	},
@@ -94,42 +162,50 @@
 		"title": "Experience",
 		"present": "Present",
 		"items": {
-			"advisable": {
-				"role": "Fullstack Developer",
-				"company": "Advisable",
-				"period": "2020 — Present",
-				"description": "Working on complex web applications, modernizing stacks and delivering projects on standalone Php/Typescript/Python and Nuxt 4 frontends."
+			"army": {
+				"role": "Full Stack Engineer (Military Service)",
+				"company": "Greek Army · ΚΕ.Π.Υ.Ε.Σ.",
+				"period": "Aug 2026 — Present",
+				"description": "Building applications with FastAPI and Angular on Oracle Database, in Python and TypeScript, with GitLab."
 			},
-			"freelance": {
-				"role": "Freelance Web Developer",
-				"company": "Self-employed",
-				"period": "2019 — 2020",
-				"description": "Designed and developed websites and web applications."
+			"advisable": {
+				"role": "Web Developer",
+				"company": "Advisable",
+				"period": "Jan 2021 — Present",
+				"description": "Working on complex web applications, modernizing stacks and delivering projects on standalone PHP, TypeScript and Python stacks and Nuxt 4 frontends."
+			},
+			"advisableIntern": {
+				"role": "Web Developer (Internship)",
+				"company": "Advisable",
+				"period": "Jul 2020 — Jan 2021",
+				"description": "Joined the team as an intern, working on client web applications with PHP and MySQL."
 			}
 		}
 	},
 	"about": {
 		"title": "About Me",
-		"role": "Fullstack Developer",
-		"company": "Advisable",
-		"companyAt": "at",
+		"current": "Full Stack Engineer at <org>Greek Army</org> (military service) and Web Developer at <org>Advisable</org>",
 		"intro": "Hey there, I'm Vasilis, a Fullstack Developer based in Athens, Greece. I develop applications for web, desktop and mobile, and build the infrastructure that runs them.",
 		"sections": {
 			"work": {
 				"title": "Current Work @ Advisable",
 				"body": "I am working on complex web applications, always striving to modernize our stacks. I've also worked on standalone Php/Typescript/Python stacks, delivering complex projects for our clients, including comprehensive platforms frontend built entirely on Nuxt 4."
 			},
+			"service": {
+				"title": "Military Service @ Greek Army",
+				"body": "Since August 2026 I have been serving as a full stack engineer at ΚΕ.Π.Υ.Ε.Σ., building applications with FastAPI and Angular on Oracle Database."
+			},
 			"projects": {
 				"title": "Projects & Infrastructure",
-				"bodyBefore": "For more than 4 years, alongside with other projects I've been working on a personal project, a multi-repo e-commerce platform consisting of a Django API, Nuxt frontend, and a NestJs media streaming application. I've recently built a microservices-based infrastructure for",
+				"bodyBefore": "For more than 4 years, alongside other projects, I've been building GrooveShop, a multi-tenant e-commerce platform: a Django API, a Nuxt storefront, a NestJS media service and a Go gateway that lets AI agents shop it. It runs in production for",
 				"websideLabel": "webside.gr",
-				"bodyAfter": ", running on a self-hosted Hetzner k3s kubernetes cluster, including ArgoCD, Longhorn, RabbitMQ, Celery, Redis, and Cert-Manager."
+				"bodyAfter": ", on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
 			},
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
-				"frontend": "Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
-				"backend": "Python, Django, PHP",
+				"frontend": "Vue.js, Nuxt.js (v3/v4), Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"backend": "Python, Django, FastAPI, Go, PHP",
 				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
 			},
 			"ai": {

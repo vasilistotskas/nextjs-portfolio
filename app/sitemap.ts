@@ -1,9 +1,15 @@
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
+import { caseStudies } from '@/lib/projects'
 import { siteUrl } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-	const routes = ['', '/about', '/contact']
+	const routes = [
+		'',
+		'/about',
+		'/contact',
+		...caseStudies.map((project) => `/projects/${project.key}`)
+	]
 
 	return routes.flatMap((route) => {
 		const languages = Object.fromEntries(

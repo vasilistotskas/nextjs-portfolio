@@ -124,11 +124,12 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 				'@id': `${siteUrl}/#person`,
 				name: t('myName'),
 				url: siteUrl,
-				jobTitle: 'Fullstack Developer',
-				worksFor: {
-					'@type': 'Organization',
-					name: 'Advisable'
-				},
+				jobTitle: 'Full Stack Engineer',
+				// Both current: military service runs alongside Advisable.
+				worksFor: [
+					{ '@type': 'Organization', name: 'Greek Army' },
+					{ '@type': 'Organization', name: 'Advisable' }
+				],
 				sameAs: [
 					`https://github.com/${t('myUserName')}`,
 					`https://linkedin.com/in/${t('myUserName')}`,

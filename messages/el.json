@@ -71,6 +71,8 @@
 		"title": "Projects",
 		"intro": "Τρία συστήματα, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
 		"viewDemo": "Live site",
+		"docs": "Τεκμηρίωση",
+		"caseStudy": "Αναλυτικά",
 		"status": {
 			"live": "Σε λειτουργία",
 			"oss": "Ανοιχτού κώδικα"
@@ -82,11 +84,77 @@
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Πέντε υπηρεσίες τεσσάρων ετών: ένα Django REST API, ένα Nuxt 4 storefront, μια υπηρεσία media σε NestJS και ένα agent gateway σε Go που κάνει τον κατάλογο προσβάσιμο σε AI agents μέσω MCP. Από κάτω PostgreSQL, Redis, Meilisearch και Celery, σε k3s με Argo CD."
+				"description": "Πλατφόρμα e-commerce πολλαπλών καταστημάτων, χτισμένη μέσα σε τέσσερα χρόνια: κάθε κατάστημα έχει το δικό του database schema πίσω από ένα κοινό Django REST API, με Nuxt 4 storefront, υπηρεσία media σε NestJS και agent gateway σε Go που κάνει κάθε κατάστημα προσβάσιμο σε AI agents μέσω MCP. Προωθητικές ενέργειες, δωροκάρτες, πόντοι επιβράβευσης και τιμές B2B είναι ενσωματωμένα."
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "Κατάστημα σε παραγωγή βασισμένο στο GrooveShop, που τρέχει κάθε επίπεδο του χάρτη σε self-hosted k3s cluster στη Hetzner, με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
+				"description": "Κατάστημα σε παραγωγή πάνω στο GrooveShop: {orders} παραγγελίες και {revenue} έσοδα από τον Μάιο του 2026. Τρέχει κάθε επίπεδο του χάρτη σε self-hosted k3s cluster στη Hetzner, με Argo CD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
+			}
+		}
+	},
+	"caseStudy": {
+		"back": "Όλα τα projects",
+		"layers": "Επίπεδα που τρέχει",
+		"gallery": "Στιγμιότυπα",
+		"next": "Επόμενο: {name}",
+		"contact": "Θέλεις κάτι παρόμοιο; Επικοινώνησε μαζί μου",
+		"metrics": {
+			"orders": "Παραγγελίες",
+			"revenue": "Έσοδα",
+			"averageOrder": "Μέση παραγγελία",
+			"since": "Σε λειτουργία από",
+			"note": "Από τη βάση δεδομένων παραγωγής, στις {date}. Οι ακυρωμένες παραγγελίες και οι επιστροφές δεν μετράνε."
+		},
+		"shots": {
+			"home": "Αρχική σελίδα",
+			"product": "Σελίδα προϊόντος",
+			"blog": "Blog",
+			"loyalty": "Πρόγραμμα επιβράβευσης",
+			"gift-cards": "Δωροκάρτες",
+			"mobile": "Αρχική σελίδα σε κινητό"
+		},
+		"items": {
+			"webside": {
+				"title": "Webside.gr, ένα κατάστημα σε παραγωγή",
+				"summary": "Το Webside είναι ελληνικό κατάστημα με αξεσουάρ κινητών και υπολογιστών που τρέχει πάνω στο GrooveShop, την πλατφόρμα που χτίζω. Γράφω το λογισμικό και λειτουργώ ό,τι βρίσκεται από κάτω, από το Kubernetes cluster μέχρι τη διαδικασία των releases.",
+				"stack": "Nuxt 4 · Django 6 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"sections": {
+					"store": {
+						"title": "Το κατάστημα",
+						"body": "Το Webside πουλάει αξεσουάρ κινητών και υπολογιστών, με ένα ελληνόφωνο tech blog δίπλα στον κατάλογο. Άρχισε να δέχεται πραγματικές παραγγελίες τον Μάιο του 2026, και ο Σεπτέμβριος και ο Οκτώβριος είναι μέχρι τώρα οι πιο δυνατοί του μήνες."
+					},
+					"platform": {
+						"title": "Ένα κατάστημα της πλατφόρμας",
+						"body": "Από τον Αύγουστο του 2026 το Webside είναι ένα κατάστημα της πλατφόρμας GrooveShop: δικό του PostgreSQL schema, domain, θέμα και διαπιστευτήρια, με το ίδιο API, storefront και workers που εξυπηρετούν κάθε άλλο κατάστημα. Τα δεδομένα του μεταφέρθηκαν μαζί του, με το ιστορικό παραγγελιών και τα αρχεία media."
+					},
+					"operations": {
+						"title": "Η λειτουργία του",
+						"body": "Όλα τρέχουν σε self-hosted k3s cluster στη Hetzner, που έστησα και λειτουργώ. Το Argo CD κάνει deploy από το Git. Πριν βγει ένα release, ένα pre-sync job ελέγχει ότι τα migrations είναι ασφαλή, κάνει migrate κάθε κατάστημα, συλλέγει τα static αρχεία και εφαρμόζει τις ρυθμίσεις του ευρετηρίου αναζήτησης. Μετά, post-sync jobs καθαρίζουν την cache του Cloudflare και ζεσταίνουν το storefront.\n\nΤο Longhorn δίνει τα volumes, το Cert-Manager ανανεώνει τα πιστοποιητικά TLS, τα Sealed Secrets κρατούν κρυπτογραφημένα τα διαπιστευτήρια στο Git, και το VictoriaMetrics ειδοποιεί όταν κάτι ξεφεύγει."
+					}
+				}
+			},
+			"grooveshop": {
+				"title": "GrooveShop, μια πλατφόρμα e-commerce πολλαπλών καταστημάτων",
+				"summary": "Το GrooveShop είναι η πλατφόρμα e-commerce που χτίζω εδώ και περισσότερα από τέσσερα χρόνια. Μία εγκατάσταση τρέχει πολλά καταστήματα: το καθένα έχει δικό του database schema, domain, θέμα και διαπιστευτήρια πληρωμών και courier, και ενεργοποιεί ή απενεργοποιεί λειτουργίες όπως πόντους επιβράβευσης, δωροκάρτες ή B2B.",
+				"stack": "Django 6 · DRF · django-tenants · Channels · Nuxt 4 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery",
+				"sections": {
+					"platform": {
+						"title": "Μία πλατφόρμα, πολλά καταστήματα",
+						"body": "Το host name κάθε αιτήματος επιλέγει το δικό του PostgreSQL schema του καταστήματος, οπότε τα καταστήματα μοιράζονται κώδικα και υποδομή αλλά ποτέ δεδομένα. Ένα control plane δημιουργεί, χρεώνει και αναστέλλει καταστήματα, και κάθε release κάνει migrate όλα τα καταστήματα σε ένα βήμα πριν βγει. Σήμερα τρέχουν πάνω της τέσσερα καταστήματα, ανάμεσά τους και το demo."
+					},
+					"commerce": {
+						"title": "Ενσωματωμένο e-commerce",
+						"body": "Μηχανή προωθητικών ενεργειών με κανόνες, κουπόνια και αυτόματες εκπτώσεις, δωροκάρτες με λογιστικό βιβλίο, πόντοι επιβράβευσης με επίπεδα, και πρόγραμμα χονδρικής με έλεγχο ΑΦΜ μέσω VIES και τιμές ανά ομάδα. Πληρωμές μέσω Viva Wallet ή Stripe, ή με αντικαταβολή· αποστολές μέσω ACS και BoxNow. Η αναζήτηση γίνεται με Meilisearch και υποστηρίζει Greeklish, οπότε ένα ελληνικό προϊόν βρίσκεται και με λατινικούς χαρακτήρες, ενώ οι ενημερώσεις παραγγελιών φτάνουν στον browser μέσω WebSockets."
+					},
+					"agents": {
+						"title": "Προσβάσιμο σε AI agents",
+						"body": "Ένα gateway σε Go κάνει κάθε κατάστημα χρήσιμο σε AI agents: MCP server με εργαλεία για αναζήτηση, καλάθι, checkout και παρακολούθηση παραγγελιών, endpoints UCP και ACP για agentic checkout, product feeds για Google Merchant, Meta και TikTok, και το backend του chatbot αγορών του ίδιου του storefront."
+					},
+					"services": {
+						"title": "Οι υπηρεσίες",
+						"body": "Ένα Django REST API κρατάει τη λογική και τα δεδομένα. Το Nuxt 4 storefront αποδίδεται στον server, και το Nitro layer του ελέγχει κάθε αίτημα με Zod πριν το προωθήσει στο Django. Μια υπηρεσία NestJS αλλάζει μέγεθος και σερβίρει εικόνες, το gateway σε Go εξυπηρετεί τους agents, και ένα site τεκμηρίωσης καλύπτει τόσο το admin panel όσο και τα εσωτερικά της πλατφόρμας."
+					}
+				}
 			}
 		}
 	},
@@ -94,42 +162,50 @@
 		"title": "Εμπειρία",
 		"present": "Παρόν",
 		"items": {
-			"advisable": {
-				"role": "Fullstack Developer",
-				"company": "Advisable",
-				"period": "2020 — Παρόν",
-				"description": "Εργασία σε σύνθετα web applications, εκσυγχρονισμός stacks και παράδοση projects σε Php/Typescript/Python και Nuxt 4 frontends."
+			"army": {
+				"role": "Full Stack Engineer (Στρατιωτική θητεία)",
+				"company": "Ελληνικός Στρατός · ΚΕ.Π.Υ.Ε.Σ.",
+				"period": "Αύγ 2026 — Παρόν",
+				"description": "Ανάπτυξη εφαρμογών με FastAPI και Angular πάνω σε Oracle Database, σε Python και TypeScript, με GitLab."
 			},
-			"freelance": {
-				"role": "Freelance Web Developer",
-				"company": "Αυτοαπασχολούμενος",
-				"period": "2019 — 2020",
-				"description": "Σχεδιασμός και ανάπτυξη ιστοτόπων για διάφορους πελάτες με PHP, Python, Typescript, JavaScript και PostgreSQL."
+			"advisable": {
+				"role": "Web Developer",
+				"company": "Advisable",
+				"period": "Ιαν 2021 — Παρόν",
+				"description": "Εργασία σε σύνθετα web applications, εκσυγχρονισμός stacks και παράδοση projects σε PHP/TypeScript/Python και Nuxt 4 frontends."
+			},
+			"advisableIntern": {
+				"role": "Web Developer (Πρακτική άσκηση)",
+				"company": "Advisable",
+				"period": "Ιούλ 2020 — Ιαν 2021",
+				"description": "Ξεκίνησα στην ομάδα ως ασκούμενος, δουλεύοντας σε web applications πελατών με PHP και MySQL."
 			}
 		}
 	},
 	"about": {
 		"title": "Σχετικά με εμένα",
-		"role": "Fullstack Developer",
-		"company": "Advisable",
-		"companyAt": "στην",
+		"current": "Full Stack Engineer στον <org>Ελληνικό Στρατό</org> (στρατιωτική θητεία) και Web Developer στην <org>Advisable</org>",
 		"intro": "Γεια, είμαι ο Βασίλης, Fullstack Developer με έδρα την Αθήνα. Αναπτύσσω εφαρμογές για web, desktop και mobile, και στήνω την υποδομή που τις τρέχει.",
 		"sections": {
 			"work": {
 				"title": "Current Work @ Advisable",
 				"body": "Αυτή τη περίοδο εργάζομαι πάνω σε σύνθετα web applications, προσπαθώντας πάντα να τα εκσυγχρονίζω και να τα κρατάω updated. Έχω δουλέψει σε αυτόνομα Php/Typescript/Python stacks, παραδίδοντας πολύπλοκα projects, συμπεριλαμβανομένων ολοκληρωμένων πλατφορμών με το frontend χτισμένο εξ ολοκλήρου χρησιμοποιώντας σύγχρονες τεχνολογίες (Nuxt)."
 			},
+			"service": {
+				"title": "Στρατιωτική θητεία @ Ελληνικός Στρατός",
+				"body": "Από τον Αύγουστο του 2026 υπηρετώ ως full stack engineer στο ΚΕ.Π.Υ.Ε.Σ., αναπτύσσοντας εφαρμογές με FastAPI και Angular πάνω σε Oracle Database."
+			},
 			"projects": {
 				"title": "Projects & Infrastructure",
-				"bodyBefore": "Για περισσότερα από 4 χρόνια, παράλληλα με άλλα projects, δουλεύω πάνω σε ένα προσωπικό project: μια multi-repo e-commerce πλατφόρμα που αποτελείται από ένα Django API, Nuxt frontend και μια εφαρμογή media streaming σε NestJs. Σχετικά με το κομμάτι του DevOps, έχτισα μια microservices-based υποδομή για το",
+				"bodyBefore": "Για περισσότερα από 4 χρόνια, παράλληλα με άλλα projects, χτίζω το GrooveShop, μια πλατφόρμα e-commerce πολλαπλών καταστημάτων: ένα Django API, ένα Nuxt storefront, μια υπηρεσία media σε NestJS και ένα gateway σε Go που επιτρέπει σε AI agents να ψωνίζουν από αυτήν. Τρέχει σε παραγωγή για το",
 				"websideLabel": "webside.gr",
-				"bodyAfter": ", η οποία τρέχει σε ένα self-hosted k3s kubernetes cluster στην Hetzner, περιλαμβάνοντας ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager κ.α."
+				"bodyAfter": ", σε self-hosted k3s cluster στη Hetzner, με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
 			},
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
-				"frontend": "Vue.js, Nuxt.js (v3/v4), JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
-				"backend": "Python, Django, PHP",
+				"frontend": "Vue.js, Nuxt.js (v3/v4), Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"backend": "Python, Django, FastAPI, Go, PHP",
 				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
 			},
 			"ai": {
