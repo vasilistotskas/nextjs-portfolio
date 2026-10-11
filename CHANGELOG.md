@@ -1,3 +1,10 @@
+# [1.50.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.49.0...v1.50.0) (2026-10-11)
+
+
+### Features
+
+* **projects:** add Webside and GrooveShop case-study pages ([e8dad2d](https://github.com/vasilistotskas/nextjs-portfolio/commit/e8dad2d8884ed0aadc02ed4eb27bb10047da6eb1))
+
 # [1.49.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.48.0...v1.49.0) (2026-10-08)
 
 
