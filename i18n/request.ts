@@ -3,10 +3,12 @@ import { hasLocale } from 'next-intl'
 import { getRequestConfig } from 'next-intl/server'
 import { routing } from './routing'
 
-export default getRequestConfig(async () => {
-	// `locale` is a root param: `app/[locale]` sits above the root layout, so it
-	// is readable from any Server Component without threading it through props.
-	const requested = await localeParam()
+export default getRequestConfig(async ({ locale: override }) => {
+	// A caller that names a locale (`getTranslations({ locale })`, as Route
+	// Handlers and Server Actions must) gets that one. Otherwise `locale` is a
+	// root param: `app/[locale]` sits above the root layout, so it is readable
+	// from any Server Component without threading it through props.
+	const requested = override ?? (await localeParam())
 
 	// Must stay total: this config is also evaluated while rendering Next.js'
 	// built-in 404 for paths that never matched a locale, where there is no root
