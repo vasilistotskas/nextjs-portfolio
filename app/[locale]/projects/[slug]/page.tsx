@@ -47,15 +47,14 @@ async function MetricTiles({ metrics }: { metrics: Metrics }) {
 	const values = formatMetrics(await getFormatter(), metrics)
 
 	const tiles = [
-		{ label: t('orders'), value: values.orders },
-		{ label: t('revenue'), value: values.revenue },
-		{ label: t('averageOrder'), value: values.averageOrder },
+		{ label: t('orders'), value: t('ordersValue', { value: values.orders }) },
+		{ label: t('revenue'), value: t('revenueValue', { value: values.revenue }) },
 		{ label: t('since'), value: values.since }
 	]
 
 	return (
 		<section className="mt-10">
-			<dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
+			<dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
 				{tiles.map(({ label, value }) => (
 					<div key={label} className="glass terminal-border rounded-lg p-4">
 						<dt className="text-terminal-muted font-mono text-[11px]">{label}</dt>
@@ -65,9 +64,7 @@ async function MetricTiles({ metrics }: { metrics: Metrics }) {
 					</div>
 				))}
 			</dl>
-			<p className="text-terminal-muted mt-3 font-sans text-xs">
-				{t('note', { date: values.asOf })}
-			</p>
+			<p className="text-terminal-muted mt-3 font-sans text-xs">{t('note')}</p>
 		</section>
 	)
 }

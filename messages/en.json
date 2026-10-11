@@ -88,7 +88,7 @@
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "A production store on GrooveShop: {orders} orders and {revenue} in revenue since May 2026. It runs every layer of the map on a self-hosted Hetzner k3s cluster with Argo CD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
+				"description": "A production store on GrooveShop: {orders}+ orders and €{revenue}+ in revenue since May 2026. It runs every layer of the map on a self-hosted Hetzner k3s cluster with Argo CD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
 			}
 		}
 	},
@@ -100,10 +100,11 @@
 		"contact": "Want something like this? Get in touch",
 		"metrics": {
 			"orders": "Orders",
+			"ordersValue": "{value}+",
 			"revenue": "Revenue",
-			"averageOrder": "Average order",
+			"revenueValue": "€{value}+",
 			"since": "Trading since",
-			"note": "From the production database on {date}. Cancelled and returned orders are not counted."
+			"note": "Rounded down, from the production database. Cancelled and returned orders are not counted."
 		},
 		"shots": {
 			"home": "Home page",

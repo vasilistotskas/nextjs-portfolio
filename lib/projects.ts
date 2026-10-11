@@ -15,13 +15,14 @@ export type Viewport = 'desktop' | 'mobile'
 /** One screenshot, taken from `path` on the project's live site. */
 export type Shot = { name: string; path: string; viewport: Viewport }
 
-/** Production figures, read from the store's database on `asOf`. */
+/**
+ * Production figures as round lower bounds, not exact counts: they stay true
+ * while the store keeps trading, and the exact numbers are not for publishing.
+ */
 export type Metrics = {
-	asOf: string
 	since: string
 	orders: number
 	revenueEur: number
-	averageOrderEur: number
 }
 
 export type Project = {
@@ -76,14 +77,13 @@ export const projects: readonly Project[] = [
 			{ name: 'blog', path: '/blog', viewport: 'desktop' },
 			{ name: 'mobile', path: '/', viewport: 'mobile' }
 		],
-		// Orders that were neither cancelled nor returned. January to April were
-		// test orders of a euro or two, so the count starts in May.
+		// Orders that were neither cancelled nor returned, rounded down. January
+		// to April were test orders of a euro or two, so trading starts in May.
+		// Last read from the production database on 2026-10-11.
 		metrics: {
-			asOf: '2026-10-11',
 			since: '2026-05-01',
 			orders: 200,
-			revenueEur: 6000,
-			averageOrderEur: 25
+			revenueEur: 6000
 		}
 	},
 	{
@@ -134,16 +134,15 @@ export const projects: readonly Project[] = [
 	}
 ]
 
-/** The metrics as display strings, in the formatter's locale. */
+/**
+ * The metrics as numbers in the formatter's locale. The messages add the `+`
+ * and the currency sign, whose placement differs between languages.
+ */
 export function formatMetrics(format: ReturnType<typeof useFormatter>, metrics: Metrics) {
-	const euro = { style: 'currency', currency: 'EUR' } as const
-
 	return {
 		orders: format.number(metrics.orders),
-		revenue: format.number(metrics.revenueEur, { ...euro, maximumFractionDigits: 0 }),
-		averageOrder: format.number(metrics.averageOrderEur, euro),
-		since: format.dateTime(new Date(metrics.since), { month: 'short', year: 'numeric' }),
-		asOf: format.dateTime(new Date(metrics.asOf), { dateStyle: 'long' })
+		revenue: format.number(metrics.revenueEur),
+		since: format.dateTime(new Date(metrics.since), { month: 'short', year: 'numeric' })
 	}
 }
 
