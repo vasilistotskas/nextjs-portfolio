@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getTranslations } from 'next-intl/server'
-import { buildPageMetadata } from '@/lib/seo'
+import { getLocale, getTranslations } from 'next-intl/server'
+import { buildPageMetadata, buildPerson, siteUrl } from '@/lib/seo'
+import JsonLd from '@/components/seo/JsonLd'
 import { useLocale, useTranslations } from 'next-intl'
 import {
 	MapPin,
@@ -260,6 +261,24 @@ function AboutContent() {
 	)
 }
 
-export default function AboutPage() {
-	return <AboutContent />
+export default async function AboutPage() {
+	const locale = await getLocale()
+	const url = `${siteUrl}/${locale}/about`
+
+	// An "About me" page is the case Google's ProfilePage markup is meant for.
+	const profile = {
+		'@context': 'https://schema.org',
+		'@type': 'ProfilePage',
+		'@id': `${url}#profile`,
+		url,
+		inLanguage: locale,
+		mainEntity: await buildPerson()
+	}
+
+	return (
+		<>
+			<JsonLd data={profile} />
+			<AboutContent />
+		</>
+	)
 }

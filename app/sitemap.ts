@@ -16,11 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			routing.locales.map((locale) => [locale, `${siteUrl}/${locale}${route}`])
 		)
 
+		// No `lastModified`: Google only trusts it when it is verifiably accurate,
+		// and a build timestamp marked every page changed on every deploy. It
+		// ignores `changeFrequency` and `priority` outright.
 		return routing.locales.map((locale) => ({
 			url: `${siteUrl}/${locale}${route}`,
-			lastModified: new Date(),
-			changeFrequency: 'monthly' as const,
-			priority: route === '' ? 1 : 0.8,
 			alternates: {
 				languages
 			}

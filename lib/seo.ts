@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { hasLocale } from 'next-intl'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { skillGroups } from '@/lib/stack'
 
 type Locale = (typeof routing.locales)[number]
 
@@ -12,6 +13,9 @@ export const siteDescription =
 	'Fullstack Developer building applications for web, desktop and mobile, and the infrastructure that runs them. Python, Django, Go, Nuxt, Vue, Next.js.'
 
 const OG_IMAGE = '/banner.png'
+
+/** One identity for the person across every page's structured data. */
+export const personId = `${siteUrl}/#person`
 
 /** BCP-47-ish Open Graph locale identifiers, keyed by app locale. */
 const OG_LOCALES: Record<Locale, string> = {
@@ -81,5 +85,58 @@ export async function buildPageMetadata({
 			description,
 			images: [image]
 		}
+	}
+}
+
+/**
+ * The schema.org Person this site is about. The layout puts it in every page's
+ * graph and the About page makes it the `mainEntity` of its ProfilePage; both
+ * share `personId`, so search engines merge them into one entity.
+ */
+export async function buildPerson() {
+	const t = await getTranslations('common')
+	const th = await getTranslations('hero')
+	const ta = await getTranslations('about')
+	const current = await getLocale()
+
+	// The name as written in the other languages, so `Βασίλης Τότσκας` and
+	// `Vasilis Totskas` resolve to the same person whichever one is searched.
+	const otherNames = await Promise.all(
+		routing.locales
+			.filter((locale) => locale !== current)
+			.map(async (locale) =>
+				(await getTranslations({ locale, namespace: 'common' }))('myName')
+			)
+	)
+
+	return {
+		'@type': 'Person',
+		'@id': personId,
+		name: t('myName'),
+		alternateName: [...otherNames, t('myUserName')],
+		url: siteUrl,
+		image: `${siteUrl}/avatar.jpg`,
+		description: th('metaDescription'),
+		jobTitle: 'Full Stack Engineer',
+		// Both current: military service runs alongside Advisable.
+		worksFor: [
+			{ '@type': 'Organization', name: 'Greek Army' },
+			{ '@type': 'Organization', name: 'Advisable' }
+		],
+		alumniOf: { '@type': 'CollegeOrUniversity', name: ta('education.school') },
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Athens',
+			addressCountry: 'GR'
+		},
+		knowsAbout: skillGroups.flatMap((group) =>
+			group.skills.filter((skill) => skill.daily).map((skill) => skill.name)
+		),
+		knowsLanguage: [...routing.locales],
+		sameAs: [
+			`https://github.com/${t('myUserName')}`,
+			`https://linkedin.com/in/${t('myUserName')}`,
+			'https://x.com/vasilis_totskas'
+		]
 	}
 }

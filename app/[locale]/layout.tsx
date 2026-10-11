@@ -7,7 +7,8 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google'
 import { routing } from '@/i18n/routing'
-import { siteDescription, siteUrl } from '@/lib/seo'
+import { buildPerson, siteDescription, siteUrl } from '@/lib/seo'
+import JsonLd from '@/components/seo/JsonLd'
 import Providers from '@/components/providers/Providers'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -119,24 +120,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 				description: siteDescription,
 				inLanguage: [...routing.locales]
 			},
-			{
-				'@type': 'Person',
-				'@id': `${siteUrl}/#person`,
-				name: t('myName'),
-				url: siteUrl,
-				jobTitle: 'Full Stack Engineer',
-				// Both current: military service runs alongside Advisable.
-				worksFor: [
-					{ '@type': 'Organization', name: 'Greek Army' },
-					{ '@type': 'Organization', name: 'Advisable' }
-				],
-				sameAs: [
-					`https://github.com/${t('myUserName')}`,
-					`https://linkedin.com/in/${t('myUserName')}`,
-					'https://x.com/vasilis_totskas'
-				],
-				knowsLanguage: [...routing.locales]
-			}
+			await buildPerson()
 		]
 	}
 
@@ -147,10 +131,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
 	return (
 		<html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
 			<head>
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-				/>
+				<JsonLd data={jsonLd} />
 			</head>
 			<body
 				className={`${plexSans.variable} ${jetbrainsMono.variable} bg-terminal-bg text-terminal-text antialiased`}
