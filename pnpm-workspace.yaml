@@ -38,3 +38,12 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - unrs-resolver
+# These plugins cap their eslint peer at 9 and have shipped nothing since.
+# eslint-config-next >=16.4.0 patches back the rule-context members ESLint 10
+# removed (dist/rule-context.js), so they run correctly on 10. Pinned to the
+# exact plugin versions: a new release no longer matches and must prove itself.
+peerDependencyRules:
+  allowedVersions:
+    eslint-plugin-react@7.37.5>eslint: '10'
+    eslint-plugin-jsx-a11y@6.10.2>eslint: '10'
+    eslint-plugin-import@2.32.0>eslint: '10'
