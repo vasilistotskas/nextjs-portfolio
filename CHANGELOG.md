@@ -1,3 +1,16 @@
+# [1.51.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.50.0...v1.51.0) (2026-10-11)
+
+
+### Bug Fixes
+
+* **i18n:** honour an explicit locale in the request config ([c2683a6](https://github.com/vasilistotskas/nextjs-portfolio/commit/c2683a64fcacc57e88db9c2368c7736c8d8e8075))
+* **projects:** show rounded figures and keep tech terms in English ([5f4cb6a](https://github.com/vasilistotskas/nextjs-portfolio/commit/5f4cb6af5da4328fc5ad1ee6c5b1e22f8acd8f4f))
+
+
+### Features
+
+* **seo:** describe the person in structured data, and drop sitemap lastmod ([cf13814](https://github.com/vasilistotskas/nextjs-portfolio/commit/cf1381448ee02634ecb0aa7887b02846cddab06a))
+
 # [1.50.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.49.0...v1.50.0) (2026-10-11)
 
 
