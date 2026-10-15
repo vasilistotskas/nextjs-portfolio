@@ -161,7 +161,7 @@
 
 ### Bug Fixes
 
-* **eslint:** downgrade to 9 and use Next.js 16 flat config ([0a66057](https://github.com/vasilistotskas/nextjs-portfolio/commit/0a66057540b4423c364f42fcebf6db07161e7207)), closes [jsx-eslint/eslint-plugin-react#3977](https://github.com/jsx-eslint/eslint-plugin-react/issues/3977)
+* **eslint:** downgrade to 9 and use Next.js flat config ([0a66057](https://github.com/vasilistotskas/nextjs-portfolio/commit/0a66057540b4423c364f42fcebf6db07161e7207)), closes [jsx-eslint/eslint-plugin-react#3977](https://github.com/jsx-eslint/eslint-plugin-react/issues/3977)
 
 # [1.39.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.38.1...v1.39.0) (2026-04-28)
 

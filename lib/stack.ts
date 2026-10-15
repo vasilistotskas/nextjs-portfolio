@@ -16,6 +16,7 @@ export const layers = [
 	'media',
 	'api',
 	'database',
+	'meilisearch',
 	'cache',
 	'queue',
 	'workers',
@@ -38,7 +39,7 @@ export function maskToLayers(value: number): Layer[] {
  */
 export const projectLayers = {
 	webside: mask(...layers),
-	grooveshop: mask('browser', 'frontend', 'media', 'api', 'database', 'cache'),
+	grooveshop: mask('browser', 'frontend', 'media', 'api', 'database', 'meilisearch', 'cache'),
 	portfolio: mask('browser', 'edge', 'frontend', 'api')
 } as const
 
@@ -63,7 +64,7 @@ export const skillGroups: readonly SkillGroup[] = [
 		layers: ['browser', 'frontend'],
 		skills: [
 			{ name: 'Vue.js', daily: true },
-			{ name: 'Nuxt (v3/v4)', daily: true },
+			{ name: 'Nuxt', daily: true },
 			{ name: 'TypeScript', daily: true },
 			{ name: 'Tailwind CSS', daily: true },
 			{ name: 'JavaScript' },

@@ -53,7 +53,7 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 `lib/spotify.ts` caches the access token for 55 minutes; before that it refreshed on every single NowPlaying poll. On `invalid_grant` it mails via Resend (`lib/spotify-alert.ts`) and warns 21 days before expiry, deduping through `alertedAt` in the store because module state is per-instance. `.github/workflows/spotify-health.yml` polls the public endpoint twice a month as a backstop that shares no dependency with the mail path.
 
 - There is no `api/github` route: `components/ui/GitHubStats.tsx` is a Server Component that calls the GitHub API directly.
-- Routes run on the default Node runtime. Do not add `export const runtime = 'edge'` — it is deprecated in Next.js 16 and also opts the route out of static generation.
+- Routes run on the default Node runtime. Do not add `export const runtime = 'edge'` — it is deprecated in Next.js and also opts the route out of static generation.
 
 ### Metadata & SEO
 

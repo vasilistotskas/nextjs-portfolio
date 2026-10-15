@@ -7,7 +7,7 @@
 	},
 	"hero": {
 		"name": "Vasilis Totskas",
-		"summary": "I develop applications and build the infrastructure that runs them.",
+		"summary": "Software Engineer",
 		"location": "Athens, GR",
 		"cta": {
 			"projects": "See the work",
@@ -64,7 +64,7 @@
 	},
 	"skills": {
 		"title": "Skills",
-		"intro": "Grouped by the layers a request travels through, rather than by job title.",
+		"intro": "Grouped by layers.",
 		"legend": "Bold is what I work with daily."
 	},
 	"projects": {
@@ -80,11 +80,11 @@
 		"items": {
 			"portfolio": {
 				"name": "This portfolio",
-				"description": "Next.js 16, React 19 and Tailwind v4, in two languages. The hero is a WebGPU shader drawing the same layer map the rest of the site is organised around."
+				"description": "Next.js, React and Tailwind, in two languages. The hero is a WebGPU shader drawing the same layer map the rest of the site is organised around."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "A multi-tenant e-commerce platform built over four years: every store gets its own database schema behind one Django REST API, with a Nuxt 4 storefront, a NestJS media service and a Go agent gateway that makes each store shoppable by AI agents over MCP. Promotions, gift cards, loyalty and B2B pricing are built in."
+				"description": "A multi-tenant e-commerce platform built over four years: every store gets its own database schema behind one Django REST API, with a Nuxt storefront, a NestJS media service and a Go agent gateway that makes each store shoppable by AI agents over MCP. Promotions, gift cards, loyalty and B2B pricing are built in."
 			},
 			"webside": {
 				"name": "Webside.gr",
@@ -118,7 +118,7 @@
 			"webside": {
 				"title": "Webside.gr, a store in production",
 				"summary": "Webside is a Greek store for phone and computer accessories that runs on GrooveShop, the platform I build. I write the software and operate everything under it, from the Kubernetes cluster to the release pipeline.",
-				"stack": "Nuxt 4 · Django 6 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
 				"sections": {
 					"store": {
 						"title": "The store",
@@ -137,7 +137,7 @@
 			"grooveshop": {
 				"title": "GrooveShop, a multi-tenant commerce platform",
 				"summary": "GrooveShop is the e-commerce platform I've been building for more than four years. One deployment runs many stores: each gets its own database schema, domain, theme, and payment and courier credentials, and turns features such as loyalty, gift cards or B2B on and off.",
-				"stack": "Django 6 · DRF · django-tenants · Channels · Nuxt 4 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery",
+				"stack": "Django · DRF · django-tenants · Channels · Nuxt · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery",
 				"sections": {
 					"platform": {
 						"title": "One platform, many stores",
@@ -153,7 +153,7 @@
 					},
 					"services": {
 						"title": "The services",
-						"body": "A Django REST API holds the business logic and data. The Nuxt 4 storefront renders on the server, and its Nitro layer validates every request with Zod before proxying it to Django. A NestJS service resizes and serves images, the Go gateway serves agents, and a documentation site covers both the admin panel and the internals."
+						"body": "A Django REST API holds the business logic and data. The Nuxt storefront renders on the server, and its Nitro layer validates every request with Zod before proxying it to Django. A NestJS service resizes and serves images, the Go gateway serves agents, and a documentation site covers both the admin panel and the internals."
 					}
 				}
 			}
@@ -173,7 +173,7 @@
 				"role": "Web Developer",
 				"company": "Advisable",
 				"period": "Jan 2021 — Present",
-				"description": "Working on complex web applications, modernizing stacks and delivering projects on standalone PHP, TypeScript and Python stacks and Nuxt 4 frontends."
+				"description": "Working on complex web applications, modernizing stacks and delivering projects on standalone PHP, TypeScript and Python stacks and Nuxt frontends."
 			},
 			"advisableIntern": {
 				"role": "Web Developer (Internship)",
@@ -190,7 +190,7 @@
 		"sections": {
 			"work": {
 				"title": "Current Work @ Advisable",
-				"body": "I am working on complex web applications, always striving to modernize our stacks. I've also worked on standalone Php/Typescript/Python stacks, delivering complex projects for our clients, including comprehensive platforms frontend built entirely on Nuxt 4."
+				"body": "I am working on complex web applications, always striving to modernize our stacks. I've also worked on standalone Php/Typescript/Python stacks, delivering complex projects for our clients, including comprehensive platforms frontend built entirely on Nuxt."
 			},
 			"service": {
 				"title": "Military Service @ Greek Army",
@@ -205,7 +205,7 @@
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
-				"frontend": "Vue.js, Nuxt.js (v3/v4), Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"frontend": "Vue.js, Nuxt.js, Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
 				"backend": "Python, Django, FastAPI, Go, PHP",
 				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
 			},
@@ -249,7 +249,7 @@
 	},
 	"contact": {
 		"title": "Contact",
-		"description": "Messages land in my inbox. I read every one and reply, in English or Greek.",
+		"description": "Messages land in my inbox.",
 		"metaDescription": "{name} — Fullstack Developer based in Athens, Greece. Get in touch about application development, infrastructure work, or collaborations.",
 		"info": {
 			"email": "Email",

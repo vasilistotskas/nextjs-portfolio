@@ -110,7 +110,7 @@ const serverTheme = (): Theme => DEFAULT_THEME
  * Replaces next-themes.
  *
  * next-themes renders its pre-paint `<script>` inside the React tree. A script
- * created during a *client* render never executes, and React 19 warns about it —
+ * created during a *client* render never executes, and React warns about it —
  * which is what appeared every time the locale switched and that subtree
  * remounted. `useServerInsertedHTML` puts the same script in `<head>` during SSR
  * only, so there is no script element in the client tree at all.

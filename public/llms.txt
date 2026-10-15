@@ -4,7 +4,7 @@
 
 Working professionally since 2020 at Advisable, where he started as an intern and is a web developer today. Since August 2026 he is also serving his military service as a full stack engineer in the Greek Army (ΚΕ.Π.Υ.Ε.Σ.), working with FastAPI and Angular. He holds a Computer Engineering degree from the University of Western Macedonia and is certified by Google and TestDome. He works in English and Greek, and the site is published in both.
 
-The work groups into four layers. Interface: Vue.js, Nuxt (v3/v4), TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Angular, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus FastAPI, NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
+The work groups into four layers. Interface: Vue.js, Nuxt, TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Angular, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus FastAPI, NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
 
 ## Pages
 
@@ -21,10 +21,10 @@ The work groups into four layers. Interface: Vue.js, Nuxt (v3/v4), TypeScript an
 - [GrooveShop demo](https://demo.grooveshop.space/): Live demo of the GrooveShop platform
 - [GrooveShop docs](https://docs.grooveshop.space): Admin guide and developer documentation for the platform
 - [GrooveShop API](https://github.com/vasilistotskas/grooveshop-django-api): Django REST backend — business logic, auth and data
-- [GrooveShop storefront](https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt): Nuxt 4 storefront with SSR, proxying to the Django API through Nitro
+- [GrooveShop storefront](https://github.com/vasilistotskas/grooveshop-storefront-ui-node-nuxt): Nuxt storefront with SSR, proxying to the Django API through Nitro
 - [GrooveShop media stream](https://github.com/vasilistotskas/grooveshop-media-stream): NestJS image processing and media delivery microservice
 - [GrooveShop agent gateway](https://github.com/vasilistotskas/grooveshop-agent-gateway): Go service making every tenant storefront shoppable by AI agents over MCP, with UCP/ACP surfaces, product feeds and a chatbot backend
-- [This portfolio](https://github.com/vasilistotskas/nextjs-portfolio): Next.js 16, React 19 and Tailwind v4 in two languages, with a WebGPU hero rendered through vgpu
+- [This portfolio](https://github.com/vasilistotskas/nextjs-portfolio): Next.js, React and Tailwind in two languages, with a WebGPU hero rendered through vgpu
 
 ## Profiles
 

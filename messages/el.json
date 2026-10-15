@@ -7,7 +7,7 @@
 	},
 	"hero": {
 		"name": "Βασίλης Τότσκας",
-		"summary": "Αναπτύσσω εφαρμογές και στήνω την υποδομή που τις τρέχει.",
+		"summary": "Software Engineer",
 		"location": "Αθήνα, Ελλάδα",
 		"cta": {
 			"projects": "Δες τη δουλειά μου",
@@ -64,12 +64,12 @@
 	},
 	"skills": {
 		"title": "Δεξιότητες",
-		"intro": "Ομαδοποιημένες ανά επίπεδο από το οποίο περνάει ένα request, όχι ανά τίτλο θέσης.",
+		"intro": "Ομαδοποιημένες ανά επίπεδο.",
 		"legend": "Με έντονα γράμματα όσα χρησιμοποιώ καθημερινά."
 	},
 	"projects": {
 		"title": "Projects",
-		"intro": "Τρία συστήματα, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
+		"intro": "Τρία projects, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
 		"viewDemo": "Live site",
 		"docs": "Docs",
 		"caseStudy": "Case study",
@@ -80,11 +80,11 @@
 		"items": {
 			"portfolio": {
 				"name": "Αυτό το portfolio",
-				"description": "Next.js 16, React 19 και Tailwind v4, σε δύο γλώσσες. Το hero είναι ένας WebGPU shader που σχεδιάζει τον ίδιο χάρτη επιπέδων γύρω από τον οποίο είναι οργανωμένο το υπόλοιπο site."
+				"description": "Next.js, React και Tailwind, σε δύο γλώσσες. Το hero είναι ένας WebGPU shader που σχεδιάζει τον ίδιο χάρτη επιπέδων γύρω από τον οποίο είναι οργανωμένο το υπόλοιπο site."
 			},
 			"grooveshop": {
 				"name": "GrooveShop E-commerce",
-				"description": "Multi-tenant e-commerce πλατφόρμα, χτισμένη μέσα σε τέσσερα χρόνια: κάθε κατάστημα έχει το δικό του database schema πίσω από ένα κοινό Django REST API, με Nuxt 4 storefront, NestJS media service και agent gateway σε Go που κάνει κάθε κατάστημα προσβάσιμο σε AI agents μέσω MCP. Promotions, δωροκάρτες, loyalty και B2B τιμές είναι built in."
+				"description": "Multi-tenant e-commerce πλατφόρμα, χτισμένη μέσα σε τέσσερα χρόνια: κάθε κατάστημα έχει το δικό του database schema πίσω από ένα κοινό Django REST API, με Nuxt storefront, NestJS media service και agent gateway σε Go που κάνει κάθε κατάστημα προσβάσιμο σε AI agents μέσω MCP. Promotions, δωροκάρτες, loyalty και B2B τιμές είναι built in."
 			},
 			"webside": {
 				"name": "Webside.gr",
@@ -118,7 +118,7 @@
 			"webside": {
 				"title": "Webside.gr, ένα κατάστημα σε παραγωγή",
 				"summary": "Το Webside είναι ελληνικό κατάστημα με αξεσουάρ κινητών και υπολογιστών που τρέχει πάνω στο GrooveShop, την πλατφόρμα που χτίζω. Γράφω το λογισμικό και λειτουργώ ό,τι βρίσκεται από κάτω, από το Kubernetes cluster μέχρι το release pipeline.",
-				"stack": "Nuxt 4 · Django 6 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
 				"sections": {
 					"store": {
 						"title": "Το κατάστημα",
@@ -137,7 +137,7 @@
 			"grooveshop": {
 				"title": "GrooveShop, μια multi-tenant e-commerce πλατφόρμα",
 				"summary": "Το GrooveShop είναι η e-commerce πλατφόρμα που χτίζω εδώ και περισσότερα από τέσσερα χρόνια. Μία εγκατάσταση τρέχει πολλά καταστήματα: το καθένα έχει δικό του database schema, domain, theme και credentials πληρωμών και courier, και ενεργοποιεί ή απενεργοποιεί λειτουργίες όπως loyalty, δωροκάρτες ή B2B.",
-				"stack": "Django 6 · DRF · django-tenants · Channels · Nuxt 4 · NestJS · Go · PostgreSQL 18 · Redis · Meilisearch · RabbitMQ · Celery",
+				"stack": "Django · DRF · django-tenants · Channels · Nuxt · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery",
 				"sections": {
 					"platform": {
 						"title": "Μία πλατφόρμα, πολλά stores",
@@ -153,7 +153,7 @@
 					},
 					"services": {
 						"title": "Τα services",
-						"body": "Ένα Django REST API κρατάει τη λογική και τα δεδομένα. Το Nuxt 4 storefront κάνει server-side rendering, και το Nitro layer του κάνει validate κάθε request με Zod πριν το προωθήσει στο Django. Ένα NestJS service κάνει resize και serve τις εικόνες, το gateway σε Go εξυπηρετεί τους agents, και ένα docs site καλύπτει τόσο το admin panel όσο και τα internals της πλατφόρμας."
+						"body": "Ένα Django REST API κρατάει τη λογική και τα δεδομένα. Το Nuxt storefront κάνει server-side rendering, και το Nitro layer του κάνει validate κάθε request με Zod πριν το προωθήσει στο Django. Ένα NestJS service κάνει resize και serve τις εικόνες, το gateway σε Go εξυπηρετεί τους agents, και ένα docs site καλύπτει τόσο το admin panel όσο και τα internals της πλατφόρμας."
 					}
 				}
 			}
@@ -173,7 +173,7 @@
 				"role": "Web Developer",
 				"company": "Advisable",
 				"period": "Ιαν 2021 — Παρόν",
-				"description": "Εργασία σε σύνθετα web applications, εκσυγχρονισμός stacks και παράδοση projects σε PHP/TypeScript/Python και Nuxt 4 frontends."
+				"description": "Εργασία σε σύνθετα web applications, εκσυγχρονισμός stacks και παράδοση projects σε PHP/TypeScript/Python και Nuxt frontends."
 			},
 			"advisableIntern": {
 				"role": "Web Developer (Internship)",
@@ -205,7 +205,7 @@
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
-				"frontend": "Vue.js, Nuxt.js (v3/v4), Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
+				"frontend": "Vue.js, Nuxt.js, Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
 				"backend": "Python, Django, FastAPI, Go, PHP",
 				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
 			},
@@ -249,7 +249,7 @@
 	},
 	"contact": {
 		"title": "Επικοινωνία",
-		"description": "Τα μηνύματα φτάνουν στο inbox μου. Τα διαβάζω όλα και απαντάω, στα Ελληνικά ή στα Αγγλικά.",
+		"description": "Τα μηνύματα φτάνουν στο inbox μου.",
 		"metaDescription": "{name} — Fullstack Developer από την Αθήνα. Επικοινωνήστε για ανάπτυξη εφαρμογών, υποδομές ή συνεργασίες.",
 		"info": {
 			"email": "Email",

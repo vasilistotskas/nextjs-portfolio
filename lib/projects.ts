@@ -82,8 +82,8 @@ export const projects: readonly Project[] = [
 		// Last read from the production database on 2026-10-11.
 		metrics: {
 			since: '2026-05-01',
-			orders: 200,
-			revenueEur: 6000
+			orders: 250,
+			revenueEur: 7000
 		}
 	},
 	{
