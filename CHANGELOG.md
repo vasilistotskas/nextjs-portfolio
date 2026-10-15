@@ -1,3 +1,10 @@
+## [1.51.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.51.0...v1.51.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* remove stack versions ([0ed5e98](https://github.com/vasilistotskas/nextjs-portfolio/commit/0ed5e98a8ae37b281aec4e89ee1f86b6df3a864e))
+
 # [1.51.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.50.0...v1.51.0) (2026-10-11)
 
 
