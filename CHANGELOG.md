@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.51.1...v1.52.0) (2026-10-16)
+
+
+### Features
+
+* **projects:** add Ek fyseos Fytias, a carousel and a projects index ([b0221be](https://github.com/vasilistotskas/nextjs-portfolio/commit/b0221be0931ab041ecee2c5995c73f1f558d23e2))
+
 ## [1.51.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.51.0...v1.51.1) (2026-10-15)
 
 
