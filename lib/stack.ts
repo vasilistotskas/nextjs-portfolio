@@ -39,7 +39,16 @@ export function maskToLayers(value: number): Layer[] {
  */
 export const projectLayers = {
 	webside: mask(...layers),
-	grooveshop: mask('browser', 'frontend', 'media', 'api', 'database', 'meilisearch', 'cache'),
+	ekfyseosfyteias: mask(...layers),
+	grooveshop: mask(
+		'browser',
+		'frontend',
+		'media',
+		'api',
+		'database',
+		'meilisearch',
+		'cache'
+	),
 	portfolio: mask('browser', 'edge', 'frontend', 'api')
 } as const
 
@@ -114,7 +123,11 @@ export const skillGroups: readonly SkillGroup[] = [
 			{ name: 'Hetzner' },
 			{ name: 'Vercel' },
 			{ name: 'Longhorn' },
-			{ name: 'Cert-Manager' }
+			{ name: 'Cert-Manager' },
+			{ name: 'Sealed Secrets' },
+			{ name: 'Grafana' },
+			{ name: 'VictoriaMetrics' },
+			{ name: 'VictoriaLogs' }
 		]
 	}
 ]

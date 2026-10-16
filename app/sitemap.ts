@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = [
 		'',
 		'/about',
+		'/projects',
 		'/contact',
 		...caseStudies.map((project) => `/projects/${project.key}`)
 	]

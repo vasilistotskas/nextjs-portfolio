@@ -23,6 +23,7 @@
 			"media": "media",
 			"api": "api",
 			"database": "database",
+			"meilisearch": "search",
 			"cache": "cache",
 			"queue": "queue",
 			"workers": "workers",
@@ -69,7 +70,12 @@
 	},
 	"projects": {
 		"title": "Projects",
-		"intro": "Τρία projects, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
+		"intro": "Τέσσερα projects, με σειρά ανάλογη με το πόσο μεγάλο μέρος του stack τρέχουν.",
+		"metaDescription": "Καταστήματα σε παραγωγή, μια open source πλατφόρμα e-commerce και αυτό το portfolio: τι έχω φτιάξει και ποια επίπεδα τρέχει το καθένα.",
+		"viewAll": "Δες και τα {count} projects",
+		"previous": "Προηγούμενο project",
+		"next": "Επόμενο project",
+		"carouselLabel": "Περισσότερα projects",
 		"viewDemo": "Live site",
 		"docs": "Docs",
 		"caseStudy": "Case study",
@@ -78,6 +84,10 @@
 			"oss": "Open source"
 		},
 		"items": {
+			"ekfyseosfyteias": {
+				"name": "Εκ φύσεως Φυτειάς",
+				"description": "Το site μιας κοινωνικής συνεταιριστικής επιχείρησης γυναικών στη Φυτειά Ημαθίας, με μαρμελάδες, γλυκά του κουταλιού και τραχανά. Ακόμα ένας tenant του GrooveShop: δικό του schema, domain και theme, πάνω στο ίδιο API, storefront και cluster με το Webside."
+			},
 			"portfolio": {
 				"name": "Αυτό το portfolio",
 				"description": "Next.js, React και Tailwind, σε δύο γλώσσες. Το hero είναι ένας WebGPU shader που σχεδιάζει τον ίδιο χάρτη επιπέδων γύρω από τον οποίο είναι οργανωμένο το υπόλοιπο site."
@@ -88,7 +98,7 @@
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "Κατάστημα σε παραγωγή πάνω στο GrooveShop: {orders}+ παραγγελίες και {revenue}+ € έσοδα από τον Μάιο του 2026. Τρέχει κάθε επίπεδο του χάρτη σε self-hosted k3s cluster στη Hetzner, με Argo CD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
+				"description": "Κατάστημα σε παραγωγή πάνω στο GrooveShop: {orders}+ παραγγελίες και {revenue}+ € έσοδα από τον Μάιο του 2026. Τρέχει κάθε επίπεδο του χάρτη σε self-hosted k3s cluster στη Hetzner, με Argo CD, Longhorn, RabbitMQ, Celery, Redis, Meilisearch και Cert-Manager, με παρακολούθηση μέσω Grafana και VictoriaMetrics."
 			}
 		}
 	},
@@ -112,13 +122,15 @@
 			"blog": "Blog",
 			"loyalty": "Πρόγραμμα επιβράβευσης",
 			"gift-cards": "Δωροκάρτες",
-			"mobile": "Αρχική σελίδα σε κινητό"
+			"mobile": "Αρχική σελίδα σε κινητό",
+			"cellar": "Προϊόντα",
+			"about": "Ποιες είμαστε"
 		},
 		"items": {
 			"webside": {
 				"title": "Webside.gr, ένα κατάστημα σε παραγωγή",
 				"summary": "Το Webside είναι ελληνικό κατάστημα με αξεσουάρ κινητών και υπολογιστών που τρέχει πάνω στο GrooveShop, την πλατφόρμα που χτίζω. Γράφω το λογισμικό και λειτουργώ ό,τι βρίσκεται από κάτω, από το Kubernetes cluster μέχρι το release pipeline.",
-				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare · Grafana · VictoriaMetrics",
 				"sections": {
 					"store": {
 						"title": "Το κατάστημα",
@@ -130,7 +142,26 @@
 					},
 					"operations": {
 						"title": "Operations",
-						"body": "Όλα τρέχουν σε self-hosted k3s cluster στη Hetzner, που έστησα και λειτουργώ. Το Argo CD κάνει deploy από το Git. Πριν βγει ένα release, ένα pre-sync job ελέγχει ότι τα migrations είναι ασφαλή, κάνει migrate κάθε κατάστημα, κάνει collectstatic και εφαρμόζει τα settings του search index. Μετά, post-sync jobs κάνουν purge την edge cache του Cloudflare και warm-up το storefront.\n\nΤο Longhorn δίνει τα volumes, το Cert-Manager ανανεώνει τα TLS certificates, τα Sealed Secrets κρατούν encrypted τα credentials στο Git, και το VictoriaMetrics ειδοποιεί όταν κάτι ξεφεύγει."
+						"body": "Όλα τρέχουν σε self-hosted k3s cluster στη Hetzner, που έστησα και λειτουργώ. Το Argo CD κάνει deploy από το Git. Πριν βγει ένα release, ένα pre-sync job ελέγχει ότι τα migrations είναι ασφαλή, κάνει migrate κάθε κατάστημα, κάνει collectstatic και εφαρμόζει τα settings του search index. Μετά, post-sync jobs κάνουν purge την edge cache του Cloudflare και warm-up το storefront.\n\nΤο Longhorn δίνει τα volumes, το Cert-Manager ανανεώνει τα TLS certificates, τα Sealed Secrets κρατούν encrypted τα credentials στο Git, το VictoriaMetrics με το Grafana παρακολουθεί το cluster και ειδοποιεί όταν κάτι ξεφεύγει, ενώ το VictoriaLogs κρατά τα logs."
+					}
+				}
+			},
+			"ekfyseosfyteias": {
+				"title": "Εκ φύσεως Φυτειάς, το site ενός συνεταιρισμού πάνω στην πλατφόρμα",
+				"summary": "Μια κοινωνική συνεταιριστική επιχείρηση γυναικών στη Φυτειά Ημαθίας φτιάχνει μαρμελάδες, γλυκά του κουταλιού και τραχανά. Αντικατέστησα τα δύο χαλασμένα sites της με ένα πάνω στο GrooveShop: ελληνικό και αγγλικό site με δικό του design, domain και blog, και ένα κατάστημα που μπορεί να ενεργοποιηθεί αργότερα.",
+				"stack": "Nuxt · Django · django-tenants · PostgreSQL · Redis · k3s · Argo CD · Cloudflare",
+				"sections": {
+					"site": {
+						"title": "Το site",
+						"body": "Αρχική σελίδα, σελίδα προϊόντων, η ιστορία του συνεταιρισμού, σελίδα για το πρόγραμμα χρηματοδότησής του, blog και σελίδα επικοινωνίας με χάρτη και ωράριο. Δημοσιεύει structured data LocalBusiness με το ωράριο και την τοποθεσία. Δεν υπάρχει ακόμα checkout: ο κατάλογος είναι άδειος και κάθε τρόπος πληρωμής είναι ανενεργός, οπότε το site παρουσιάζει τα προϊόντα και οι παραγγελίες γίνονται ακόμα τηλεφωνικά."
+					},
+					"platform": {
+						"title": "Ένας ακόμα tenant",
+						"body": "Είναι κατάστημα στη multi-tenant πλατφόρμα, με δικό του PostgreSQL schema, domain και theme, και το ίδιο API, storefront και workers με τα υπόλοιπα. Οι σελίδες του χτίζονται από ένα kit ενοτήτων (media με κείμενο, features grid, gallery, ωράριο, χάρτης) που πρόσθεσα στην πλατφόρμα γι’ αυτό και μπορεί πλέον να χρησιμοποιήσει κάθε άλλο κατάστημα. Η εμφάνιση είναι δική του: παλέτα sage και mint με terracotta accent, σε Commissioner και Vollkorn."
+					},
+					"move": {
+						"title": "Η μετάβαση",
+						"body": "Το παλιό site ήταν ένα NuxtHub deployment που επέστρεφε σφάλματα, δίπλα σε ένα παλαιότερο site σε shared hosting που έκανε το ίδιο. Έφερα τα 13 άρθρα του blog από το WordPress μαζί με τις εικόνες τους, τα μετέφρασα στα αγγλικά, ξανάγραψα τις νομικές σελίδες με βάση το τι κάνει πραγματικά το site, και μετέφερα τα πάντα στο δικό του domain.\n\nΚάθε script δεδομένων είναι idempotent και τρέχει σε μία συναλλαγή της βάσης, οπότε μια αποτυχημένη εκτέλεση δεν αλλάζει τίποτα και η επανεκτέλεση είναι ασφαλής."
 					}
 				}
 			},
@@ -200,14 +231,14 @@
 				"title": "Projects & Infrastructure",
 				"bodyBefore": "Για περισσότερα από 4 χρόνια, παράλληλα με άλλα projects, χτίζω το GrooveShop, μια multi-tenant e-commerce πλατφόρμα: ένα Django API, ένα Nuxt storefront, μια NestJS media service και ένα gateway σε Go που επιτρέπει σε AI agents να ψωνίζουν από αυτήν. Τρέχει σε παραγωγή για το",
 				"websideLabel": "webside.gr",
-				"bodyAfter": ", σε self-hosted k3s cluster στη Hetzner, με ArgoCD, Longhorn, RabbitMQ, Celery, Redis και Cert-Manager."
+				"bodyAfter": ", σε self-hosted k3s cluster στη Hetzner, με ArgoCD, Longhorn, RabbitMQ, Celery, Redis, Meilisearch και Cert-Manager, και παρακολούθηση με Grafana και VictoriaMetrics."
 			},
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
 				"frontend": "Vue.js, Nuxt.js, Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
 				"backend": "Python, Django, FastAPI, Go, PHP",
-				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
+				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Meilisearch, Grafana, VictoriaMetrics, Hetzner, Cloudflare"
 			},
 			"ai": {
 				"title": "AI",

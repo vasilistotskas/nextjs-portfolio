@@ -87,6 +87,24 @@ export const projects: readonly Project[] = [
 		}
 	},
 	{
+		key: 'ekfyseosfyteias',
+		host: 'ekfyseosfyteias.com',
+		live: 'https://ekfyseosfyteias.com',
+		repos: [],
+		docs: null,
+		status: 'live',
+		caseStudy: true,
+		sections: ['site', 'platform', 'move'],
+		shots: [
+			{ name: 'home', path: '/', viewport: 'desktop' },
+			{ name: 'cellar', path: '/kelari', viewport: 'desktop' },
+			{ name: 'about', path: '/poies-eimaste', viewport: 'desktop' },
+			{ name: 'blog', path: '/blog', viewport: 'desktop' },
+			{ name: 'mobile', path: '/', viewport: 'mobile' }
+		],
+		metrics: null
+	},
+	{
 		key: 'grooveshop',
 		host: 'demo.grooveshop.space',
 		live: 'https://demo.grooveshop.space',

@@ -4,7 +4,7 @@
 
 Working professionally since 2020 at Advisable, where he started as an intern and is a web developer today. Since August 2026 he is also serving his military service as a full stack engineer in the Greek Army (ΚΕ.Π.Υ.Ε.Σ.), working with FastAPI and Angular. He holds a Computer Engineering degree from the University of Western Macedonia and is certified by Google and TestDome. He works in English and Greek, and the site is published in both.
 
-The work groups into four layers. Interface: Vue.js, Nuxt, TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Angular, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus FastAPI, NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn and Cert-Manager.
+The work groups into four layers. Interface: Vue.js, Nuxt, TypeScript and Tailwind CSS daily, plus JavaScript, React, Next.js, Angular, Vite, HTML and CSS. Services: Python, Django, Django REST, Go and PHP daily, plus FastAPI, NestJS and Node.js. Data: PostgreSQL and Redis daily, plus Meilisearch, RabbitMQ and Celery. Platform: Docker, Kubernetes (k3s), Linux and Git daily, plus ArgoCD, Nginx, Cloudflare, Hetzner, Vercel, Longhorn, Cert-Manager, Sealed Secrets, Grafana, VictoriaMetrics and VictoriaLogs.
 
 ## Pages
 
@@ -12,12 +12,14 @@ The work groups into four layers. Interface: Vue.js, Nuxt, TypeScript and Tailwi
 - [About](https://www.vasilistotskas.com/en/about): Biography, tech stack, education, certifications and Spotify listening
 - [Contact](https://www.vasilistotskas.com/en/contact): Contact form and social links
 - [Webside.gr case study](https://www.vasilistotskas.com/en/projects/webside): The production store — orders and revenue from its database, how it runs, screenshots
+- [Ek fyseos Fytias case study](https://www.vasilistotskas.com/en/projects/ekfyseosfyteias): A cooperative's site on the platform — what replaced the two broken sites, the section kit, the migration, screenshots
 - [GrooveShop case study](https://www.vasilistotskas.com/en/projects/grooveshop): The multi-tenant platform — tenancy, commerce features, agent gateway, services, screenshots
 - [Home (Greek)](https://www.vasilistotskas.com/el): The same site in Greek; every page exists under /el
 
 ## Projects
 
-- [Webside.gr](https://webside.gr): Production e-commerce store powered by GrooveShop, taking real orders since May 2026, running every layer on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager
+- [Webside.gr](https://webside.gr): Production e-commerce store powered by GrooveShop, taking real orders since May 2026, running every layer on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis, Meilisearch and Cert-Manager, monitored with Grafana and VictoriaMetrics
+- [Ek fyseos Fytias](https://ekfyseosfyteias.com): Greek-language site of a women's social cooperative in Fytia, Imathia that makes jams, spoon sweets and trachanas; another tenant of GrooveShop on the same cluster as Webside
 - [GrooveShop demo](https://demo.grooveshop.space/): Live demo of the GrooveShop platform
 - [GrooveShop docs](https://docs.grooveshop.space): Admin guide and developer documentation for the platform
 - [GrooveShop API](https://github.com/vasilistotskas/grooveshop-django-api): Django REST backend — business logic, auth and data

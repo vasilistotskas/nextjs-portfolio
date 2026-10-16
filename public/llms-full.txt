@@ -67,7 +67,8 @@ Skills are grouped by the layer a request passes through rather than by job titl
 - Kubernetes (k3s, self-hosted clusters) — daily
 - Linux — daily
 - Git — daily
-- ArgoCD (GitOps continuous delivery), Nginx, Cloudflare, Hetzner, Vercel, Longhorn (distributed storage), Cert-Manager (TLS)
+- ArgoCD (GitOps continuous delivery), Nginx, Cloudflare, Hetzner, Vercel, Longhorn (distributed storage), Cert-Manager (TLS), Sealed Secrets
+- Grafana, VictoriaMetrics and VictoriaLogs for metrics, alerting and logs
 
 ## Notable Projects
 
@@ -96,12 +97,22 @@ A production e-commerce store for phone and computer accessories, one tenant of 
 - RabbitMQ for message queuing
 - Celery for background task processing
 - Redis for caching
+- Meilisearch for search
 - Cert-Manager for automated TLS certificates
+- Grafana, VictoriaMetrics and VictoriaLogs for dashboards, alerting and logs
 
 Releases go through Argo CD sync hooks: a pre-sync job checks migrations are safe, migrates every tenant schema, collects static files and applies the Meilisearch index settings; post-sync jobs purge the Cloudflare edge cache and warm the storefront.
 
 Case study: https://www.vasilistotskas.com/en/projects/webside
 Live: https://webside.gr
+
+### Ek fyseos Fytias (Εκ φύσεως Φυτειάς)
+The Greek-language site of a social cooperative enterprise run by women in Fytia, Imathia, which makes jams, spoon sweets, trachanas and hilopites. It is another tenant of GrooveShop, with its own PostgreSQL schema, domain and theme, served by the same API, storefront and cluster as Webside.
+
+It replaced two broken sites (a failing NuxtHub deployment and an older shared-hosting site). The pages are built from a kit of sections added to the platform for it, the 13 blog posts were imported from WordPress and translated into English, and the data scripts are idempotent and run in one transaction each. There is no checkout yet.
+
+Case study: https://www.vasilistotskas.com/en/projects/ekfyseosfyteias
+Live: https://ekfyseosfyteias.com
 
 ### Developer portfolio (this site)
 - Next.js (App Router, Turbopack), React, TypeScript strict
@@ -138,8 +149,8 @@ The site is published in English and Greek. Every page exists under both `/en` a
 - Highlights, education and certifications
 - Contact information, GitHub statistics and Spotify top tracks
 
-### Projects (/projects/webside, /projects/grooveshop)
-- Case studies with production figures, architecture, the layers each runs, and screenshots
+### Projects (/projects, /projects/webside, /projects/ekfyseosfyteias, /projects/grooveshop)
+- An index of every project, plus case studies with production figures, architecture, the layers each runs, and screenshots
 
 ### Contact (/contact)
 - Contact form (name, email, subject, message)

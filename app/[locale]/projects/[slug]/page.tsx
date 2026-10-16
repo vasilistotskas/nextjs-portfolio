@@ -135,7 +135,7 @@ export default async function CaseStudyPage({
 	return (
 		<article className="mx-auto max-w-5xl px-4 py-8 md:px-6 md:py-16">
 			<Link
-				href={`/${locale}#projects`}
+				href={`/${locale}/projects`}
 				className="text-terminal-muted hover:text-terminal-green inline-flex items-center gap-1.5 font-mono text-xs transition-colors"
 			>
 				<ArrowLeft size={12} />

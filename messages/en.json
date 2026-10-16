@@ -23,6 +23,7 @@
 			"media": "media",
 			"api": "api",
 			"database": "database",
+			"meilisearch": "search",
 			"cache": "cache",
 			"queue": "queue",
 			"workers": "workers",
@@ -69,7 +70,12 @@
 	},
 	"projects": {
 		"title": "Projects",
-		"intro": "Three systems, ordered by how much of the stack they run.",
+		"intro": "Four systems, ordered by how much of the stack they run.",
+		"metaDescription": "Production stores, an open-source commerce platform and this portfolio: what I built and the layers each one runs.",
+		"viewAll": "View all {count} projects",
+		"previous": "Previous project",
+		"next": "Next project",
+		"carouselLabel": "More projects",
 		"viewDemo": "Live site",
 		"docs": "Docs",
 		"caseStudy": "Case study",
@@ -78,6 +84,10 @@
 			"oss": "Open source"
 		},
 		"items": {
+			"ekfyseosfyteias": {
+				"name": "Ek fyseos Fytias",
+				"description": "The site of a women's social cooperative in Fytia, Imathia that makes jams, spoon sweets and trachanas. Another tenant of GrooveShop: its own schema, domain and theme, on the same API, storefront and cluster as Webside."
+			},
 			"portfolio": {
 				"name": "This portfolio",
 				"description": "Next.js, React and Tailwind, in two languages. The hero is a WebGPU shader drawing the same layer map the rest of the site is organised around."
@@ -88,7 +98,7 @@
 			},
 			"webside": {
 				"name": "Webside.gr",
-				"description": "A production store on GrooveShop: {orders}+ orders and €{revenue}+ in revenue since May 2026. It runs every layer of the map on a self-hosted Hetzner k3s cluster with Argo CD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
+				"description": "A production store on GrooveShop: {orders}+ orders and €{revenue}+ in revenue since May 2026. It runs every layer of the map on a self-hosted Hetzner k3s cluster with Argo CD, Longhorn, RabbitMQ, Celery, Redis, Meilisearch and Cert-Manager, watched through Grafana and VictoriaMetrics."
 			}
 		}
 	},
@@ -112,13 +122,15 @@
 			"blog": "Blog",
 			"loyalty": "Loyalty programme",
 			"gift-cards": "Gift cards",
-			"mobile": "Home page on a phone"
+			"mobile": "Home page on a phone",
+			"cellar": "Products",
+			"about": "Who we are"
 		},
 		"items": {
 			"webside": {
 				"title": "Webside.gr, a store in production",
 				"summary": "Webside is a Greek store for phone and computer accessories that runs on GrooveShop, the platform I build. I write the software and operate everything under it, from the Kubernetes cluster to the release pipeline.",
-				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare",
+				"stack": "Nuxt · Django · NestJS · Go · PostgreSQL · Redis · Meilisearch · RabbitMQ · Celery · k3s · Argo CD · Longhorn · Cloudflare · Grafana · VictoriaMetrics",
 				"sections": {
 					"store": {
 						"title": "The store",
@@ -130,7 +142,26 @@
 					},
 					"operations": {
 						"title": "Running it",
-						"body": "Everything runs on a self-hosted k3s cluster at Hetzner that I set up and operate. Argo CD deploys from Git. Before a release goes live, a pre-sync job checks the migrations are safe, migrates every store, collects static files and applies the search index settings. After it, post-sync jobs purge the Cloudflare edge cache and warm the storefront.\n\nLonghorn provides the volumes, Cert-Manager renews TLS, Sealed Secrets keeps credentials encrypted in Git, and VictoriaMetrics alerts when something drifts."
+						"body": "Everything runs on a self-hosted k3s cluster at Hetzner that I set up and operate. Argo CD deploys from Git. Before a release goes live, a pre-sync job checks the migrations are safe, migrates every store, collects static files and applies the search index settings. After it, post-sync jobs purge the Cloudflare edge cache and warm the storefront.\n\nLonghorn provides the volumes, Cert-Manager renews TLS, Sealed Secrets keeps credentials encrypted in Git, and VictoriaMetrics with Grafana tracks the cluster and alerts when something drifts, while VictoriaLogs keeps the logs."
+					}
+				}
+			},
+			"ekfyseosfyteias": {
+				"title": "Ek fyseos Fytias, a cooperative's site on the platform",
+				"summary": "A women's social cooperative in Fytia, Imathia makes jams, spoon sweets and trachanas. I replaced its two broken sites with one on GrooveShop: a Greek and English site with the cooperative's own design, domain and blog, and a shop that can be switched on later.",
+				"stack": "Nuxt · Django · django-tenants · PostgreSQL · Redis · k3s · Argo CD · Cloudflare",
+				"sections": {
+					"site": {
+						"title": "The site",
+						"body": "A home page, a page for the products, the cooperative's story, a page for its funding programme, a blog and a contact page with a map and opening hours. It publishes LocalBusiness structured data with the hours and the location. There is no checkout yet: the catalogue is empty and every payment method is off, so the site presents the products and orders still go by phone."
+					},
+					"platform": {
+						"title": "One more tenant",
+						"body": "It is a store on the multi-tenant platform, with its own PostgreSQL schema, domain and theme, served by the same API, storefront and workers as the others. Its pages are built from a kit of sections (media with text, features grid, gallery, opening hours, map) that I added to the platform for it and that every other store can now use. The look is its own: a sage and mint palette with a terracotta accent, set in Commissioner and Vollkorn."
+					},
+					"move": {
+						"title": "The move",
+						"body": "The old site was a NuxtHub deployment that returned errors, next to an older site on shared hosting that did the same. I imported its 13 blog posts from WordPress with their images, translated them into English, rewrote the legal pages from what the site actually does, and moved everything to its own domain.\n\nEach data script is idempotent and runs in one database transaction, so a failed run changes nothing and a re-run is safe."
 					}
 				}
 			},
@@ -200,14 +231,14 @@
 				"title": "Projects & Infrastructure",
 				"bodyBefore": "For more than 4 years, alongside other projects, I've been building GrooveShop, a multi-tenant e-commerce platform: a Django API, a Nuxt storefront, a NestJS media service and a Go gateway that lets AI agents shop it. It runs in production for",
 				"websideLabel": "webside.gr",
-				"bodyAfter": ", on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis and Cert-Manager."
+				"bodyAfter": ", on a self-hosted Hetzner k3s cluster with ArgoCD, Longhorn, RabbitMQ, Celery, Redis, Meilisearch and Cert-Manager, monitored with Grafana and VictoriaMetrics."
 			},
 			"stack": {
 				"title": "Core Tech Stack",
 				"heart": "Nuxt",
 				"frontend": "Vue.js, Nuxt.js, Angular, JavaScript, TypeScript, NestJs, Vite, HTML, CSS",
 				"backend": "Python, Django, FastAPI, Go, PHP",
-				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Hetzner, Cloudflare"
+				"devops": "Kubernetes (k3s), ArgoCD, Docker, RabbitMQ, Celery, Redis, Postgres, Meilisearch, Grafana, VictoriaMetrics, Hetzner, Cloudflare"
 			},
 			"ai": {
 				"title": "AI",

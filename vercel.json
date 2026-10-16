@@ -18,10 +18,6 @@
 		{
 			"source": "/resume",
 			"destination": "https://read.cv/vasilistotskas"
-		},
-		{
-			"source": "/projects",
-			"destination": "/about"
 		}
 	]
 }
