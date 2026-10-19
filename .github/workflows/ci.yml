@@ -63,6 +63,9 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      # The CLI reads the token from here; a --token flag would put it in the
+      # process arguments. --non-interactive below is Vercel's mode for CI.
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       ENABLE_EXPERIMENTAL_COREPACK: '1'
     steps:
       - uses: actions/checkout@v7
@@ -74,6 +77,6 @@ jobs:
       # unless it is approved. `pnpm dlx` installs into a throwaway store, so the
       # project's `allowBuilds` does not reach it; since pnpm 12 the ignored build
       # is an error (ERR_PNPM_IGNORED_BUILDS) rather than a warning.
-      - run: pnpm dlx --allow-build esbuild vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm dlx --allow-build esbuild vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm dlx --allow-build esbuild vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm dlx --allow-build esbuild vercel pull --non-interactive --yes --environment=production
+      - run: pnpm dlx --allow-build esbuild vercel build --non-interactive --prod
+      - run: pnpm dlx --allow-build esbuild vercel deploy --non-interactive --prebuilt --prod
