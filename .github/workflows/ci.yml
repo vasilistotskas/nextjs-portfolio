@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
+      # pnpm 11+ is installed by pnpm/setup, not pnpm/action-setup. It reads the
+      # pnpm version from packageManager and Node.js from .nvmrc, then installs.
+      - uses: pnpm/setup@v3
         with:
-          node-version: '24'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+          cache: true
+          require-lockfile: true
       - run: pnpm lint
       # `next build` never validates WGSL, on Turbopack or webpack. This does:
       # it resolves the same import graph the loader does and fails on parse and
@@ -46,16 +46,14 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: '24'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+          cache: true
+          require-lockfile: true
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: pnpm exec semantic-release
 
   deploy:
     name: Deploy
@@ -68,12 +66,10 @@ jobs:
       ENABLE_EXPERIMENTAL_COREPACK: '1'
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: '24'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+          cache: true
+          require-lockfile: true
       # The Vercel CLI depends on esbuild, whose postinstall pnpm refuses to run
       # unless it is approved. `pnpm dlx` installs into a throwaway store, so the
       # project's `allowBuilds` does not reach it; since pnpm 12 the ignored build

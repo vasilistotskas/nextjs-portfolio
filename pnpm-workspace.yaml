@@ -26,12 +26,6 @@ minimumReleaseAgeExclude:
   - zod@4.6.1
   - '@semantic-release/github@12.0.10'
   - '@semantic-release/npm@13.2.0'
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - esbuild
-  - sharp
-  - unrs-resolver
 # These plugins cap their eslint peer at 9 and have shipped nothing since.
 # eslint-config-next >=16.4.0 patches back the rule-context members ESLint 10
 # removed (dist/rule-context.js), so they run correctly on 10. Pinned to the
