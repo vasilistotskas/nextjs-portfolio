@@ -1,3 +1,10 @@
+## [1.52.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.52.0...v1.52.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* complete the vgpu 0.6 migration and patch vulnerable dependencies ([760ad25](https://github.com/vasilistotskas/nextjs-portfolio/commit/760ad25fd7f3bd41ae1f998276cf5d7858015a6d))
+
 # [1.52.0](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.51.1...v1.52.0) (2026-10-16)
 
 
