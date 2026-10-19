@@ -120,6 +120,15 @@ export function startHeroField(
 			}
 			gpu = context
 
+			// Since vgpu 0.6 a lost device stops the frame loop without throwing,
+			// which would leave a frozen field on screen. Treat it like a failed
+			// start: tear down and let the CSS fallback show.
+			void context.lost.then(() => {
+				if (disposed) return
+				handle.dispose()
+				onError()
+			})
+
 			const canvasSurface = surface(gpu, canvas, { dpr: [1, 2] })
 			output = canvasSurface
 
@@ -161,7 +170,7 @@ export function startHeroField(
 		}
 	})()
 
-	return {
+	const handle: HeroFieldHandle = {
 		setPointer(x, y, on) {
 			pointer.x = x
 			pointer.y = y
@@ -199,4 +208,5 @@ export function startHeroField(
 			gpu?.dispose()
 		}
 	}
+	return handle
 }

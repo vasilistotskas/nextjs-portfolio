@@ -1,7 +1,11 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
+import { wgslTurbopackRule } from '@vgpu/wgsl/next'
+import type { WgslTurbopackRuleOptions } from '@vgpu/wgsl/next'
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
+
+const wgslLoaderOptions: WgslTurbopackRuleOptions = { minify: true }
 
 const securityHeaders = [
 	{
@@ -33,15 +37,13 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	// Resolve `.wgsl` import graphs at build time and hand `effect()` one
-	// finished shader. Turbopack needs `as: '*.js'` so it treats the loader
-	// output as a module; the webpack hook only runs for commands without
-	// `--turbopack`, and the two configurations coexist.
+	// prepared shader. `wgslTurbopackRule()` fingerprints the installed compiler
+	// in the loader options, so a restored `.next/cache` cannot serve shaders
+	// built by an older one. The webpack hook only runs for `next build
+	// --webpack`; the two configurations coexist.
 	turbopack: {
 		rules: {
-			'*.wgsl': {
-				loaders: ['@vgpu/wgsl/loader-webpack'],
-				as: '*.js'
-			}
+			'*.wgsl': wgslTurbopackRule(wgslLoaderOptions)
 		}
 	},
 	webpack(config) {
@@ -50,7 +52,7 @@ const nextConfig: NextConfig = {
 		config.module.rules.push({
 			test: /\.wgsl$/,
 			loader: '@vgpu/wgsl/loader-webpack',
-			options: { minify: true }
+			options: wgslLoaderOptions
 		})
 		return config
 	},

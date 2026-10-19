@@ -7,25 +7,12 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
   webgpu: false
-minimumReleaseAgeExclude:
-  - '@types/react-dom@19.2.5 || 19.3.0'
-  - '@eloqnt/config@0.1.0'
-  - '@eloqnt/format-json@0.1.0'
-  - '@eloqnt/format-po@0.1.0'
-  - '@types/node@26.4.1 || 26.6.4'
-  - icu-minify@4.14.2 || 4.14.6 || 4.14.9
-  - lucide-react@1.39.0 || 1.44.0 || 1.50.0 || 1.53.0
-  - next-intl-swc-plugin-extractor@4.14.2 || 4.14.6 || 4.14.9
-  - next-intl@4.14.2 || 4.14.6 || 4.14.9
-  - use-intl@4.14.2 || 4.14.6 || 4.14.9
-  - '@types/react@19.3.0'
-  - react-dom@19.3.0
-  - react@19.3.0
-  - resend@6.27.0 || 6.32.0
-  - scheduler@0.28.0
-  - zod@4.6.1
-  - '@semantic-release/github@12.0.10'
-  - '@semantic-release/npm@13.2.0'
+# braces <=3.0.3 has no patched release. It only reaches dev tooling (ESLint and
+# semantic-release, through micromatch), which expands this repo's own globs and
+# never untrusted input; nothing in the deployed site depends on it.
+audit:
+  ignore:
+    - GHSA-vfj7-8cjw-p6xm
 # These plugins cap their eslint peer at 9 and have shipped nothing since.
 # eslint-config-next >=16.4.0 patches back the rule-context members ESLint 10
 # removed (dist/rule-context.js), so they run correctly on 10. Pinned to the
