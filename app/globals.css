@@ -336,12 +336,90 @@
 		/* Animation is added under `no-preference` below. */
 		opacity: 1;
 	}
+
+	/*
+		Entry and exit for the two top-layer surfaces: the command palette <dialog>
+		and the mobile-menu popover. `display` and `overlay` transition discretely,
+		so the element stays rendered, and in the top layer, until it has faded
+		out; `@starting-style` is the state it fades in from. Browsers without
+		`overlay` (only Chromium has it) skip just the exit fade. These are the
+		fades; the movement is added under `no-preference` below.
+	*/
+	.palette-dialog,
+	.palette-dialog::backdrop,
+	.mobile-menu {
+		opacity: 0;
+		transition-property: opacity, translate, scale, display, overlay;
+		transition-duration: 180ms;
+		transition-timing-function: ease-out;
+		transition-behavior: allow-discrete;
+	}
+	.palette-dialog::backdrop,
+	.mobile-menu {
+		transition-duration: 150ms;
+	}
+	.palette-dialog[open],
+	.palette-dialog[open]::backdrop,
+	.mobile-menu:popover-open {
+		opacity: 1;
+	}
+	@starting-style {
+		.palette-dialog[open],
+		.palette-dialog[open]::backdrop,
+		.mobile-menu:popover-open {
+			opacity: 0;
+		}
+	}
+
+	/* A modal dialog makes the page inert but leaves it scrollable. */
+	:root:has(.palette-dialog[open]) {
+		overflow: hidden;
+	}
+
+	/*
+		The popover lives in the top layer, so it can no longer sit `absolute` in
+		the header; it anchors to it instead, full width under its bottom edge.
+	*/
+	.site-header {
+		anchor-name: --site-header;
+	}
+	.mobile-menu {
+		position-anchor: --site-header;
+		inset: auto;
+		top: anchor(bottom);
+		left: anchor(left);
+		right: anchor(right);
+		width: auto;
+	}
+	.mobile-menu-item {
+		transition:
+			opacity 200ms ease-out,
+			translate 200ms ease-out;
+	}
+	@starting-style {
+		.mobile-menu:popover-open .mobile-menu-item {
+			opacity: 0;
+		}
+	}
+
+	/* Both icons share one grid cell; the theme class on <html> picks one. */
+	.theme-icon {
+		grid-area: 1 / 1;
+		transition:
+			opacity 180ms ease-out,
+			rotate 180ms ease-out,
+			scale 180ms ease-out;
+	}
+	:root.dark .theme-icon-moon,
+	:root:not(.dark) .theme-icon-sun {
+		opacity: 0;
+	}
 }
 
 /*
-	Every looping animation lives here, so the whole page is still by default for
-	anyone who asked their OS for less motion. Motion-library animations are
-	handled separately by `<MotionConfig reducedMotion="user">`.
+	Every looping animation and every movement lives here, so the whole page is
+	still by default for anyone who asked their OS for less motion. Fades stay:
+	they carry state changes without moving anything.
 */
 @media (prefers-reduced-motion: no-preference) {
 	@layer utilities {
@@ -370,6 +448,42 @@
 		}
 		.eq i:nth-child(3) {
 			animation-delay: -0.7s;
+		}
+
+		.palette-dialog {
+			translate: 0 -8px;
+			scale: 0.99;
+		}
+		.palette-dialog[open] {
+			translate: 0;
+			scale: 1;
+		}
+		.mobile-menu {
+			translate: 0 -10px;
+		}
+		.mobile-menu:popover-open {
+			translate: 0;
+		}
+		@starting-style {
+			.palette-dialog[open] {
+				translate: 0 -12px;
+				scale: 0.985;
+			}
+			.mobile-menu:popover-open {
+				translate: 0 -10px;
+			}
+			.mobile-menu:popover-open .mobile-menu-item {
+				translate: -12px 0;
+			}
+		}
+
+		:root.dark .theme-icon-moon {
+			rotate: -90deg;
+			scale: 0.6;
+		}
+		:root:not(.dark) .theme-icon-sun {
+			rotate: 90deg;
+			scale: 0.6;
 		}
 	}
 }

@@ -4,9 +4,11 @@
 // `/// <reference types="@vgpu/wgsl/wgsl-types" />` is the shorter form the vgpu
 // docs suggest, but under `moduleResolution: "bundler"` it resolves to the
 // package root types instead of the `./wgsl-types` subpath and the declaration
-// never lands. `@vgpu/wgsl` is also a transitive dependency, so under pnpm's
-// isolated layout it is not importable from here by name. Hence the literal.
+// never lands. `@vgpu/wgsl` is a transitive dependency, so under pnpm's isolated
+// layout it is not importable from here by name — but `vgpu` re-exports the
+// type, so reference it there instead of copying its shape.
 declare module '*.wgsl' {
-	const source: { readonly version: 1; readonly wgsl: string }
+	import type { ShaderSource } from 'vgpu'
+	const source: ShaderSource
 	export default source
 }

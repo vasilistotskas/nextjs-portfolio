@@ -1,10 +1,21 @@
-import { z } from 'zod'
+// Shared by the contact form and its Server Action, so this module stays free of
+// zod: the browser enforces these limits through HTML constraint attributes and
+// only the server parses the schema.
 
-export const contactSchema = z.object({
-	name: z.string().min(2, 'Name must be at least 2 characters'),
-	email: z.email('Invalid email address'),
-	subject: z.string().min(3, 'Subject must be at least 3 characters'),
-	message: z.string().min(10, 'Message must be at least 10 characters')
-})
+export const contactFields = ['name', 'email', 'subject', 'message'] as const
 
-export type ContactFormData = z.infer<typeof contactSchema>
+export type ContactField = (typeof contactFields)[number]
+
+/** Shortest accepted value per text field; the email field is checked by format. */
+export const contactMinLength = { name: 2, subject: 3, message: 10 } as const
+
+export type ContactValues = Record<ContactField, string>
+
+export type ContactFormState =
+	| { status: 'idle' }
+	| { status: 'success' }
+	// Both failure states carry the submitted values back: React resets a form's
+	// uncontrolled fields after every action, so without them a failed send would
+	// wipe what the visitor typed.
+	| { status: 'invalid'; values: ContactValues; invalid: ContactField[] }
+	| { status: 'error'; values: ContactValues }

@@ -13,7 +13,6 @@ import type { ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from '@/components/providers/ThemeProvider'
-import { AnimatePresence, motion } from 'motion/react'
 import { TerminalIcon, X } from 'lucide-react'
 import { routing } from '@/i18n/routing'
 import { skillGroups } from '@/lib/stack'
@@ -65,7 +64,7 @@ function Line({ children, tone }: { children: ReactNode; tone?: 'warn' }) {
 	)
 }
 
-function PaletteDialog({ onClose }: { onClose: () => void }) {
+function PaletteDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
 	const t = useTranslations('terminal')
 	const tc = useTranslations('common')
 	const tp = useTranslations('projects')
@@ -81,8 +80,7 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
 
 	const inputRef = useRef<HTMLInputElement>(null)
 	const scrollRef = useRef<HTMLDivElement>(null)
-	const dialogRef = useRef<HTMLDivElement>(null)
-	const restoreFocusTo = useRef<Element | null>(null)
+	const dialogRef = useRef<HTMLDialogElement>(null)
 
 	// The typewriter that used to gate the hero now lives here, where it costs
 	// nobody anything: it demonstrates the prompt while the palette is open.
@@ -91,7 +89,7 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
 		baseSpeed: 26,
 		variationRange: 20,
 		startDelay: 420,
-		enabled: history.length === 0 && value === ''
+		enabled: open && history.length === 0 && value === ''
 	})
 
 	const commandHelp = useMemo(
@@ -298,165 +296,146 @@ function PaletteDialog({ onClose }: { onClose: () => void }) {
 		setHistory((entries) => [...entries, { command: raw, output }])
 	}, [run, value])
 
-	// Focus the prompt on open and hand focus back to whatever opened it.
+	// A modal <dialog> brings the focus trap, the inert page behind it, Escape and
+	// focus restoration on close with it. The prompt is focused explicitly
+	// because `showModal()` would otherwise land on the close button, which comes
+	// first in tree order.
 	useEffect(() => {
-		restoreFocusTo.current = document.activeElement
-		inputRef.current?.focus()
-		return () => {
-			const target = restoreFocusTo.current
-			if (target instanceof HTMLElement) target.focus()
+		const dialog = dialogRef.current
+		if (!dialog) return
+		if (open && !dialog.open) {
+			dialog.showModal()
+			inputRef.current?.focus()
+		} else if (!open && dialog.open) {
+			dialog.close()
 		}
-	}, [])
+	}, [open])
 
 	useEffect(() => {
 		scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight })
 	}, [history])
 
-	// Keep tabbing inside the dialog while it is open.
-	const handleKeyDown = (event: React.KeyboardEvent) => {
-		if (event.key !== 'Tab') return
-		const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-			'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
-		)
-		if (!focusable || focusable.length === 0) return
-		const first = focusable[0]
-		const last = focusable[focusable.length - 1]
-		if (event.shiftKey && document.activeElement === first) {
-			event.preventDefault()
-			last.focus()
-		} else if (!event.shiftKey && document.activeElement === last) {
-			event.preventDefault()
-			first.focus()
-		}
+	// A click on the backdrop targets the dialog itself. `closedby="any"` would do
+	// this natively, but Safari does not support it.
+	const handleBackdropClick = (event: React.MouseEvent<HTMLDialogElement>) => {
+		const rect = event.currentTarget.getBoundingClientRect()
+		const inside =
+			event.clientX >= rect.left &&
+			event.clientX <= rect.right &&
+			event.clientY >= rect.top &&
+			event.clientY <= rect.bottom
+		if (!inside) onClose()
 	}
 
 	const commands = history.map((entry) => entry.command)
 
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			transition={{ duration: 0.15 }}
-			className="fixed inset-0 z-[100] flex items-start justify-center px-3 pt-16 sm:px-6 sm:pt-24"
+		<dialog
+			ref={dialogRef}
+			aria-label={t('title')}
+			onClose={onClose}
+			onClick={handleBackdropClick}
+			className="palette-dialog glass glass-blur terminal-border bg-terminal-bg/90 text-terminal-text mx-auto mt-16 w-[calc(100%-1.5rem)] max-w-2xl overflow-hidden rounded-xl shadow-2xl backdrop:bg-black/45 backdrop:backdrop-blur-sm sm:mt-24 sm:w-[calc(100%-3rem)]"
 		>
-			<button
-				type="button"
-				aria-label={t('close')}
-				onClick={onClose}
-				className="absolute inset-0 cursor-default bg-black/45 backdrop-blur-sm"
-			/>
-
-			<motion.div
-				ref={dialogRef}
-				role="dialog"
-				aria-modal="true"
-				aria-label={t('title')}
-				onKeyDown={handleKeyDown}
-				initial={{ opacity: 0, y: -12, scale: 0.985 }}
-				animate={{ opacity: 1, y: 0, scale: 1 }}
-				exit={{ opacity: 0, y: -8, scale: 0.99 }}
-				transition={{ duration: 0.18, ease: 'easeOut' }}
-				className="glass glass-blur terminal-border bg-terminal-bg/90 relative flex w-full max-w-2xl flex-col overflow-hidden rounded-xl shadow-2xl"
-			>
-				<div className="border-terminal-border bg-terminal-bg/80 flex items-center gap-3 border-b px-4 py-2.5">
-					<TerminalIcon size={13} className="text-terminal-green shrink-0" />
-					<span className="text-terminal-muted flex-1 truncate font-mono text-xs">
-						{t('title')}
-					</span>
-					<button
-						type="button"
-						onClick={onClose}
-						aria-label={t('close')}
-						className="text-terminal-muted hover:text-terminal-text -mr-1 rounded p-1 transition-colors"
-					>
-						<X size={14} />
-					</button>
-				</div>
-
-				<div
-					ref={scrollRef}
-					className="max-h-[min(60vh,26rem)] space-y-3 overflow-y-auto p-4 font-mono text-[13px] leading-relaxed sm:text-sm"
+			<div className="border-terminal-border bg-terminal-bg/80 flex items-center gap-3 border-b px-4 py-2.5">
+				<TerminalIcon size={13} className="text-terminal-green shrink-0" />
+				<span className="text-terminal-muted flex-1 truncate font-mono text-xs">
+					{t('title')}
+				</span>
+				<button
+					type="button"
+					onClick={onClose}
+					aria-label={t('close')}
+					className="text-terminal-muted hover:text-terminal-text -mr-1 rounded p-1 transition-colors"
 				>
-					{history.length === 0 && <p className="text-terminal-comment">{t('intro')}</p>}
+					<X size={14} />
+				</button>
+			</div>
 
-					{history.map((entry, index) => (
-						<div key={`${entry.command}-${index}`} className="space-y-1">
-							<p>
-								<span className="text-terminal-green">{'~ $ '}</span>
-								<span className="text-terminal-text">{entry.command}</span>
-							</p>
-							{entry.output}
-						</div>
-					))}
+			<div
+				ref={scrollRef}
+				className="max-h-[min(60vh,26rem)] space-y-3 overflow-y-auto p-4 font-mono text-[13px] leading-relaxed sm:text-sm"
+			>
+				{history.length === 0 && <p className="text-terminal-comment">{t('intro')}</p>}
 
-					<div className="flex items-center gap-2">
-						<span className="text-terminal-green shrink-0">{'~ $'}</span>
-						<input
-							ref={inputRef}
-							type="text"
-							value={value}
-							onChange={(event) => setValue(event.target.value)}
-							onKeyDown={(event) => {
-								if (event.key === 'Enter') {
-									event.preventDefault()
-									submit()
-									return
-								}
-								if (event.key === 'ArrowUp' && commands.length > 0) {
-									event.preventDefault()
-									const next =
-										recall === null ? commands.length - 1 : Math.max(0, recall - 1)
+				{history.map((entry, index) => (
+					<div key={`${entry.command}-${index}`} className="space-y-1">
+						<p>
+							<span className="text-terminal-green">{'~ $ '}</span>
+							<span className="text-terminal-text">{entry.command}</span>
+						</p>
+						{entry.output}
+					</div>
+				))}
+
+				<div className="flex items-center gap-2">
+					<span className="text-terminal-green shrink-0">{'~ $'}</span>
+					<input
+						ref={inputRef}
+						type="text"
+						value={value}
+						onChange={(event) => setValue(event.target.value)}
+						onKeyDown={(event) => {
+							if (event.key === 'Enter') {
+								event.preventDefault()
+								submit()
+								return
+							}
+							if (event.key === 'ArrowUp' && commands.length > 0) {
+								event.preventDefault()
+								const next =
+									recall === null ? commands.length - 1 : Math.max(0, recall - 1)
+								setRecall(next)
+								setValue(commands[next])
+								return
+							}
+							if (event.key === 'ArrowDown' && recall !== null) {
+								event.preventDefault()
+								const next = recall + 1
+								if (next >= commands.length) {
+									setRecall(null)
+									setValue('')
+								} else {
 									setRecall(next)
 									setValue(commands[next])
-									return
 								}
-								if (event.key === 'ArrowDown' && recall !== null) {
-									event.preventDefault()
-									const next = recall + 1
-									if (next >= commands.length) {
-										setRecall(null)
-										setValue('')
-									} else {
-										setRecall(next)
-										setValue(commands[next])
-									}
-								}
-							}}
-							// A placeholder that types itself, rather than a five-second
-							// animation standing between the visitor and the page.
-							placeholder={history.length === 0 ? demo.displayedText : ''}
-							aria-label={t('placeholder')}
-							autoComplete="off"
-							autoCorrect="off"
-							autoCapitalize="off"
-							spellCheck={false}
-							className="text-terminal-text placeholder:text-terminal-muted/70 w-full min-w-0 flex-1 bg-transparent font-mono outline-none"
-						/>
-					</div>
+							}
+						}}
+						// A placeholder that types itself, rather than a five-second
+						// animation standing between the visitor and the page.
+						placeholder={history.length === 0 ? demo.displayedText : ''}
+						aria-label={t('placeholder')}
+						autoComplete="off"
+						autoCorrect="off"
+						autoCapitalize="off"
+						spellCheck={false}
+						className="text-terminal-text placeholder:text-terminal-muted/70 w-full min-w-0 flex-1 bg-transparent font-mono outline-none"
+					/>
 				</div>
+			</div>
 
-				<p className="border-terminal-border text-terminal-muted hidden border-t px-4 py-2 font-mono text-[11px] sm:block">
-					{t('footerHint')}
-				</p>
-			</motion.div>
-		</motion.div>
+			<p className="border-terminal-border text-terminal-muted hidden border-t px-4 py-2 font-mono text-[11px] sm:block">
+				{t('footerHint')}
+			</p>
+		</dialog>
 	)
 }
 
 export function CommandPaletteProvider({ children }: { children: ReactNode }) {
 	const [isOpen, setIsOpen] = useState(false)
+	// Each opening mounts a fresh dialog, so the session starts with an empty
+	// history. The closed one stays mounted until then so its exit transition
+	// can play.
+	const [session, setSession] = useState(0)
 
-	const open = useCallback(() => setIsOpen(true), [])
+	const open = useCallback(() => {
+		setSession((n) => n + 1)
+		setIsOpen(true)
+	}, [])
 	const close = useCallback(() => setIsOpen(false), [])
 
 	useEffect(() => {
 		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === 'Escape' && isOpen) {
-				event.preventDefault()
-				setIsOpen(false)
-				return
-			}
 			if (event.key !== '/' || isOpen) return
 			if (event.metaKey || event.ctrlKey || event.altKey) return
 
@@ -472,29 +451,19 @@ export function CommandPaletteProvider({ children }: { children: ReactNode }) {
 				return
 			}
 			event.preventDefault()
-			setIsOpen(true)
+			open()
 		}
 
 		window.addEventListener('keydown', onKeyDown)
 		return () => window.removeEventListener('keydown', onKeyDown)
-	}, [isOpen])
-
-	// Stop the page behind the dialog from scrolling.
-	useEffect(() => {
-		if (!isOpen) return
-		const previous = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
-		return () => {
-			document.body.style.overflow = previous
-		}
-	}, [isOpen])
+	}, [isOpen, open])
 
 	const value = useMemo(() => ({ open, close, isOpen }), [open, close, isOpen])
 
 	return (
 		<PaletteContext.Provider value={value}>
 			{children}
-			<AnimatePresence>{isOpen && <PaletteDialog onClose={close} />}</AnimatePresence>
+			{session > 0 && <PaletteDialog key={session} open={isOpen} onClose={close} />}
 		</PaletteContext.Provider>
 	)
 }

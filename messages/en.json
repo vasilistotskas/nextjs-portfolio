@@ -300,7 +300,13 @@
 			"submit": "Send Message",
 			"sending": "Sending...",
 			"success": "Message sent! I'll get back to you soon.",
-			"error": "Something went wrong. Please try again."
+			"error": "Something went wrong. Please try again.",
+			"errors": {
+				"name": "Name must be at least {min} characters.",
+				"email": "Enter a valid email address.",
+				"subject": "Subject must be at least {min} characters.",
+				"message": "Message must be at least {min} characters."
+			}
 		}
 	},
 	"footer": {

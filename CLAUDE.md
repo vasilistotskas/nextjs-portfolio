@@ -43,7 +43,7 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 
 ### API Routes
 
-- `api/contact` — Resend email (instantiate `new Resend()` inside the handler, not at module level)
+- The contact form posts to a Server Action (`app/[locale]/contact/actions.ts`), not a route: `useActionState` plus native constraint validation, with zod only on the server. Instantiate `new Resend()` inside the action, not at module level.
 - `api/spotify/now-playing` and `api/spotify/top-tracks` — Spotify API proxies using refresh token flow in `lib/spotify.ts`
 - `api/spotify/reauth` + `api/spotify/reauth/callback` — re-grant Spotify consent. Spotify grants die 6 months after the user approves them and refreshing does **not** extend that, so this recurs forever; only the ceremony is automated, not the consent.
 - `api/spotify/token-status` — how many days the grant has left. Both are gated by `SPOTIFY_REAUTH_SECRET` and answer 404 (not 401) without it.
@@ -68,9 +68,9 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 - **Type-only imports**: `import type { X }` — enforced by `@typescript-eslint/consistent-type-imports`
 - **No `any`**: `@typescript-eslint/no-explicit-any` is set to `error`
 - **JSX comments**: `//` text in JSX must be wrapped as `{'// '}` to avoid `react/jsx-no-comment-textnodes`
-- **Animations**: `motion` library (import from `motion/react`). Sections using motion must be `'use client'` with `whileInView` for scroll-reveal.
+- **Animations**: CSS only, no animation library. Overlays are native top-layer elements (`<dialog>` for the command palette, `popover` for the mobile menu) animated with `@starting-style` + `transition-behavior: allow-discrete` in `globals.css`. Fades sit in `@layer utilities`; anything that moves goes in the `prefers-reduced-motion: no-preference` block.
 - **Path alias**: `@/*` maps to project root
-- **`cn()` utility** in `lib/utils.ts`: `clsx` + `tailwind-merge`
+- **`cn()` utility** in `lib/utils.ts`: `twMerge` from `tailwind-merge`, no clsx. It already drops falsy values; never pass `{ class: bool }` objects.
 
 ## Env Vars
 

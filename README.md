@@ -3,17 +3,16 @@
 Terminal-themed developer portfolio built with the latest web stack.
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript 5.7](https://www.typescriptlang.org/) (strict)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **i18n**: [next-intl](https://next-intl.dev/) (EN + EL)
 - **Email**: [Resend](https://resend.com/)
-- **Animation**: [Motion](https://motion.dev/)
 - **Deployment**: [Vercel](https://vercel.com)
 
 ## Overview
 
 - `app/[locale]/*` - Locale-aware pages (home, about, contact)
-- `app/api/*` - API routes (contact form, GitHub stats, Spotify)
+- `app/api/*` - API routes (Spotify)
 - `components/layout/*` - Header, Footer, Navigation, MobileMenu
 - `components/sections/*` - Hero, Skills, Projects, Experience
 - `components/ui/*` - Terminal, Badge, Card, NowPlaying, GitHubStats, ContactForm

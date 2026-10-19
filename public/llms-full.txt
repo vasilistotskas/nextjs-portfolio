@@ -173,7 +173,6 @@ The site is published in English and Greek. Every page exists under both `/en` a
 ### API Routes
 All run on the default Node runtime.
 
-- `/api/contact` — email delivery through Resend
 - `/api/spotify/now-playing` — current or most recent track
 - `/api/spotify/top-tracks` — top tracks over a selectable range
 
