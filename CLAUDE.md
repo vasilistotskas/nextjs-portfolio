@@ -61,6 +61,7 @@ Uses CSS-first configuration (`@import 'tailwindcss'` in `globals.css`, no `tail
 - Therefore every page builds its metadata through `buildPageMetadata()` in `lib/seo.ts`, which emits complete `openGraph`/`twitter`/`alternates` objects. Pages pass only `path`, `title` and `description`.
 - The root layout carries **only** non-nested fields (`metadataBase`, title template, keywords, robots, icons, manifest). Do not add `openGraph`/`twitter` there — pages override it entirely, so it would be dead config.
 - `siteUrl` lives in `lib/seo.ts`. Don't re-derive `process.env.NEXT_PUBLIC_SITE_URL` in individual files.
+- hreflang is emitted **only** by `buildPageMetadata()`. `routing.alternateLinks` is `false` because next-intl's proxy otherwise adds a `Link` header whose x-default is the unprefixed path (a 307), which site audits flag as hreflang-to-redirect and as conflicting x-default URLs.
 - Locale lists (`alternates.languages`, `og:locale:alternate`, JSON-LD `inLanguage`) derive from `routing.locales` — never hardcode `['en', 'el']`.
 
 ### Key Conventions
