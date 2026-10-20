@@ -1,3 +1,10 @@
+## [1.52.2](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.52.1...v1.52.2) (2026-10-20)
+
+
+### Bug Fixes
+
+* **seo:** emit hreflang only from page metadata ([bda0eb6](https://github.com/vasilistotskas/nextjs-portfolio/commit/bda0eb63f71a7930969d09d81b0e40ac0f9851e3))
+
 ## [1.52.1](https://github.com/vasilistotskas/nextjs-portfolio/compare/v1.52.0...v1.52.1) (2026-10-19)
 
 
